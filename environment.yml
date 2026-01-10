@@ -1,0 +1,4 @@
+name: AX
+channels:
+  - defaults
+prefix: /opt/homebrew/anaconda3/envs/AX
