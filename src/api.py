@@ -1,7 +1,7 @@
 import dotenv
 from dataclasses import dataclass
-from typing import Literal
-import PIL
+from typing import Literal, Optional
+import PIL.Image
 import os
 from openai import AsyncOpenAI
 from google import genai
@@ -18,7 +18,7 @@ class ChatRequest():
     model: str
     messages: list
     input: Literal["text-only", "with-image"]
-    image: PIL.Image | None = None
+    image: Optional[PIL.Image.Image] = None
     output: Literal["text", "json"] = "text"
     #schema: dict | None = None
 
