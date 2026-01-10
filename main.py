@@ -209,8 +209,6 @@ class Company():
         
         return self.reports
 
-# TODO : 회사 단위 보고서 생성 구현
-
 async def main_async(debug: bool = False):
     """
     회사 단위로 여러 문서를 병렬 처리 및 보고서 생성
@@ -239,6 +237,11 @@ async def main_async(debug: bool = False):
         # 모든 문서를 병렬로 처리
         await com.process_documents(debug=debug)
     
+    # TODO : 보고서 생성 이전에 skeleton prompt 작성 (JSON에서 좀 더 자연화된 프롬프트, 또는 minor detail 제거 등) 
+    # 정말 필요할지 의문. hallucination 문제가 발생할 위험이 있다.
+    # TODO : 외부 지식 tool 활용 기능
+
+
     # 모든 보고서 생성
     #await com.generate_all_reports(model="openai", web=False)
     await com.generate_all_reports(model="gemini", web=True) #웹 검색
