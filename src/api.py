@@ -20,6 +20,7 @@ class ChatRequest():
     input: Literal["text-only", "with-image"]
     image: Optional[PIL.Image.Image] = None
     output: Literal["text", "json"] = "text"
+    web: Optional[bool] = False
     #schema: dict | None = None
 
 
