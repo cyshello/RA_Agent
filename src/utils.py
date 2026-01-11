@@ -245,8 +245,8 @@ async def extractJSON(image: PIL.Image, dispatcher: Dispatcher, page_num: int = 
     img_byte_arr = io.BytesIO()
     image.save(img_byte_arr, format='PNG')
     img_byte_arr = img_byte_arr.getvalue()
-    lines = await loop.run_in_executor(None, Upstage_ocr, img_byte_arr)
-    #lines = await loop.run_in_executor(None, CLOVA_ocr, image)
+    #lines = await loop.run_in_executor(None, Upstage_ocr, img_byte_arr)
+    lines = await loop.run_in_executor(None, CLOVA_ocr, img_byte_arr)
 
     ocr_text = "\n".join(lines)
 

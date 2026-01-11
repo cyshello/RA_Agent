@@ -93,7 +93,7 @@ class Company():
         """문서를 이름과 함께 추가"""
         self.documents[name] = document
 
-    async def process_documents(self, debug: bool = False, max_rps: float = 0.5):
+    async def process_documents(self, debug: bool = False, max_rps: float = 2.0):
         """
         모든 문서를 병렬로 처리하고 결과를 저장
         
@@ -169,7 +169,6 @@ class Company():
         response = await self.dispatcher.dispatch(request)
 
         ## TODO : JSON 파싱 필요!!
-
         response = parse_json(response)
 
         return response    
@@ -200,8 +199,8 @@ class Company():
         # results 디렉토리에 저장
         results_dir = "src/results"
         os.makedirs(results_dir, exist_ok=True)
-        
-        reports_path = os.path.join(results_dir, f"{self.name}_reports.json")
+        doc_name = "".join(self.documents.keys())
+        reports_path = os.path.join(results_dir, f"{self.name}_{doc_name}_reports.json")
         with open(reports_path, 'w', encoding='utf-8') as f:
             json.dump(self.reports, f, ensure_ascii=False, indent=2)
         
@@ -240,7 +239,6 @@ async def main_async(debug: bool = False):
     # TODO : 보고서 생성 이전에 skeleton prompt 작성 (JSON에서 좀 더 자연화된 프롬프트, 또는 minor detail 제거 등) 
     # 정말 필요할지 의문. hallucination 문제가 발생할 위험이 있다.
     # TODO : 외부 지식 tool 활용 기능
-
 
     # 모든 보고서 생성
     #await com.generate_all_reports(model="openai", web=False)
