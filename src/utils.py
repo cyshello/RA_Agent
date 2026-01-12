@@ -474,9 +474,10 @@ def CLOVA_ocr(image) -> list[str]:
     response = requests.request("POST", api_url, headers=headers, data=payload, files=files)
 
     results = []
-    for i in response.json()['images'][0]['fields']:
-        text = i['inferText']
-        results.append(text)
+    if response.json().get('images') is not None:
+        for i in response.json()['images'][0]['fields']:
+            text = i['inferText']
+            results.append(text)
 
     return results
 

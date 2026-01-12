@@ -216,8 +216,8 @@ async def main_async(debug: bool = False):
         debug: True일 경우 각 페이지별 시간과 전체 소요 시간을 로깅
     """
     com = Company("example")
-    name = "IR1"
-    doc = "data/IR1.pdf"
+    name = "instruction1"
+    doc = "data/instruction1.pdf"
     com.add_document(name, Document(doc))
     
     # 결과 파일 경로 확인
