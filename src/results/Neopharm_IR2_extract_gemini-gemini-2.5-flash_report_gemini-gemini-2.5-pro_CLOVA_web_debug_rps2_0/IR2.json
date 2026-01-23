@@ -1,0 +1,555 @@
+[
+  {
+    "0": {
+      "company_name": "NEOPHARM",
+      "document_title": "The Global Leader In Skin Science",
+      "subtitle": null,
+      "year": "2024",
+      "korean_subtitle": "피부 과학의 선도기업"
+    }
+  },
+  {
+    "1": {
+      "company_name": "NEOPHARM (네오팜)",
+      "tagline": "The Global Leader In Skin Science (피부 과학의 선도기업)",
+      "company_description": "네오팜은 피부과학의 선도기업으로서, 끊임없는 기술혁신으로 인류공헌에 앞장섭니다.",
+      "summary_title": "Earnings Summary",
+      "summary_sections": [
+        "매출 및 손익 현황",
+        "주요 채널별 매출 현황",
+        "주요 제품군 매출 현황"
+      ],
+      "product_line_name": "ATOPALM",
+      "products": [
+        {
+          "name": "TOP TO TOE WASH",
+          "korean_name": "팝투토 워시",
+          "description": "MoisturisingShampco&BodyWash",
+          "features": [
+            "세정 후에도 촉촉한 샘푸 경용 바스",
+            "MLE (Multi-Lamellar Emulsion)"
+          ]
+        },
+        {
+          "name": "FACIAL FOAMWASH",
+          "korean_name": "「OAMWASH",
+          "description": "",
+          "features": []
+        },
+        {
+          "name": "MLE LOTION",
+          "korean_name": "MLE 로션",
+          "description": "Moisturising Emulsion",
+          "features": [
+            "MLE Skin Barrier Lotion",
+            "수분 보증단 기능성 료선"
+          ]
+        },
+        {
+          "name": "PANTHENOL CREAM",
+          "korean_name": "판테놀 크림",
+          "description": "Internative Deep-Hydration Calming Cream",
+          "features": [
+            "집중 고보습 진정 크림"
+          ]
+        },
+        {
+          "name": "MLE CREAM",
+          "korean_name": "엠엘이 크림",
+          "description": "MLE Skin Barrier Cream",
+          "features": [
+            "기능성 화장품",
+            "MLE 피부보호막 기능성 크림"
+          ]
+        },
+        {
+          "name": "PANTHENOL STICK BALM",
+          "korean_name": "판테놀 스틱 밤",
+          "description": "Calming Stick Balm ForSensitiveAreas",
+          "features": [
+            "현장 부유 진정 스틱 빔"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "2": {
+      "year": 2024,
+      "quarter": "2분기",
+      "earnings_summary": {
+        "revenue": {
+          "value": 306,
+          "unit": "억원",
+          "yoy_change_rate": 25.0,
+          "notes": "비중국 중심 수출 성장 지속",
+          "previous_year_quarter_value": 24498,
+          "current_year_quarter_value": 30621
+        },
+        "operating_profit": {
+          "value": 61,
+          "unit": "억원",
+          "yoy_change_rate": -2.7,
+          "notes": "매출 믹스에 따른 원가 상승 영향",
+          "previous_year_quarter_value": 6273,
+          "current_year_quarter_value": 6107
+        },
+        "net_profit": {
+          "value": 58,
+          "unit": "억원",
+          "yoy_change_rate": 7.6,
+          "notes": "외화환산이익 증가 영향",
+          "previous_year_quarter_value": 5469,
+          "current_year_quarter_value": 5883
+        }
+      }
+    }
+  },
+  {
+    "3": {
+      "company_name": "NEOPHARM",
+      "report_details": {
+        "title": "2024년 2분기 경영성과",
+        "subtitle": "주요 채널별 매출 현황 (별도)"
+      },
+      "q2_2024_channel_performance": {
+        "Online": {
+          "major_channels": [
+            "외부몰",
+            "자사몰"
+          ],
+          "sales_amount_krw_billion": "88",
+          "sales_ratio_percent": "29",
+          "yoy_growth_status": "역성장"
+        },
+        "Offline": {
+          "major_channels": [
+            "병의원",
+            "H&B"
+          ],
+          "sales_amount_krw_billion": "174",
+          "sales_ratio_percent": "57",
+          "yoy_growth_percent": "53"
+        },
+        "Export": {
+          "major_regions": [
+            "미주",
+            "아시아",
+            "중국",
+            "기타"
+          ],
+          "sales_amount_krw_billion": "44",
+          "sales_ratio_percent": "14",
+          "regional_breakdown_krw_billion": {
+            "Americas": "8.7",
+            "Asia": "22",
+            "China": "1.1",
+            "Others": "12.3"
+          },
+          "yoy_growth_percent": "22"
+        }
+      },
+      "channel_sales_trend_million_krw": {
+        "unit": "백만원",
+        "data": [
+          {
+            "quarter": "2023 2Q",
+            "Online": "3609",
+            "Offline": "11388",
+            "Export": "9449"
+          },
+          {
+            "quarter": "2023 3Q",
+            "Online": "3676",
+            "Offline": "10941",
+            "Export": "7213"
+          },
+          {
+            "quarter": "2023 4Q",
+            "Online": "3669",
+            "Offline": "15339",
+            "Export": "8220"
+          },
+          {
+            "quarter": "2024 1Q",
+            "Online": "3878",
+            "Offline": "16500",
+            "Export": "7849"
+          },
+          {
+            "quarter": "2024 2Q",
+            "Online": "4419",
+            "Offline": "17412",
+            "Export": "8850"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "4": {
+      "report_quarter": "2024 2분기",
+      "product_categories": [
+        {
+          "category_name": "Skin Care",
+          "main_brands": [
+            "아토팜",
+            "제로이드"
+          ],
+          "q2_2024_sales_amount": "173억",
+          "q2_2024_sales_percentage": "57%",
+          "yoy_growth": "6% 성장",
+          "quarterly_sales_trend": [
+            {
+              "quarter": "2023 2Q",
+              "sales_amount_in_million_krw": 903
+            },
+            {
+              "quarter": "2023 3Q",
+              "sales_amount_in_million_krw": 1400
+            },
+            {
+              "quarter": "2023 4Q",
+              "sales_amount_in_million_krw": 2084
+            },
+            {
+              "quarter": "2024 1Q",
+              "sales_amount_in_million_krw": 3395
+            },
+            {
+              "quarter": "2024 2Q",
+              "sales_amount_in_million_krw": 5125
+            }
+          ]
+        },
+        {
+          "category_name": "Facial Care",
+          "main_brands": [
+            "리얼베리어",
+            "티엘스"
+          ],
+          "q2_2024_sales_amount": "33억",
+          "q2_2024_sales_percentage": "11%",
+          "yoy_growth": "역성장",
+          "quarterly_sales_trend": [
+            {
+              "quarter": "2023 2Q",
+              "sales_amount_in_million_krw": 3498
+            },
+            {
+              "quarter": "2023 3Q",
+              "sales_amount_in_million_krw": 3649
+            },
+            {
+              "quarter": "2023 4Q",
+              "sales_amount_in_million_krw": 5095
+            },
+            {
+              "quarter": "2024 1Q",
+              "sales_amount_in_million_krw": 4641
+            },
+            {
+              "quarter": "2024 2Q",
+              "sales_amount_in_million_krw": 4840
+            }
+          ]
+        },
+        {
+          "category_name": "Body Care",
+          "main_brands": [
+            "더마비"
+          ],
+          "q2_2024_sales_amount": "48억",
+          "q2_2024_sales_percentage": "16%",
+          "yoy_growth": "38% 성장",
+          "quarterly_sales_trend": [
+            {
+              "quarter": "2023 2Q",
+              "sales_amount_in_million_krw": 3645
+            },
+            {
+              "quarter": "2023 3Q",
+              "sales_amount_in_million_krw": 3252
+            },
+            {
+              "quarter": "2023 4Q",
+              "sales_amount_in_million_krw": 3901
+            },
+            {
+              "quarter": "2024 1Q",
+              "sales_amount_in_million_krw": 3968
+            },
+            {
+              "quarter": "2024 2Q",
+              "sales_amount_in_million_krw": 3352
+            }
+          ]
+        },
+        {
+          "category_name": "Others",
+          "main_brands": [
+            "OEM",
+            "기타 브랜드"
+          ],
+          "q2_2024_sales_amount": "51억",
+          "q2_2024_sales_percentage": "17%",
+          "yoy_growth": "467% 성장",
+          "quarterly_sales_trend": [
+            {
+              "quarter": "2023 2Q",
+              "sales_amount_in_million_krw": 8354
+            },
+            {
+              "quarter": "2023 3Q",
+              "sales_amount_in_million_krw": 5228
+            },
+            {
+              "quarter": "2023 4Q",
+              "sales_amount_in_million_krw": 5068
+            },
+            {
+              "quarter": "2024 1Q",
+              "sales_amount_in_million_krw": 4220
+            },
+            {
+              "quarter": "2024 2Q",
+              "sales_amount_in_million_krw": 4048
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "5": {
+      "company_info": {
+        "name": "NEOPHARM",
+        "slogan": {
+          "english": "The Global Leader In Skin Science",
+          "korean": "피부 과학의 선도기업"
+        },
+        "description": "네오팜은 피부과학의 선도기업으로서, 끊임없는 기술혁신으로 인류공헌에 앞장섭니다."
+      },
+      "document_sections": [
+        {
+          "title": "Appendix"
+        },
+        {
+          "title": "1. 재무 사항"
+        }
+      ],
+      "products": [
+        {
+          "brand": "Realbarrier",
+          "product_name": {
+            "english": "EXTREME CREAM",
+            "korean": "익스트림 크림"
+          },
+          "variant": "Light",
+          "volume_text": "70ml/2.36fl.oz.",
+          "volume_ml": 70.0,
+          "volume_floz": 2.36
+        },
+        {
+          "brand": "Realbarrier",
+          "product_name": {
+            "english": "EXTREME CREAM",
+            "korean": "익스트림 크림"
+          },
+          "variant": "Light",
+          "volume_text": "65ml/2.19fl.oz.",
+          "volume_ml": 65.0,
+          "volume_floz": 2.19
+        },
+        {
+          "brand": "Realbarrier",
+          "product_name": {
+            "english": "EXTREME CREAM",
+            "korean": "익스트림 크림"
+          },
+          "variant": "Original",
+          "volume_text": "70ml/2.36fl.oz.",
+          "volume_ml": 70.0,
+          "volume_floz": 2.36
+        },
+        {
+          "brand": "Realbarrier",
+          "product_name": {
+            "english": "AQUA SOOTHING AMPOULE MASK",
+            "korean": "아쿠아 수딩 앰플 마스크"
+          },
+          "variant": null,
+          "volume_text": "28ml/0.94fl.oz.",
+          "volume_ml": 28.0,
+          "volume_floz": 0.94
+        },
+        {
+          "brand": "Realbarrier",
+          "product_name": {
+            "english": "AQUA SOOTHING TONER",
+            "korean": "아쿠아 수딩 토너"
+          },
+          "variant": null,
+          "volume_text": null,
+          "volume_ml": null,
+          "volume_floz": null
+        },
+        {
+          "brand": "Realbarrier",
+          "product_name": {
+            "english": "AQUA SOOTHING CREAM",
+            "korean": "아쿠아 수딩 크림"
+          },
+          "variant": null,
+          "volume_text": null,
+          "volume_ml": null,
+          "volume_floz": null
+        }
+      ]
+    }
+  },
+  {
+    "6": {
+      "company_name": "NEOPHARM",
+      "unit": "억원",
+      "summary_financial_statements": [
+        {
+          "year": 2020,
+          "current_assets": 1136,
+          "non_current_assets": 194,
+          "total_assets": 1330,
+          "current_liabilities": 149,
+          "non_current_liabilities": 4,
+          "total_liabilities": 153,
+          "capital_stock": 41,
+          "capital_surplus": 451,
+          "capital_adjustments": -26,
+          "accumulated_other_comprehensive_income": 0,
+          "retained_earnings": 711,
+          "total_equity": 1177
+        },
+        {
+          "year": 2021,
+          "current_assets": 1215,
+          "non_current_assets": 219,
+          "total_assets": 1434,
+          "current_liabilities": 129,
+          "non_current_liabilities": 2,
+          "total_liabilities": 131,
+          "capital_stock": 41,
+          "capital_surplus": 457,
+          "capital_adjustments": -32,
+          "accumulated_other_comprehensive_income": -1,
+          "retained_earnings": 838,
+          "total_equity": 1303
+        },
+        {
+          "year": 2022,
+          "current_assets": 1313,
+          "non_current_assets": 241,
+          "total_assets": 1553,
+          "current_liabilities": 131,
+          "non_current_liabilities": 0,
+          "total_liabilities": 131,
+          "capital_stock": 41,
+          "capital_surplus": 457,
+          "capital_adjustments": -32,
+          "accumulated_other_comprehensive_income": -5,
+          "retained_earnings": 961,
+          "total_equity": 1422
+        },
+        {
+          "year": 2023,
+          "current_assets": 1345,
+          "non_current_assets": 430,
+          "total_assets": 1775,
+          "current_liabilities": 169,
+          "non_current_liabilities": 5,
+          "total_liabilities": 174,
+          "capital_stock": 41,
+          "capital_surplus": 457,
+          "capital_adjustments": -32,
+          "accumulated_other_comprehensive_income": -2,
+          "retained_earnings": 1136,
+          "total_equity": 1600
+        }
+      ],
+      "summary_income_statement": [
+        {
+          "year": 2020,
+          "revenue": 816,
+          "cost_of_revenue": 230,
+          "gross_profit": 586,
+          "gross_profit_margin": "72%",
+          "selling_general_administrative_expenses": 367,
+          "operating_income": 219,
+          "operating_income_margin": "27%",
+          "non_operating_income": 17,
+          "non_operating_expenses": 6,
+          "income_before_tax": 229,
+          "income_tax_expense": 48,
+          "net_income": 181,
+          "net_income_margin": "22%"
+        },
+        {
+          "year": 2021,
+          "revenue": 879,
+          "cost_of_revenue": 255,
+          "gross_profit": 624,
+          "gross_profit_margin": "71%",
+          "selling_general_administrative_expenses": 400,
+          "operating_income": 224,
+          "operating_income_margin": "26%",
+          "non_operating_income": 20,
+          "non_operating_expenses": 6,
+          "income_before_tax": 238,
+          "income_tax_expense": 61,
+          "net_income": 177,
+          "net_income_margin": "20%"
+        },
+        {
+          "year": 2022,
+          "revenue": 850,
+          "cost_of_revenue": 267,
+          "gross_profit": 584,
+          "gross_profit_margin": "69%",
+          "selling_general_administrative_expenses": 369,
+          "operating_income": 214,
+          "operating_income_margin": "25%",
+          "non_operating_income": 25,
+          "non_operating_expenses": 6,
+          "income_before_tax": 233,
+          "income_tax_expense": 63,
+          "net_income": 170,
+          "net_income_margin": "20%"
+        },
+        {
+          "year": 2023,
+          "revenue": 971,
+          "cost_of_revenue": 317,
+          "gross_profit": 654,
+          "gross_profit_margin": "67%",
+          "selling_general_administrative_expenses": 401,
+          "operating_income": 253,
+          "operating_income_margin": "26%",
+          "non_operating_income": 49,
+          "non_operating_expenses": 8,
+          "income_before_tax": 294,
+          "income_tax_expense": 62,
+          "net_income": 232,
+          "net_income_margin": "24%"
+        }
+      ],
+      "note": "K-IFRS 연결기준"
+    }
+  },
+  {
+    "7": {
+      "company_name": "주식회사 네오팜",
+      "address": "대전광역시 유성구 테크노로 309-8",
+      "tel": "042-864-0043",
+      "fax": "042-864-0039",
+      "website": "www.neopharm.co.kr"
+    }
+  }
+]

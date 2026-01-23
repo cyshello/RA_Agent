@@ -1,0 +1,17 @@
+[17:44:09] INFO - 디버그 로그 저장 경로: src/results/Example_Corp_instruction1_openai_gpt-4o_CLOVA_web_debug_rps2_0/debug.txt
+[17:44:09] INFO - 기존 분석 결과 로드: src/results/Example_Corp_instruction1_openai_gpt-4o_CLOVA_web_debug_rps2_0/instruction1.json
+[17:44:09] INFO - 보고서 생성 시작 - 총 3개 유형 (Model: openai/gpt-4o, Web: True)
+[17:44:22] INFO - 'competencies' 보고서 생성 완료 (보고서 생성 시작 후 13.37초)
+[17:44:22] INFO - 'b2g_strategy' 보고서 생성 완료 (보고서 생성 시작 후 13.37초)
+[17:44:22] INFO - 'market' 보고서 생성 완료 (보고서 생성 시작 후 13.37초)
+[17:44:22] INFO - 모든 보고서 저장 완료: src/results/Example_Corp_instruction1_openai_gpt-4o_CLOVA_web_debug_rps2_0/Example Corp_instruction1.json
+[17:44:22] INFO - 
+API 호출 통계 - OCR: 0회, LLM: 3회
+
+============================================================
+API CALL STATISTICS
+============================================================
+OCR API 호출: 0회
+LLM API 호출: 3회
+총 API 호출: 3회
+============================================================

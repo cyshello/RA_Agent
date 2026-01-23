@@ -1,0 +1,20 @@
+[17:24:43] INFO - 디버그 로그 저장 경로: src/results/Nudge_Healthcare_IR1_extract_gemini-gemini-3-pro-preview_report_openai-gpt-4o_CLOVA_debug_rps2_0/debug.txt
+[17:24:43] INFO - 기존 분석 결과 로드: src/results/Nudge_Healthcare_IR1_extract_gemini-gemini-3-pro-preview_report_openai-gpt-4o_CLOVA_debug_rps2_0/IR1.json
+[17:24:43] INFO - 보고서 생성 시작 - 총 3개 유형 (Report Model: openai/gpt-4o, Web: False)
+[17:24:54] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[17:24:55] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[17:24:58] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[17:24:58] INFO - 'competencies' 보고서 생성 완료 (보고서 생성 시작 후 14.62초)
+[17:24:58] INFO - 'b2g_strategy' 보고서 생성 완료 (보고서 생성 시작 후 14.62초)
+[17:24:58] INFO - 'market' 보고서 생성 완료 (보고서 생성 시작 후 14.62초)
+[17:24:58] INFO - 모든 보고서 저장 완료: src/results/Nudge_Healthcare_IR1_extract_gemini-gemini-3-pro-preview_report_openai-gpt-4o_CLOVA_debug_rps2_0/Nudge_Healthcare_IR1.json
+[17:24:58] INFO - 
+API 호출 통계 - OCR: 0회, LLM: 3회
+
+============================================================
+API CALL STATISTICS
+============================================================
+OCR API 호출: 0회
+LLM API 호출: 3회
+총 API 호출: 3회
+============================================================

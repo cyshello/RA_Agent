@@ -1,0 +1,1569 @@
+[
+  {
+    "0": {
+      "company_name_en": "NUDGE HEALTHCARE",
+      "company_name_ko": "넛지헬스케어",
+      "slogan": "UNLOCK YOUR MOTIVATION",
+      "document_type": "INVESTOR RELATIONS",
+      "year": "2025",
+      "key_messages_ko": [
+        "일상 속 건강 관리의 시작",
+        "No.1 헬스케어 플랫폼"
+      ]
+    }
+  },
+  {
+    "1": {
+      "title": "Disclaimer",
+      "company_name": "넛지헬스케어(주)",
+      "purpose": "본 자료는 넛지헬스케어(주)의 사업 현황, 중장기 전략, 재무 정보 등을 이해관계자에게 설명하기 위한 목적으로 작성된 것입니다.",
+      "unauthorized_use_prohibition": "당사의 명시적인 사전 동의 없이 본 자료의 전부 또는 일부를 무단으로 복제, 배포, 인용하는 행위는 금지되며, 이를 위반할 경우 관련 법령에 따른 법적 책임이 따를 수 있습니다.",
+      "forward_looking_statements_warning": {
+        "includes_statements": "이 자료에는 향후 경영계획, 전략, 재무목표, 사업 전망 등과 관련된 미래 예측진술이 포함되어 있습니다.",
+        "basis_of_statements": "이러한 진술은 현재 시점에서의 당사의 경영 판단과 가정을 바탕으로 작성되었으며, 실제 성과는 대내외 시장 환경, 경쟁 구도, 정부 정책 등 다양한 요인에 따라 예측과 다를 수 있습니다.",
+        "no_guarantee": "당사는 이와 관련된 어떠한 실현 가능성도 보장하지 않습니다."
+      },
+      "information_accuracy_disclaimer": {
+        "source_of_information": "자료에 포함된 정보는 작성일 기준으로 정확하다고 판단된 내부 자료 및 외부 출처를 바탕으로 하였으나,",
+        "no_accuracy_guarantee": "당사는 정보의 완전성 또는 정확성을 보장하지 않습니다.",
+        "subject_to_change": "또한, 본 자료는 향후 변경될 수 있으며 당사는 이를 사전 통지하거나 별도로 업데이트할 의무를 지지 않습니다."
+      },
+      "investment_advice_disclaimer": "본 자료는 투자 판단을 위한 법적, 회계적, 세무적 자문을 대체하기 위한 것이 아니며, 어떠한 방식으로도 유가증권의 매도, 청약 또는 투자 권유를 의미하지 않습니다.",
+      "investor_responsibility": "투자자는 본인의 판단과 책임 하에 의사결정을 내려야 하며, 필요 시 전문가의 자문을 받으시기 바랍니다."
+    }
+  },
+  {
+    "2": {
+      "title": "Appendix",
+      "page": null,
+      "sub_items": [
+        {
+          "title": "종속회사설명",
+          "page": 20
+        }
+      ]
+    }
+  },
+  {
+    "3": {
+      "chapter_number": "1",
+      "chapter_title": "회사개요"
+    }
+  },
+  {
+    "4": {
+      "company_name": "넛지헬스케어",
+      "mission": {
+        "title": "미션",
+        "statement": "건강한 가치를 향한 출발점"
+      },
+      "company_overview": {
+        "origin_story": "넛지헬스케어는 만성질환 환자들의 생활습관 개선에 어려움을 느낀 의사 출신 나승균 대표가 활용한 건강관리 방법에 금전적 보상과 사회적 동기를 주목하며 시작되었습니다. 이를 바탕으로 개발자 출신 박정신 대표와 함께 리워드 기반 건강관리 앱 '캐시워크'를 공동 창업하였고, 현재는 의료와 IT 전문성을 결합해 넛지헬스케어의 전방위 헬스케어 서비스를 함께 이끌고 있습니다.",
+        "founders": [
+          {
+            "name": "나승균",
+            "title": "대표",
+            "background": "의사 출신"
+          },
+          {
+            "name": "박정신",
+            "title": "대표",
+            "background": "개발자 출신"
+          }
+        ],
+        "key_products_services": [
+          {
+            "name": "캐시워크",
+            "description": "리워드 기반 건강관리 앱"
+          },
+          {
+            "name": "넛지헬스케어의 전방위 헬스케어 서비스",
+            "description": "의료와 IT 전문성을 결합한 헬스케어 서비스"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "5": {
+      "section_title_korean": "미션",
+      "section_title_english": "Mission",
+      "mission_statement": "금전적 보상 Financial Incentive 과 촉진 네트워크 Facilitated Network 로 사람들의 건강행태를 동기부여하여 만성질환을 관리·예방할 수 있게 돕는다.",
+      "key_elements_of_approach": [
+        {
+          "korean": "금전적 보상",
+          "english": "Financial Incentive"
+        },
+        {
+          "korean": "촉진 네트워크",
+          "english": "Facilitated Network"
+        }
+      ],
+      "immediate_objective": {
+        "korean": "건강행태 동기부여",
+        "english": "Motivate healthy behaviors"
+      },
+      "ultimate_goal": {
+        "korean": "만성질환을 관리·예방",
+        "english": "Manage and prevent chronic diseases"
+      }
+    }
+  },
+  {
+    "6": {
+      "company_name": "넛지헬스케어 주식회사",
+      "establishment_date": "2016년 7월 27일",
+      "capital": "735,209,000원",
+      "headquarters_address": "서울특별시 강남구 역삼로 1길 8",
+      "website": "https://cashwalk.com/",
+      "employees": "246명",
+      "main_services": [
+        "캐시워크(한국/북미/일본)",
+        "지니어트",
+        "언니의파우치",
+        "캐시닥",
+        "넛지EAP",
+        "트로스트",
+        "도미노"
+      ],
+      "shareholders": [
+        {
+          "name": "(주)넛지홀딩스",
+          "percentage": "51.94%"
+        },
+        {
+          "name": "원더래빗(주)",
+          "percentage": "23.58%"
+        },
+        {
+          "name": "한국투자Re-UP II 펀드",
+          "percentage": "4.80%"
+        },
+        {
+          "name": "원신한 커넥트 신기술 투자조합 1호",
+          "percentage": "4.80%"
+        },
+        {
+          "name": "한국투자믿음성장투자조합",
+          "percentage": "1.44%"
+        },
+        {
+          "name": "케이아이피-크릿인터랙티브 콘텐츠 펀드",
+          "percentage": "0.96%"
+        },
+        {
+          "name": "신한투자증권(주)",
+          "percentage": "2.40%"
+        },
+        {
+          "name": "기타",
+          "percentage": "10.08%"
+        }
+      ],
+      "executive_team": [
+        {
+          "name": "박정신",
+          "position": "대표이사",
+          "career_highlights": [
+            "한동대학교 전산전자공학부",
+            "삼성전자 SW센터 개발자",
+            "원더래빗(주) 창업",
+            "넛지헬스케어(주) 창업"
+          ]
+        },
+        {
+          "name": "송승근",
+          "position": "대표이사",
+          "career_highlights": [
+            "서울대학교 전기정보공학부",
+            "핀다 기술고문",
+            "스펙업애드 CTO",
+            "원더래빗(주) 창업",
+            "넛지헬스케어(주) 창업"
+          ]
+        },
+        {
+          "name": "나승균",
+          "position": "의장(CSO)",
+          "career_highlights": [
+            "울산대학교 의과대학",
+            "서울아산병원 예방의학과",
+            "서울아산병원, 고대안암병원 근무",
+            "스펙업애드 창업",
+            "넛지헬스케어(주) 창업"
+          ]
+        },
+        {
+          "name": "한상범",
+          "position": "이사 (CTO)",
+          "career_highlights": [
+            "서울대학교 전기정보공학부",
+            "원더래빗(주) 창업",
+            "넛지헬스케어(주) 창업"
+          ]
+        },
+        {
+          "name": "유동수",
+          "position": "이사 (CTO)",
+          "career_highlights": [
+            "순천향대학교 화학공학부 졸업",
+            "(주)디엔에이소프트 연구/개발팀 총괄이사"
+          ]
+        },
+        {
+          "name": "정승은",
+          "position": "Medical Director",
+          "career_highlights": [
+            "가정의학과 전문의",
+            "의학전문 채널 '굿라이프' 자문의사"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "7": {
+      "corporateIdentity": {
+        "mission": "프로그래머틱AD 중심으로 견고하게 성장, 디지털 헬스케어 플랫폼 사업 확장 가속화",
+        "companyInfo": {},
+        "revenueStructure": {
+          "breakdown": [
+            "프로그래머틱AD",
+            "직접광고",
+            "EAP",
+            "캐시딜",
+            "기타"
+          ],
+          "note": "2025년 2분기 연결기준"
+        },
+        "history": [
+          {
+            "year": "2017",
+            "events": [
+              "캐시워크 앱 론칭"
+            ]
+          },
+          {
+            "year": "2018",
+            "events": []
+          },
+          {
+            "year": "2019",
+            "events": [
+              "캐시닥 앱 론칭"
+            ]
+          },
+          {
+            "year": "2020",
+            "events": [
+              "지니어트 앱 론칭",
+              "미국 캐시워크 앱 론칭"
+            ]
+          },
+          {
+            "year": "2021",
+            "events": [
+              "넛지헬스케어 사명 변경"
+            ]
+          },
+          {
+            "year": "2022",
+            "events": [
+              "언니의 파우치 인수"
+            ]
+          },
+          {
+            "year": "2023",
+            "events": [
+              "넛지헬스케어 300억 투자 유치"
+            ]
+          },
+          {
+            "year": "2024",
+            "events": [
+              "다인 인수",
+              "패스트포워드 인수",
+              "캐시워크 일본 법인 설립"
+            ]
+          }
+        ],
+        "coreCompetencies": [
+          "프로그래머틱AD",
+          "디지털 헬스케어 플랫폼 사업"
+        ],
+        "keyAchievements": [
+          {
+            "year": "2024",
+            "description": "매출액 1,181억원 달성"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "8": {
+      "year": 2025,
+      "events": [
+        {
+          "month": 2,
+          "description": "캐시워크, 2025 포브스 코리아 소비자 선정 최고의 브랜드 대상 건강관리 앱 부문 1위 선정"
+        },
+        {
+          "month": 3,
+          "description": "(주)다인, ISO 27001 정보보호 국제인증취득"
+        },
+        {
+          "month": 5,
+          "description": "캐시워크 앱 2,500만 다운로드 돌파"
+        }
+      ]
+    }
+  },
+  {
+    "9": {
+      "title": "전방위적 헬스케어 서비스",
+      "description": "넛지헬스케어는 정신건강은 물론 비만, 당뇨, 고혈압 등 만성질환 관리까지 아우르는 종합 헬스케어 서비스를 제공합니다. 리워드 기반 동기부여 시스템과 함께 원격의료 연계, 웰니스 콘텐츠 등 다양한 기능을 통해 일상 속 건강 실천을 유도하는 통합형 플랫폼으로 발전해가고 있습니다."
+    }
+  },
+  {
+    "10": {
+      "navigation": [
+        "Corporate Identity",
+        "미션",
+        "회사정보",
+        "매출구조",
+        "연혁",
+        "핵심 경쟁력",
+        "주요성과"
+      ],
+      "main_title": "캐시워크 주요 성과",
+      "key_achievements": {
+        "kpis": [
+          {
+            "title": "2024 캐시워크 총 걸음 수",
+            "value": "11조 5,825억보",
+            "notes": [
+              "*리워드 금액으로 환산 시 약 1,158억 2,570만원"
+            ]
+          },
+          {
+            "title": "B2B·B2G 팀워크 챌린지 누적 참여 수",
+            "value": "5,600만명",
+            "notes": [
+              "*2022~2025년 6월 누적 기준"
+            ]
+          },
+          {
+            "title": "평균 DAU / MAU 비율",
+            "value": "82%",
+            "notes": [
+              "*사용자 충성도 및 리텐션 지표",
+              "*국내 주요 앱 평균 약 40~50%"
+            ]
+          }
+        ],
+        "charts": [
+          {
+            "chart_title": "누적 다운로드 수",
+            "unit": "백만 건",
+            "data": [
+              {
+                "year": "2021",
+                "value": "1,600"
+              },
+              {
+                "year": "2022",
+                "value": "2,000"
+              },
+              {
+                "year": "2023",
+                "value": "2,100"
+              },
+              {
+                "year": "2024",
+                "value": "2,300"
+              },
+              {
+                "year": "2025.6",
+                "value": "2,500"
+              }
+            ]
+          },
+          {
+            "chart_title": "연간 DAU/MAU",
+            "unit": "백만 건",
+            "data": [
+              {
+                "year": "2021",
+                "DAU": "200",
+                "MAU": "286"
+              },
+              {
+                "year": "2022",
+                "DAU": "242",
+                "MAU": "320"
+              },
+              {
+                "year": "2023",
+                "DAU": "320",
+                "MAU": "400"
+              },
+              {
+                "year": "2024",
+                "DAU": "350",
+                "MAU": "440"
+              },
+              {
+                "year": "2025.6",
+                "DAU": "370",
+                "MAU": "450"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "11": {
+      "title": "국내 건강&피트니스 앱 체류시간 및 실행횟수 압도적 1위",
+      "top_app_summary": {
+        "app_name": "캐시워크",
+        "monthly_total_usage_time_share": "88.07%",
+        "monthly_total_execution_count_share": "93.9%"
+      },
+      "healthcare_app_stats": [
+        {
+          "app_name": "캐시워크",
+          "monthly_total_usage_time_minutes": 4911887147,
+          "monthly_total_execution_count_times": 8677522060
+        },
+        {
+          "app_name": "삼성헬스",
+          "monthly_total_usage_time_minutes": 112248689,
+          "monthly_total_execution_count_times": 276632289
+        },
+        {
+          "app_name": "머니워크",
+          "monthly_total_usage_time_minutes": 367999136,
+          "monthly_total_execution_count_times": 5940935
+        },
+        {
+          "app_name": "야핏무브",
+          "monthly_total_usage_time_minutes": 151367000,
+          "monthly_total_execution_count_times": 189380996
+        },
+        {
+          "app_name": "워크온",
+          "monthly_total_usage_time_minutes": 22271087,
+          "monthly_total_execution_count_times": 68571247
+        },
+        {
+          "app_name": "똑닥",
+          "monthly_total_usage_time_minutes": 5387981,
+          "monthly_total_execution_count_times": 13758226
+        },
+        {
+          "app_name": "닥터나우",
+          "monthly_total_usage_time_minutes": 3360334,
+          "monthly_total_execution_count_times": 2945822
+        },
+        {
+          "app_name": "발로소득",
+          "monthly_total_usage_time_minutes": 2107598,
+          "monthly_total_execution_count_times": 5940935
+        },
+        {
+          "app_name": "굿닥",
+          "monthly_total_usage_time_minutes": 590979,
+          "monthly_total_execution_count_times": 510863
+        }
+      ],
+      "data_as_of": "2025.06"
+    }
+  },
+  {
+    "12": {
+      "chapter_number": 2,
+      "chapter_title": "비즈니스 설명"
+    }
+  },
+  {
+    "13": {
+      "group_name": "넛지헬스케어",
+      "parent_company": {
+        "name": "NUDGE HEALTHCARE",
+        "role": "통합 헬스케어를 위한 구심점"
+      },
+      "growth_strategy": "헬스케어와 핀테크 결합한 새로운 디지털 헬스케어 플랫폼으로 도약 준비 중",
+      "subsidiaries": [
+        {
+          "name": "cashwalk",
+          "ownership": null,
+          "service_area": "건강관리, 리워드형 서비스로 풀스택 디지털 헬스케어 분야 영위 (미국 캐시워크 95%, 일본 캐시워크 100%)",
+          "app_status": "리워드형 광고 애드테크로 안정적인 수익 기반 확보",
+          "growth_strategy": "B2C 서비스를 넘어 B2B · B2G 분야(팀워크)까지 진출"
+        },
+        {
+          "name": "지니어트",
+          "ownership": 80,
+          "service_area": "다이어트·혈당관리",
+          "app_status": "B2B·B2C",
+          "growth_strategy": null
+        },
+        {
+          "name": "DAIN",
+          "ownership": 64,
+          "service_area": "정신건강",
+          "app_status": "B2B·B2C",
+          "growth_strategy": "EAP 전문 상담서비스"
+        },
+        {
+          "name": "Trost",
+          "ownership": null,
+          "service_area": "심리상담",
+          "app_status": "B2C",
+          "growth_strategy": null
+        },
+        {
+          "name": "언니의파우치",
+          "ownership": 65,
+          "service_area": "뷰티정보 및 리뷰",
+          "app_status": null,
+          "growth_strategy": null
+        },
+        {
+          "name": "fastforward",
+          "ownership": 60,
+          "service_area": "마이데이터 서비스",
+          "app_status": null,
+          "growth_strategy": null
+        },
+        {
+          "name": "MOMENTO",
+          "ownership": 100,
+          "service_area": "애드 네트워크",
+          "app_status": "프래그머틱 광고·직접광고 솔루션 통해 매출 견인",
+          "growth_strategy": null
+        },
+        {
+          "name": "SUPPLE",
+          "ownership": 100,
+          "service_area": "뉴스공급 및 커뮤니티 운영",
+          "app_status": "추천 로직 및 콘텐츠 제휴를 통해 퍼블리셔에게 제공",
+          "growth_strategy": null
+        }
+      ]
+    }
+  },
+  {
+    "14": {
+      "company_description": "일상 속 작은 선택부터 건강관리 전반을 아우르는 통합 헬스케어 플랫폼 기업으로 나아가고 있습니다. 넛지헬스케어는 건강한 습관을 일상에 녹여내는 통합 디지털 헬스케어 기업을 지향합니다.",
+      "services": [
+        {
+          "name": "캐시워크",
+          "description": "걸을 수록 건강해지는 대한민국 No.1 건강관리 앱으로 활기찬 습관 만들기"
+        },
+        {
+          "name": "다인 (넛지EAP·트로스트)",
+          "description": "국내 최초 EAP 기업 넷지 EAP와 No.1 멘탈케어 앱 트로스트로 정신건강 관리"
+        },
+        {
+          "name": "언니의파우치",
+          "description": "뷰티 전문 플랫폼으로 피부건강, 뷰티케어"
+        },
+        {
+          "name": "캐시닥",
+          "description": "병원 찾기 및 예약, 검증된 병원 후기확인 가능한캐시닥에서병원 진료관리"
+        },
+        {
+          "name": "지니어트",
+          "description": "건강한 습관 형성을 돕는 플랫폼으로 다이어트, 비만 및 혈당관리"
+        },
+        {
+          "name": "서플",
+          "description": "서플이 제공하는 큐레이션 뉴스 탐독 및 모네플 커뮤니티로 정보 탐색"
+        },
+        {
+          "name": "패스트포워드",
+          "description": "모바일투자관리 서비스 앱 '도미노'활용"
+        }
+      ]
+    }
+  },
+  {
+    "15": {
+      "title": "국내 No.1 헬스케어 앱 '캐시워크'",
+      "subtitle": "2025년 헬스케어 앱 사용자 수 및 1인 평균 사용시간 기준 인기 어플리케이션",
+      "market_insight": "디지털 헬스케어에 대한 관심이 높아지며 건강 습관을 돕는 앱에 대한 수요도 꾸준히 증가하고 있음. 특히 일상 속에서 쉽게 실천할 수 있는 앱이 주목받는 중",
+      "cashwalk_details": {
+        "description": "국내 No.1 헬스케어 앱",
+        "cashwalk_metrics": {
+          "downloads": "누적 다운로드 수 2,500만 +",
+          "user_experience_statement": "전국민 절반 이상이 경험한 앱"
+        },
+        "usage_statistics": {
+          "title": "헬스케어 앱 중 1인당 사용시간 1위",
+          "avg_monthly_usage_time_minutes": "1인당 월 평균 사용시간 880분 +",
+          "industry_standing": "업계 최고 수준",
+          "mau": "MAU 450만",
+          "dau": "DAU 370만",
+          "user_base_stability": "일회성 이용이 아닌 탄탄한 사용자 기반 형성"
+        }
+      },
+      "app_rankings": [
+        {
+          "name": "삼성헬스",
+          "mau": 7000000,
+          "avg_usage_time_minutes": 50
+        },
+        {
+          "name": "캐시워크",
+          "mau": 5000000,
+          "avg_usage_time_minutes": 880
+        },
+        {
+          "name": "손목닥터 9988",
+          "mau": 2000000,
+          "avg_usage_time_minutes": 50
+        },
+        {
+          "name": "머니워크",
+          "mau": 1000000,
+          "avg_usage_time_minutes": 350
+        },
+        {
+          "name": "야핏무브",
+          "mau": 1000000,
+          "avg_usage_time_minutes": 250
+        },
+        {
+          "name": "워크온",
+          "mau": 1000000,
+          "avg_usage_time_minutes": 50
+        },
+        {
+          "name": "트랭글",
+          "mau": 50000,
+          "avg_usage_time_minutes": 50
+        }
+      ],
+      "source_info": {
+        "source": "와이즈앱 리테일굿즈",
+        "note": "안드로이드 및 iOS용 모바일 앱 사용자 데이터 기반으로 함. 2025.6월 기준으로 산출"
+      }
+    }
+  },
+  {
+    "16": {
+      "title": "2025년 다이어트 앱 사용자 수 및 1인 평균 사용시간 기준 인기 어플리케이션",
+      "app_name": "지니어트",
+      "category": "다이어트/건강관리 앱",
+      "market_insight": "건강한 습관 형성과 장기적 체중 관리에 대한 관심이 높아지며 꾸준한 성장세를 보이고 있으며, 다양한 다이어트 앱이 존재하지만 반복 사용을 유도하는 구조를 갖춘 앱은 드문 편.",
+      "app_rank_info": "다이어트 앱 중 사용시간 1위",
+      "geniet_stats": {
+        "monthly_avg_usage_time_minutes": 219,
+        "app_description": "단순 기록이 아닌 반복 실천을 유도하는 루틴 설계. 작심삼일을 막고 지속 가능한 행동 변화를 이끄는 앱",
+        "download_milestone": "앱 누적 다운로드 수 100만 돌파"
+      },
+      "competitor_data": [
+        {
+          "app_name": "인바디",
+          "users": 1400000,
+          "avg_usage_time_minutes": 15
+        },
+        {
+          "app_name": "인아웃",
+          "users": 600000,
+          "avg_usage_time_minutes": 75
+        },
+        {
+          "app_name": "Fatsecret",
+          "users": 200000,
+          "avg_usage_time_minutes": 50
+        },
+        {
+          "app_name": "지니어트",
+          "users": 1600000,
+          "avg_usage_time_minutes": 219
+        }
+      ],
+      "data_source": "와이즈앱 리테일굿즈",
+      "data_notes": "안드로이드 및 iOS용 모바일 앱 사용자 데이터 기반으로 함. 2025.6월 기준으로 산출."
+    }
+  },
+  {
+    "17": {
+      "overview_title": "성장 잠재력을 가진 뷰티·헬스케어 어플리케이션",
+      "featured_applications_summary": [
+        {
+          "name": "언니의 파우치",
+          "type": "뷰티 커뮤니티 앱"
+        },
+        {
+          "name": "캐시닥",
+          "type": "병원 예약·리뷰 앱"
+        }
+      ],
+      "market_insight": {
+        "title": "MARKET INSIGHT",
+        "description": "헬스케어/뷰티 기반의 커뮤니티 및 커머스 플랫폼도 각광. 참여형 콘텐츠와 유저 리뷰를 통해 신뢰를 확보 하고, 서비스·커머스로 자연스럽게 연결되는 구조 사용자 후기 및 커뮤니티 참여가 앱 신뢰도와 반복 사용률 좌우"
+      },
+      "highlighted_applications": [
+        {
+          "category": "뷰티 커뮤니티 앱 신흥 강자",
+          "name": "언니의파우치",
+          "description": "화장품 리뷰 플랫폼, 사용자 리뷰·참여 활발 높은 커뮤니티 집중도와 콘텐츠 소비율"
+        },
+        {
+          "category": "리워드형 헬스케어 서비스 앱",
+          "name": "캐시닥",
+          "description": "내 근처 병원 찾고, 예약 후기까지 가능한 통합형 기능 제공. 30만 명이 함께하는 커뮤니티를 통해 병원 정보 및 건강 트렌드 습득"
+        }
+      ]
+    }
+  },
+  {
+    "18": {
+      "main_strategy": "각 플랫폼 별 다양한 광고지면으로 매출 확보 및 유저 리워드 제공",
+      "categories": [
+        "이벤트",
+        "돈버는미션",
+        "돈버는라방",
+        "돈버는퀴즈",
+        "CASHDEAL",
+        "LIVE",
+        "GIFT",
+        "체험단",
+        "cash review",
+        "홈케어",
+        "내 쿠폰"
+      ],
+      "features": [
+        {
+          "name": "이벤트",
+          "description": "뽑기, 행운캐시룰렛, 돈버는미션 등 다양한 참여형 이벤트.",
+          "status": "진행중",
+          "rewards": "1,530"
+        },
+        {
+          "name": "돈버는미션",
+          "description": "2천 공유 창업 숙하 택시 받기"
+        },
+        {
+          "name": "돈버는퀴즈",
+          "description": "PUSH 알림으로 퀴즈 시작 시 안내. 캐시워치2를 캐시워크와 연동해 사용하면 한달 최대 0000캐시까지 적립 가능. 0000에 들어갈 숫자는 무엇일까요?",
+          "type": "퀴즈형",
+          "rewards": "1,200 캐시",
+          "participants": "123,45명 참여",
+          "remaining_cash": "123,456,789캐시 남음",
+          "timer": "23:58:07",
+          "action": "정답 찾으러 가기, 정답 입력하기"
+        },
+        {
+          "name": "돈버는라방",
+          "type": "LIVE",
+          "status": "방송예정, 지난방송",
+          "action": "Live 입장하기"
+        },
+        {
+          "name": "CASHDEAL",
+          "description": "전체, KB 보험형, 퀴즈형, 클릭형, 실행형, LIVE, GIFT, 체험단 등 다양한 유형의 딜 제공."
+        },
+        {
+          "name": "Timespread",
+          "description": "핸드폰을 사용하지 않을 때 자동으로 캐시 적립되는 앱.",
+          "type": "설치형",
+          "rewards": "1,200 캐시",
+          "promotion_detail": "10초 후 캐시 지급됩니다"
+        },
+        {
+          "name": "지니어트 (Genieat)",
+          "description": "식단 및 체중 기록 시 최대 1만 포인트 적립 가능한 다이어트 맵. 지방은 빼고 포인트는 채우고.",
+          "type": "설치형",
+          "rewards": "최대 1만 포인트",
+          "action": "설치하고 1만 받기 >"
+        },
+        {
+          "name": "TeamWalk"
+        },
+        {
+          "name": "Dashwalk"
+        },
+        {
+          "name": "캐시워치",
+          "description": "퀴즈 맞히고 캐시받기!"
+        },
+        {
+          "name": "마인드키"
+        }
+      ],
+      "products_promotions": [
+        {
+          "name": "듀얼히알루로닉 에시드 에센스 100ml",
+          "brand": "Dr.unmicare",
+          "description": "홈케어 피부탄력 올인원 에센스",
+          "original_price": "150,000원",
+          "discounted_price": "29,900원",
+          "discount_percentage": "80%"
+        },
+        {
+          "name": "8평 리모텔링 시공현장 생중계",
+          "description": "Live 시공현장 생중계!",
+          "type": "LIVE",
+          "status": "진행중"
+        },
+        {
+          "name": "23TOTY 신규 클래스",
+          "discounted_price": "30,900원",
+          "discount_percentage": "79%"
+        },
+        {
+          "name": "컵라면 즉시 증정 이벤트",
+          "description": "추천 코드 'events' 입력 시 컵라면 즉시 증정!",
+          "reward": "컵라면"
+        }
+      ]
+    }
+  },
+  {
+    "19": {
+      "major_growth_drivers": [
+        {
+          "title": "자체 앱 생태계를 통한 트래픽 주도권 확보",
+          "details": [
+            "캐시워크, 지니어트 등 DAU 기반 앱을 자체 보유, 고정 트래픽 안정적으로 확보",
+            "애드네트워크 사업의 핵심 자산인 광고 인벤토리(노출면)를 보유한 상태에서 출발",
+            "외부 파트너사 확보 없이도 자체 생태계 내 광고 유통 가능"
+          ]
+        },
+        {
+          "title": "리워드 광고 최적화 UX & 유저 베이스",
+          "details": [
+            "리워드 기반 UX에 익숙한 유저 구조 → 광고 참여도 높음",
+            "보상형 유저 특성상 광고 친화적 사용성 + 전환율에서 경쟁사 대비 우위",
+            "결과적으로 높은 광고 효율, 단가(eCPM) 실현 가능"
+          ]
+        },
+        {
+          "title": "모멘토(자회사)를 통한 AdTech 역량 내재화",
+          "details": [
+            "애드테크 전문 자회사 모멘토가 광고 수익화 전담",
+            "A/B 테스트, 미디에이션 최적화, 캠페인 정밀 운영을 통한 수익 극대화",
+            "외부 의존 없이 자체 인프라에서 빠르게 실험-개선-반영 가능한 구조"
+          ]
+        },
+        {
+          "title": "전략적 통합 운영: 앱-광고-기술의 수직계열화",
+          "details": [
+            "앱(사용자) ↔ 광고 운영(모멘토) ↔ 광고주 네트워크를 통합 구조로 운영",
+            "광고 전략 수립 → 실행 → 성과 측정 → 피드백 루프 자체 반복 가능",
+            "사용자 행동을 잘 아는 내부 팀이 광고 설계 주도 → UX 충돌 최소화, 효율 극대"
+          ]
+        },
+        {
+          "title": "글로벌 확장성과 B2B 진출 여력",
+          "details": [
+            "글로벌 시장에서도 통용 가능한 건강 습관 형성 플랫폼. 이라는 카테고리 보유",
+            "해외 웰니스 시장에 적용 가능한 리워드 모델과 미션 기반 사용자 경험 구조",
+            "보험사·제약사·식품사등과의 제휴 확장에 유리한 헬스케어 데이터 커뮤니케이션 역량"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "20": {
+      "company_name": "넛지헬스케어",
+      "strategy_headline": "더 큰 시장으로 나아가는 넛지헬스케어",
+      "strategy_summary": "헬스케어와 애드테크의 시너지를 바탕으로 총합 약 66조원 규모의 시장 공략",
+      "nudge_healthcare_target_market_size": {
+        "year": "2027년",
+        "value": "약 66조원"
+      },
+      "service_categories": [
+        {
+          "category": "웰니스",
+          "solutions": [
+            "올인원 헬스케어 솔루션",
+            "B2C·B2B 전방위적 멘탈케어"
+          ]
+        },
+        {
+          "category": "디지털 광고",
+          "solutions": [
+            "프로그래머틱 광고 + 직접 광고",
+            "M2E 리워드 광고"
+          ]
+        }
+      ],
+      "market_size_projections": [
+        {
+          "market_name": "국내 운동 헬스케어 시장 규모",
+          "unit": "조원",
+          "projections": {
+            "2024 (E)": 42.8,
+            "2025 (E)": 45.7,
+            "2027 (E)": 52.3
+          },
+          "source": "Global Wellness Institute, Statista"
+        },
+        {
+          "market_name": "국내 정신건강 시장 규모",
+          "unit": "조원",
+          "projections": {
+            "2024 (E)": 0.64,
+            "2025 (E)": 0.68,
+            "2027 (E)": 0.77
+          },
+          "source": "Global Wellness Institute, IMARC Group Report"
+        },
+        {
+          "market_name": "국내 온라인 광고 시장 규모",
+          "unit": "조원",
+          "projections": {
+            "2024 (E)": 10.1,
+            "2025 (E)": 10.9,
+            "2027 (E)": 12.8
+          },
+          "source": "한국방송광고진흥공사"
+        },
+        {
+          "market_name": "국내 앱테크 시장 규모",
+          "unit": "억원",
+          "projections": {
+            "2024 (E)": 300,
+            "2025 (E)": 360,
+            "2027 (E)": 518
+          },
+          "source": "버즈빌, Horizon Grand View Research"
+        }
+      ]
+    }
+  },
+  {
+    "21": {
+      "chapter_number": "3",
+      "chapter_title": "재무정보",
+      "document_title": null
+    }
+  },
+  {
+    "22": {
+      "company_name": "넛지헬스케어",
+      "financial_statements": [
+        {
+          "statement_type": "재무상태표",
+          "unit": "백만원",
+          "data": [
+            {
+              "category": "유동자산",
+              "values": {
+                "2021": 18534,
+                "2022": 27717,
+                "2023": 66502,
+                "2024": 57938
+              }
+            },
+            {
+              "category": "비유동자산",
+              "values": {
+                "2021": 33627,
+                "2022": 37961,
+                "2023": 43393,
+                "2024": 60902
+              }
+            },
+            {
+              "category": "자산총계",
+              "values": {
+                "2021": 52161,
+                "2022": 65678,
+                "2023": 109896,
+                "2024": 118841
+              }
+            },
+            {
+              "category": "유동부채",
+              "values": {
+                "2021": 17868,
+                "2022": 22002,
+                "2023": 49180,
+                "2024": 50113
+              }
+            },
+            {
+              "category": "비유동부채",
+              "values": {
+                "2021": 22782,
+                "2022": 22155,
+                "2023": 126,
+                "2024": 680
+              }
+            },
+            {
+              "category": "부채 총계",
+              "values": {
+                "2021": 40650,
+                "2022": 44157,
+                "2023": 49306,
+                "2024": 50793
+              }
+            },
+            {
+              "category": "자본금",
+              "values": {
+                "2021": 100,
+                "2022": 600,
+                "2023": 712,
+                "2024": 735
+              }
+            },
+            {
+              "category": "이익잉여금",
+              "values": {
+                "2021": 11345,
+                "2022": 20177,
+                "2023": 29998,
+                "2024": 25598
+              }
+            },
+            {
+              "category": "비지배지분",
+              "values": {
+                "2021": 618,
+                "2022": 1038,
+                "2023": 46,
+                "2024": 692
+              }
+            },
+            {
+              "category": "자본총계",
+              "values": {
+                "2021": 11510,
+                "2022": 21521,
+                "2023": 60590,
+                "2024": 68048
+              }
+            }
+          ]
+        },
+        {
+          "statement_type": "손익계산서",
+          "unit": "백만원",
+          "data": [
+            {
+              "category": "영업수익",
+              "values": {
+                "2021": 56975,
+                "2022": 79275,
+                "2023": 105689,
+                "2024": 118040
+              }
+            },
+            {
+              "category": "영업비용",
+              "values": {
+                "2021": 47555,
+                "2022": 68689,
+                "2023": 93178,
+                "2024": 115159
+              }
+            },
+            {
+              "category": "영업이익",
+              "values": {
+                "2021": 9420,
+                "2022": 10586,
+                "2023": 12511,
+                "2024": 28800
+              }
+            },
+            {
+              "category": "금융수익",
+              "values": {
+                "2021": 1367,
+                "2022": 647,
+                "2023": 1228,
+                "2024": 2673
+              }
+            },
+            {
+              "category": "금융비용",
+              "values": {
+                "2021": 248,
+                "2022": 1421,
+                "2023": 1632,
+                "2024": 1048
+              }
+            },
+            {
+              "category": "기타수익",
+              "values": {
+                "2021": 92,
+                "2022": 361,
+                "2023": 261,
+                "2024": 623
+              }
+            },
+            {
+              "category": "기타비용",
+              "values": {
+                "2021": 218,
+                "2022": 40,
+                "2023": 2,
+                "2024": 11241
+              }
+            },
+            {
+              "category": "지분법손익",
+              "values": {
+                "2021": -31,
+                "2022": 62,
+                "2023": -80,
+                "2024": 217
+              }
+            },
+            {
+              "category": "법인세비용차감전순이익",
+              "values": {
+                "2021": 10382,
+                "2022": 10194,
+                "2023": 12286,
+                "2024": -5896
+              }
+            },
+            {
+              "category": "법인세비용",
+              "values": {
+                "2021": 503,
+                "2022": -280,
+                "2023": 2117,
+                "2024": 50
+              }
+            },
+            {
+              "category": "당기순이익",
+              "values": {
+                "2021": 9879,
+                "2022": 10474,
+                "2023": 10169,
+                "2024": -5945
+              }
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "23": {
+      "company_name": "넛지헬스케어",
+      "report_title": "별도 요약 재무제표",
+      "unit": "백만원",
+      "financial_statements": {
+        "balance_sheet": [
+          {
+            "year": 2022,
+            "current_assets": 19898,
+            "non_current_assets": 42281,
+            "total_assets": 62179,
+            "current_liabilities": 19611,
+            "non_current_liabilities": 22084,
+            "total_liabilities": 41696,
+            "capital_stock": 600,
+            "retained_earnings": 20014,
+            "total_equity": 20483
+          },
+          {
+            "year": 2023,
+            "current_assets": 55044,
+            "non_current_assets": 53192,
+            "total_assets": 108236,
+            "current_liabilities": 45552,
+            "non_current_liabilities": 126,
+            "total_liabilities": 45678,
+            "capital_stock": 712,
+            "retained_earnings": 29834,
+            "total_equity": 62558
+          },
+          {
+            "year": 2024,
+            "current_assets": 31464,
+            "non_current_assets": 80197,
+            "total_assets": 111660,
+            "current_liabilities": 40822,
+            "non_current_liabilities": 20,
+            "total_liabilities": 40843,
+            "capital_stock": 735,
+            "retained_earnings": 26537,
+            "total_equity": 70817
+          }
+        ],
+        "income_statement": [
+          {
+            "year": 2022,
+            "operating_revenue": 61319,
+            "operating_expenses": 55438,
+            "operating_profit": 5881,
+            "financial_income": 186,
+            "financial_expenses": 1048,
+            "other_income": 329,
+            "other_expenses": 1812,
+            "equity_method_gain_loss": 3847,
+            "profit_before_income_tax": 8877,
+            "income_tax_expense": -955,
+            "net_profit": 9832
+          },
+          {
+            "year": 2023,
+            "operating_revenue": 79233,
+            "operating_expenses": 70168,
+            "operating_profit": 9065,
+            "financial_income": 1021,
+            "financial_expenses": 1245,
+            "other_income": 565,
+            "other_expenses": 317,
+            "equity_method_gain_loss": 4343,
+            "profit_before_income_tax": 11936,
+            "income_tax_expense": 2116,
+            "net_profit": 9820
+          },
+          {
+            "year": 2024,
+            "operating_revenue": 87899,
+            "operating_expenses": 88909,
+            "operating_profit": -1010,
+            "financial_income": 2077,
+            "financial_expenses": 784,
+            "other_income": 618,
+            "other_expenses": 11823,
+            "equity_method_gain_loss": 6419,
+            "profit_before_income_tax": -4503,
+            "income_tax_expense": -1205,
+            "net_profit": -3297
+          }
+        ]
+      }
+    }
+  },
+  {
+    "24": {
+      "chapter_info": {
+        "number": "4",
+        "label": "Chapter"
+      },
+      "document_section_title": "Appendix"
+    }
+  },
+  {
+    "25": {
+      "companyName": "캐시워크 북미",
+      "description": "북미를 타깃으로 한 글로벌 법인으로, 미국과 캐나다에 일상적 걷기 습관에 보상을 연계한 캐시워크 앱 서비스를 제공 중입니다.",
+      "achievements": [
+        {
+          "year": "2019",
+          "month": "1",
+          "description": "글로벌 캐시워크 법인 설립"
+        },
+        {
+          "year": "2020",
+          "month": "12",
+          "description": "미국 캐시워크 앱 구글 플레이스토어 론칭"
+        },
+        {
+          "year": null,
+          "month": null,
+          "description": "K-스타트업센터(KSC)시애틀 사무소 입주로 현지화 박차"
+        },
+        {
+          "year": "2025",
+          "month": "5",
+          "description": "누적 다운로드 수 300만 건 돌파"
+        }
+      ]
+    }
+  },
+  {
+    "26": {
+      "product_name": "캐시워크 일본",
+      "summary": "북미시장에서의 성공적인 진출을 통해 시장성을 입증, 일본 현지 법인 설립 서비스 출시를 통해 글로벌 헬스케어 플랫폼으로의 확장 기반을 다지고 있습니다.",
+      "milestones_and_achievements": [
+        {
+          "type": "milestone",
+          "year": 2024,
+          "description": "캐시워크 일본 법인 설립"
+        },
+        {
+          "type": "milestone",
+          "year": 2025,
+          "month": 4,
+          "description": "일본 캐시워크 안드로이드 앱 출시"
+        },
+        {
+          "type": "achievement",
+          "description": "앱 스토어 다운로드 수 1만 건 돌파 (25.7 기준)"
+        },
+        {
+          "type": "milestone",
+          "year": 2025,
+          "description": "iOS 버전 연내 출시 예정"
+        },
+        {
+          "type": "strategy",
+          "description": "기프티사 제휴로 리워드 강화, 친구초대 중심 확산 전략"
+        }
+      ]
+    }
+  },
+  {
+    "27": {
+      "company_name": "지니어트",
+      "company_description": "건강한 습관 형성을 돕는 똑똑한 다이어트 플랫폼 '지니어트'와 키토제닉 전문 브랜드 '키토선생', 국내 1위 다이어트 커뮤니티 '씨씨앙'을 운영하며 식습관 개선과 지속 가능한 다이어트를 위한 국내 1위 다이어트 커뮤니티 통합 서비스를 제공합니다.",
+      "offerings": [
+        {
+          "name": "지니어트 앱",
+          "type": "모바일 애플리케이션",
+          "short_description": "건강한 습관 형성을 돕는 앱",
+          "features": [
+            "따라하기만 해도 다이어트 습관 형성",
+            "홈트레이닝",
+            "다이어트 기록",
+            "식단 구매",
+            "38,000P 포인트 제공"
+          ],
+          "achievements": [
+            {
+              "description": "앱 누적 다운로드 수 100만 건 돌파",
+              "date": "2025년 6월 기준"
+            }
+          ]
+        },
+        {
+          "name": "씨씨앙",
+          "type": "다이어트 커뮤니티",
+          "short_description": "국내 No.1 다이어트 커뮤니티",
+          "details": {
+            "ranking": "회원수 1위, 카페 랭킹 1위, 검색 수 1위",
+            "member_count_description": "약 N만 명의 회원을 보유한 국내 1위 다이어트 커뮤니티"
+          },
+          "achievements": [
+            {
+              "description": "회원 수 약 53.9만 명",
+              "date": "2025년 6월 기준"
+            }
+          ]
+        },
+        {
+          "name": "키토선생",
+          "type": "전문 브랜드",
+          "short_description": "키토제닉 전문 브랜드",
+          "details": {
+            "specialization": "저당·저탄수화물 식단 전문 브랜드"
+          },
+          "achievements": [
+            {
+              "description": "'2022년 대한민국 명품 브랜드 대상' 수상",
+              "award_by": "한국경제"
+            }
+          ]
+        }
+      ],
+      "overall_achievements": [
+        {
+          "description": "지니어트 앱 누적 다운로드 수 100만 건 돌파",
+          "date": "2025년 6월 기준"
+        },
+        {
+          "description": "씨씨앙 회원 수 약 53.9만 명",
+          "date": "2025년 6월 기준"
+        },
+        {
+          "description": "키토선생 '2022년 대한민국 명품 브랜드 대상' 수상",
+          "award_by": "한국경제"
+        }
+      ]
+    }
+  },
+  {
+    "28": {
+      "platform_name": "언니의 파우치",
+      "description": "화장품 사용 리뷰를 공유하고 뷰티에 관한 궁금증을 해결하는 뷰티와 앱테크가 만난 플랫폼(앱/웹)",
+      "features": [
+        "친구 초대 시 5,000캐시 지급 (최대 30만까지)",
+        "뷰티쇼핑",
+        "쿠폰샵",
+        "용돈라방",
+        "충전소",
+        "이벤트",
+        "언니딜 (무조건 4,900원+무료배송, 쿠폰으로 0원 구매 가능)",
+        "화장품 사용 리뷰 공유",
+        "뷰티 관련 궁금증 해결",
+        "커뮤니티",
+        "마이언파"
+      ],
+      "metrics": {
+        "community_posts_count": "52만 개 이상",
+        "community_comments_count": "496만 개 이상",
+        "products_count": "20만개",
+        "review_contents_count": "30만개 이상",
+        "cumulative_app_downloads": "250만",
+        "web_mau": "120만 이상",
+        "cumulative_reviews_count": "279,960"
+      }
+    }
+  },
+  {
+    "29": {
+      "company_name_korean": "모멘토",
+      "company_name_english": "MOMENTO",
+      "company_slogan_english": "Your Monetizing Mentor",
+      "company_description_korean": "첨단 광고 기술을 바탕으로 모바일 앱내 인벤토리를 효율적으로 수익화하고 광고주와 매체사 모두에게 수익을 창출해주는 애드테크 전문 기업입니다.",
+      "key_achievements": [
+        {
+          "metric": "월광고거래금액",
+          "value": "326억원"
+        },
+        {
+          "metric": "평균 랜딩율",
+          "value": "80% 이상"
+        },
+        {
+          "metric": "평균 트래픽 처리",
+          "value": "500 000,000건"
+        }
+      ],
+      "business_technology_features": [
+        "RTB (Real-Time-Bidding) 기반 광고 거래 구조: 실시간 경매 방식으로 광고 효율 최적화",
+        "인앱 인벤토리 분석 및 자동화된 광고 집행 기술: 매체별 수익률 극대화 가능",
+        "AD Exchange- DSP·SSP 연동을 통한 고도화된 매체 운영",
+        "앱 매체 보유사에 광고 수익 증대를 위한 맞춤형 솔루션 제공"
+      ],
+      "data_reference_year": "2024"
+    }
+  },
+  {
+    "30": {
+      "company": {
+        "name": "(주)다인",
+        "introduction": "국내 최초 EAP 전문기업으로 출발한 (주)다인은 대기업부터 공공기관까지 맞춤형 심리상담 서비스를 제공하는 '넛지 EAP'와 국내 최초로 비대면 심리상담을 상용화한 B2C 심리케어 플랫폼 '트로스트'까지 확장해 B2B와 B2C 전방위 멘탈케어 시장을 아우르는 통합 서비스를 제공하고 있습니다."
+      },
+      "services": [
+        {
+          "service_name": "넛지 EAP",
+          "service_type": "B2B (EAP)",
+          "description": "고객사 임직원을 위한 정신건강과 신체건강 관리를 함께 지원하는 B2B 헬스케어 솔루션",
+          "achievements": {
+            "cumulative_clients": "2,100+",
+            "customer_satisfaction_score": "4.9/5.0",
+            "awards": [
+              "대한민국 서비스만족대상 7년 연속 수상",
+              "근로복지공단 선진기업 복지부문 이사장 표창"
+            ]
+          }
+        },
+        {
+          "service_name": "트로스트",
+          "service_type": "B2C 심리상담",
+          "description": "1:1 맞춤형 비대면 심리상담부터 셀프케어 프로그램, AI 챗봇 등 디지털 기반 멘탈 관리 서비스",
+          "achievements": {
+            "cumulative_consultations": "1,000,000+",
+            "solution_patents": "감정분석 솔루션 2016년 특허 출원",
+            "technology_achievements": "머신러닝 기술력 NAACL 발표, 논문 게재 승인"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "31": {
+      "company_name": "서플투게더",
+      "service_name": "SUPPLE",
+      "service_description": "실시간 콘텐츠 큐레이션 플렛폼을 운영하며, 추천 로직 및 콘텐츠를 국내 주요 콘텐츠사와 제휴를 통해 다양한 퍼블리셔에게 제공하고 있습니다.",
+      "key_features": [
+        "국내 주요 콘텐츠사와 제휴를 맺고 일 평균 약 1,700개 이상의 콘텐츠 공급받아 자체 추천 로직을 통해 이용자들에게 추천",
+        "캐시워크, 타임스프레드 등 주요 퍼블리셔에 콘텐츠 제공"
+      ],
+      "key_achievements": {
+        "dau": 880000,
+        "mau": 4170000,
+        "data_date": "2025-06"
+      },
+      "news_articles": [
+        {
+          "title": "'악뮤' 이찬혁, 5년 전 산 47억 '꼬마빌딩'...현재 가치 68억",
+          "author": "에너나루마",
+          "date": "2025-07-20",
+          "likes": null,
+          "comments": null,
+          "shares": null
+        },
+        {
+          "title": "[속보]이재명 대통령, 유홍준 국립중앙 박물관 관장 임명",
+          "author": "MT 미니투데이",
+          "date": null,
+          "likes": null,
+          "comments": null,
+          "shares": null
+        },
+        {
+          "title": "문희준소울, 구 투병 고백 \"협소한 감소증...치료 잘 해야\"",
+          "author": null,
+          "date": null,
+          "likes": 37000,
+          "comments": null,
+          "shares": null
+        },
+        {
+          "title": "'악뮤'이수혁, 친오빠 이찬혁의 만행 에 분노...\"가족이라고 침묵해야 하...\"",
+          "author": "하늘색2",
+          "date": "2020-07-25",
+          "likes": 169,
+          "comments": 4,
+          "shares": 0
+        },
+        {
+          "title": "송종국, 4년째 자연인 생활 \"집 대신 캠핑카서 산다\"",
+          "author": null,
+          "date": null,
+          "likes": null,
+          "comments": null,
+          "shares": null
+        }
+      ]
+    }
+  },
+  {
+    "32": {
+      "company_name": "패스트포워드",
+      "product_name": "도미노",
+      "product_description": "마이데이터 기반의 통합 투자 관리 플랫폼",
+      "key_features": [
+        "통합 투자 관리 서비스: 주식, 코인, 외환, 채권, 펀드, 부동산까지 전 자산을 통합 조회 및 관리",
+        "본인신용정보관리업 (마이데이터 사업자)",
+        "온라인 예적금 중개 사업자",
+        "금융위 로보어드바이저 운용 심사 통과"
+      ],
+      "partnership": {
+        "partner_name": "넛지헬스케어",
+        "description": "공동의 비즈니스 추진을 위한 협력 관계 구축"
+      },
+      "key_performance_indicators": {
+        "domino_app_subscribers": "47만명",
+        "domino_app_mau": "5만",
+        "kpi_as_of_date": "2025.06"
+      }
+    }
+  },
+  {
+    "33": {
+      "name": "넛지헬스케어 주식회사",
+      "address": "서울특별시 역삼로 1길 8 (역삼동, 넛지캠퍼스)",
+      "website": "cashwalk.com",
+      "email": [
+        "ir@cashwalk.io",
+        "pr@cashwalk.io"
+      ]
+    }
+  }
+]

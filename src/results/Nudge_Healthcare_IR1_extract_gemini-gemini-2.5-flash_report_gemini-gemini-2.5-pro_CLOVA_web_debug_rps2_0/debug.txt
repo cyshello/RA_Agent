@@ -1,0 +1,23 @@
+[18:25:41] INFO - 디버그 로그 저장 경로: src/results/Nudge_Healthcare_IR1_extract_gemini-gemini-2.5-flash_report_gemini-gemini-2.5-pro_CLOVA_web_debug_rps2_0/debug.txt
+[18:25:41] INFO - 기존 분석 결과 로드: src/results/Nudge_Healthcare_IR1_extract_gemini-gemini-2.5-flash_report_gemini-gemini-2.5-pro_CLOVA_web_debug_rps2_0/IR1.json
+[18:25:41] INFO - 보고서 생성 시작 - 총 3개 유형 (Report Model: gemini/gemini-2.5-pro, Web: True)
+[18:25:41] INFO - AFC is enabled with max remote calls: 10.
+[18:25:41] INFO - AFC is enabled with max remote calls: 10.
+[18:25:42] INFO - AFC is enabled with max remote calls: 10.
+[18:26:08] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+[18:26:12] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+[18:26:17] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+[18:26:17] INFO - 'competencies' 보고서 생성 완료 (보고서 생성 시작 후 35.76초)
+[18:26:17] INFO - 'b2g_strategy' 보고서 생성 완료 (보고서 생성 시작 후 35.76초)
+[18:26:17] INFO - 'market' 보고서 생성 완료 (보고서 생성 시작 후 35.76초)
+[18:26:17] INFO - 모든 보고서 저장 완료: src/results/Nudge_Healthcare_IR1_extract_gemini-gemini-2.5-flash_report_gemini-gemini-2.5-pro_CLOVA_web_debug_rps2_0/Nudge_Healthcare_IR1.json
+[18:26:17] INFO - 
+API 호출 통계 - OCR: 0회, LLM: 3회
+
+============================================================
+API CALL STATISTICS
+============================================================
+OCR API 호출: 0회
+LLM API 호출: 3회
+총 API 호출: 3회
+============================================================

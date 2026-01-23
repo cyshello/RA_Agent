@@ -1,0 +1,917 @@
+[
+  {
+    "0": {
+      "company_name": "NEOPHARM",
+      "report_title": "Investor Relations",
+      "report_subtitle": "The Global Leader In Skin Science",
+      "year": 2024,
+      "korean_company_name": "네오팜",
+      "korean_slogan": "피부 과학의 선도기업"
+    }
+  },
+  {
+    "1": {
+      "company_name_en": "NEOPHARM",
+      "company_name_kr": "네오팜",
+      "slogan_en": "The Global Leader In Skin Science",
+      "slogan_kr": "피부 과학의 선도기업",
+      "company_description": "네오팜은 피부과학의 선도기업으로서, 끊임없는 기술혁신으로 인류공헌에 앞장섭니다.",
+      "report_title": "Earnings Summary",
+      "report_sections": [
+        "매출 및 손익 현황",
+        "주요 채널별 매출 현황",
+        "주요 제품군 매출 현황"
+      ],
+      "products": [
+        {
+          "brand": "ATOPALM",
+          "product_name_en": "TOP TO TOE WASH",
+          "product_name_kr": "팝투토 워시",
+          "description_en": "MoisturisingShampco&BodyWash",
+          "description_kr": "세정 후에도 촉촉한 샘푸 경용 바스",
+          "category": "Wash",
+          "features": [
+            "MLE",
+            "Moisturising"
+          ]
+        },
+        {
+          "brand": "ATOPALM",
+          "product_name_en": "FACIAL 「OAMWASH",
+          "product_name_kr": "페이셜 폼 워시",
+          "description_en": "pH Balanced Bubble Cleanser",
+          "description_kr": "pH 밸런스 버블 클렌저",
+          "category": "Wash",
+          "features": [
+            "pH Balanced"
+          ]
+        },
+        {
+          "brand": "ATOPALM",
+          "product_name_en": "MLE LOTION",
+          "product_name_kr": "엠엘이 로션",
+          "description_en": "MLE Skin Barrier Lotion",
+          "description_kr": "수분 보증단 기능성 료선",
+          "category": "Lotion",
+          "features": [
+            "MLE",
+            "Skin Barrier",
+            "수분 보증"
+          ]
+        },
+        {
+          "brand": "ATOPALM",
+          "product_name_en": "PANTHENOL CREAM",
+          "product_name_kr": "판테놀 크림",
+          "description_en": "Internative Deep-Hydration Calming Cream",
+          "description_kr": "집중 고보습 진정 크림",
+          "category": "Cream",
+          "features": [
+            "PANTHENOL",
+            "Deep-Hydration",
+            "Calming"
+          ]
+        },
+        {
+          "brand": "ATOPALM",
+          "product_name_en": "MLE CREAM",
+          "product_name_kr": "엠엘이 크림",
+          "description_en": "MLE Skin Barrier Cream",
+          "description_kr": "MLE 피부보호막 가능성 크림",
+          "category": "Cream",
+          "features": [
+            "MLE",
+            "Skin Barrier",
+            "기능성 화장품"
+          ]
+        },
+        {
+          "brand": "ATOPALM",
+          "product_name_en": "PANTHENOL STICK BALM",
+          "product_name_kr": "판테놀 스틱 밤",
+          "description_en": "Calming Stick Balm ForSensitiveAreas",
+          "description_kr": "현장 부유 진정 스틱 빔",
+          "category": "Balm",
+          "features": [
+            "PANTHENOL",
+            "Calming"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "2": {
+      "company_name": "NEOPHARM",
+      "report_period": "2024년 2분기",
+      "financial_summary": {
+        "revenue": {
+          "2024_2q": {
+            "amount_in_million_won": 30621,
+            "yoy_change_percent": 25.0,
+            "reasons": [
+              "비중국 중심 수출 성장 지속"
+            ]
+          },
+          "2023_2q": {
+            "amount_in_million_won": 24498
+          }
+        },
+        "operating_profit": {
+          "2024_2q": {
+            "amount_in_million_won": 6107,
+            "yoy_change_percent": -2.7,
+            "reasons": [
+              "매출 믹스에 따른 원가 상승 영향"
+            ]
+          },
+          "2023_2q": {
+            "amount_in_million_won": 6273
+          }
+        },
+        "net_profit": {
+          "2024_2q": {
+            "amount_in_million_won": 5883,
+            "yoy_change_percent": 7.6,
+            "reasons": [
+              "외화환산이익 증가 영향"
+            ]
+          },
+          "2023_2q": {
+            "amount_in_million_won": 5469
+          }
+        }
+      }
+    }
+  },
+  {
+    "3": {
+      "report_title": "2024년 2분기 경영성과 주요 채널별 매출 현황 (별도)",
+      "channel_sales_trend": {
+        "unit": "백만원",
+        "quarters": [
+          {
+            "quarter": "2023 2Q",
+            "online_sales": 3609,
+            "offline_sales": 11388,
+            "export_sales": 9449
+          },
+          {
+            "quarter": "2023 3Q",
+            "online_sales": 3676,
+            "offline_sales": 10941,
+            "export_sales": 7213
+          },
+          {
+            "quarter": "2023 4Q",
+            "online_sales": 3669,
+            "offline_sales": 15339,
+            "export_sales": 8220
+          },
+          {
+            "quarter": "2024 1Q",
+            "online_sales": 3878,
+            "offline_sales": 16500,
+            "export_sales": 7849
+          },
+          {
+            "quarter": "2024 2Q",
+            "online_sales": 4419,
+            "offline_sales": 17412,
+            "export_sales": 8850
+          }
+        ]
+      },
+      "channel_performance": [
+        {
+          "channel_name": "Online",
+          "key_channels": "외부몰, 자사몰 등",
+          "sales_amount": "88억",
+          "sales_proportion": "29%",
+          "yoy_performance": "전년 동기 대비 역성장"
+        },
+        {
+          "channel_name": "Offline",
+          "key_channels": "병의원, H&B 등",
+          "sales_amount": "174억",
+          "sales_proportion": "57%",
+          "yoy_performance": "전년 동기 대비 53% 성장"
+        },
+        {
+          "channel_name": "Export",
+          "key_channels": "미주/아시아/중국/기타",
+          "sales_amount": "44억",
+          "sales_proportion": "14%",
+          "regional_sales": {
+            "미주": "8.7억",
+            "아시아": "22억",
+            "중국": "1.1억",
+            "기타": "12.3억"
+          },
+          "yoy_performance": "전년 동기 대비 22% 성장"
+        }
+      ]
+    }
+  },
+  {
+    "4": {
+      "title": "2024년 2분기 경영성과: 주요 제품군 매출 현황",
+      "report_period": "2024년 2분기",
+      "currency_unit": "백만원",
+      "product_categories": [
+        {
+          "category_name": "Skin Care",
+          "main_brands": [
+            "아토팜",
+            "제로이드"
+          ],
+          "sales_amount": "17300",
+          "sales_percentage": "57",
+          "yoy_growth_rate": "6",
+          "quarterly_sales_trend": [
+            {
+              "quarter": "2023 2Q",
+              "sales_value": 16400
+            },
+            {
+              "quarter": "2023 3Q",
+              "sales_value": 13529
+            },
+            {
+              "quarter": "2023 4Q",
+              "sales_value": 16148
+            },
+            {
+              "quarter": "2024 1Q",
+              "sales_value": 16224
+            },
+            {
+              "quarter": "2024 2Q",
+              "sales_value": 17365
+            }
+          ]
+        },
+        {
+          "category_name": "Facial Care",
+          "main_brands": [
+            "리얼베리어",
+            "티엘스"
+          ],
+          "sales_amount": "3300",
+          "sales_percentage": "11",
+          "yoy_growth_rate": "-negative",
+          "quarterly_sales_trend": [
+            {
+              "quarter": "2023 2Q",
+              "sales_value": 3645
+            },
+            {
+              "quarter": "2023 3Q",
+              "sales_value": 3252
+            },
+            {
+              "quarter": "2023 4Q",
+              "sales_value": 3901
+            },
+            {
+              "quarter": "2024 1Q",
+              "sales_value": 3968
+            },
+            {
+              "quarter": "2024 2Q",
+              "sales_value": 3352
+            }
+          ]
+        },
+        {
+          "category_name": "Body Care",
+          "main_brands": [
+            "더마비"
+          ],
+          "sales_amount": "4800",
+          "sales_percentage": "16",
+          "yoy_growth_rate": "38",
+          "quarterly_sales_trend": [
+            {
+              "quarter": "2023 2Q",
+              "sales_value": 3498
+            },
+            {
+              "quarter": "2023 3Q",
+              "sales_value": 3649
+            },
+            {
+              "quarter": "2023 4Q",
+              "sales_value": 5095
+            },
+            {
+              "quarter": "2024 1Q",
+              "sales_value": 4641
+            },
+            {
+              "quarter": "2024 2Q",
+              "sales_value": 4840
+            }
+          ]
+        },
+        {
+          "category_name": "Others",
+          "main_brands": [
+            "OEM",
+            "기타 브랜드"
+          ],
+          "sales_amount": "5100",
+          "sales_percentage": "17",
+          "yoy_growth_rate": "467",
+          "quarterly_sales_trend": [
+            {
+              "quarter": "2023 2Q",
+              "sales_value": 903
+            },
+            {
+              "quarter": "2023 3Q",
+              "sales_value": 1400
+            },
+            {
+              "quarter": "2023 4Q",
+              "sales_value": 2084
+            },
+            {
+              "quarter": "2024 1Q",
+              "sales_value": 3395
+            },
+            {
+              "quarter": "2024 2Q",
+              "sales_value": 5125
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "5": {
+      "company_info": {
+        "name_english": "NEOPHARM",
+        "name_korean": "네오팜",
+        "slogan_english": "The Global Leader In Skin Science",
+        "slogan_korean": "피부 과학의 선도기업",
+        "description_korean": "네오팜은 피부과학의 선도기업으로서, 끊임없는 기술혁신으로 인류공헌에 앞장섭니다."
+      },
+      "sections": [
+        {
+          "main_title": "Appendix",
+          "sub_title": "1. 재무 사항"
+        }
+      ],
+      "products": [
+        {
+          "brand": "Realbarrier",
+          "name_english": "EXTREME CREAM Light",
+          "name_korean": "익스트림 크림 Light",
+          "volume_text": "65ml/2.19fl.oz.",
+          "volume_ml": 65,
+          "volume_floz": 2.19
+        },
+        {
+          "brand": "Realbarrier",
+          "name_english": "EXTREME CREAM Original",
+          "name_korean": "익스트림 크림 Original",
+          "volume_text": "70ml/2.36fl.oz.",
+          "volume_ml": 70,
+          "volume_floz": 2.36
+        },
+        {
+          "brand": "Realbarrier",
+          "name_english": "EXTREME CREAM Light",
+          "name_korean": "익스트림 크림 Light",
+          "volume_text": "70ml/2.36fl.oz.",
+          "volume_ml": 70,
+          "volume_floz": 2.36
+        },
+        {
+          "brand": "Realbarrier",
+          "name_english": "AQUA SOOTHING AMPOULE MASK",
+          "name_korean": "아쿠아 수딩 앰플 마스크",
+          "volume_text": "28ml/0.94ft.oz.",
+          "volume_ml": 28,
+          "volume_floz": 0.94
+        },
+        {
+          "brand": "Realbarrier",
+          "name_english": "AQUA SOOTHING TONER",
+          "name_korean": "아후아 수단 토너",
+          "volume_text": null,
+          "volume_ml": null,
+          "volume_floz": null
+        },
+        {
+          "brand": "Realbarrier",
+          "name_english": "AQUA SOOTHING CREAM",
+          "name_korean": "아쿠아 수딩 크린",
+          "volume_text": null,
+          "volume_ml": null,
+          "volume_floz": null
+        }
+      ]
+    }
+  },
+  {
+    "6": {
+      "재무상태표": {
+        "unit": "억원",
+        "items": [
+          {
+            "name": "유동자산",
+            "values": [
+              {
+                "year": "2020",
+                "value": 1136
+              },
+              {
+                "year": "2021",
+                "value": 1215
+              },
+              {
+                "year": "2022",
+                "value": 1313
+              },
+              {
+                "year": "2023",
+                "value": 1345
+              }
+            ]
+          },
+          {
+            "name": "비유동자산",
+            "values": [
+              {
+                "year": "2020",
+                "value": 194
+              },
+              {
+                "year": "2021",
+                "value": 219
+              },
+              {
+                "year": "2022",
+                "value": 241
+              },
+              {
+                "year": "2023",
+                "value": 430
+              }
+            ]
+          },
+          {
+            "name": "자산총계",
+            "values": [
+              {
+                "year": "2020",
+                "value": 1330
+              },
+              {
+                "year": "2021",
+                "value": 1434
+              },
+              {
+                "year": "2022",
+                "value": 1553
+              },
+              {
+                "year": "2023",
+                "value": 1775
+              }
+            ]
+          },
+          {
+            "name": "유동부채",
+            "values": [
+              {
+                "year": "2020",
+                "value": 149
+              },
+              {
+                "year": "2021",
+                "value": 129
+              },
+              {
+                "year": "2022",
+                "value": 131
+              },
+              {
+                "year": "2023",
+                "value": 169
+              }
+            ]
+          },
+          {
+            "name": "비유동부채",
+            "values": [
+              {
+                "year": "2020",
+                "value": 4
+              },
+              {
+                "year": "2021",
+                "value": 2
+              },
+              {
+                "year": "2022",
+                "value": 0
+              },
+              {
+                "year": "2023",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "name": "부채총계",
+            "values": [
+              {
+                "year": "2020",
+                "value": 153
+              },
+              {
+                "year": "2021",
+                "value": 131
+              },
+              {
+                "year": "2022",
+                "value": 131
+              },
+              {
+                "year": "2023",
+                "value": 174
+              }
+            ]
+          },
+          {
+            "name": "자본금",
+            "values": [
+              {
+                "year": "2020",
+                "value": 41
+              },
+              {
+                "year": "2021",
+                "value": 41
+              },
+              {
+                "year": "2022",
+                "value": 41
+              },
+              {
+                "year": "2023",
+                "value": 41
+              }
+            ]
+          },
+          {
+            "name": "자본잉여금",
+            "values": [
+              {
+                "year": "2020",
+                "value": 451
+              },
+              {
+                "year": "2021",
+                "value": 457
+              },
+              {
+                "year": "2022",
+                "value": 457
+              },
+              {
+                "year": "2023",
+                "value": 457
+              }
+            ]
+          },
+          {
+            "name": "자본조정",
+            "values": [
+              {
+                "year": "2020",
+                "value": -26
+              },
+              {
+                "year": "2021",
+                "value": -32
+              },
+              {
+                "year": "2022",
+                "value": -32
+              },
+              {
+                "year": "2023",
+                "value": -32
+              }
+            ]
+          },
+          {
+            "name": "기타포괄손익누계액",
+            "values": [
+              {
+                "year": "2020",
+                "value": 0
+              },
+              {
+                "year": "2021",
+                "value": -1
+              },
+              {
+                "year": "2022",
+                "value": -5
+              },
+              {
+                "year": "2023",
+                "value": -2
+              }
+            ]
+          },
+          {
+            "name": "이익잉여금",
+            "values": [
+              {
+                "year": "2020",
+                "value": 711
+              },
+              {
+                "year": "2021",
+                "value": 838
+              },
+              {
+                "year": "2022",
+                "value": 961
+              },
+              {
+                "year": "2023",
+                "value": 1136
+              }
+            ]
+          },
+          {
+            "name": "자본총계",
+            "values": [
+              {
+                "year": "2020",
+                "value": 1177
+              },
+              {
+                "year": "2021",
+                "value": 1303
+              },
+              {
+                "year": "2022",
+                "value": 1422
+              },
+              {
+                "year": "2023",
+                "value": 1600
+              }
+            ]
+          }
+        ]
+      },
+      "손익계산서": {
+        "unit": "억원",
+        "items": [
+          {
+            "name": "매출액",
+            "values": [
+              {
+                "year": "2020",
+                "value": 816
+              },
+              {
+                "year": "2021",
+                "value": 879
+              },
+              {
+                "year": "2022",
+                "value": 850
+              },
+              {
+                "year": "2023",
+                "value": 971
+              }
+            ]
+          },
+          {
+            "name": "매출원가",
+            "values": [
+              {
+                "year": "2020",
+                "value": 230
+              },
+              {
+                "year": "2021",
+                "value": 255
+              },
+              {
+                "year": "2022",
+                "value": 267
+              },
+              {
+                "year": "2023",
+                "value": 317
+              }
+            ]
+          },
+          {
+            "name": "매출총이익",
+            "values": [
+              {
+                "year": "2020",
+                "value": 586,
+                "rate": "72%"
+              },
+              {
+                "year": "2021",
+                "value": 624,
+                "rate": "71%"
+              },
+              {
+                "year": "2022",
+                "value": 584,
+                "rate": "69%"
+              },
+              {
+                "year": "2023",
+                "value": 654,
+                "rate": "67%"
+              }
+            ]
+          },
+          {
+            "name": "판매비와관리비",
+            "values": [
+              {
+                "year": "2020",
+                "value": 367
+              },
+              {
+                "year": "2021",
+                "value": 400
+              },
+              {
+                "year": "2022",
+                "value": 369
+              },
+              {
+                "year": "2023",
+                "value": 401
+              }
+            ]
+          },
+          {
+            "name": "영업이익",
+            "values": [
+              {
+                "year": "2020",
+                "value": 219,
+                "rate": "27%"
+              },
+              {
+                "year": "2021",
+                "value": 224,
+                "rate": "26%"
+              },
+              {
+                "year": "2022",
+                "value": 214,
+                "rate": "25%"
+              },
+              {
+                "year": "2023",
+                "value": 253,
+                "rate": "26%"
+              }
+            ]
+          },
+          {
+            "name": "영업외수익",
+            "values": [
+              {
+                "year": "2020",
+                "value": 17
+              },
+              {
+                "year": "2021",
+                "value": 20
+              },
+              {
+                "year": "2022",
+                "value": 25
+              },
+              {
+                "year": "2023",
+                "value": 49
+              }
+            ]
+          },
+          {
+            "name": "영업외비용",
+            "values": [
+              {
+                "year": "2020",
+                "value": 6
+              },
+              {
+                "year": "2021",
+                "value": 6
+              },
+              {
+                "year": "2022",
+                "value": 6
+              },
+              {
+                "year": "2023",
+                "value": 8
+              }
+            ]
+          },
+          {
+            "name": "법인세차감전순이익",
+            "values": [
+              {
+                "year": "2020",
+                "value": 229
+              },
+              {
+                "year": "2021",
+                "value": 238
+              },
+              {
+                "year": "2022",
+                "value": 233
+              },
+              {
+                "year": "2023",
+                "value": 294
+              }
+            ]
+          },
+          {
+            "name": "법인세비용",
+            "values": [
+              {
+                "year": "2020",
+                "value": 48
+              },
+              {
+                "year": "2021",
+                "value": 61
+              },
+              {
+                "year": "2022",
+                "value": 63
+              },
+              {
+                "year": "2023",
+                "value": 62
+              }
+            ]
+          },
+          {
+            "name": "당기순이익",
+            "values": [
+              {
+                "year": "2020",
+                "value": 181,
+                "rate": "22%"
+              },
+              {
+                "year": "2021",
+                "value": 177,
+                "rate": "20%"
+              },
+              {
+                "year": "2022",
+                "value": 170,
+                "rate": "20%"
+              },
+              {
+                "year": "2023",
+                "value": 232,
+                "rate": "24%"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "7": {
+      "name_ko": "주식회사 네오팜",
+      "name_en": "NEOPHARM",
+      "address_ko": "대전광역시 유성구 테크노로 309-8",
+      "tel": "042 864 0043",
+      "fax": "042 864 0039",
+      "website": "www.neopharm.co.kr"
+    }
+  }
+]

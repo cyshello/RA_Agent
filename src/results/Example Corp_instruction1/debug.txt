@@ -1,0 +1,6 @@
+[17:23:05] INFO - 디버그 로그 저장 경로: src/results/Example Corp_instruction1/debug.txt
+[17:23:12] INFO - 문서 'instruction1' (data/instruction1.pdf) - 총 37페이지
+[17:23:12] INFO - 분석 시작 (debug 모드, RPS: 2.0, OCR: CLOVA, Model: openai/gpt-4o)
+[17:23:51] INFO - 전체 분석 완료 - 소요 시간: 45.80초
+[17:23:51] INFO - 분석 결과 저장: src/results/Example Corp_instruction1/instruction1.json
+[17:23:51] INFO - OCR 결과 저장: src/results/Example Corp_instruction1/instruction1_ocr.json

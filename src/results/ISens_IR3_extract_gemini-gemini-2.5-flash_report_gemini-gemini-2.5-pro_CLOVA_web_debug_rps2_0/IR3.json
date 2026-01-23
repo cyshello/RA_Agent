@@ -1,0 +1,2104 @@
+[
+  {
+    "0": {
+      "document_type": "Investor Presentation",
+      "title": "Investor Presentation",
+      "year": "2024",
+      "quarter": "Q2",
+      "company_name": "i-sens",
+      "slogan": "Sensing Ahead. Caring More"
+    }
+  },
+  {
+    "1": {
+      "company_info": {
+        "name": "isens",
+        "slogan": "Sensing Ahead, Caring More"
+      },
+      "table_of_contents": [
+        {
+          "number": "1",
+          "title": "Company Overview"
+        },
+        {
+          "number": "2",
+          "title": "Business Overview",
+          "sub_items": [
+            {
+              "number": "1)",
+              "title": "혈당 부문"
+            },
+            {
+              "number": "2)",
+              "title": "POCT 부문"
+            }
+          ]
+        },
+        {
+          "number": "3",
+          "title": "Financial Overview"
+        },
+        {
+          "title": "Appendix"
+        }
+      ],
+      "disclaimer": "본 자료에 포함된 예측정보는 현재의 사업환경을 바탕으로 당사의 경영계획과 전략 등을 고려한 전망이며 사업환경의 변동 또는 경영계획 및 전략수정 등에 따라 달라질 수 있습니다. 본 자료는 투자자 여러분의 투자판단을 위한 참고자료로 작성된 것이며, 당사는 이 자료의 내용에 대하여 투자자 여러분에게 어떠한 보증을 제공하거나 책임을 부담하지 않습니다. 본 자료에 포함된 모든 경영실적은 K-IFRS(한국채택국제회계기준)에 따라 작성되었습니다."
+    }
+  },
+  {
+    "2": {
+      "company_name": "i·sens",
+      "slogan": "Sensing Ahead, Caring More",
+      "sections": [
+        {
+          "title": "Company Overview",
+          "sub_sections": []
+        },
+        {
+          "title": "Business Overview",
+          "sub_sections": [
+            "혈당 부문",
+            "POCT 부문"
+          ]
+        },
+        {
+          "title": "Financial Overview",
+          "sub_sections": []
+        },
+        {
+          "title": "Appendix",
+          "sub_sections": []
+        }
+      ]
+    }
+  },
+  {
+    "3": {
+      "company_name": "아이센스",
+      "industry": "체외진단산업 (IVD: In Vitro Diagnostics)",
+      "industry_description": "Medical Device에서 가장 큰 시장, 빠르게 성장 중",
+      "global_market_2020": "94조 원",
+      "ivd_segments": [
+        {
+          "segment_name": "혈당측정",
+          "isens_business_area": true,
+          "isens_revenue_share": "85%",
+          "notes": ""
+        },
+        {
+          "segment_name": "자가혈당 측정(BGM)",
+          "isens_business_area": true,
+          "isens_revenue_share": "",
+          "notes": ""
+        },
+        {
+          "segment_name": "연속혈당 측정(CGM)",
+          "isens_business_area": true,
+          "isens_revenue_share": "",
+          "notes": "2023년 진출"
+        },
+        {
+          "segment_name": "현장진단(POCT)",
+          "isens_business_area": true,
+          "isens_revenue_share": "15%",
+          "notes": ""
+        },
+        {
+          "segment_name": "Others",
+          "isens_business_area": false,
+          "isens_revenue_share": "",
+          "notes": ""
+        },
+        {
+          "segment_name": "Molecular",
+          "isens_business_area": false,
+          "isens_revenue_share": "",
+          "notes": ""
+        },
+        {
+          "segment_name": "Clinical Chemistry",
+          "isens_business_area": false,
+          "isens_revenue_share": "",
+          "notes": ""
+        },
+        {
+          "segment_name": "Immunoassays",
+          "isens_business_area": false,
+          "isens_revenue_share": "",
+          "notes": ""
+        }
+      ]
+    }
+  },
+  {
+    "4": {
+      "company_name": "아이센스",
+      "product_lineup_title": "제품 라인업",
+      "categories": [
+        {
+          "name": "혈당 측정기",
+          "sub_categories": [
+            {
+              "name": "자가혈당 측정기",
+              "english_description": "BGM: Blood Glucose Monitoring",
+              "products": [
+                {
+                  "name": "스트립"
+                },
+                {
+                  "name": "미터"
+                }
+              ]
+            },
+            {
+              "name": "연속혈당 측정기",
+              "english_description": "CGM: Continuous Glucose Monitoring",
+              "products": [
+                {
+                  "name": "기기",
+                  "release_date": "2023년 9월"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "현장진단",
+          "english_description": "POCT: Point-Of-Care Testing",
+          "sub_categories": [
+            {
+              "name": "POCT 진단기기",
+              "products": [
+                {
+                  "name": "병원용 혈당기"
+                },
+                {
+                  "name": "당화혈색소 분석기"
+                },
+                {
+                  "name": "혈액전해질 분석기"
+                },
+                {
+                  "name": "혈액가스 분석기"
+                },
+                {
+                  "name": "혈액응고 분석기"
+                },
+                {
+                  "name": "면역 분석기"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "5": {
+      "title": "3. 사업구조 및 주요 고객사",
+      "business_structure": {
+        "company_name": "isens",
+        "overall_breakdown": [
+          {
+            "type": "자가 브랜드",
+            "percentage": "45%",
+            "details": {
+              "exclusive_contract": {
+                "country": "뉴질랜드",
+                "contract_type": "국가 독점 공급 계약",
+                "period": "2012년 ~2024년",
+                "status": "단독 공급 예정"
+              },
+              "revenue_distribution_by_region": [
+                {
+                  "region": "아시아(국내 포함)",
+                  "percentage": "46%"
+                },
+                {
+                  "region": "미국",
+                  "percentage": "20%"
+                },
+                {
+                  "region": "유럽",
+                  "percentage": "11%"
+                },
+                {
+                  "region": "기타",
+                  "percentage": "22%"
+                }
+              ],
+              "revenue_distribution_by_product": [
+                {
+                  "product": "혈당(자체브랜드)",
+                  "percentage": "80%"
+                },
+                {
+                  "product": "POCT",
+                  "percentage": "20%"
+                }
+              ],
+              "korean_market_share": {
+                "rank": "1위",
+                "ms_percentage": "47%"
+              }
+            }
+          },
+          {
+            "type": "OEM/ODM",
+            "percentage": "55%",
+            "key_customers_and_partners": [
+              {
+                "supplier": "arkray",
+                "customer": "Walmart"
+              },
+              {
+                "supplier": "AgaMatrix",
+                "customer": "SANOFI"
+              },
+              {
+                "supplier": "AgaMatrix",
+                "customer": "CVS pharmacy"
+              }
+            ]
+          }
+        ]
+      },
+      "data_reference": "2023년 매출 기준"
+    }
+  },
+  {
+    "6": {
+      "company_info": {
+        "name": "i·sens",
+        "slogan": "Sensing Ahead, Caring More"
+      },
+      "menu_items": [
+        {
+          "id": "1",
+          "title": "Company Overview"
+        },
+        {
+          "id": "2",
+          "title": "Business Overview",
+          "sub_items": [
+            {
+              "id": "2.1",
+              "title": "혈당 부문"
+            },
+            {
+              "id": "2.2",
+              "title": "POCT 부문"
+            }
+          ]
+        },
+        {
+          "id": "3",
+          "title": "Financial Overview"
+        },
+        {
+          "id": "4",
+          "title": "Appendix"
+        }
+      ]
+    }
+  },
+  {
+    "7": {
+      "title": "당뇨 인구 현황 및 전망",
+      "diabetes_population_forecast": {
+        "2021_year": "2021",
+        "2021_value": "5.4억 명",
+        "2045_year": "2045",
+        "2045_value": "7.8억 명",
+        "cagr": "1.6%"
+      },
+      "diabetes_patient_classification": [
+        {
+          "type": "Type 2",
+          "severity_range": "Low"
+        },
+        {
+          "type": "Type 2 (Severe)",
+          "severity_range": "High (up to 90%)"
+        },
+        {
+          "type": "Type 1",
+          "severity_range": "High (90%-100%)"
+        }
+      ],
+      "measurement_devices": [
+        {
+          "device_name": "자가혈당 측정기",
+          "abbreviation": "BGM"
+        },
+        {
+          "device_name": "연속혈당 측정기",
+          "abbreviation": "CGM"
+        }
+      ],
+      "source": "IDF(International Diabetes Federation), i-SENS Analysis"
+    }
+  },
+  {
+    "8": {
+      "title": "글로벌 시장점유율 현황 비교",
+      "market_share_comparison": {
+        "bgm": {
+          "year": "2022년",
+          "total_market_size": "$8.3B (9.1조 원)",
+          "companies": [
+            {
+              "name": "Abbott",
+              "share": "5%"
+            },
+            {
+              "name": "Roche",
+              "share": "22%"
+            },
+            {
+              "name": "LifeScan",
+              "share": "22%"
+            },
+            {
+              "name": "Ascensia",
+              "share": "14%"
+            },
+            {
+              "name": "Others",
+              "share": "37%"
+            }
+          ],
+          "source": "Fortune Business Insights Quantitative Data Blood Glucose Monitoring Systems-Global Market Analysis, Insights. and Forecast, 2028-2029"
+        },
+        "cgm": {
+          "year": "2022년",
+          "total_market_size": "$7.7B",
+          "companies": [
+            {
+              "name": "Dexcom",
+              "share": "38%"
+            },
+            {
+              "name": "Abbott",
+              "share": "56%"
+            },
+            {
+              "name": "Medtronic",
+              "share": "6%"
+            }
+          ],
+          "source": "Fortune Business Insights Quantitative Data Blood Glucose Monitoring Systems-Global Market Analysis, Insights. and Forecast, 2028-2029"
+        }
+      },
+      "cgm_market_size_forecast": {
+        "unit": "$ million",
+        "data": [
+          {
+            "year": "2020",
+            "value": 5341
+          },
+          {
+            "year": "2021",
+            "value": 6497
+          },
+          {
+            "year": "2022",
+            "value": 7673
+          },
+          {
+            "year": "2023(E)",
+            "value": 9073
+          },
+          {
+            "year": "2029(E)",
+            "value": 23627
+          }
+        ],
+        "source": "Fortune Business Insights Quantitative Data Blood Glucose Monitoring Systems-Global Market Analysis, Insights.and Forecast, 2028-2029"
+      }
+    }
+  },
+  {
+    "9": {
+      "title": "글로벌 CGMS 시장규모 및 중장기 매출계획",
+      "subtitle": "CGMS 시장 성장에 따른 아이센스의 매출 증가 예상",
+      "global_cgms_market_size": {
+        "chart_title": "글로벌 CGMS 시장 규모",
+        "unit": "$ million",
+        "data": [
+          {
+            "year": "2022",
+            "value": 7566
+          },
+          {
+            "year": "2023",
+            "value": 8873
+          },
+          {
+            "year": "2024",
+            "value": 10335
+          },
+          {
+            "year": "2025",
+            "value": 12017
+          },
+          {
+            "year": "2026",
+            "value": 13983
+          },
+          {
+            "year": "2027",
+            "value": 16263
+          },
+          {
+            "year": "2028",
+            "value": 18891
+          },
+          {
+            "year": "2029",
+            "value": 22060
+          }
+        ],
+        "cagr": "16.5%",
+        "source": "Analysis Global Blood Glucose Monitoring Systems Market, 2019-2030"
+      },
+      "isens_cgms_mid_long_term_sales_plan": {
+        "chart_title": "CGMS 중장기 매출계획",
+        "unit": "억원",
+        "data": [
+          {
+            "year": "2023",
+            "value": 9
+          },
+          {
+            "year": "2024",
+            "value": 150
+          },
+          {
+            "year": "2025",
+            "value": 400
+          },
+          {
+            "year": "2026",
+            "value": 1200
+          },
+          {
+            "year": "2027",
+            "value": 2000
+          },
+          {
+            "year": "2028",
+            "value": 3000
+          }
+        ],
+        "events": [
+          {
+            "year": "2023",
+            "description": "CGM 출시"
+          },
+          {
+            "year": "2024",
+            "description": "유럽 출시"
+          },
+          {
+            "year": "2027",
+            "description": "미국 출시"
+          },
+          {
+            "year": "2028",
+            "description": "점유율",
+            "share": "1%"
+          }
+        ],
+        "source": "회사 자체 추정"
+      }
+    }
+  },
+  {
+    "10": {
+      "page_number": 10,
+      "title": "4. CGM 비디오",
+      "company_name": "i-sens"
+    }
+  },
+  {
+    "11": {
+      "blood_glucose_monitor_types": [
+        {
+          "type": "CGM",
+          "full_name": "연속혈당 측정기",
+          "measurement_method": "센서를 피부 아래 피하지방에 위치시켜 연속해서 혈당값 측정",
+          "target_users": "1형 당뇨 환자(Type 1), 중증 2형 당뇨환자(Type 2)",
+          "measurement_site": "팔뚝",
+          "measurement_sample": "세포간액(혈액이 아님)",
+          "sensor_replacement_cycle": "센서 장착 후, 15일",
+          "advantages": [
+            "혈당 추이 분석 용이",
+            "저/고혈당 알림기능",
+            "채혈 통증 없음",
+            "쉬운 데이터 공유"
+          ],
+          "disadvantages": [
+            "높은 가격",
+            "피부 트러블",
+            "BGM대비 낮은 정확도"
+          ]
+        },
+        {
+          "type": "BGM",
+          "full_name": "자가혈당 측정기",
+          "measurement_method": "손가락 끝에서 피를 내어 혈당값 측정",
+          "target_users": "모든 당뇨 환자군",
+          "measurement_site": "손가락",
+          "measurement_sample": "모세혈",
+          "sensor_replacement_cycle": "1회 사용",
+          "advantages": [
+            "높은 정확도",
+            "낮은 가격"
+          ],
+          "disadvantages": [
+            "빈번한 측정",
+            "채혈 통증",
+            "저혈당 쇼크"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "12": {
+      "product_name": "CareSens Air",
+      "accuracy": {
+        "MARD_overall": 9.82,
+        "MARD_target_population": "성인 만 19세 이상 (임상시험 프로토콜을 준수한 피험자 기준)",
+        "accuracy_by_blood_glucose_level": [
+          {
+            "level_range": "<54",
+            "value": 12.25,
+            "unit": "mg/dL"
+          },
+          {
+            "level_range": "54~69",
+            "value": 13.17,
+            "unit": "mg/dL"
+          },
+          {
+            "level_range": "70~180",
+            "value": 9.96,
+            "unit": "%"
+          },
+          {
+            "level_range": "181~250",
+            "value": 8.43,
+            "unit": "%"
+          },
+          {
+            "level_range": "> 250",
+            "value": 10.15,
+            "unit": "%"
+          }
+        ]
+      },
+      "product_specifications": {
+        "sensor_validity_period": {
+          "before_opening": "제조일로부터 12개월",
+          "after_opening": "센서 장착 후 15일"
+        },
+        "sensor_stabilization_time": "2시간",
+        "measurement_range": "40~500 mg/dL",
+        "data_transmission_interval": "5분에 1회",
+        "memory": "혈당 데이터 12시간",
+        "calibration": {
+          "initial_calibration": "센서 안정화 직후 2회 보정 (초기 2회는 12시간 주기)",
+          "subsequent_calibration": "그 이후부터 24시간 주기"
+        }
+      },
+      "usage_environment": {
+        "temperature": "10~42 °C",
+        "humidity": "10~95 RH%",
+        "waterproof_rating": "IP48"
+      }
+    }
+  },
+  {
+    "13": {
+      "title": "CGM 사업 현황",
+      "status": "2023년 9월 CareSens Air 한국 시장 런칭 후, 유럽 및 글로벌 시장 확대 진입 중",
+      "milestones": [
+        {
+          "date": "23. 9월",
+          "description": "국내 출시"
+        },
+        {
+          "date": "24. 2월",
+          "description": "카카오헬스케어 '파스타' 연동"
+        },
+        {
+          "date": "24. 2월",
+          "description": "유럽 CE MDR 허가"
+        },
+        {
+          "date": "24. 3-4월",
+          "description": "유럽 주요 국가 계약"
+        },
+        {
+          "date": "24. 5월",
+          "description": "국내 한독 PL, 헝가리 출시"
+        }
+      ],
+      "domestic_business_status": [
+        {
+          "metric": "일간 활성 사용자 수",
+          "value": "2,300명 (2분기 기준)"
+        },
+        {
+          "metric": "누적 활성 사용자 수",
+          "value": "10,000명 이상"
+        },
+        {
+          "metric": "국내 누적 판매",
+          "value": "10만 대 돌파 (7월 기준)"
+        }
+      ]
+    }
+  },
+  {
+    "14": {
+      "title": "8. CGM 국내외 영업 & 마케팅 계획",
+      "description": "CGM 시장의 유연한 대응을 위해 CareSens 및 PL 브랜드로 다양한 판매 채널을 통한 CGM 제품 공급",
+      "brands_and_channels": [
+        {
+          "brand_name": "CareSens™ Air",
+          "channels": [
+            "기 협력 대리점",
+            "디지털헬스 서비스 업체 (kakaohealthcare)",
+            "병원 및 약국 체인",
+            "온라인 몰 (자사몰, 오픈마켓)",
+            "기업 및 건강 보험사"
+          ]
+        },
+        {
+          "brand_name": "PL 브랜드 (PRIVATE LABEL)",
+          "channels": [
+            "글로벌 의료기기 제조사/제약사",
+            "인슐린 공급 디바이스 제조사",
+            "글로벌 의료기기 유통 업체",
+            "디지털 헬스 제품 및 서비스 업체"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "15": {
+      "title": "CGM 국내외 영업 & 마케팅 계획",
+      "overall_global_expansion": {
+        "goal": "한국에서의 CGM 사업 경험을 기반으로 글로벌 사업 확대 추진",
+        "plans": [
+          {
+            "year": "2024",
+            "total_countries_to_launch": 14,
+            "q3_confirmed_countries": [
+              "독일",
+              "영국",
+              "네덜란드",
+              "칠레"
+            ]
+          },
+          {
+            "year": "2025",
+            "total_countries_to_launch": "20+"
+          }
+        ]
+      },
+      "product_launch_details": [
+        {
+          "product_name": "케어센스 에어 2",
+          "launches": [
+            {
+              "year": "2027",
+              "region": "미국"
+            }
+          ]
+        },
+        {
+          "product_name": "케어센스 에어",
+          "launches": [
+            {
+              "year": "2024",
+              "region": "유럽 & CIS",
+              "countries": [
+                "헝가리",
+                "독일",
+                "네덜란드",
+                "영국",
+                "핀란드",
+                "이탈리아",
+                "에스토니아",
+                "폴란드"
+              ],
+              "num_countries": 8
+            },
+            {
+              "year": "2025",
+              "region": "유럽 & CIS",
+              "countries": [
+                "크로아티아",
+                "스페인",
+                "체코",
+                "러시아"
+              ],
+              "num_countries": 4
+            },
+            {
+              "year": "2024",
+              "region": "중남미",
+              "countries": [
+                "칠레",
+                "멕시코"
+              ],
+              "num_countries": 2
+            },
+            {
+              "year": "2025",
+              "region": "아프리카 & 중동",
+              "countries": [
+                "알제리",
+                "모로코",
+                "이집트",
+                "이란",
+                "사우디아라비아"
+              ],
+              "num_countries": 5
+            },
+            {
+              "year": "2024",
+              "region": "아시아 & 오세아니아",
+              "countries": [
+                "뉴질랜드",
+                "호주",
+                "베트남",
+                "태국",
+                "말레이시아"
+              ],
+              "num_countries": 5
+            },
+            {
+              "year": "2025",
+              "region": "아시아 & 오세아니아",
+              "countries": [
+                "인도",
+                "인도네시아",
+                "일본"
+              ],
+              "num_countries": 3
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "16": {
+      "product_name": "CareSens Air",
+      "main_topic": "사용자 보정 가능 제품 (User Calibratable Product)",
+      "algorithm_enhancement": {
+        "basis": "제품 출시 이후 약 30만 데이터를 근거로 (Based on approx. 300,000 data since product launch)",
+        "description": "알고리즘 고도화 (algorithm advancement)",
+        "result_metric": {
+          "name": "MARD",
+          "value": "9.3%"
+        }
+      },
+      "regulatory_submission": {
+        "target_month": "4월 (April)",
+        "items_for_submission": [
+          "사용자 보정 가능 제품 (User Calibratable Product)",
+          "Non-adjunctive 사용목적 변경 (Non-adjunctive intended use change)"
+        ],
+        "agencies": [
+          "식약처 (MFDS)",
+          "CE"
+        ],
+        "submission_method": "동시 제출 (simultaneous submission)"
+      },
+      "clinical_trial_data": [
+        {
+          "location": "국내 (Domestic)",
+          "data_type": "임상시험 데이터 (Clinical trial data)"
+        },
+        {
+          "location": "독일 (Germany)",
+          "data_type": "임상시험 데이터 (Clinical trial data)"
+        }
+      ]
+    }
+  },
+  {
+    "17": {
+      "product_name": "CareSens Air",
+      "overall_goal": "지속적인 제품 경쟁력 강화 및 시장 확대를 통한 매출 성장 견인",
+      "detailed_plans": {
+        "connectivity_expansion": [
+          "리시버 출시",
+          "스마트 워치 지원",
+          "주요 헬스 플랫폼 연동"
+        ],
+        "usability_improvement": [
+          "사용자 보정 가능 제품",
+          "웜업시간 2시간 → 30분",
+          "센서 사용 온도 42 → 45도"
+        ],
+        "market_expansion": [
+          "전문가용 CGM 출시",
+          "2세 이상 사용 가능"
+        ]
+      },
+      "timeline": [
+        {
+          "year": 2023,
+          "quarter": "3Q",
+          "milestone": "국내 출시",
+          "activities": [
+            "전문가용 CGM 출시 (Blind mode)",
+            "리시버 및 스마트 워치용 앱 지원",
+            "삼성 헬스 플랫폼 연동",
+            "소아 임상시험 시작"
+          ]
+        },
+        {
+          "year": 2024,
+          "quarter": "2Q",
+          "milestone": "시장 및 연결성 확대",
+          "activities": []
+        },
+        {
+          "year": 2025,
+          "quarter": "1Q",
+          "milestone": "사용자 보정 가능 기능 도입",
+          "activities": []
+        },
+        {
+          "year": 2026,
+          "quarter": "2Q",
+          "milestone": "2세 이상 사용 가능",
+          "activities": [
+            "소아 임상 완료",
+            "식약처 및 CE 허가 변경"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "18": {
+      "product_name": "CareSens Air 2",
+      "plan_summary": "차세대 CareSens Air 2 제품은 미국 시장 진출을 위해 FDA의 iCGM 기준을 만족하고, 세계 최고 사양 기반 치료 및 웰니스 제품으로 시장 지배력 강화 (세계 3위 목표) 및 치료/웰니스 제품으로의 확장성을 제공합니다. (iCGM: 미국 FDA에서 정의한 정확도와 연결성을 보장하는 연속혈당측정기 기준)",
+      "key_initiatives": [
+        {
+          "category": "상품성",
+          "details": [
+            "정확도: iCGM 규격(특히, 저혈당 정확도) 만족",
+            "센서 크기: 기존 대비 70% 감소"
+          ]
+        },
+        {
+          "category": "차별성",
+          "details": [
+            "사용기간 확장: 15일 → 18일",
+            "Warm-up 시간 단축: 2시간 → 20분",
+            "환경을 고려한 친환경 소재 사용"
+          ]
+        },
+        {
+          "category": "확장성",
+          "details": [
+            "연동 기기(인슐린 펌프/패치 등) 확대",
+            "웰니스용 및 2형 당뇨병 전용 제품 출시",
+            "CGM/BGM 통합 서비스 앱으로 연속적인 혈당관리 경험 제공"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "19": {
+      "event": "미국 시장 출시",
+      "date": "'27.4Q"
+    }
+  },
+  {
+    "20": {
+      "main_title": "14. CGM 제품 기반 사업 확대 (1) AgaMatrix, Inc. 인수",
+      "overall_strategic_goal": "M&A를 통한 글로벌 CGM 유통 채널 확대",
+      "acquisition_details": {
+        "target_company_name": "AgaMatrix, Inc.",
+        "acquisition_terms": {
+          "equity_stake_percent": 100,
+          "debt_condition": "Zero",
+          "acquisition_amount_usd": 27000000
+        },
+        "acquisition_benefits": [
+          "BGM 미국, 유럽 대형 Retail Channel 확보",
+          "CGM 해외 시장 진출을 위한 글로벌 영업 네트워크 확보"
+        ]
+      },
+      "acquired_company_profile": {
+        "company_name": "AgaMatrix, Inc.",
+        "parent_company_of_target": "AgaMatrix Holdings, LLC",
+        "business_area": "BGM 사업",
+        "description": "글로벌 혈당측정기 기업의 BGM 자회사",
+        "financial_performance_2022": {
+          "revenue_krw": 60000000000,
+          "operating_profit_krw": 5000000000
+        },
+        "market_position": "선진국 시장 중심으로 BGM 시장 점유",
+        "major_global_distributors": [
+          {
+            "name": "CVS Pharmacy",
+            "description": "미국 최대 의약품 유통사"
+          },
+          {
+            "name": "Sanofi",
+            "description": "글로벌 빅파마"
+          },
+          {
+            "name": "Alliance Healthcare",
+            "description": "영국 및 유럽 전역 의약품 유통사"
+          }
+        ]
+      },
+      "agamatrix_holdings_corporate_structure": {
+        "holding_company": "AgaMatrix Holdings, LLC",
+        "subsidiaries": [
+          {
+            "name": "AgaMatrix, Inc.",
+            "business_area": "BGM 사업",
+            "ownership_percent": 100
+          },
+          {
+            "name": "WaveForm Technologies, Inc.",
+            "business_area": "CGM 사업",
+            "ownership_percent": 100
+          }
+        ]
+      }
+    }
+  },
+  {
+    "21": {
+      "title": "15. CGM 제품 기반 사업 확대 (2) 인공췌장시스템",
+      "subtitle": "CGM 기술 및 지분투자를 통한 인공췌장시스템 시장 진출",
+      "sections": [
+        {
+          "id": 2,
+          "name": "인슐린 패치펌프 회사 'CareMedi' 지분투자 및 인공췌장시스템 파트너쉽 구축",
+          "description": "췌장의 인슐린 분비를 대신해 인공적으로 인슐린을 체내에 공급하는 시스템",
+          "caremedi_equity_structure": {
+            "caremedi_ceo": "케어메디 대표님 32%",
+            "isens": "아이센스 20%",
+            "other_institutional_shareholders": "기타 기관주주 42%"
+          },
+          "aps_components_and_cooperation": {
+            "aps_components_overview": "연속혈당측정기 + 인슐린 펌프(패치) + 소프트웨어",
+            "cooperation_details": [
+              {
+                "category": "생산",
+                "items": [
+                  "아이센스 연속혈당측정기 (아이센스)",
+                  "케어메디 인슐린 펌프 및 패치 (아이센스)"
+                ]
+              }
+            ],
+            "marketing_and_sales": "인공췌장시스템 구성 전체에 대해 협력 예정"
+          },
+          "global_aps_market_outlook": {
+            "unit": "$ million",
+            "chart_data": [
+              {
+                "year": "2022",
+                "value": 2208
+              },
+              {
+                "year": "2028(E)",
+                "value": 4501
+              }
+            ],
+            "cagr": "12.6%",
+            "source": "Research And Market"
+          },
+          "launch_and_approval_plan": {
+            "countries_needing_equivalence_assessment": [
+              {
+                "country": "국내",
+                "plan": "'24년 하반기 출시 예정"
+              },
+              {
+                "country": "미국",
+                "plan": "'26년 FDA 허가 예정"
+              }
+            ],
+            "countries_needing_separate_clinical_trials": [
+              {
+                "country": "유럽",
+                "plan": "'26년 CE 인증 허가 예정"
+              }
+            ]
+          }
+        }
+      ]
+    }
+  },
+  {
+    "22": {
+      "title": "혈당스트립 생산능력 및 생산실적",
+      "overall_capacity": {
+        "bgm_strip_facility": 2500000000,
+        "cgm_sensor_capacity": 500000
+      },
+      "factory_details": [
+        {
+          "name": "원주공장",
+          "initial_strip_capacity": 1400000000,
+          "cgm_sensor_capacity": null,
+          "additional_info": null,
+          "production_data": [
+            {
+              "year": 2021,
+              "capacity": 1400000000,
+              "performance": 1640000000
+            },
+            {
+              "year": 2022,
+              "capacity": 1400000000,
+              "performance": 1660000000
+            },
+            {
+              "year": 2023,
+              "capacity": 1400000000,
+              "performance": 1340000000
+            }
+          ]
+        },
+        {
+          "name": "송도공장",
+          "initial_strip_capacity": 800000000,
+          "cgm_sensor_capacity": 500000,
+          "additional_info": null,
+          "production_data": [
+            {
+              "year": 2021,
+              "capacity": 400000000,
+              "performance": 290000000
+            },
+            {
+              "year": 2022,
+              "capacity": 800000000,
+              "performance": 270000000
+            },
+            {
+              "year": 2023,
+              "capacity": 800000000,
+              "performance": 430000000
+            }
+          ]
+        },
+        {
+          "name": "중국공장",
+          "initial_strip_capacity": 300000000,
+          "cgm_sensor_capacity": null,
+          "additional_info": "2019년 인허가 취득 완료. 2020년 상업용 가동 시작",
+          "production_data": null
+        }
+      ],
+      "expansion_plans": [
+        {
+          "event": "송도공장 증설 완료",
+          "period": "22년 2분기",
+          "details": "생산능력: 4억 개 -> 8억 개"
+        },
+        {
+          "event": "송도2공장 준공",
+          "period": "23년 4분기",
+          "details": null
+        },
+        {
+          "event": "CGM 센서 자동화 라인 설치 예정",
+          "period": "24년",
+          "details": null
+        }
+      ],
+      "capacity_calculation_method": "일일 평균생산수량 × 근무일수 X 가동월수 = 연간 총 생산능력, 상기 생산능력은 1교대 기준(1일 8시간 근무)"
+    }
+  },
+  {
+    "23": {
+      "title": "CGM 라인 투자 계획",
+      "current_line": {
+        "location": "송도공장",
+        "description": "CGM 초기 물량 송도공장 생산",
+        "line_type": "반 자동 라인",
+        "annual_capacity": "50만 개 센서",
+        "installation_cost": "약 50억 원"
+      },
+      "planned_line": {
+        "location": "송도2공장",
+        "description": "CGM 대규모 양산 송도2공장 셋업 예정",
+        "line_type": "자동 라인 (설계 디자인 & 기기 발주 완료)",
+        "annual_capacity": "520만 개 센서 (26년 까지)"
+      }
+    }
+  },
+  {
+    "24": {
+      "title": "19. CGM 라인 투자 계획",
+      "subtitle": "송도2공장 CGM 생산라인 투자 계획",
+      "facilities": [
+        {
+          "name": "송도공장",
+          "type": "actual",
+          "products": [
+            {
+              "name": "CareSens Air",
+              "item_type": "연간 Capa. (누적 센서 개수)",
+              "capacities": [
+                {
+                  "year": 2023,
+                  "value": 500000
+                },
+                {
+                  "year": 2024,
+                  "value": 1000000
+                }
+              ]
+            },
+            {
+              "name": "CareSens Air 2",
+              "item_type": "연간 Capa. (누적 센서 개수)",
+              "capacities": []
+            }
+          ],
+          "total_accumulated": [
+            {
+              "year": 2023,
+              "value": 500000
+            },
+            {
+              "year": 2024,
+              "value": 1000000
+            }
+          ]
+        },
+        {
+          "name": "송도2공장",
+          "type": "expected",
+          "products": [
+            {
+              "name": "CareSens Air",
+              "item_type": "연간 Capa. (누적 센서 개수)",
+              "capacities": [
+                {
+                  "year": 2025,
+                  "value": 1500000
+                },
+                {
+                  "year": 2026,
+                  "value": 2000000
+                }
+              ]
+            },
+            {
+              "name": "CareSens Air 2",
+              "item_type": "연간 Capa. (누적 센서 개수)",
+              "capacities": [
+                {
+                  "year": 2025,
+                  "value": 1700000
+                },
+                {
+                  "year": 2026,
+                  "value": 3200000
+                }
+              ]
+            }
+          ],
+          "total_accumulated": [
+            {
+              "year": 2025,
+              "value": 3200000
+            },
+            {
+              "year": 2026,
+              "value": 5200000
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "25": {
+      "logo_text": "i·sens",
+      "slogan": "Sensing Ahead, Caring More",
+      "table_of_contents": [
+        {
+          "item_number": "1",
+          "item_title": "Company Overview",
+          "sub_items": []
+        },
+        {
+          "item_number": "2",
+          "item_title": "Business Overview",
+          "sub_items": [
+            {
+              "sub_item_number": "1)",
+              "sub_item_title": "혈당 부문"
+            },
+            {
+              "sub_item_number": "2)",
+              "sub_item_title": "POCT 부문"
+            }
+          ]
+        },
+        {
+          "item_number": "3",
+          "item_title": "Financial Overview",
+          "sub_items": []
+        },
+        {
+          "item_number": null,
+          "item_title": "Appendix",
+          "sub_items": []
+        }
+      ]
+    }
+  },
+  {
+    "26": {
+      "mainTitle": "1. POCT 개념 및 아이센스 전략",
+      "overallGoalOrEffect": "병원 시장 확대를 통해 전문가 신뢰도 상승 효과",
+      "subSections": [
+        {
+          "title": "POCT(Point-Of-Care Testing) 개념",
+          "description": [
+            "현장진단검사: 환자 가까이에서 신속하게 시행하여 진단 및 치료에 이용할 수 있는 검사",
+            "중앙진단장비에 비해 결과값을 빠르게 알 수 있음"
+          ]
+        },
+        {
+          "title": "아이센스 POCT 사업 전략",
+          "strategyPoints": [
+            "병원용 진단제품을 통해 전문가가 신뢰하는 기업으로 도약",
+            "소비자 시장까지 확대를 통해 브랜드 인지도 상승하는 선순환 효과"
+          ],
+          "strategicCycleElements": [
+            "병원시장 확대",
+            "소비자 시장 확대",
+            "브랜드 인지도 상승"
+          ]
+        },
+        {
+          "title": "아이센스 POCT 제품군 특징",
+          "features": [
+            "당뇨, 당뇨합병증, 응급 관리용 진단제품 등 병원용 연계상품",
+            "소모품 필요한 진단장비(센서, 카트리지, 시약 등)"
+          ],
+          "expectedOutcome": "지속적인 매출과 이익 발생",
+          "productCategories": [
+            {
+              "categoryGroup": "당뇨병 관리 & 신속, 편리한 응급관리",
+              "products": [
+                "Hand-Held 혈당기, 케톤측정기",
+                "병원용 혈당기",
+                "HbA1c 측정기",
+                "면역 (심혈관) 진단기",
+                "혈액전해질 / 가스 분석기",
+                "혈액응고 측정기"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "27": {
+      "product_name": "POCT 혈액전해질/가스 분석기",
+      "market_trend": "중대형 기기에서 소형 기기로 시장 수요가 변화 중",
+      "markets": [
+        {
+          "market_name": "혈액가스 진단 시장",
+          "global_market_size": "$1.4 billion",
+          "market_size_note": "POCT 분야에서 두 번째로 큰 시장규모",
+          "purpose": "혈액 속의 산소, 이산화탄소, pH농도 등의 항목에서 불균형이 있는지 판단하는 검사",
+          "unbalance_causes": [
+            "신장질환",
+            "심장질환",
+            "호흡장애",
+            "쇼크"
+          ],
+          "usage_locations": [
+            "중환자실",
+            "응급실",
+            "수술실",
+            "병의원"
+          ]
+        },
+        {
+          "market_name": "혈액전해질 진단 시장",
+          "global_market_size": null,
+          "market_size_note": null,
+          "purpose": "몸의 수분 상태, 근육&신경 관련 작용, 산소 공급 등에 작용하는 항목을 검사",
+          "unbalance_causes": null,
+          "usage_locations": [
+            "일반 내과",
+            "클리닉",
+            "병의원"
+          ]
+        }
+      ],
+      "analyzers": [
+        {
+          "analyzer_type": "혈액전해질 분석기",
+          "launch_info": "2009년 2월 출시",
+          "domestic_sales_ranking": "설치 대수 기준 국내 판매량 1위",
+          "diagnosis_items": {
+            "existing_products": [
+              "Hct",
+              "Na",
+              "K",
+              "Cl"
+            ],
+            "new_product_development_items": [
+              "Ca",
+              "Mg"
+            ]
+          },
+          "measurement_items": null
+        },
+        {
+          "analyzer_type": "혈액가스 분석기",
+          "launch_info": "2020년 업그레이드 제품 출시",
+          "domestic_sales_ranking": null,
+          "diagnosis_items": null,
+          "measurement_items": [
+            "pH",
+            "pCO2",
+            "pO2",
+            "Hct",
+            "Na",
+            "K",
+            "Cl",
+            "iCa",
+            "Glucose",
+            "Lactate"
+          ]
+        }
+      ],
+      "source": "TriMark Publications Point of Care Diagnostic Testing World Markets(2013)"
+    }
+  },
+  {
+    "28": {
+      "products": [
+        {
+          "POCT_Product_Name": "병원용 당뇨관리용 POCT제품",
+          "Sub_Products": [
+            "당화혈색소(HbA1c) 분석기",
+            "ACR(당뇨합병증) 카트리지"
+          ],
+          "Product_Details": [
+            "적혈구 내에 당이 붙은 형태로 당화혈색소 측정",
+            "1회 측정으로 과거 3개월간 혈당값 도출",
+            "ACR: 알부민과 크레아티닌 수치의 비율로서 신장 기능을 보다 정확히 진단",
+            "All-in-one 카트리지, 빠르고 정확한 결과값"
+          ],
+          "Market_Size": "$474M",
+          "Expectations": null,
+          "Source": "Global POC Glycated Hemoglobin Analyzer Market Research Report(2018)"
+        },
+        {
+          "POCT_Product_Name": "병원용 혈당 측정기",
+          "Sub_Products": [],
+          "Product_Details": [
+            "병원용 혈당 & 케톤 측정기기",
+            "WiFi, USB 등을 통해 데이터 실시간 전송, 자동 소프트웨어 업데이트 등 장점으로 병원 내 데이터 관리 용이"
+          ],
+          "Market_Size": null,
+          "Expectations": null,
+          "Source": null
+        },
+        {
+          "POCT_Product_Name": "혈액응고 진단제품",
+          "Sub_Products": [
+            "PT/INR 혈액응고 측정기"
+          ],
+          "Product_Details": [
+            "미국 자회사 CoaguSense의 제품",
+            "Prothrombin Time tests (PT tests): 혈우병, 혈소판 증가/무력증 등 출혈질환에 대한 검사, 주로 와파린 복용 환자 사용"
+          ],
+          "Market_Size": "$1B",
+          "Expectations": "PT version 2 제품 FDA 허가 ('19년 1분기)후 매출확대",
+          "Source": "TriMark Publications Point of Care Diagnostic Testing World Markets(2013)"
+        }
+      ]
+    }
+  },
+  {
+    "29": {
+      "product_category": "POCT",
+      "product_name": "면역 측정기",
+      "model_name": "IvisenIA-1400",
+      "introduction": [
+        "심혈관 질환 주요 바이오 마커를 측정하여 진단하는 분석기",
+        "향후 바이오 마커를 확장이 가능한 플랫폼"
+      ],
+      "features": [
+        "내부에서 원심분리 방식으로 Hematocrit Bias가 없어 타사장비 대비 전혈 정확도가 우수함",
+        "독립적인 4 Channel 구동으로 대기 없이 4개 샘플 동시 측정 (응급 환경에 적합)",
+        "신속한 결과값 도출/ 완전 자동화/ Compact 사이즈"
+      ]
+    }
+  },
+  {
+    "30": {
+      "company_name": "i·sens",
+      "slogan": "Sensing Ahead, Caring More",
+      "overview_sections": [
+        {
+          "title": "Company Overview",
+          "level": 1
+        },
+        {
+          "title": "Business Overview",
+          "level": 1,
+          "sub_sections": [
+            {
+              "title": "혈당 부문",
+              "level": 2
+            },
+            {
+              "title": "POCT 부문",
+              "level": 2
+            }
+          ]
+        },
+        {
+          "title": "Financial Overview",
+          "level": 1
+        },
+        {
+          "title": "Appendix",
+          "level": 1
+        }
+      ]
+    }
+  },
+  {
+    "31": {
+      "annual_performance_2023": {
+        "unit": "억원, %",
+        "revenue": {
+          "FY2023": "2,651",
+          "FY2022": "2,648",
+          "YoY": "+0.1%",
+          "highlights": [
+            "혈당부문 매출 +3% yoy, POCT부문 +13% yoy",
+            "지역 별로 아프리카 및 중동 & 남미가 높은 성장률을 보였음"
+          ]
+        },
+        "operating_profit": {
+          "FY2023": "109",
+          "FY2022": "199",
+          "YoY": "-43%",
+          "highlights": [
+            "OP: 송도2공장 준공 고정비 증가, AgaMatrix 인수비용 및 재고자산에 미실현손익 발생, CGM 연구개발비 및 임상비용으로 경상개발비 증가 등 으로 전년대비 영업이익은 감소"
+          ]
+        },
+        "opm_percent": {
+          "FY2023": "4.1%",
+          "FY2022": "7.5%"
+        },
+        "net_profit": {
+          "FY2023": "34",
+          "FY2022": "159",
+          "YoY": "-79%"
+        }
+      },
+      "guidance_2024": {
+        "unit": "억원, %",
+        "revenue": {
+          "FY2024_E": "3,100",
+          "FY2023": "2,651",
+          "YoY": "+17%",
+          "highlights": [
+            "혈당부문 +7% yoy, POCT +34% yoy"
+          ]
+        },
+        "operating_profit": {
+          "FY2024_E": "160",
+          "FY2023": "109",
+          "YoY": "+47%",
+          "highlights": [
+            "CGM 임상비용 증가, BGM 미터 원가 증가, 송도2공장 감가상각, CoaguSense R&D 비용, AgaMatrix Sales & Marketing 비용 증가로 이익률은 다소 보수적으로 제시함."
+          ]
+        },
+        "opm_percent": {
+          "FY2024_E": "5.2%",
+          "FY2023": "4.1%"
+        }
+      }
+    }
+  },
+  {
+    "32": {
+      "report_title": "지역별 매출 현황 (2024년 2분기)",
+      "unit": "억",
+      "total_sales": {
+        "2Q23": 684,
+        "2Q24": 699,
+        "YoY": "11.9%"
+      },
+      "regional_sales": [
+        {
+          "region": "아시아",
+          "2Q23": 123,
+          "2Q24": 130,
+          "YoY": "6%",
+          "sales_proportion": "18%",
+          "notes": null
+        },
+        {
+          "region": "유럽",
+          "2Q23": 71,
+          "2Q24": 72,
+          "YoY": "1%",
+          "sales_proportion": "10%",
+          "notes": null
+        },
+        {
+          "region": "북미",
+          "2Q23": 217,
+          "2Q24": 261,
+          "YoY": "20%",
+          "sales_proportion": "38%",
+          "notes": null
+        },
+        {
+          "region": "한국",
+          "2Q23": 122,
+          "2Q24": 146,
+          "YoY": "20%",
+          "sales_proportion": "21%",
+          "notes": "점유율 1위 (MS 47%)"
+        },
+        {
+          "region": "아프리카 및 중동",
+          "2Q23": 38,
+          "2Q24": 37,
+          "YoY": "-3%",
+          "sales_proportion": "5%",
+          "notes": null
+        },
+        {
+          "region": "중남미",
+          "2Q23": 35,
+          "2Q24": 29,
+          "YoY": "-17%",
+          "sales_proportion": "4%",
+          "notes": null
+        },
+        {
+          "region": "오세아니아",
+          "2Q23": 19,
+          "2Q24": 21,
+          "YoY": "10%",
+          "sales_proportion": "3%",
+          "notes": "뉴질랜드 점유율 1위"
+        }
+      ]
+    }
+  },
+  {
+    "33": {
+      "quarterly_performance_status": {
+        "quarterly_sales": [
+          {
+            "period": "3Q22",
+            "sales_hundred_million_krw": 685,
+            "gross_profit_margin_percent": 37.8
+          },
+          {
+            "period": "4Q22",
+            "sales_hundred_million_krw": 657,
+            "gross_profit_margin_percent": 36.0
+          },
+          {
+            "period": "1Q23",
+            "sales_hundred_million_krw": 606,
+            "gross_profit_margin_percent": 41.3
+          },
+          {
+            "period": "2Q23",
+            "sales_hundred_million_krw": 625,
+            "gross_profit_margin_percent": 38.3
+          },
+          {
+            "period": "3Q23",
+            "sales_hundred_million_krw": 670,
+            "gross_profit_margin_percent": 40.0
+          },
+          {
+            "period": "4Q23",
+            "sales_hundred_million_krw": 749,
+            "gross_profit_margin_percent": 41.0
+          },
+          {
+            "period": "1Q24",
+            "sales_hundred_million_krw": 684,
+            "gross_profit_margin_percent": 40.0
+          },
+          {
+            "period": "2Q24",
+            "sales_hundred_million_krw": 699,
+            "gross_profit_margin_percent": 40.8
+          }
+        ],
+        "quarterly_operating_profit": [
+          {
+            "period": "3Q22",
+            "operating_profit_hundred_million_krw": 38,
+            "operating_profit_margin_percent": 5.5
+          },
+          {
+            "period": "4Q22",
+            "operating_profit_hundred_million_krw": -11,
+            "operating_profit_margin_percent": -1.7
+          },
+          {
+            "period": "1Q23",
+            "operating_profit_hundred_million_krw": 45,
+            "operating_profit_margin_percent": 7.4
+          },
+          {
+            "period": "2Q23",
+            "operating_profit_hundred_million_krw": 38,
+            "operating_profit_margin_percent": 6.1
+          },
+          {
+            "period": "3Q23",
+            "operating_profit_hundred_million_krw": -4,
+            "operating_profit_margin_percent": -0.7
+          },
+          {
+            "period": "4Q23",
+            "operating_profit_hundred_million_krw": 30,
+            "operating_profit_margin_percent": 4.5
+          },
+          {
+            "period": "1Q24",
+            "operating_profit_hundred_million_krw": 8,
+            "operating_profit_margin_percent": 1.2
+          },
+          {
+            "period": "2Q24",
+            "operating_profit_hundred_million_krw": 20,
+            "operating_profit_margin_percent": 2.8
+          }
+        ]
+      },
+      "2024_q2_report": {
+        "title": "2024년 2분기 실적 보고",
+        "details": [
+          {
+            "metric": "매출액",
+            "value": 12,
+            "unit": "percent_increase_yoy"
+          },
+          {
+            "metric": "영업이익",
+            "value": 20,
+            "unit": "hundred_million_krw"
+          },
+          {
+            "metric": "당기순손실",
+            "value": 3,
+            "unit": "hundred_million_krw"
+          },
+          {
+            "metric": "AgaMatrix_영업손실_영향_당기순이익_감소",
+            "value": 29,
+            "unit": "hundred_million_krw"
+          }
+        ],
+        "basis": "K-IFRS 연결 재무제표 기준"
+      },
+      "2024_q2_analysis": {
+        "title": "2024년 2분기 실적 분석",
+        "details": [
+          {
+            "metric": "AgaMatrix_매출_상태",
+            "value": "부진"
+          },
+          {
+            "metric": "CGM_매출",
+            "value": 18,
+            "unit": "hundred_million_krw"
+          },
+          {
+            "metric": "AgaMatrix_스트립_매출_부진_영업이익_감소",
+            "value": 29,
+            "unit": "hundred_million_krw"
+          },
+          {
+            "metric": "하반기_영업이익_예상",
+            "value": "회복_예상",
+            "reason": "5월_구조조정"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "34": {
+      "company_name": "아이센스",
+      "stock_code": "099190",
+      "ceos": [
+        "차근식",
+        "남학현"
+      ],
+      "main_business": "전기화학진단 센서",
+      "establishment_date": "2000년 05월",
+      "listing_date": "2013년 01월",
+      "capital": "13,759 백만원",
+      "employees": "893 명",
+      "address": "서울시 서초구 반포대로 28길 43 아이센스 빌딩",
+      "homepage": "www.i-sens.com",
+      "listed_shares_count": 27637273,
+      "major_shareholders": [
+        {
+          "name": "공동창업자 (차근식, 남학현)",
+          "stake_percentage": 26
+        },
+        {
+          "name": "Arkray (전략적 제휴)",
+          "stake_percentage": 10
+        },
+        {
+          "name": "외국인",
+          "stake_percentage": 22
+        },
+        {
+          "name": "국내기관 및 개인 등",
+          "stake_percentage": 42
+        }
+      ],
+      "major_affiliated_companies_and_investments": [
+        {
+          "name": "프리시젼바이오",
+          "stake_percentage": 28
+        },
+        {
+          "name": "케어메디",
+          "stake_percentage": 19
+        }
+      ],
+      "sales_subsidiaries": [
+        "i-SENS USA",
+        "i-SENS Mexico",
+        "i-SENS Chile",
+        "i-SENS India",
+        "i-SENS Germany",
+        "i-SENS Malaysia",
+        "i-SENS Biz"
+      ],
+      "integrated_subsidiaries": [
+        "AgaMatrix, Inc.",
+        "CoaguSense",
+        "i-SENS Hong Kong",
+        "i-SENS Jiangsu(China)"
+      ]
+    }
+  },
+  {
+    "35": {
+      "title": "주요 임원진 및 R&D 투자 추이",
+      "subtitle": "국내 바이오센서 업계 최고의 연구진 및 지속적인 R&D투자",
+      "executives": [
+        {
+          "name": "차근식",
+          "position": "회장, CEO",
+          "biography": [
+            "고려대학교 화학과 학사, 석사",
+            "University of Michigan 화학과 박사",
+            "'91~'15 광운대학교 화학과 교수",
+            "현재 광운대학교 명예교수",
+            "'00~현재 (주)아이센스 사장, 대표이사"
+          ],
+          "awards": [
+            "'11 대한민국 벤처창업대전 표창(지식경제부 장관)",
+            "'14 의료기기산업 유공자 표창(보건복지부 장관)",
+            "'16 전자IT의 날 유공자 표창(산업통상자원부 대통령)"
+          ]
+        },
+        {
+          "name": "남학현",
+          "position": "대표이사, CEO",
+          "biography": [
+            "서울대학교 화학과 학사",
+            "Michigan State University 이학박사",
+            "'92~'15 광운대학교 화학과 교수",
+            "현재 광운대학교 명예교수",
+            "'00~현재 아이센스 대표이사(CEO)"
+          ],
+          "awards": [
+            "'08 보건의료과학기술 연구개발 우수연구자 표창(보건복지부 장관)",
+            "'11 산학연협력 유공자 표창(교육과학기술부 장관)",
+            "'11 산업기술진흥유공자 표창(국무총리)",
+            "'19 제115회 한국을 빛낸 이달의 무역인 상(한국무역협회)",
+            "'19 2019년 과학/정보통신의 날 표창(국무총리)"
+          ]
+        }
+      ],
+      "research_and_development_investment": {
+        "unit_cost": "억원",
+        "years": [
+          {
+            "year": "2020",
+            "rd_cost_percentage_of_sales": 10.7,
+            "accumulated_rd_cost": 184
+          },
+          {
+            "year": "2021",
+            "rd_cost_percentage_of_sales": 10.5,
+            "accumulated_rd_cost": 203
+          },
+          {
+            "year": "2022",
+            "rd_cost_percentage_of_sales": 11.3,
+            "accumulated_rd_cost": 250
+          },
+          {
+            "year": "2023",
+            "rd_cost_percentage_of_sales": 10.9,
+            "accumulated_rd_cost": 229
+          },
+          {
+            "year": "2Q24",
+            "rd_cost_percentage_of_sales": 15.8,
+            "accumulated_rd_cost": 156
+          }
+        ]
+      },
+      "workforce_composition": {
+        "total_employees": 893,
+        "as_of_date": "2024년 6월 30일",
+        "by_role": {
+          "임원": 11,
+          "사무직": 144,
+          "영업직": 69,
+          "연구직": 153,
+          "생산직": 516
+        },
+        "by_education_level": {
+          "학사_외": 773,
+          "석사": 100,
+          "박사": 20
+        }
+      }
+    }
+  },
+  {
+    "36": {
+      "재무상태표": [
+        {
+          "구분": "유동자산",
+          "2020": 159943,
+          "2021": 207654,
+          "2022": 217187,
+          "2023": 207526,
+          "2Q24": 256785
+        },
+        {
+          "구분": "비유동자산",
+          "2020": 147087,
+          "2021": 221526,
+          "2022": 232383,
+          "2023": 281045,
+          "2Q24": 288211
+        },
+        {
+          "구분": "자산총계",
+          "2020": 307030,
+          "2021": 429180,
+          "2022": 449570,
+          "2023": 498816,
+          "2Q24": 555241
+        },
+        {
+          "구분": "유동부채",
+          "2020": 31626,
+          "2021": 38391,
+          "2022": 74563,
+          "2023": 139305,
+          "2Q24": 140333
+        },
+        {
+          "구분": "비유동부채",
+          "2020": 52278,
+          "2021": 106048,
+          "2022": 70251,
+          "2023": 56016,
+          "2Q24": 99332
+        },
+        {
+          "구분": "부채총계",
+          "2020": 83904,
+          "2021": 144439,
+          "2022": 144814,
+          "2023": 195321,
+          "2Q24": 239665
+        },
+        {
+          "구분": "자본금",
+          "2020": 6869,
+          "2021": 6869,
+          "2022": 6877,
+          "2023": 13759,
+          "2Q24": 13819
+        },
+        {
+          "구분": "자본잉여금",
+          "2020": 46063,
+          "2021": 46205,
+          "2022": 47013,
+          "2023": 41697,
+          "2Q24": 43468
+        },
+        {
+          "구분": "기타자본항목",
+          "2020": -6551,
+          "2021": -6569,
+          "2022": -4653,
+          "2023": -5092,
+          "2Q24": 2587
+        },
+        {
+          "구분": "기타포괄손익",
+          "2020": -3715,
+          "2021": 23303,
+          "2022": 22631,
+          "2023": 21861,
+          "2Q24": 26881
+        },
+        {
+          "구분": "이익잉여금",
+          "2020": 176827,
+          "2021": 198525,
+          "2022": 213942,
+          "2023": 211577,
+          "2Q24": 208535
+        },
+        {
+          "구분": "비지배지분",
+          "2020": 3634,
+          "2021": 16408,
+          "2022": 18946,
+          "2023": 19145,
+          "2Q24": 19737
+        },
+        {
+          "구분": "자본총계",
+          "2020": 223126,
+          "2021": 284740,
+          "2022": 304756,
+          "2023": 303495,
+          "2Q24": 315576
+        }
+      ],
+      "손익계산서": [
+        {
+          "구분": "매출액",
+          "2020": 203708,
+          "2021": 232935,
+          "2022": 264837,
+          "2023": 265120,
+          "2Q24": 69900
+        },
+        {
+          "구분": "매출원가",
+          "2020": 107920,
+          "2021": 130870,
+          "2022": 159351,
+          "2023": 159061,
+          "2Q24": 41378
+        },
+        {
+          "구분": "매출총이익",
+          "2020": 95787,
+          "2021": 102064,
+          "2022": 105486,
+          "2023": 106059,
+          "2Q24": 28522
+        },
+        {
+          "구분": "판매비와관리비",
+          "2020": 65331,
+          "2021": 67238,
+          "2022": 85679,
+          "2023": 95130,
+          "2Q24": 26551
+        },
+        {
+          "구분": "영업이익",
+          "2020": 30456,
+          "2021": 34827,
+          "2022": 19807,
+          "2023": 10929,
+          "2Q24": 1970
+        },
+        {
+          "구분": "영업외손익",
+          "2020": 6669,
+          "2021": -2653,
+          "2022": 1696,
+          "2023": -2819,
+          "2Q24": -1472
+        },
+        {
+          "구분": "지분법손익",
+          "2020": -2180,
+          "2021": -1433,
+          "2022": -2350,
+          "2023": -1978,
+          "2Q24": -684
+        },
+        {
+          "구분": "법인세비용 차감전순이익",
+          "2020": 34945,
+          "2021": 30741,
+          "2022": 19153,
+          "2023": 6133,
+          "2Q24": -185
+        },
+        {
+          "구분": "법인세비용",
+          "2020": 7650,
+          "2021": 5590,
+          "2022": 3246,
+          "2023": 2728,
+          "2Q24": 214
+        },
+        {
+          "구분": "당기순이익",
+          "2020": 27296,
+          "2021": 25151,
+          "2022": 15908,
+          "2023": 3404,
+          "2Q24": 29
+        }
+      ]
+    }
+  }
+]

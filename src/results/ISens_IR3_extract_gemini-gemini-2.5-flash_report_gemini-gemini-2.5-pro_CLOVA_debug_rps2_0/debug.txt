@@ -1,0 +1,212 @@
+[19:33:16] INFO - 디버그 로그 저장 경로: src/results/ISens_IR3_extract_gemini-gemini-2.5-flash_report_gemini-gemini-2.5-pro_CLOVA_debug_rps2_0/debug.txt
+[19:33:19] INFO - 문서 'IR3' (data/IR3.pdf) - 총 37페이지
+[19:33:19] INFO - 분석 시작 (debug 모드, RPS: 2.0, OCR: CLOVA, Extract Model: gemini/gemini-2.5-flash)
+[19:33:19] INFO - 페이지 0 분석 시작 (전체 시작 후 2.93초)
+[19:33:19] INFO - 페이지 1 분석 시작 (전체 시작 후 3.43초)
+[19:33:20] INFO - 페이지 2 분석 시작 (전체 시작 후 3.93초)
+[19:33:20] INFO - 페이지 3 분석 시작 (전체 시작 후 4.43초)
+[19:33:21] INFO - 페이지 0 OCR 완료 (전체 시작 후 4.51초, OCR 소요: 1.58초)
+[19:33:21] INFO - AFC is enabled with max remote calls: 10.
+[19:33:21] INFO - 페이지 4 분석 시작 (전체 시작 후 4.93초)
+[19:33:21] INFO - 페이지 1 OCR 완료 (전체 시작 후 5.38초, OCR 소요: 1.95초)
+[19:33:21] INFO - AFC is enabled with max remote calls: 10.
+[19:33:21] INFO - 페이지 2 OCR 완료 (전체 시작 후 5.40초, OCR 소요: 1.47초)
+[19:33:21] INFO - 페이지 5 분석 시작 (전체 시작 후 5.43초)
+[19:33:22] INFO - AFC is enabled with max remote calls: 10.
+[19:33:22] INFO - 페이지 6 분석 시작 (전체 시작 후 5.93초)
+[19:33:22] INFO - 페이지 3 OCR 완료 (전체 시작 후 6.00초, OCR 소요: 1.57초)
+[19:33:22] INFO - AFC is enabled with max remote calls: 10.
+[19:33:22] INFO - 페이지 7 분석 시작 (전체 시작 후 6.44초)
+[19:33:23] INFO - 페이지 4 OCR 완료 (전체 시작 후 6.50초, OCR 소요: 1.57초)
+[19:33:23] INFO - AFC is enabled with max remote calls: 10.
+[19:33:23] INFO - 페이지 8 분석 시작 (전체 시작 후 6.94초)
+[19:33:23] INFO - 페이지 5 OCR 완료 (전체 시작 후 7.09초, OCR 소요: 1.66초)
+[19:33:23] INFO - AFC is enabled with max remote calls: 10.
+[19:33:23] INFO - 페이지 9 분석 시작 (전체 시작 후 7.44초)
+[19:33:24] INFO - 페이지 6 OCR 완료 (전체 시작 후 7.57초, OCR 소요: 1.64초)
+[19:33:24] INFO - 페이지 7 OCR 완료 (전체 시작 후 7.85초, OCR 소요: 1.42초)
+[19:33:24] INFO - AFC is enabled with max remote calls: 10.
+[19:33:24] INFO - 페이지 10 분석 시작 (전체 시작 후 7.94초)
+[19:33:24] INFO - AFC is enabled with max remote calls: 10.
+[19:33:24] INFO - 페이지 11 분석 시작 (전체 시작 후 8.44초)
+[19:33:25] INFO - 페이지 8 OCR 완료 (전체 시작 후 8.68초, OCR 소요: 1.74초)
+[19:33:25] INFO - AFC is enabled with max remote calls: 10.
+[19:33:25] INFO - 페이지 12 분석 시작 (전체 시작 후 8.94초)
+[19:33:25] INFO - 페이지 9 OCR 완료 (전체 시작 후 9.35초, OCR 소요: 1.91초)
+[19:33:25] INFO - AFC is enabled with max remote calls: 10.
+[19:33:25] INFO - 페이지 10 OCR 완료 (전체 시작 후 9.41초, OCR 소요: 1.47초)
+[19:33:25] INFO - 페이지 13 분석 시작 (전체 시작 후 9.44초)
+[19:33:26] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:26] INFO - 페이지 0 분석 완료 (전체 시작 후 9.54초, 페이지 소요: 6.61초)
+[19:33:26] INFO - 페이지 14 분석 시작 (전체 시작 후 9.94초)
+[19:33:26] INFO - AFC is enabled with max remote calls: 10.
+[19:33:26] INFO - 페이지 11 OCR 완료 (전체 시작 후 10.36초, OCR 소요: 1.92초)
+[19:33:26] INFO - 페이지 15 분석 시작 (전체 시작 후 10.44초)
+[19:33:27] INFO - 페이지 16 분석 시작 (전체 시작 후 10.94초)
+[19:33:27] INFO - 페이지 13 OCR 완료 (전체 시작 후 11.23초, OCR 소요: 1.79초)
+[19:33:27] INFO - 페이지 17 분석 시작 (전체 시작 후 11.45초)
+[19:33:28] INFO - AFC is enabled with max remote calls: 10.
+[19:33:28] INFO - 페이지 12 OCR 완료 (전체 시작 후 11.66초, OCR 소요: 2.72초)
+[19:33:28] INFO - 페이지 18 분석 시작 (전체 시작 후 11.95초)
+[19:33:28] INFO - 페이지 19 분석 시작 (전체 시작 후 12.45초)
+[19:33:28] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:29] INFO - 페이지 6 분석 완료 (전체 시작 후 12.53초, 페이지 소요: 6.60초)
+[19:33:29] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:29] INFO - 페이지 2 분석 완료 (전체 시작 후 12.57초, 페이지 소요: 8.64초)
+[19:33:29] INFO - 페이지 20 분석 시작 (전체 시작 후 12.95초)
+[19:33:29] INFO - AFC is enabled with max remote calls: 10.
+[19:33:29] INFO - 페이지 14 OCR 완료 (전체 시작 후 13.12초, OCR 소요: 3.18초)
+[19:33:29] INFO - 페이지 21 분석 시작 (전체 시작 후 13.45초)
+[19:33:30] INFO - 페이지 22 분석 시작 (전체 시작 후 13.95초)
+[19:33:30] INFO - 페이지 15 OCR 완료 (전체 시작 후 14.28초, OCR 소요: 3.84초)
+[19:33:30] INFO - 페이지 23 분석 시작 (전체 시작 후 14.45초)
+[19:33:31] INFO - AFC is enabled with max remote calls: 10.
+[19:33:31] INFO - 페이지 16 OCR 완료 (전체 시작 후 14.83초, OCR 소요: 3.88초)
+[19:33:31] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:31] INFO - 페이지 1 분석 완료 (전체 시작 후 14.95초, 페이지 소요: 11.52초)
+[19:33:31] INFO - 페이지 24 분석 시작 (전체 시작 후 14.95초)
+[19:33:31] INFO - 페이지 25 분석 시작 (전체 시작 후 15.46초)
+[19:33:32] INFO - 페이지 26 분석 시작 (전체 시작 후 15.96초)
+[19:33:32] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:32] INFO - 페이지 3 분석 완료 (전체 시작 후 16.16초, 페이지 소요: 11.73초)
+[19:33:32] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:32] INFO - 페이지 10 분석 완료 (전체 시작 후 16.40초, 페이지 소요: 8.46초)
+[19:33:32] INFO - 페이지 27 분석 시작 (전체 시작 후 16.46초)
+[19:33:33] INFO - AFC is enabled with max remote calls: 10.
+[19:33:33] INFO - 페이지 18 OCR 완료 (전체 시작 후 16.73초, OCR 소요: 4.78초)
+[19:33:33] INFO - 페이지 17 OCR 완료 (전체 시작 후 16.94초, OCR 소요: 5.49초)
+[19:33:33] INFO - 페이지 28 분석 시작 (전체 시작 후 16.96초)
+[19:33:33] INFO - 페이지 29 분석 시작 (전체 시작 후 17.46초)
+[19:33:34] INFO - 페이지 30 분석 시작 (전체 시작 후 17.96초)
+[19:33:34] INFO - 페이지 20 OCR 완료 (전체 시작 후 18.11초, OCR 소요: 5.17초)
+[19:33:34] INFO - 페이지 31 분석 시작 (전체 시작 후 18.46초)
+[19:33:35] INFO - AFC is enabled with max remote calls: 10.
+[19:33:35] INFO - 페이지 19 OCR 완료 (전체 시작 후 18.53초, OCR 소요: 6.09초)
+[19:33:35] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:35] INFO - 페이지 4 분석 완료 (전체 시작 후 18.75초, 페이지 소요: 13.81초)
+[19:33:35] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:35] INFO - AFC is enabled with max remote calls: 10.
+[19:33:35] INFO - 페이지 9 분석 완료 (전체 시작 후 18.84초, 페이지 소요: 11.40초)
+[19:33:35] INFO - 페이지 32 분석 시작 (전체 시작 후 18.96초)
+[19:33:35] INFO - 페이지 21 OCR 완료 (전체 시작 후 19.04초, OCR 소요: 5.59초)
+[19:33:35] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:35] INFO - 페이지 5 분석 완료 (전체 시작 후 19.06초, 페이지 소요: 13.63초)
+[19:33:35] INFO - 페이지 33 분석 시작 (전체 시작 후 19.46초)
+[19:33:36] INFO - 페이지 34 분석 시작 (전체 시작 후 19.96초)
+[19:33:36] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:36] INFO - 페이지 11 분석 완료 (전체 시작 후 20.05초, 페이지 소요: 11.61초)
+[19:33:36] INFO - 페이지 22 OCR 완료 (전체 시작 후 20.34초, OCR 소요: 6.38초)
+[19:33:36] INFO - AFC is enabled with max remote calls: 10.
+[19:33:36] INFO - 페이지 24 OCR 완료 (전체 시작 후 20.37초, OCR 소요: 5.42초)
+[19:33:36] INFO - 페이지 35 분석 시작 (전체 시작 후 20.47초)
+[19:33:37] INFO - 페이지 25 OCR 완료 (전체 시작 후 20.58초, OCR 소요: 5.13초)
+[19:33:37] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:37] INFO - AFC is enabled with max remote calls: 10.
+[19:33:37] INFO - 페이지 8 분석 완료 (전체 시작 후 20.86초, 페이지 소요: 13.92초)
+[19:33:37] INFO - 페이지 36 분석 시작 (전체 시작 후 20.97초)
+[19:33:37] INFO - 페이지 23 OCR 완료 (전체 시작 후 21.28초, OCR 소요: 6.83초)
+[19:33:38] INFO - 페이지 26 OCR 완료 (전체 시작 후 21.81초, OCR 소요: 5.86초)
+[19:33:39] INFO - AFC is enabled with max remote calls: 10.
+[19:33:39] INFO - 페이지 27 OCR 완료 (전체 시작 후 22.65초, OCR 소요: 6.19초)
+[19:33:39] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:39] INFO - 페이지 14 분석 완료 (전체 시작 후 22.78초, 페이지 소요: 12.84초)
+[19:33:39] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:39] INFO - AFC is enabled with max remote calls: 10.
+[19:33:39] INFO - 페이지 7 분석 완료 (전체 시작 후 22.89초, 페이지 소요: 16.45초)
+[19:33:39] INFO - 페이지 28 OCR 완료 (전체 시작 후 22.91초, OCR 소요: 5.95초)
+[19:33:39] INFO - AFC is enabled with max remote calls: 10.
+[19:33:39] INFO - 페이지 29 OCR 완료 (전체 시작 후 23.17초, OCR 소요: 5.71초)
+[19:33:40] INFO - 페이지 30 OCR 완료 (전체 시작 후 23.72초, OCR 소요: 5.76초)
+[19:33:40] INFO - 페이지 32 OCR 완료 (전체 시작 후 24.48초, OCR 소요: 5.52초)
+[19:33:41] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:41] INFO - AFC is enabled with max remote calls: 10.
+[19:33:41] INFO - 페이지 12 분석 완료 (전체 시작 후 24.73초, 페이지 소요: 15.79초)
+[19:33:41] INFO - 페이지 31 OCR 완료 (전체 시작 후 24.95초, OCR 소요: 6.49초)
+[19:33:41] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:41] INFO - AFC is enabled with max remote calls: 10.
+[19:33:41] INFO - 페이지 13 분석 완료 (전체 시작 후 25.04초, 페이지 소요: 15.60초)
+[19:33:42] INFO - 페이지 33 OCR 완료 (전체 시작 후 25.78초, OCR 소요: 6.32초)
+[19:33:42] INFO - AFC is enabled with max remote calls: 10.
+[19:33:42] INFO - 페이지 34 OCR 완료 (전체 시작 후 26.40초, OCR 소요: 6.44초)
+[19:33:43] INFO - AFC is enabled with max remote calls: 10.
+[19:33:43] INFO - 페이지 35 OCR 완료 (전체 시작 후 27.03초, OCR 소요: 6.57초)
+[19:33:44] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:44] INFO - AFC is enabled with max remote calls: 10.
+[19:33:44] INFO - 페이지 18 분석 완료 (전체 시작 후 27.93초, 페이지 소요: 15.98초)
+[19:33:44] INFO - AFC is enabled with max remote calls: 10.
+[19:33:44] INFO - 페이지 36 OCR 완료 (전체 시작 후 27.95초, OCR 소요: 6.98초)
+[19:33:47] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:47] INFO - AFC is enabled with max remote calls: 10.
+[19:33:47] INFO - 페이지 17 분석 완료 (전체 시작 후 30.60초, 페이지 소요: 19.15초)
+[19:33:49] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:49] INFO - AFC is enabled with max remote calls: 10.
+[19:33:49] INFO - 페이지 20 분석 완료 (전체 시작 후 33.13초, 페이지 소요: 20.18초)
+[19:33:52] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:52] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:52] INFO - AFC is enabled with max remote calls: 10.
+[19:33:52] INFO - 페이지 23 분석 완료 (전체 시작 후 35.80초, 페이지 소요: 21.34초)
+[19:33:52] INFO - AFC is enabled with max remote calls: 10.
+[19:33:52] INFO - 페이지 22 분석 완료 (전체 시작 후 35.81초, 페이지 소요: 21.86초)
+[19:33:53] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:53] INFO - AFC is enabled with max remote calls: 10.
+[19:33:53] INFO - 페이지 19 분석 완료 (전체 시작 후 36.81초, 페이지 소요: 24.36초)
+[19:33:53] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:53] INFO - AFC is enabled with max remote calls: 10.
+[19:33:53] INFO - 페이지 16 분석 완료 (전체 시작 후 37.33초, 페이지 소요: 26.38초)
+[19:33:53] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:53] INFO - AFC is enabled with max remote calls: 10.
+[19:33:53] INFO - 페이지 25 분석 완료 (전체 시작 후 37.42초, 페이지 소요: 21.97초)
+[19:33:54] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:54] INFO - AFC is enabled with max remote calls: 10.
+[19:33:54] INFO - 페이지 29 분석 완료 (전체 시작 후 38.11초, 페이지 소요: 20.65초)
+[19:33:55] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:55] INFO - AFC is enabled with max remote calls: 10.
+[19:33:55] INFO - 페이지 15 분석 완료 (전체 시작 후 38.94초, 페이지 소요: 28.49초)
+[19:33:57] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:33:57] INFO - 페이지 21 분석 완료 (전체 시작 후 41.10초, 페이지 소요: 27.65초)
+[19:34:01] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:34:01] INFO - 페이지 24 분석 완료 (전체 시작 후 44.67초, 페이지 소요: 29.72초)
+[19:34:01] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:34:01] INFO - 페이지 30 분석 완료 (전체 시작 후 45.44초, 페이지 소요: 27.48초)
+[19:34:03] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:34:03] INFO - 페이지 26 분석 완료 (전체 시작 후 47.28초, 페이지 소요: 31.33초)
+[19:34:04] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:34:04] INFO - 페이지 27 분석 완료 (전체 시작 후 48.17초, 페이지 소요: 31.71초)
+[19:34:04] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:34:04] INFO - 페이지 28 분석 완료 (전체 시작 후 48.37초, 페이지 소요: 31.41초)
+[19:34:05] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:34:05] INFO - 페이지 33 분석 완료 (전체 시작 후 48.85초, 페이지 소요: 29.38초)
+[19:34:06] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:34:06] INFO - 페이지 34 분석 완료 (전체 시작 후 50.27초, 페이지 소요: 30.30초)
+[19:34:09] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:34:09] INFO - 페이지 32 분석 완료 (전체 시작 후 52.66초, 페이지 소요: 33.70초)
+[19:34:09] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:34:09] INFO - 페이지 35 분석 완료 (전체 시작 후 52.76초, 페이지 소요: 32.30초)
+[19:34:11] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:34:11] INFO - 페이지 31 분석 완료 (전체 시작 후 54.91초, 페이지 소요: 36.45초)
+[19:34:24] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+[19:34:24] INFO - 페이지 36 분석 완료 (전체 시작 후 68.39초, 페이지 소요: 47.43초)
+[19:34:24] INFO - 전체 분석 완료 - 소요 시간: 68.39초
+[19:34:24] INFO - 분석 결과 저장: src/results/ISens_IR3_extract_gemini-gemini-2.5-flash_report_gemini-gemini-2.5-pro_CLOVA_debug_rps2_0/IR3.json
+[19:34:24] INFO - OCR 결과 저장: src/results/ISens_IR3_extract_gemini-gemini-2.5-flash_report_gemini-gemini-2.5-pro_CLOVA_debug_rps2_0/IR3_ocr.json
+[19:34:24] INFO - 보고서 생성 시작 - 총 3개 유형 (Report Model: gemini/gemini-2.5-pro, Web: False)
+[19:34:24] INFO - AFC is enabled with max remote calls: 10.
+[19:34:25] INFO - AFC is enabled with max remote calls: 10.
+[19:34:25] INFO - AFC is enabled with max remote calls: 10.
+[19:34:55] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+[19:34:57] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+[19:35:02] INFO - HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent "HTTP/1.1 200 OK"
+[19:35:02] INFO - 'competencies' 보고서 생성 완료 (보고서 생성 시작 후 37.78초)
+[19:35:02] INFO - 'b2g_strategy' 보고서 생성 완료 (보고서 생성 시작 후 37.78초)
+[19:35:02] INFO - 'market' 보고서 생성 완료 (보고서 생성 시작 후 37.78초)
+[19:35:02] INFO - 모든 보고서 저장 완료: src/results/ISens_IR3_extract_gemini-gemini-2.5-flash_report_gemini-gemini-2.5-pro_CLOVA_debug_rps2_0/ISens_IR3.json
+[19:35:02] INFO - 
+API 호출 통계 - OCR: 37회, LLM: 40회
+
+============================================================
+API CALL STATISTICS
+============================================================
+OCR API 호출: 37회
+LLM API 호출: 40회
+총 API 호출: 77회
+============================================================

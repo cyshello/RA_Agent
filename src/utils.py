@@ -26,6 +26,18 @@ def parse_json(response: str | dict | list) -> dict:
         
         # 문자열이면 JSON으로 파싱
         if isinstance(response, str):
+            # Markdown 코드 블록 제거 (```json ... ``` 또는 ``` ... ```)
+            response = response.strip()
+            if response.startswith("```"):
+                # 첫 번째 줄 제거 (```json 또는 ```)
+                lines = response.split('\n')
+                if lines[0].strip().startswith("```"):
+                    lines = lines[1:]
+                # 마지막 줄 제거 (```)
+                if lines and lines[-1].strip() == "```":
+                    lines = lines[:-1]
+                response = '\n'.join(lines).strip()
+            
             parsed = json.loads(response)
         elif isinstance(response, (dict, list)):
             parsed = response
@@ -225,9 +237,20 @@ def generateSkeleton(arg : ChatRequest):
     """
     pass
 
-async def extractJSON(image: PIL.Image, dispatcher: Dispatcher, page_num: int = None, start_time_base: float = None, debug: bool = False) -> dict:
+async def extractJSON(image: PIL.Image, dispatcher: Dispatcher, page_num: int = None, start_time_base: float = None, debug: bool = False, ocr_provider: str = "CLOVA", model_provider: str = "openai", model_name: str = "gpt-4o", company=None) -> dict:
     """
     extract JSON from an image
+    
+    Args:
+        image: 분석할 이미지
+        dispatcher: API 디스패처
+        page_num: 페이지 번호
+        start_time_base: 전체 분석 시작 시간
+        debug: 디버그 모드 여부
+        ocr_provider: OCR API 종류 ("CLOVA" 또는 "Upstage")
+        model_provider: AI 모델 제공자 ("openai" 또는 "gemini")
+        model_name: 사용할 구체적인 모델명
+        company: Company 객체 (API 호출 카운터 증가용)
     """
     page_start_time = time.time()
     page_label = f"페이지 {page_num}" if page_num is not None else "페이지"
@@ -245,10 +268,27 @@ async def extractJSON(image: PIL.Image, dispatcher: Dispatcher, page_num: int = 
     img_byte_arr = io.BytesIO()
     image.save(img_byte_arr, format='PNG')
     img_byte_arr = img_byte_arr.getvalue()
-    #lines = await loop.run_in_executor(None, Upstage_ocr, img_byte_arr)
-    lines = await loop.run_in_executor(None, CLOVA_ocr, img_byte_arr)
+    
+    # OCR 제공자 선택
+    if ocr_provider == "Upstage":
+        lines = await loop.run_in_executor(None, Upstage_ocr, img_byte_arr)
+    else:  # CLOVA (기본값)
+        lines = await loop.run_in_executor(None, CLOVA_ocr, img_byte_arr)
+    
+    # OCR 호출 카운터 증가
+    if company:
+        company.ocr_call_count += 1
 
     ocr_text = "\n".join(lines)
+    
+    # OCR 완료 시간 로깅 (debug 모드일 때만)
+    if debug:
+        ocr_elapsed = time.time() - page_start_time
+        if start_time_base:
+            total_elapsed_ocr = time.time() - start_time_base
+            logger.info(f"{page_label} OCR 완료 (전체 시작 후 {total_elapsed_ocr:.2f}초, OCR 소요: {ocr_elapsed:.2f}초)")
+        else:
+            logger.info(f"{page_label} OCR 완료 - 소요 시간: {ocr_elapsed:.2f}초")
 
     systemPrompt = """당신은 주어진 기업 소개 문서 중 한 페이지를 보고, 해당 페이지 안의 정보를 추출하는 전문가입니다. 페이지 안의 텍스트들은 모두 추출되어 주어지며, 이미지를 보고 슬라이드를 최대한 자세하게 설명하여 아래와 같이 JSON 형식으로 반환하세요. \
             이때, 다음과 같은 사항을 꼭 지켜주세요. \n
@@ -288,8 +328,8 @@ async def extractJSON(image: PIL.Image, dispatcher: Dispatcher, page_num: int = 
     extractPrompt = "다음은 이미지에서 추출한 텍스트입니다:\n" + ocr_text + "\n이 텍스트를 바탕으로 아래의 JSON 스키마에 맞추어 정보를 추출해 주세요.\n"
 
     request = ChatRequest(
-        provider="openai",
-        model="gpt-4o",
+        provider=model_provider,
+        model=model_name,
         messages=[
             {
                 "role": "system",
@@ -305,25 +345,11 @@ async def extractJSON(image: PIL.Image, dispatcher: Dispatcher, page_num: int = 
         output="json"
     )
 
-    # request = ChatRequest(
-    #     provider="gemini",
-    #     model="gemini-2.0-flash-exp",
-    #     messages=[
-    #         {
-    #             "role": "system",
-    #             "content": systemPrompt
-    #         },
-    #         {
-    #             "role": "user",
-    #             "content": extractPrompt
-    #         }
-    #     ],
-    #     input="with-image",
-    #     image=image,
-    #     output="json"
-    # )
-
     response = await dispatcher.dispatch(request)
+    
+    # LLM 호출 카운터 증가
+    if company:
+        company.llm_call_count += 1
     
     # JSON 문자열을 dict로 변환
     response = parse_json(response)
