@@ -13,13 +13,12 @@ eval "$(conda shell.bash hook)"
 conda activate AX
 
 # 파라미터 설정
-COMPANY_NAME="Nudge_Healthcare"
+COMPANY_NAME="Nudge_Healthcare_test"
 DOCUMENTS="IR1:data/IR1.pdf"  # 여러 문서: "doc1:path1 doc2:path2"
 EXTRACT_MODEL="gemini"                           # 문서 추출용: openai 또는 gemini
 EXTRACT_MODEL_NAME="gemini-2.5-flash" #"gemini-3-pro-preview"        # 비전모델필요
 REPORT_MODEL="openai" #"openai"                            # 보고서 생성용: openai 또는 gemini
 REPORT_MODEL_NAME="gpt-4o" #"gpt-4o"                       # 사용 가능: gpt-4o, gpt-4o-mini, o1-preview, o1-mini
-OCR_PROVIDER="CLOVA"                             # CLOVA 또는 Upstage
 WEB_SEARCH_FLAG=""                               # 웹 검색 활성화: "--web", 비활성화: ""
 MAX_RPS="2.0"
 DEBUG_FLAG="--debug"                             # 디버그 모드: "--debug", 비활성화: ""
@@ -32,7 +31,6 @@ python3 main.py \
     --extract-model-name "$EXTRACT_MODEL_NAME" \
     --report-model "$REPORT_MODEL" \
     --report-model-name "$REPORT_MODEL_NAME" \
-    --ocr "$OCR_PROVIDER" \
     --max-rps "$MAX_RPS" \
     $WEB_SEARCH_FLAG \
     $DEBUG_FLAG

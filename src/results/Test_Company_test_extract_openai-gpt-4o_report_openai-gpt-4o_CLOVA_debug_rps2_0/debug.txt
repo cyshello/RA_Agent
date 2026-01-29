@@ -1,0 +1,172 @@
+[15:45:07] INFO - 디버그 로그 저장 경로: src/results/Test_Company_test_extract_openai-gpt-4o_report_openai-gpt-4o_CLOVA_debug_rps2_0/debug.txt
+[15:45:16] INFO - 문서 'test' (data/instruction1.pdf) - 총 37페이지
+[15:45:16] INFO - 분석 시작 (debug 모드, RPS: 2.0, OCR: CLOVA, Extract Model: openai/gpt-4o)
+[15:45:16] INFO - 페이지 0 분석 시작 (전체 시작 후 8.37초)
+[15:45:16] INFO - 페이지 1 분석 시작 (전체 시작 후 8.87초)
+[15:45:17] INFO - 페이지 2 분석 시작 (전체 시작 후 9.37초)
+[15:45:17] INFO - 페이지 3 분석 시작 (전체 시작 후 9.87초)
+[15:45:18] INFO - 페이지 1 OCR 완료 (전체 시작 후 10.26초, OCR 소요: 1.39초)
+[15:45:18] INFO - 페이지 0 OCR 완료 (전체 시작 후 10.74초, OCR 소요: 2.37초)
+[15:45:18] INFO - 페이지 4 분석 시작 (전체 시작 후 10.75초)
+[15:45:18] INFO - 페이지 2 OCR 완료 (전체 시작 후 11.03초, OCR 소요: 1.66초)
+[15:45:19] INFO - 페이지 5 분석 시작 (전체 시작 후 11.25초)
+[15:45:19] INFO - 페이지 6 분석 시작 (전체 시작 후 11.75초)
+[15:45:20] INFO - 페이지 7 분석 시작 (전체 시작 후 12.25초)
+[15:45:20] INFO - 페이지 4 OCR 완료 (전체 시작 후 12.56초, OCR 소요: 1.82초)
+[15:45:20] INFO - 페이지 8 분석 시작 (전체 시작 후 12.75초)
+[15:45:20] INFO - 페이지 3 OCR 완료 (전체 시작 후 12.86초, OCR 소요: 2.99초)
+[15:45:21] INFO - 페이지 9 분석 시작 (전체 시작 후 13.45초)
+[15:45:21] INFO - 페이지 10 분석 시작 (전체 시작 후 13.95초)
+[15:45:21] INFO - 페이지 6 OCR 완료 (전체 시작 후 14.04초, OCR 소요: 2.29초)
+[15:45:22] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:22] INFO - 페이지 1 분석 완료 (전체 시작 후 14.13초, 페이지 소요: 5.26초)
+[15:45:22] INFO - 페이지 5 OCR 완료 (전체 시작 후 14.16초, OCR 소요: 2.91초)
+[15:45:22] INFO - 페이지 11 분석 시작 (전체 시작 후 14.45초)
+[15:45:22] INFO - 페이지 7 OCR 완료 (전체 시작 후 14.60초, OCR 소요: 2.35초)
+[15:45:22] INFO - 페이지 12 분석 시작 (전체 시작 후 14.95초)
+[15:45:23] INFO - 페이지 8 OCR 완료 (전체 시작 후 15.35초, OCR 소요: 2.60초)
+[15:45:23] INFO - 페이지 13 분석 시작 (전체 시작 후 15.45초)
+[15:45:23] INFO - 페이지 9 OCR 완료 (전체 시작 후 15.53초, OCR 소요: 2.08초)
+[15:45:23] INFO - 페이지 10 OCR 완료 (전체 시작 후 15.76초, OCR 소요: 1.81초)
+[15:45:23] INFO - 페이지 14 분석 시작 (전체 시작 후 15.95초)
+[15:45:23] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:23] INFO - 페이지 0 분석 완료 (전체 시작 후 16.03초, 페이지 소요: 7.66초)
+[15:45:24] INFO - 페이지 15 분석 시작 (전체 시작 후 16.45초)
+[15:45:24] INFO - 페이지 11 OCR 완료 (전체 시작 후 16.78초, OCR 소요: 2.33초)
+[15:45:24] INFO - 페이지 16 분석 시작 (전체 시작 후 16.95초)
+[15:45:25] INFO - 페이지 17 분석 시작 (전체 시작 후 17.45초)
+[15:45:25] INFO - 페이지 17 OCR 완료 (전체 시작 후 17.85초, OCR 소요: 0.40초)
+[15:45:25] INFO - 페이지 18 분석 시작 (전체 시작 후 17.95초)
+[15:45:25] INFO - 페이지 12 OCR 완료 (전체 시작 후 18.10초, OCR 소요: 3.15초)
+[15:45:26] INFO - 페이지 13 OCR 완료 (전체 시작 후 18.17초, OCR 소요: 2.72초)
+[15:45:26] INFO - 페이지 15 OCR 완료 (전체 시작 후 18.26초, OCR 소요: 1.80초)
+[15:45:26] INFO - 페이지 14 OCR 완료 (전체 시작 후 18.77초, OCR 소요: 2.82초)
+[15:45:26] INFO - 페이지 19 분석 시작 (전체 시작 후 18.77초)
+[15:45:27] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:27] INFO - 페이지 4 분석 완료 (전체 시작 후 19.16초, 페이지 소요: 8.41초)
+[15:45:27] INFO - 페이지 20 분석 시작 (전체 시작 후 19.27초)
+[15:45:27] INFO - 페이지 21 분석 시작 (전체 시작 후 19.77초)
+[15:45:27] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:27] INFO - 페이지 2 분석 완료 (전체 시작 후 19.93초, 페이지 소요: 10.56초)
+[15:45:27] INFO - 페이지 16 OCR 완료 (전체 시작 후 19.94초, OCR 소요: 2.98초)
+[15:45:27] INFO - 페이지 18 OCR 완료 (전체 시작 후 19.95초, OCR 소요: 2.00초)
+[15:45:28] INFO - 페이지 22 분석 시작 (전체 시작 후 20.27초)
+[15:45:28] INFO - 페이지 19 OCR 완료 (전체 시작 후 20.49초, OCR 소요: 1.72초)
+[15:45:28] INFO - 페이지 23 분석 시작 (전체 시작 후 20.78초)
+[15:45:29] INFO - 페이지 24 분석 시작 (전체 시작 후 21.28초)
+[15:45:29] INFO - 페이지 20 OCR 완료 (전체 시작 후 21.37초, OCR 소요: 2.10초)
+[15:45:29] INFO - 페이지 25 분석 시작 (전체 시작 후 21.78초)
+[15:45:30] INFO - 페이지 26 분석 시작 (전체 시작 후 22.28초)
+[15:45:30] INFO - 페이지 21 OCR 완료 (전체 시작 후 22.50초, OCR 소요: 2.73초)
+[15:45:30] INFO - 페이지 27 분석 시작 (전체 시작 후 22.78초)
+[15:45:30] INFO - 페이지 27 OCR 완료 (전체 시작 후 23.08초, OCR 소요: 0.30초)
+[15:45:31] INFO - 페이지 23 OCR 완료 (전체 시작 후 23.22초, OCR 소요: 2.44초)
+[15:45:31] INFO - 페이지 28 분석 시작 (전체 시작 후 23.28초)
+[15:45:31] INFO - 페이지 24 OCR 완료 (전체 시작 후 23.42초, OCR 소요: 2.14초)
+[15:45:31] INFO - 페이지 25 OCR 완료 (전체 시작 후 23.73초, OCR 소요: 1.95초)
+[15:45:31] INFO - 페이지 29 분석 시작 (전체 시작 후 23.78초)
+[15:45:31] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:31] INFO - 페이지 10 분석 완료 (전체 시작 후 23.90초, 페이지 소요: 9.95초)
+[15:45:31] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:32] INFO - 페이지 5 분석 완료 (전체 시작 후 24.15초, 페이지 소요: 12.90초)
+[15:45:32] INFO - 페이지 22 OCR 완료 (전체 시작 후 24.27초, OCR 소요: 3.99초)
+[15:45:32] INFO - 페이지 30 분석 시작 (전체 시작 후 24.28초)
+[15:45:32] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:32] INFO - 페이지 9 분석 완료 (전체 시작 후 24.66초, 페이지 소요: 11.21초)
+[15:45:32] INFO - 페이지 26 OCR 완료 (전체 시작 후 24.72초, OCR 소요: 2.44초)
+[15:45:32] INFO - 페이지 31 분석 시작 (전체 시작 후 24.78초)
+[15:45:33] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:33] INFO - 페이지 7 분석 완료 (전체 시작 후 25.24초, 페이지 소요: 12.99초)
+[15:45:33] INFO - 페이지 32 분석 시작 (전체 시작 후 25.29초)
+[15:45:33] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:33] INFO - 페이지 3 분석 완료 (전체 시작 후 25.37초, 페이지 소요: 15.50초)
+[15:45:33] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:33] INFO - 페이지 17 분석 완료 (전체 시작 후 25.44초, 페이지 소요: 7.98초)
+[15:45:33] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:33] INFO - 페이지 15 분석 완료 (전체 시작 후 25.66초, 페이지 소요: 9.21초)
+[15:45:33] INFO - 페이지 33 분석 시작 (전체 시작 후 25.79초)
+[15:45:33] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:33] INFO - 페이지 11 분석 완료 (전체 시작 후 25.88초, 페이지 소요: 11.43초)
+[15:45:33] INFO - 페이지 30 OCR 완료 (전체 시작 후 26.07초, OCR 소요: 1.79초)
+[15:45:34] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:34] INFO - 페이지 6 분석 완료 (전체 시작 후 26.28초, 페이지 소요: 14.53초)
+[15:45:34] INFO - 페이지 34 분석 시작 (전체 시작 후 26.29초)
+[15:45:34] INFO - 페이지 28 OCR 완료 (전체 시작 후 26.66초, OCR 소요: 3.38초)
+[15:45:34] INFO - 페이지 35 분석 시작 (전체 시작 후 26.79초)
+[15:45:34] INFO - 페이지 31 OCR 완료 (전체 시작 후 27.05초, OCR 소요: 2.26초)
+[15:45:35] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:35] INFO - 페이지 14 분석 완료 (전체 시작 후 27.16초, 페이지 소요: 11.20초)
+[15:45:35] INFO - 페이지 36 분석 시작 (전체 시작 후 27.41초)
+[15:45:35] INFO - 페이지 29 OCR 완료 (전체 시작 후 27.63초, OCR 소요: 3.85초)
+[15:45:35] INFO - 페이지 33 OCR 완료 (전체 시작 후 28.07초, OCR 소요: 2.28초)
+[15:45:36] INFO - 페이지 34 OCR 완료 (전체 시작 후 28.25초, OCR 소요: 1.96초)
+[15:45:36] INFO - 페이지 35 OCR 완료 (전체 시작 후 28.59초, OCR 소요: 1.80초)
+[15:45:36] INFO - 페이지 32 OCR 완료 (전체 시작 후 28.61초, OCR 소요: 3.33초)
+[15:45:36] INFO - 페이지 36 OCR 완료 (전체 시작 후 28.80초, OCR 소요: 1.40초)
+[15:45:36] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:36] INFO - 페이지 8 분석 완료 (전체 시작 후 28.89초, 페이지 소요: 16.14초)
+[15:45:36] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:36] INFO - 페이지 13 분석 완료 (전체 시작 후 28.99초, 페이지 소요: 13.54초)
+[15:45:37] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:37] INFO - 페이지 18 분석 완료 (전체 시작 후 29.15초, 페이지 소요: 11.19초)
+[15:45:37] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:37] INFO - 페이지 21 분석 완료 (전체 시작 후 29.23초, 페이지 소요: 9.46초)
+[15:45:37] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:37] INFO - 페이지 19 분석 완료 (전체 시작 후 29.37초, 페이지 소요: 10.60초)
+[15:45:37] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:37] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:37] INFO - 페이지 24 분석 완료 (전체 시작 후 29.64초, 페이지 소요: 8.36초)
+[15:45:37] INFO - 페이지 12 분석 완료 (전체 시작 후 29.64초, 페이지 소요: 14.69초)
+[15:45:37] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:37] INFO - 페이지 27 분석 완료 (전체 시작 후 29.73초, 페이지 소요: 6.95초)
+[15:45:38] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:38] INFO - 페이지 25 분석 완료 (전체 시작 후 30.22초, 페이지 소요: 8.44초)
+[15:45:38] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:38] INFO - 페이지 20 분석 완료 (전체 시작 후 30.34초, 페이지 소요: 11.07초)
+[15:45:38] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:38] INFO - 페이지 16 분석 완료 (전체 시작 후 30.68초, 페이지 소요: 13.73초)
+[15:45:40] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:40] INFO - 페이지 30 분석 완료 (전체 시작 후 32.34초, 페이지 소요: 8.06초)
+[15:45:40] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:40] INFO - 페이지 23 분석 완료 (전체 시작 후 32.99초, 페이지 소요: 12.22초)
+[15:45:40] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:40] INFO - 페이지 36 분석 완료 (전체 시작 후 33.09초, 페이지 소요: 5.68초)
+[15:45:41] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:41] INFO - 페이지 28 분석 완료 (전체 시작 후 33.55초, 페이지 소요: 10.27초)
+[15:45:41] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:41] INFO - 페이지 31 분석 완료 (전체 시작 후 33.64초, 페이지 소요: 8.86초)
+[15:45:42] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:42] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:42] INFO - 페이지 35 분석 완료 (전체 시작 후 34.62초, 페이지 소요: 7.83초)
+[15:45:42] INFO - 페이지 34 분석 완료 (전체 시작 후 34.67초, 페이지 소요: 8.39초)
+[15:45:43] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:43] INFO - 페이지 22 분석 완료 (전체 시작 후 35.96초, 페이지 소요: 15.69초)
+[15:45:44] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:44] INFO - 페이지 29 분석 완료 (전체 시작 후 36.88초, 페이지 소요: 13.10초)
+[15:45:45] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:45] INFO - 페이지 33 분석 완료 (전체 시작 후 37.36초, 페이지 소요: 11.57초)
+[15:45:45] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:45] INFO - 페이지 26 분석 완료 (전체 시작 후 37.56초, 페이지 소요: 15.28초)
+[15:45:50] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:50] INFO - 페이지 32 분석 완료 (전체 시작 후 42.76초, 페이지 소요: 17.47초)
+[15:45:50] INFO - 전체 분석 완료 - 소요 시간: 42.76초
+[15:45:50] INFO - 분석 결과 저장: src/results/Test_Company_test_extract_openai-gpt-4o_report_openai-gpt-4o_CLOVA_debug_rps2_0/test.json
+[15:45:50] INFO - OCR 결과 저장: src/results/Test_Company_test_extract_openai-gpt-4o_report_openai-gpt-4o_CLOVA_debug_rps2_0/test_ocr.json
+[15:45:50] INFO - 보고서 생성 시작 - 총 3개 유형 (Report Model: openai/gpt-4o, Web: False)
+[15:45:56] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:58] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:59] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[15:45:59] INFO - 'competencies' 보고서 생성 완료 (보고서 생성 시작 후 9.19초)
+[15:45:59] INFO - 'b2g_strategy' 보고서 생성 완료 (보고서 생성 시작 후 9.19초)
+[15:45:59] INFO - 'market' 보고서 생성 완료 (보고서 생성 시작 후 9.19초)
+[15:45:59] INFO - 모든 보고서 저장 완료: src/results/Test_Company_test_extract_openai-gpt-4o_report_openai-gpt-4o_CLOVA_debug_rps2_0/Test Company_test.json
+[15:45:59] INFO - 
+API 호출 통계 - OCR: 37회, LLM: 40회
+
+============================================================
+API CALL STATISTICS
+============================================================
+OCR API 호출: 37회
+LLM API 호출: 40회
+총 API 호출: 77회
+============================================================

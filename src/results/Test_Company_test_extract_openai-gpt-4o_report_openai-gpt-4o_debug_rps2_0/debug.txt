@@ -1,0 +1,9 @@
+[16:44:09] INFO - 디버그 로그 저장 경로: src/results/Test_Company_test_extract_openai-gpt-4o_report_openai-gpt-4o_debug_rps2_0/debug.txt
+[16:44:11] INFO - 문서 'test' (data/IR2.pdf) - 총 8페이지
+[16:44:11] INFO - 분석 시작 (debug 모드, RPS: 2.0, Extract Model: openai/gpt-4o)
+[16:44:11] INFO - 페이지 0 분석 시작 (전체 시작 후 1.87초)
+[16:44:11] INFO - 페이지 1 분석 시작 (전체 시작 후 2.37초)
+[16:44:12] INFO - 페이지 2 분석 시작 (전체 시작 후 2.87초)
+[16:44:12] INFO - 페이지 3 분석 시작 (전체 시작 후 3.41초)
+[16:44:13] INFO - 페이지 4 분석 시작 (전체 시작 후 3.92초)
+[16:44:13] INFO - 페이지 0 OCR 완료 (전체 시작 후 4.11초, OCR 소요: 2.24초)

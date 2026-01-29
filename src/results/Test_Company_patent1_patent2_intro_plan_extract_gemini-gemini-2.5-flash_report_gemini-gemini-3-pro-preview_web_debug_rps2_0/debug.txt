@@ -1,0 +1,417 @@
+[19:32:47] INFO - 디버그 로그 저장 경로: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/debug.txt
+[19:32:47] INFO - 문서 'patent1' (data/test/patent1.pdf) - 총 14페이지
+[19:32:48] INFO - 문서 'patent2' (data/test/patent2.pdf) - 총 28페이지
+[19:32:51] INFO - 문서 'intro' (data/test/intro.pdf) - 총 25페이지
+[19:32:52] INFO - 문서 'plan' (data/test/business_plan.pdf) - 총 28페이지
+[19:32:52] INFO - 분석 시작 (debug 모드, RPS: 2.0, Extract Model: gemini/gemini-2.5-flash)
+[19:32:52] INFO - 페이지 0 분석 시작 (전체 시작 후 5.24초)
+[19:32:52] INFO - 페이지 0 분석 시작 (전체 시작 후 5.29초)
+[19:32:52] INFO - 페이지 0 분석 시작 (전체 시작 후 5.44초)
+[19:32:52] INFO - 페이지 0 분석 시작 (전체 시작 후 5.49초)
+[19:32:52] INFO - 페이지 1 분석 시작 (전체 시작 후 5.74초)
+[19:32:53] INFO - 페이지 1 분석 시작 (전체 시작 후 5.83초)
+[19:32:53] INFO - 페이지 1 분석 시작 (전체 시작 후 5.94초)
+[19:32:53] INFO - 페이지 1 OCR 완료 (전체 시작 후 6.01초, OCR 소요: 0.18초)
+[19:32:53] INFO - 페이지 1 분석 시작 (전체 시작 후 6.09초)
+[19:32:53] INFO - AFC is enabled with max remote calls: 10.
+[19:32:53] INFO - 페이지 2 분석 시작 (전체 시작 후 6.24초)
+[19:32:53] INFO - 페이지 1 OCR 완료 (전체 시작 후 6.29초, OCR 소요: 0.35초)
+[19:32:53] INFO - 페이지 1 OCR 완료 (전체 시작 후 6.34초, OCR 소요: 0.25초)
+[19:32:53] INFO - 페이지 2 분석 시작 (전체 시작 후 6.38초)
+[19:32:53] INFO - AFC is enabled with max remote calls: 10.
+[19:32:53] INFO - 페이지 2 분석 시작 (전체 시작 후 6.44초)
+[19:32:53] INFO - 페이지 2 OCR 완료 (전체 시작 후 6.49초, OCR 소요: 0.24초)
+[19:32:53] INFO - AFC is enabled with max remote calls: 10.
+[19:32:53] INFO - 페이지 2 OCR 완료 (전체 시작 후 6.54초, OCR 소요: 0.16초)
+[19:32:53] INFO - AFC is enabled with max remote calls: 10.
+[19:32:53] INFO - 페이지 2 분석 시작 (전체 시작 후 6.59초)
+[19:32:53] INFO - AFC is enabled with max remote calls: 10.
+[19:32:53] INFO - 페이지 3 분석 시작 (전체 시작 후 6.74초)
+[19:32:54] INFO - 페이지 2 OCR 완료 (전체 시작 후 6.81초, OCR 소요: 0.38초)
+[19:32:54] INFO - 페이지 2 OCR 완료 (전체 시작 후 6.86초, OCR 소요: 0.28초)
+[19:32:54] INFO - 페이지 0 OCR 완료 (전체 시작 후 6.91초, OCR 소요: 1.47초)
+[19:32:54] INFO - 페이지 3 분석 시작 (전체 시작 후 6.95초)
+[19:32:54] INFO - 페이지 3 분석 시작 (전체 시작 후 6.99초)
+[19:32:54] INFO - 페이지 0 OCR 완료 (전체 시작 후 7.05초, OCR 소요: 1.55초)
+[19:32:54] INFO - 페이지 3 분석 시작 (전체 시작 후 7.10초)
+[19:32:54] INFO - AFC is enabled with max remote calls: 10.
+[19:32:54] INFO - AFC is enabled with max remote calls: 10.
+[19:32:54] INFO - AFC is enabled with max remote calls: 10.
+[19:32:54] INFO - AFC is enabled with max remote calls: 10.
+[19:32:54] INFO - 페이지 4 분석 시작 (전체 시작 후 7.24초)
+[19:32:54] INFO - 페이지 0 OCR 완료 (전체 시작 후 7.37초, OCR 소요: 2.13초)
+[19:32:54] INFO - 페이지 4 분석 시작 (전체 시작 후 7.45초)
+[19:32:54] INFO - 페이지 3 OCR 완료 (전체 시작 후 7.49초, OCR 소요: 0.50초)
+[19:32:54] INFO - 페이지 4 분석 시작 (전체 시작 후 7.54초)
+[19:32:54] INFO - 페이지 0 OCR 완료 (전체 시작 후 7.59초, OCR 소요: 2.30초)
+[19:32:54] INFO - 페이지 1 OCR 완료 (전체 시작 후 7.63초, OCR 소요: 1.89초)
+[19:32:54] INFO - 페이지 4 분석 시작 (전체 시작 후 7.67초)
+[19:32:54] INFO - AFC is enabled with max remote calls: 10.
+[19:32:54] INFO - AFC is enabled with max remote calls: 10.
+[19:32:54] INFO - AFC is enabled with max remote calls: 10.
+[19:32:54] INFO - 페이지 5 분석 시작 (전체 시작 후 7.74초)
+[19:32:55] INFO - AFC is enabled with max remote calls: 10.
+[19:32:55] INFO - 페이지 4 OCR 완료 (전체 시작 후 7.88초, OCR 소요: 0.34초)
+[19:32:55] INFO - 페이지 4 OCR 완료 (전체 시작 후 7.93초, OCR 소요: 0.25초)
+[19:32:55] INFO - 페이지 5 OCR 완료 (전체 시작 후 7.97초, OCR 소요: 0.23초)
+[19:32:55] INFO - 페이지 5 분석 시작 (전체 시작 후 8.01초)
+[19:32:55] INFO - 페이지 5 분석 시작 (전체 시작 후 8.06초)
+[19:32:55] INFO - AFC is enabled with max remote calls: 10.
+[19:32:55] INFO - AFC is enabled with max remote calls: 10.
+[19:32:55] INFO - AFC is enabled with max remote calls: 10.
+[19:32:55] INFO - 페이지 5 분석 시작 (전체 시작 후 8.17초)
+[19:32:55] INFO - 페이지 6 분석 시작 (전체 시작 후 8.25초)
+[19:32:55] INFO - 페이지 5 OCR 완료 (전체 시작 후 8.39초, OCR 소요: 0.38초)
+[19:32:55] INFO - 페이지 5 OCR 완료 (전체 시작 후 8.46초, OCR 소요: 0.28초)
+[19:32:55] INFO - 페이지 6 OCR 완료 (전체 시작 후 8.50초, OCR 소요: 0.25초)
+[19:32:55] INFO - 페이지 6 분석 시작 (전체 시작 후 8.54초)
+[19:32:55] INFO - 페이지 5 OCR 완료 (전체 시작 후 8.59초, OCR 소요: 0.53초)
+[19:32:55] INFO - 페이지 6 분석 시작 (전체 시작 후 8.64초)
+[19:32:55] INFO - 페이지 6 분석 시작 (전체 시작 후 8.68초)
+[19:32:55] INFO - AFC is enabled with max remote calls: 10.
+[19:32:55] INFO - AFC is enabled with max remote calls: 10.
+[19:32:55] INFO - AFC is enabled with max remote calls: 10.
+[19:32:55] INFO - AFC is enabled with max remote calls: 10.
+[19:32:55] INFO - 페이지 7 분석 시작 (전체 시작 후 8.75초)
+[19:32:56] INFO - 페이지 6 OCR 완료 (전체 시작 후 8.84초, OCR 소요: 0.30초)
+[19:32:56] INFO - 페이지 6 OCR 완료 (전체 시작 후 8.92초, OCR 소요: 0.28초)
+[19:32:56] INFO - AFC is enabled with max remote calls: 10.
+[19:32:56] INFO - AFC is enabled with max remote calls: 10.
+[19:32:56] INFO - 페이지 7 OCR 완료 (전체 시작 후 9.00초, OCR 소요: 0.26초)
+[19:32:56] INFO - 페이지 3 OCR 완료 (전체 시작 후 9.05초, OCR 소요: 2.30초)
+[19:32:56] INFO - 페이지 7 분석 시작 (전체 시작 후 9.09초)
+[19:32:56] INFO - AFC is enabled with max remote calls: 10.
+[19:32:56] INFO - 페이지 7 분석 시작 (전체 시작 후 9.14초)
+[19:32:56] INFO - 페이지 7 분석 시작 (전체 시작 후 9.20초)
+[19:32:56] INFO - 페이지 3 OCR 완료 (전체 시작 후 9.24초, OCR 소요: 2.14초)
+[19:32:56] INFO - 페이지 8 분석 시작 (전체 시작 후 9.29초)
+[19:32:56] INFO - AFC is enabled with max remote calls: 10.
+[19:32:56] INFO - AFC is enabled with max remote calls: 10.
+[19:32:56] INFO - 페이지 7 OCR 완료 (전체 시작 후 9.45초, OCR 소요: 0.26초)
+[19:32:56] INFO - 페이지 3 OCR 완료 (전체 시작 후 9.51초, OCR 소요: 2.56초)
+[19:32:56] INFO - 페이지 8 OCR 완료 (전체 시작 후 9.57초, OCR 소요: 0.28초)
+[19:32:56] INFO - 페이지 8 분석 시작 (전체 시작 후 9.61초)
+[19:32:56] INFO - 페이지 8 분석 시작 (전체 시작 후 9.65초)
+[19:32:56] INFO - 페이지 8 분석 시작 (전체 시작 후 9.72초)
+[19:32:57] INFO - AFC is enabled with max remote calls: 10.
+[19:32:57] INFO - AFC is enabled with max remote calls: 10.
+[19:32:57] INFO - AFC is enabled with max remote calls: 10.
+[19:32:57] INFO - 페이지 9 분석 시작 (전체 시작 후 9.79초)
+[19:32:57] INFO - 페이지 8 OCR 완료 (전체 시작 후 9.90초, OCR 소요: 0.29초)
+[19:32:57] INFO - 페이지 4 OCR 완료 (전체 시작 후 9.97초, OCR 소요: 2.73초)
+[19:32:57] INFO - 페이지 8 OCR 완료 (전체 시작 후 10.01초, OCR 소요: 0.29초)
+[19:32:57] INFO - 페이지 9 OCR 완료 (전체 시작 후 10.05초, OCR 소요: 0.27초)
+[19:32:57] INFO - AFC is enabled with max remote calls: 10.
+[19:32:57] INFO - AFC is enabled with max remote calls: 10.
+[19:32:57] INFO - 페이지 9 분석 시작 (전체 시작 후 10.11초)
+[19:32:57] INFO - 페이지 9 분석 시작 (전체 시작 후 10.16초)
+[19:32:57] INFO - 페이지 9 분석 시작 (전체 시작 후 10.22초)
+[19:32:57] INFO - AFC is enabled with max remote calls: 10.
+[19:32:57] INFO - AFC is enabled with max remote calls: 10.
+[19:32:57] INFO - 페이지 10 분석 시작 (전체 시작 후 10.29초)
+[19:32:57] INFO - 페이지 4 OCR 완료 (전체 시작 후 10.42초, OCR 소요: 2.97초)
+[19:32:57] INFO - 페이지 9 OCR 완료 (전체 시작 후 10.48초, OCR 소요: 0.37초)
+[19:32:57] INFO - 페이지 10 OCR 완료 (전체 시작 후 10.56초, OCR 소요: 0.27초)
+[19:32:57] INFO - 페이지 9 OCR 완료 (전체 시작 후 10.60초, OCR 소요: 0.44초)
+[19:32:57] INFO - 페이지 10 분석 시작 (전체 시작 후 10.64초)
+[19:32:57] INFO - 페이지 10 분석 시작 (전체 시작 후 10.69초)
+[19:32:58] INFO - AFC is enabled with max remote calls: 10.
+[19:32:58] INFO - 페이지 10 분석 시작 (전체 시작 후 10.76초)
+[19:32:58] INFO - AFC is enabled with max remote calls: 10.
+[19:32:58] INFO - 페이지 11 분석 시작 (전체 시작 후 10.80초)
+[19:32:58] INFO - AFC is enabled with max remote calls: 10.
+[19:32:58] INFO - AFC is enabled with max remote calls: 10.
+[19:32:58] INFO - 페이지 10 OCR 완료 (전체 시작 후 10.94초, OCR 소요: 0.30초)
+[19:32:58] INFO - 페이지 7 OCR 완료 (전체 시작 후 11.00초, OCR 소요: 1.91초)
+[19:32:58] INFO - AFC is enabled with max remote calls: 10.
+[19:32:58] INFO - AFC is enabled with max remote calls: 10.
+[19:32:58] INFO - 페이지 8 OCR 완료 (전체 시작 후 11.13초, OCR 소요: 1.48초)
+[19:32:58] INFO - 페이지 11 분석 시작 (전체 시작 후 11.17초)
+[19:32:58] INFO - 페이지 11 분석 시작 (전체 시작 후 11.22초)
+[19:32:58] INFO - 페이지 7 OCR 완료 (전체 시작 후 11.28초, OCR 소요: 2.14초)
+[19:32:58] INFO - 페이지 6 OCR 완료 (전체 시작 후 11.33초, OCR 소요: 2.64초)
+[19:32:58] INFO - 페이지 11 분석 시작 (전체 시작 후 11.37초)
+[19:32:58] INFO - 페이지 12 분석 시작 (전체 시작 후 11.41초)
+[19:32:58] INFO - AFC is enabled with max remote calls: 10.
+[19:32:58] INFO - AFC is enabled with max remote calls: 10.
+[19:32:58] INFO - AFC is enabled with max remote calls: 10.
+[19:32:58] INFO - 페이지 11 OCR 완료 (전체 시작 후 11.53초, OCR 소요: 0.31초)
+[19:32:58] INFO - 페이지 11 OCR 완료 (전체 시작 후 11.59초, OCR 소요: 0.22초)
+[19:32:58] INFO - 페이지 12 OCR 완료 (전체 시작 후 11.64초, OCR 소요: 0.22초)
+[19:32:58] INFO - 페이지 9 OCR 완료 (전체 시작 후 11.68초, OCR 소요: 1.46초)
+[19:32:58] INFO - 페이지 12 분석 시작 (전체 시작 후 11.72초)
+[19:32:59] INFO - 페이지 12 분석 시작 (전체 시작 후 11.76초)
+[19:32:59] INFO - AFC is enabled with max remote calls: 10.
+[19:32:59] INFO - AFC is enabled with max remote calls: 10.
+[19:32:59] INFO - AFC is enabled with max remote calls: 10.
+[19:32:59] INFO - AFC is enabled with max remote calls: 10.
+[19:32:59] INFO - 페이지 12 분석 시작 (전체 시작 후 11.87초)
+[19:32:59] INFO - 페이지 13 분석 시작 (전체 시작 후 11.92초)
+[19:32:59] INFO - 페이지 13 분석 시작 (전체 시작 후 12.23초)
+[19:32:59] INFO - 페이지 13 OCR 완료 (전체 시작 후 12.31초, OCR 소요: 0.40초)
+[19:32:59] INFO - 페이지 12 OCR 완료 (전체 시작 후 12.36초, OCR 소요: 0.49초)
+[19:32:59] INFO - 페이지 12 OCR 완료 (전체 시작 후 12.40초, OCR 소요: 0.64초)
+[19:32:59] INFO - 페이지 13 분석 시작 (전체 시작 후 12.44초)
+[19:32:59] INFO - 페이지 13 분석 시작 (전체 시작 후 12.51초)
+[19:32:59] INFO - 페이지 10 OCR 완료 (전체 시작 후 12.54초, OCR 소요: 1.86초)
+[19:32:59] INFO - AFC is enabled with max remote calls: 10.
+[19:32:59] INFO - AFC is enabled with max remote calls: 10.
+[19:32:59] INFO - AFC is enabled with max remote calls: 10.
+[19:32:59] INFO - AFC is enabled with max remote calls: 10.
+[19:32:59] INFO - 페이지 13 OCR 완료 (전체 시작 후 12.68초, OCR 소요: 0.24초)
+[19:32:59] INFO - 페이지 13 OCR 완료 (전체 시작 후 12.72초, OCR 소요: 0.21초)
+[19:33:00] INFO - 페이지 14 분석 시작 (전체 시작 후 12.77초)
+[19:33:00] INFO - AFC is enabled with max remote calls: 10.
+[19:33:00] INFO - AFC is enabled with max remote calls: 10.
+[19:33:00] INFO - 페이지 14 분석 시작 (전체 시작 후 12.94초)
+[19:33:00] INFO - 페이지 14 분석 시작 (전체 시작 후 13.01초)
+[19:33:00] INFO - 페이지 14 OCR 완료 (전체 시작 후 13.05초, OCR 소요: 0.28초)
+[19:33:00] INFO - 페이지 11 OCR 완료 (전체 시작 후 13.10초, OCR 소요: 2.30초)
+[19:33:00] INFO - 페이지 2 분석 완료 (전체 시작 후 13.15초, 페이지 소요: 6.77초)
+[19:33:00] INFO - AFC is enabled with max remote calls: 10.
+[19:33:00] INFO - AFC is enabled with max remote calls: 10.
+[19:33:00] INFO - 페이지 15 분석 시작 (전체 시작 후 13.27초)
+[19:33:00] INFO - 페이지 12 OCR 완료 (전체 시작 후 13.38초, OCR 소요: 1.66초)
+[19:33:00] INFO - 페이지 15 분석 시작 (전체 시작 후 13.44초)
+[19:33:00] INFO - AFC is enabled with max remote calls: 10.
+[19:33:00] INFO - 페이지 15 분석 시작 (전체 시작 후 13.51초)
+[19:33:00] INFO - 페이지 10 OCR 완료 (전체 시작 후 13.56초, OCR 소요: 2.80초)
+[19:33:00] INFO - 페이지 11 OCR 완료 (전체 시작 후 13.62초, OCR 소요: 2.45초)
+[19:33:00] INFO - 페이지 1 분석 완료 (전체 시작 후 13.67초, 페이지 소요: 7.85초)
+[19:33:00] INFO - AFC is enabled with max remote calls: 10.
+[19:33:00] INFO - AFC is enabled with max remote calls: 10.
+[19:33:01] INFO - 페이지 16 분석 시작 (전체 시작 후 13.77초)
+[19:33:01] INFO - 페이지 15 OCR 완료 (전체 시작 후 13.82초, OCR 소요: 0.38초)
+[19:33:01] INFO - AFC is enabled with max remote calls: 10.
+[19:33:01] INFO - 페이지 16 분석 시작 (전체 시작 후 13.95초)
+[19:33:01] INFO - 페이지 16 분석 시작 (전체 시작 후 14.01초)
+[19:33:01] INFO - 페이지 16 OCR 완료 (전체 시작 후 14.21초, OCR 소요: 0.20초)
+[19:33:01] INFO - 페이지 16 OCR 완료 (전체 시작 후 14.27초, OCR 소요: 0.32초)
+[19:33:01] INFO - 페이지 16 OCR 완료 (전체 시작 후 14.31초, OCR 소요: 0.54초)
+[19:33:01] INFO - 페이지 17 분석 시작 (전체 시작 후 14.35초)
+[19:33:01] INFO - AFC is enabled with max remote calls: 10.
+[19:33:01] INFO - AFC is enabled with max remote calls: 10.
+[19:33:01] INFO - 페이지 2 분석 완료 (전체 시작 후 14.42초, 페이지 소요: 7.99초)
+[19:33:01] INFO - 페이지 17 분석 시작 (전체 시작 후 14.45초)
+[19:33:01] INFO - AFC is enabled with max remote calls: 10.
+[19:33:01] INFO - 페이지 17 분석 시작 (전체 시작 후 14.51초)
+[19:33:01] INFO - 페이지 14 OCR 완료 (전체 시작 후 14.55초, OCR 소요: 1.61초)
+[19:33:01] INFO - 페이지 14 OCR 완료 (전체 시작 후 14.62초, OCR 소요: 1.62초)
+[19:33:01] INFO - AFC is enabled with max remote calls: 10.
+[19:33:01] INFO - AFC is enabled with max remote calls: 10.
+[19:33:02] INFO - 페이지 17 OCR 완료 (전체 시작 후 14.78초, OCR 소요: 0.34초)
+[19:33:02] INFO - 페이지 18 분석 시작 (전체 시작 후 14.85초)
+[19:33:02] INFO - AFC is enabled with max remote calls: 10.
+[19:33:02] INFO - 페이지 18 분석 시작 (전체 시작 후 14.95초)
+[19:33:02] INFO - 페이지 13 OCR 완료 (전체 시작 후 15.05초, OCR 소요: 2.82초)
+[19:33:02] INFO - 페이지 18 분석 시작 (전체 시작 후 15.09초)
+[19:33:02] INFO - 페이지 5 분석 완료 (전체 시작 후 15.13초, 페이지 소요: 7.08초)
+[19:33:02] INFO - 페이지 15 OCR 완료 (전체 시작 후 15.17초, OCR 소요: 1.66초)
+[19:33:02] INFO - AFC is enabled with max remote calls: 10.
+[19:33:02] INFO - 페이지 3 분석 완료 (전체 시작 후 15.22초, 페이지 소요: 8.27초)
+[19:33:02] INFO - AFC is enabled with max remote calls: 10.
+[19:33:02] INFO - 페이지 15 OCR 완료 (전체 시작 후 15.32초, OCR 소요: 2.05초)
+[19:33:02] INFO - 페이지 19 분석 시작 (전체 시작 후 15.37초)
+[19:33:02] INFO - AFC is enabled with max remote calls: 10.
+[19:33:02] INFO - 페이지 19 분석 시작 (전체 시작 후 15.45초)
+[19:33:02] INFO - 페이지 19 OCR 완료 (전체 시작 후 15.57초, OCR 소요: 0.21초)
+[19:33:02] INFO - 페이지 19 분석 시작 (전체 시작 후 15.62초)
+[19:33:02] INFO - AFC is enabled with max remote calls: 10.
+[19:33:02] INFO - 페이지 19 OCR 완료 (전체 시작 후 15.74초, OCR 소요: 0.29초)
+[19:33:03] INFO - 페이지 19 OCR 완료 (전체 시작 후 15.79초, OCR 소요: 0.17초)
+[19:33:03] INFO - AFC is enabled with max remote calls: 10.
+[19:33:03] INFO - 페이지 2 분석 완료 (전체 시작 후 15.84초, 페이지 소요: 9.25초)
+[19:33:03] INFO - AFC is enabled with max remote calls: 10.
+[19:33:03] INFO - 페이지 20 분석 시작 (전체 시작 후 15.87초)
+[19:33:03] INFO - 페이지 20 분석 시작 (전체 시작 후 15.95초)
+[19:33:03] INFO - 페이지 6 분석 완료 (전체 시작 후 16.10초, 페이지 소요: 7.85초)
+[19:33:03] INFO - 페이지 20 분석 시작 (전체 시작 후 16.12초)
+[19:33:03] INFO - 페이지 20 OCR 완료 (전체 시작 후 16.28초, OCR 소요: 0.33초)
+[19:33:03] INFO - 페이지 20 OCR 완료 (전체 시작 후 16.34초, OCR 소요: 0.22초)
+[19:33:03] INFO - 페이지 20 OCR 완료 (전체 시작 후 16.38초, OCR 소요: 0.51초)
+[19:33:03] INFO - 페이지 21 분석 시작 (전체 시작 후 16.42초)
+[19:33:03] INFO - 페이지 21 분석 시작 (전체 시작 후 16.47초)
+[19:33:03] INFO - 페이지 18 OCR 완료 (전체 시작 후 16.52초, OCR 소요: 1.43초)
+[19:33:03] INFO - AFC is enabled with max remote calls: 10.
+[19:33:03] INFO - AFC is enabled with max remote calls: 10.
+[19:33:03] INFO - AFC is enabled with max remote calls: 10.
+[19:33:03] INFO - 페이지 2 분석 완료 (전체 시작 후 16.58초, 페이지 소요: 10.34초)
+[19:33:03] INFO - 페이지 9 분석 완료 (전체 시작 후 16.60초, 페이지 소요: 6.81초)
+[19:33:03] INFO - 페이지 1 분석 완료 (전체 시작 후 16.60초, 페이지 소요: 10.51초)
+[19:33:03] INFO - AFC is enabled with max remote calls: 10.
+[19:33:03] INFO - 페이지 21 분석 시작 (전체 시작 후 16.62초)
+[19:33:03] INFO - 페이지 9 분석 완료 (전체 시작 후 16.71초, 페이지 소요: 6.49초)
+[19:33:03] INFO - 페이지 6 분석 완료 (전체 시작 후 16.71초, 페이지 소요: 8.07초)
+[19:33:03] INFO - 페이지 4 분석 완료 (전체 시작 후 16.71초, 페이지 소요: 9.17초)
+[19:33:04] INFO - 페이지 21 OCR 완료 (전체 시작 후 16.80초, OCR 소요: 0.33초)
+[19:33:04] INFO - 페이지 21 OCR 완료 (전체 시작 후 16.88초, OCR 소요: 0.26초)
+[19:33:04] INFO - AFC is enabled with max remote calls: 10.
+[19:33:04] INFO - 페이지 22 분석 시작 (전체 시작 후 16.93초)
+[19:33:04] INFO - 페이지 22 분석 시작 (전체 시작 후 16.97초)
+[19:33:04] INFO - AFC is enabled with max remote calls: 10.
+[19:33:04] INFO - 페이지 22 분석 시작 (전체 시작 후 17.12초)
+[19:33:04] INFO - 페이지 18 OCR 완료 (전체 시작 후 17.26초, OCR 소요: 2.41초)
+[19:33:04] INFO - 페이지 18 OCR 완료 (전체 시작 후 17.31초, OCR 소요: 2.36초)
+[19:33:04] INFO - 페이지 10 분석 완료 (전체 시작 후 17.35초, 페이지 소요: 7.06초)
+[19:33:04] INFO - AFC is enabled with max remote calls: 10.
+[19:33:04] INFO - 페이지 22 OCR 완료 (전체 시작 후 17.40초, OCR 소요: 0.47초)
+[19:33:04] INFO - 페이지 23 분석 시작 (전체 시작 후 17.44초)
+[19:33:04] INFO - 페이지 17 OCR 완료 (전체 시작 후 17.49초, OCR 소요: 3.14초)
+[19:33:04] INFO - 페이지 23 분석 시작 (전체 시작 후 17.54초)
+[19:33:04] INFO - AFC is enabled with max remote calls: 10.
+[19:33:04] INFO - AFC is enabled with max remote calls: 10.
+[19:33:04] INFO - 페이지 8 분석 완료 (전체 시작 후 17.62초, 페이지 소요: 7.97초)
+[19:33:04] INFO - 페이지 1 분석 완료 (전체 시작 후 17.62초, 페이지 소요: 11.88초)
+[19:33:04] INFO - 페이지 0 분석 완료 (전체 시작 후 17.62초, 페이지 소요: 12.12초)
+[19:33:04] INFO - 페이지 23 분석 시작 (전체 시작 후 17.63초)
+[19:33:04] INFO - AFC is enabled with max remote calls: 10.
+[19:33:05] INFO - 페이지 17 OCR 완료 (전체 시작 후 17.80초, OCR 소요: 3.29초)
+[19:33:05] INFO - 페이지 0 분석 완료 (전체 시작 후 17.85초, 페이지 소요: 12.42초)
+[19:33:05] INFO - AFC is enabled with max remote calls: 10.
+[19:33:05] INFO - 페이지 23 OCR 완료 (전체 시작 후 17.93초, OCR 소요: 0.30초)
+[19:33:05] INFO - 페이지 24 분석 시작 (전체 시작 후 17.97초)
+[19:33:05] INFO - AFC is enabled with max remote calls: 10.
+[19:33:05] INFO - 페이지 3 분석 완료 (전체 시작 후 18.02초, 페이지 소요: 11.03초)
+[19:33:05] INFO - 페이지 24 분석 시작 (전체 시작 후 18.04초)
+[19:33:05] INFO - 페이지 7 분석 완료 (전체 시작 후 18.09초, 페이지 소요: 9.00초)
+[19:33:05] INFO - 페이지 24 분석 시작 (전체 시작 후 18.13초)
+[19:33:05] INFO - 페이지 24 OCR 완료 (전체 시작 후 18.36초, OCR 소요: 0.32초)
+[19:33:05] INFO - 페이지 24 OCR 완료 (전체 시작 후 18.43초, OCR 소요: 0.45초)
+[19:33:05] INFO - 페이지 24 OCR 완료 (전체 시작 후 18.47초, OCR 소요: 0.34초)
+[19:33:05] INFO - 페이지 25 분석 시작 (전체 시작 후 18.51초)
+[19:33:05] INFO - AFC is enabled with max remote calls: 10.
+[19:33:05] INFO - AFC is enabled with max remote calls: 10.
+[19:33:05] INFO - AFC is enabled with max remote calls: 10.
+[19:33:05] INFO - 페이지 25 분석 시작 (전체 시작 후 18.63초)
+[19:33:05] INFO - 페이지 25 OCR 완료 (전체 시작 후 18.66초, OCR 소요: 0.16초)
+[19:33:05] INFO - AFC is enabled with max remote calls: 10.
+[19:33:06] INFO - 페이지 3 분석 완료 (전체 시작 후 18.80초, 페이지 소요: 12.06초)
+[19:33:06] INFO - 페이지 21 OCR 완료 (전체 시작 후 18.82초, OCR 소요: 2.39초)
+[19:33:06] INFO - AFC is enabled with max remote calls: 10.
+[19:33:06] INFO - 페이지 26 분석 시작 (전체 시작 후 19.01초)
+[19:33:06] INFO - 페이지 22 OCR 완료 (전체 시작 후 19.13초, OCR 소요: 2.01초)
+[19:33:06] INFO - 페이지 26 분석 시작 (전체 시작 후 19.17초)
+[19:33:06] INFO - AFC is enabled with max remote calls: 10.
+[19:33:06] INFO - 페이지 11 분석 완료 (전체 시작 후 19.21초, 페이지 소요: 8.41초)
+[19:33:06] INFO - 페이지 23 OCR 완료 (전체 시작 후 19.43초, OCR 소요: 1.98초)
+[19:33:06] INFO - 페이지 27 분석 시작 (전체 시작 후 19.51초)
+[19:33:06] INFO - AFC is enabled with max remote calls: 10.
+[19:33:06] INFO - 페이지 23 OCR 완료 (전체 시작 후 19.64초, OCR 소요: 2.11초)
+[19:33:06] INFO - 페이지 27 분석 시작 (전체 시작 후 19.69초)
+[19:33:06] INFO - 페이지 8 분석 완료 (전체 시작 후 19.71초, 페이지 소요: 10.43초)
+[19:33:06] INFO - 페이지 7 분석 완료 (전체 시작 후 19.71초, 페이지 소요: 10.52초)
+[19:33:07] INFO - AFC is enabled with max remote calls: 10.
+[19:33:07] INFO - 페이지 22 OCR 완료 (전체 시작 후 19.89초, OCR 소요: 2.91초)
+[19:33:07] INFO - 페이지 10 분석 완료 (전체 시작 후 19.98초, 페이지 소요: 9.29초)
+[19:33:07] INFO - AFC is enabled with max remote calls: 10.
+[19:33:07] INFO - 페이지 0 분석 완료 (전체 시작 후 20.08초, 페이지 소요: 14.84초)
+[19:33:07] INFO - 페이지 10 분석 완료 (전체 시작 후 20.08초, 페이지 소요: 9.33초)
+[19:33:07] INFO - 페이지 14 분석 완료 (전체 시작 후 20.39초, 페이지 소요: 7.62초)
+[19:33:07] INFO - 페이지 25 OCR 완료 (전체 시작 후 20.42초, OCR 소요: 1.79초)
+[19:33:07] INFO - 페이지 12 분석 완료 (전체 시작 후 20.49초, 페이지 소요: 9.08초)
+[19:33:07] INFO - 페이지 4 분석 완료 (전체 시작 후 20.50초, 페이지 소요: 13.05초)
+[19:33:07] INFO - AFC is enabled with max remote calls: 10.
+[19:33:07] INFO - 페이지 26 OCR 완료 (전체 시작 후 20.62초, OCR 소요: 1.61초)
+[19:33:07] INFO - AFC is enabled with max remote calls: 10.
+[19:33:08] INFO - 페이지 26 OCR 완료 (전체 시작 후 20.92초, OCR 소요: 1.74초)
+[19:33:08] INFO - AFC is enabled with max remote calls: 10.
+[19:33:08] INFO - 페이지 13 분석 완료 (전체 시작 후 21.16초, 페이지 소요: 8.72초)
+[19:33:08] INFO - 페이지 8 분석 완료 (전체 시작 후 21.16초, 페이지 소요: 11.44초)
+[19:33:08] INFO - 페이지 7 분석 완료 (전체 시작 후 21.16초, 페이지 소요: 12.03초)
+[19:33:08] INFO - 페이지 6 분석 완료 (전체 시작 후 21.34초, 페이지 소요: 12.66초)
+[19:33:08] INFO - 페이지 14 분석 완료 (전체 시작 후 21.51초, 페이지 소요: 8.56초)
+[19:33:08] INFO - 페이지 9 분석 완료 (전체 시작 후 21.51초, 페이지 소요: 11.35초)
+[19:33:08] INFO - 페이지 14 분석 완료 (전체 시작 후 21.51초, 페이지 소요: 8.50초)
+[19:33:08] INFO - 페이지 27 OCR 완료 (전체 시작 후 21.57초, OCR 소요: 1.89초)
+[19:33:08] INFO - AFC is enabled with max remote calls: 10.
+[19:33:08] INFO - 페이지 5 분석 완료 (전체 시작 후 21.66초, 페이지 소요: 13.65초)
+[19:33:08] INFO - 페이지 0 분석 완료 (전체 시작 후 21.66초, 페이지 소요: 16.38초)
+[19:33:09] INFO - 페이지 5 분석 완료 (전체 시작 후 21.83초, 페이지 소요: 14.09초)
+[19:33:09] INFO - 페이지 27 OCR 완료 (전체 시작 후 21.97초, OCR 소요: 2.46초)
+[19:33:09] INFO - AFC is enabled with max remote calls: 10.
+[19:33:10] INFO - 페이지 8 분석 완료 (전체 시작 후 23.01초, 페이지 소요: 13.40초)
+[19:33:10] INFO - 페이지 19 분석 완료 (전체 시작 후 23.07초, 페이지 소요: 7.63초)
+[19:33:10] INFO - 페이지 13 분석 완료 (전체 시작 후 23.17초, 페이지 소요: 10.66초)
+[19:33:10] INFO - 페이지 16 분석 완료 (전체 시작 후 23.35초, 페이지 소요: 9.41초)
+[19:33:10] INFO - 페이지 5 분석 완료 (전체 시작 후 23.66초, 페이지 소요: 15.49초)
+[19:33:10] INFO - 페이지 15 분석 완료 (전체 시작 후 23.69초, 페이지 소요: 10.42초)
+[19:33:10] INFO - 페이지 4 분석 완료 (전체 시작 후 23.69초, 페이지 소요: 16.44초)
+[19:33:11] INFO - 페이지 15 분석 완료 (전체 시작 후 24.05초, 페이지 소요: 10.61초)
+[19:33:11] INFO - 페이지 11 분석 완료 (전체 시작 후 24.05초, 페이지 소요: 12.68초)
+[19:33:11] INFO - 페이지 9 분석 완료 (전체 시작 후 24.21초, 페이지 소요: 14.10초)
+[19:33:11] INFO - 페이지 20 분석 완료 (전체 시작 후 24.21초, 페이지 소요: 8.34초)
+[19:33:11] INFO - 페이지 10 분석 완료 (전체 시작 후 24.21초, 페이지 소요: 13.57초)
+[19:33:11] INFO - 페이지 16 분석 완료 (전체 시작 후 24.37초, 페이지 소요: 10.60초)
+[19:33:11] INFO - 페이지 22 분석 완료 (전체 시작 후 24.71초, 페이지 소요: 7.78초)
+[19:33:11] INFO - 페이지 21 분석 완료 (전체 시작 후 24.71초, 페이지 소요: 8.29초)
+[19:33:12] INFO - 페이지 18 분석 완료 (전체 시작 후 25.10초, 페이지 소요: 10.00초)
+[19:33:12] INFO - 페이지 3 분석 완료 (전체 시작 후 25.39초, 페이지 소요: 18.28초)
+[19:33:12] INFO - 페이지 25 분석 완료 (전체 시작 후 25.39초, 페이지 소요: 6.88초)
+[19:33:12] INFO - 페이지 6 분석 완료 (전체 시작 후 25.62초, 페이지 소요: 17.08초)
+[19:33:13] INFO - 페이지 21 분석 완료 (전체 시작 후 25.88초, 페이지 소요: 9.41초)
+[19:33:13] INFO - 페이지 7 분석 완료 (전체 시작 후 25.88초, 페이지 소요: 17.14초)
+[19:33:13] INFO - 페이지 23 분석 완료 (전체 시작 후 25.89초, 페이지 소요: 8.45초)
+[19:33:13] INFO - 페이지 1 분석 완료 (전체 시작 후 26.05초, 페이지 소요: 20.11초)
+[19:33:13] INFO - 페이지 24 분석 완료 (전체 시작 후 26.22초, 페이지 소요: 8.24초)
+[19:33:13] INFO - 페이지 27 분석 완료 (전체 시작 후 26.55초, 페이지 소요: 6.86초)
+[19:33:13] INFO - 페이지 18 분석 완료 (전체 시작 후 26.56초, 페이지 소요: 11.71초)
+[19:33:14] INFO - 페이지 20 분석 완료 (전체 시작 후 26.89초, 페이지 소요: 10.77초)
+[19:33:14] INFO - 페이지 12 분석 완료 (전체 시작 후 26.89초, 페이지 소요: 15.13초)
+[19:33:14] INFO - 페이지 21 분석 완료 (전체 시작 후 27.10초, 페이지 소요: 10.48초)
+[19:33:14] INFO - 페이지 13 분석 완료 (전체 시작 후 27.23초, 페이지 소요: 15.00초)
+[19:33:14] INFO - 페이지 11 분석 완료 (전체 시작 후 27.36초, 페이지 소요: 16.19초)
+[19:33:14] INFO - 페이지 12 분석 완료 (전체 시작 후 27.73초, 페이지 소요: 16.00초)
+[19:33:14] INFO - 페이지 11 분석 완료 (전체 시작 후 27.73초, 페이지 소요: 16.50초)
+[19:33:14] INFO - 페이지 24 분석 완료 (전체 시작 후 27.73초, 페이지 소요: 9.60초)
+[19:33:15] INFO - 페이지 23 분석 완료 (전체 시작 후 27.89초, 페이지 소요: 10.26초)
+[19:33:15] INFO - 페이지 25 분석 완료 (전체 시작 후 28.24초, 페이지 소요: 9.61초)
+[19:33:15] INFO - 페이지 20 분석 완료 (전체 시작 후 28.31초, 페이지 소요: 12.36초)
+[19:33:15] INFO - 페이지 16 분석 완료 (전체 시작 후 28.57초, 페이지 소요: 14.56초)
+[19:33:16] INFO - 페이지 18 분석 완료 (전체 시작 후 29.50초, 페이지 소요: 14.55초)
+[19:33:16] INFO - 페이지 23 분석 완료 (전체 시작 후 29.61초, 페이지 소요: 12.07초)
+[19:33:17] INFO - 페이지 26 분석 완료 (전체 시작 후 29.82초, 페이지 소요: 10.65초)
+[19:33:17] INFO - 페이지 22 분석 완료 (전체 시작 후 29.83초, 페이지 소요: 12.71초)
+[19:33:18] INFO - 페이지 24 분석 완료 (전체 시작 후 30.77초, 페이지 소요: 12.74초)
+[19:33:18] INFO - 페이지 19 분석 완료 (전체 시작 후 31.11초, 페이지 소요: 15.49초)
+[19:33:19] INFO - 페이지 13 분석 완료 (전체 시작 후 32.44초, 페이지 소요: 20.53초)
+[19:33:19] INFO - 페이지 17 분석 완료 (전체 시작 후 32.45초, 페이지 소요: 17.93초)
+[19:33:21] INFO - 페이지 27 분석 완료 (전체 시작 후 33.81초, 페이지 소요: 14.30초)
+[19:33:22] INFO - 페이지 26 분석 완료 (전체 시작 후 34.83초, 페이지 소요: 15.82초)
+[19:33:22] INFO - 페이지 17 분석 완료 (전체 시작 후 34.95초, 페이지 소요: 20.50초)
+[19:33:22] INFO - 페이지 4 분석 완료 (전체 시작 후 35.75초, 페이지 소요: 28.07초)
+[19:33:25] INFO - 페이지 19 분석 완료 (전체 시작 후 38.02초, 페이지 소요: 22.66초)
+[19:33:25] INFO - 페이지 17 분석 완료 (전체 시작 후 38.03초, 페이지 소요: 23.68초)
+[19:33:28] INFO - 페이지 12 분석 완료 (전체 시작 후 41.62초, 페이지 소요: 29.75초)
+[19:33:29] INFO - 페이지 22 분석 완료 (전체 시작 후 42.74초, 페이지 소요: 25.77초)
+[19:33:32] INFO - 페이지 15 분석 완료 (전체 시작 후 45.26초, 페이지 소요: 31.75초)
+[19:33:32] INFO - 전체 분석 완료 - 소요 시간: 45.26초
+[19:33:32] INFO - 분석 결과 저장: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/patent1.json
+[19:33:32] INFO - OCR 결과 저장: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/patent1_ocr.json
+[19:33:32] INFO - 분석 결과 저장: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/patent2.json
+[19:33:32] INFO - OCR 결과 저장: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/patent2_ocr.json
+[19:33:32] INFO - 분석 결과 저장: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/intro.json
+[19:33:32] INFO - OCR 결과 저장: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/intro_ocr.json
+[19:33:32] INFO - 분석 결과 저장: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/plan.json
+[19:33:32] INFO - OCR 결과 저장: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/plan_ocr.json
+[19:33:32] INFO - 보고서 생성 시작 - 총 4개 유형 (Report Model: gemini/gemini-3-pro-preview, Web: True)
+[19:33:32] WARNING - Unexpected argument 'tools' provided to ChatGoogleGenerativeAI.
+[19:33:32] INFO - AFC is enabled with max remote calls: 10.
+[19:33:33] INFO - AFC is enabled with max remote calls: 10.
+[19:33:33] INFO - AFC is enabled with max remote calls: 10.
+[19:33:34] INFO - AFC is enabled with max remote calls: 10.
+[19:34:18] INFO - 'overall_competency' 보고서 생성 완료 (보고서 생성 시작 후 45.54초)
+[19:34:18] INFO - 'competencies' 보고서 생성 완료 (보고서 생성 시작 후 45.54초)
+[19:34:18] INFO - 'b2g_strategy' 보고서 생성 완료 (보고서 생성 시작 후 45.54초)
+[19:34:18] INFO - 'market' 보고서 생성 완료 (보고서 생성 시작 후 45.54초)
+[19:34:18] INFO - 모든 보고서 저장 완료: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/Test_Company_patent1_patent2_intro_plan.json
+[19:34:18] INFO - 통합 결과 JSON 저장 완료: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/Test_Company_patent1_patent2_intro_plan_result.json
+[19:34:18] INFO - 
+API 호출 통계 - OCR: 95회, LLM: 99회
+
+============================================================
+API CALL STATISTICS
+============================================================
+OCR API 호출: 95회
+LLM API 호출: 99회
+총 API 호출: 194회
+============================================================

@@ -1,17 +1,142 @@
-# 필요한 util 함수들
+"""
+유틸리티 함수 모듈 - LangChain 기반
+
+OCR 처리, JSON 파싱, 페이지 추출 Chain을 포함합니다.
+"""
+
 import json
 import PIL
+import PIL.Image
 import dotenv
-from google import genai
 import os
 import logging
 import time
-from .api import ChatRequest, Dispatcher
 import requests
 import uuid
-import time
-import json
 import io
+import asyncio
+
+from langchain_core.output_parsers import JsonOutputParser
+from langchain_core.runnables import RunnableLambda
+from langchain_core.messages import HumanMessage
+
+from .api import ChatRequest, Dispatcher, ModelFactory
+from .prompts import EXTRACTION_PROMPT
+
+OUTPUT_JSON_SCHEMA = {
+    "section1" : {
+        "scores": {
+            "management_eval": {
+                "score": 0,
+                "reason": "",
+                "needs_more_data": []
+            },
+            "national_agenda": {
+                "score": 0,
+                "reason": "",
+                "needs_more_data": []
+            },
+            "co_growth": {
+                "score": 0,
+                "reason": "",
+                "needs_more_data": []
+            }
+        },
+        "radar": [
+            { "axis": "정책정합성", "score": 0 },
+            { "axis": "공공기관적합도", "score": 0 },
+            { "axis": "시장성장성", "score": 0 },
+            { "axis": "동반성장·협력", "score": 0 },
+            { "axis": "신뢰도·레퍼런스", "score": 0 }
+        ],
+        "overall": {
+            "overall_score": 0,
+            "grade": "",
+            "grade_rule": "",
+            "reason_summary": "",
+            "needs_more_data_global": [],
+            "keywords": []
+        }
+    },
+    "section2" : {
+        "finance" : {
+            "revenue" : {
+                "year" : 0,
+                "amount" : ""
+            },
+            "profit" : {
+                "year" : 0,
+                "amount" : ""
+            },
+            "invest" : {
+                "year" : 0,
+                "amount" : ""
+            }
+        },
+        "performance" : {
+            "contents" : []
+        },
+        "BM" : {
+            "contents" : []
+        },
+        "competencies" : {
+            "b2g_keywords" : [],
+            "evidences" : []
+        }
+    },
+    "section3" : {
+        "market_growth" : 0.0, # 이 부분은 아래 data로부터 계산됨.
+        "market_size" : {
+            "unit" : "",
+            "market_name" : "",
+            "reference" : "",
+            "data" : {
+            }
+        },
+        "competition" : {
+            "competitors" : [],
+            "details" : [],
+            "differentiation" : []
+        },
+        "tech_policy_trends" : {
+            "keywords" : [],
+            "evidences" : [
+                {
+                    "content" : "",
+                    "source" : ""
+                },
+                {
+                    "content" : "",
+                    "source" : ""
+                }
+            ]
+        }
+    },
+    "section5" : {
+        "weakness_analysis" : {
+            "keyword" : "",
+            "evidences" : []
+        },
+        "strategy" : {
+            "keyword" : "",
+            "strategy" : "",
+            "details" : []
+        },
+        "to_do_list" : {
+            "keyword" : "",
+            "tasks" : [
+                {
+                    "content" : "",
+                    "details" : []
+                },
+                {
+                    "content" : "",
+                    "details" : []
+                }
+            ]
+        }
+    }
+}
 
 logger = logging.getLogger(__name__)
 
@@ -74,79 +199,80 @@ def parse_json(response: str | dict | list) -> dict:
     except Exception as e:
         raise ValueError(f"Error parsing response: {e}\nResponse: {response}")
 
-def parse_upstage(response: str | dict | list) -> list[str]:
-    """
-    Upstage OCR 결과에서 HTML을 추출하고 유니코드를 디코딩
+### Upstage 사용하지 않음.
+# def parse_upstage(response: str | dict | list) -> list[str]:
+#     """
+#     Upstage OCR 결과에서 HTML을 추출하고 유니코드를 디코딩
     
-    Args:
-        response: Upstage OCR 결과 (JSON 문자열, dict, 또는 list)
+#     Args:
+#         response: Upstage OCR 결과 (JSON 문자열, dict, 또는 list)
         
-    Returns:
-        디코딩된 텍스트 리스트
+#     Returns:
+#         디코딩된 텍스트 리스트
         
-    Example:
-        >>> response = {"elements": [{"content": {"html": "<p>캐시닥</p>", ...}, ...}]}
-        >>> parse_upstage(response)
-        ['캐시닥', ...]
-    """
-    try:
-        from html.parser import HTMLParser
+#     Example:
+#         >>> response = {"elements": [{"content": {"html": "<p>캐시닥</p>", ...}, ...}]}
+#         >>> parse_upstage(response)
+#         ['캐시닥', ...]
+#     """
+#     try:
+#         from html.parser import HTMLParser
         
-        class HTMLTextExtractor(HTMLParser):
-            def __init__(self):
-                super().__init__()
-                self.text = []
+#         class HTMLTextExtractor(HTMLParser):
+#             def __init__(self):
+#                 super().__init__()
+#                 self.text = []
             
-            def handle_data(self, data):
-                if data.strip():
-                    self.text.append(data.strip())
+#             def handle_data(self, data):
+#                 if data.strip():
+#                     self.text.append(data.strip())
         
-        # 문자열이면 JSON으로 파싱
-        if isinstance(response, str):
-            parsed = json.loads(response)
-        elif isinstance(response, (dict, list)):
-            parsed = response
-        else:
-            raise ValueError(f"Cannot parse response of type {type(response)}")
+#         # 문자열이면 JSON으로 파싱
+#         if isinstance(response, str):
+#             parsed = json.loads(response)
+#         elif isinstance(response, (dict, list)):
+#             parsed = response
+#         else:
+#             raise ValueError(f"Cannot parse response of type {type(response)}")
         
-        text_list = []
+#         text_list = []
         
-        # Upstage OCR 응답 구조: {"elements": [...], ...}
-        if isinstance(parsed, dict):
-            elements = parsed.get("elements", [])
-            if not elements and "content" in parsed:
-                # 단일 요소인 경우
-                elements = [parsed]
-        elif isinstance(parsed, list):
-            elements = parsed
-        else:
-            elements = []
+#         # Upstage OCR 응답 구조: {"elements": [...], ...}
+#         if isinstance(parsed, dict):
+#             elements = parsed.get("elements", [])
+#             if not elements and "content" in parsed:
+#                 # 단일 요소인 경우
+#                 elements = [parsed]
+#         elif isinstance(parsed, list):
+#             elements = parsed
+#         else:
+#             elements = []
         
-        for item in elements:
-            if isinstance(item, dict):
-                # content.html 필드 찾기
-                if "content" in item and isinstance(item["content"], dict):
-                    html = item["content"].get("html", "")
-                    if html:
-                        # HTML에서 텍스트 추출
-                        parser = HTMLTextExtractor()
-                        try:
-                            parser.feed(html)
-                            extracted = " ".join(parser.text)
-                            if extracted:
-                                text_list.append(extracted)
-                        except:
-                            # HTML 파싱 실패시 content.text 사용
-                            text = item["content"].get("text", "")
-                            if text:
-                                text_list.append(text)
+#         for item in elements:
+#             if isinstance(item, dict):
+#                 # content.html 필드 찾기
+#                 if "content" in item and isinstance(item["content"], dict):
+#                     html = item["content"].get("html", "")
+#                     if html:
+#                         # HTML에서 텍스트 추출
+#                         parser = HTMLTextExtractor()
+#                         try:
+#                             parser.feed(html)
+#                             extracted = " ".join(parser.text)
+#                             if extracted:
+#                                 text_list.append(extracted)
+#                         except:
+#                             # HTML 파싱 실패시 content.text 사용
+#                             text = item["content"].get("text", "")
+#                             if text:
+#                                 text_list.append(text)
         
-        return text_list
+#         return text_list
         
-    except json.JSONDecodeError as e:
-        raise ValueError(f"Failed to parse JSON: {e}\nResponse: {response}")
-    except Exception as e:
-        raise ValueError(f"Error parsing Upstage response: {e}\nResponse: {response}")
+#     except json.JSONDecodeError as e:
+#         raise ValueError(f"Failed to parse JSON: {e}\nResponse: {response}")
+#     except Exception as e:
+#         raise ValueError(f"Error parsing Upstage response: {e}\nResponse: {response}")
 
 def parse_upstage_to_html(response: str | dict | list, output_file: str = None) -> str:
     """
@@ -237,20 +363,22 @@ def generateSkeleton(arg : ChatRequest):
     """
     pass
 
-async def extractJSON(image: PIL.Image, dispatcher: Dispatcher, page_num: int = None, start_time_base: float = None, debug: bool = False, ocr_provider: str = "CLOVA", model_provider: str = "openai", model_name: str = "gpt-4o", company=None) -> dict:
+async def extractJSON(image: PIL.Image.Image, dispatcher: Dispatcher, page_num: int = None, start_time_base: float = None, debug: bool = False, model_provider: str = "openai", model_name: str = "gpt-4o", company=None) -> tuple[dict, str]:
     """
-    extract JSON from an image
+    이미지에서 JSON 데이터를 추출하는 LCEL 체인 기반 함수
     
     Args:
-        image: 분석할 이미지
-        dispatcher: API 디스패처
+        image: 분석할 PIL Image 객체
+        dispatcher: API 디스패처 (rate limiting 용도)
         page_num: 페이지 번호
         start_time_base: 전체 분석 시작 시간
         debug: 디버그 모드 여부
-        ocr_provider: OCR API 종류 ("CLOVA" 또는 "Upstage")
         model_provider: AI 모델 제공자 ("openai" 또는 "gemini")
         model_name: 사용할 구체적인 모델명
         company: Company 객체 (API 호출 카운터 증가용)
+    
+    Returns:
+        tuple: (추출된 JSON dict, OCR 텍스트)
     """
     page_start_time = time.time()
     page_label = f"페이지 {page_num}" if page_num is not None else "페이지"
@@ -262,18 +390,14 @@ async def extractJSON(image: PIL.Image, dispatcher: Dispatcher, page_num: int = 
         else:
             logger.info(f"{page_label} 분석 시작")
 
-    # 우선 image에 OCR 진행 (별도 스레드에서 실행하여 블로킹 방지)
-    import asyncio
+    # 1. OCR 실행 (별도 스레드에서 실행하여 블로킹 방지)
     loop = asyncio.get_event_loop()
     img_byte_arr = io.BytesIO()
     image.save(img_byte_arr, format='PNG')
     img_byte_arr = img_byte_arr.getvalue()
     
-    # OCR 제공자 선택
-    if ocr_provider == "Upstage":
-        lines = await loop.run_in_executor(None, Upstage_ocr, img_byte_arr)
-    else:  # CLOVA (기본값)
-        lines = await loop.run_in_executor(None, CLOVA_ocr, img_byte_arr)
+    # CLOVA OCR 사용
+    lines = await loop.run_in_executor(None, CLOVA_ocr, img_byte_arr)
     
     # OCR 호출 카운터 증가
     if company:
@@ -290,70 +414,70 @@ async def extractJSON(image: PIL.Image, dispatcher: Dispatcher, page_num: int = 
         else:
             logger.info(f"{page_label} OCR 완료 - 소요 시간: {ocr_elapsed:.2f}초")
 
-    systemPrompt = """당신은 주어진 기업 소개 문서 중 한 페이지를 보고, 해당 페이지 안의 정보를 추출하는 전문가입니다. 페이지 안의 텍스트들은 모두 추출되어 주어지며, 이미지를 보고 슬라이드를 최대한 자세하게 설명하여 아래와 같이 JSON 형식으로 반환하세요. \
-            이때, 다음과 같은 사항을 꼭 지켜주세요. \n
-            1, 추출된 텍스트는 이미지의 정보를 담고 있지 못한 순수한 텍스트이므로 이미지를 우선 관찰하여 이미지가 담고 있는 정보를 최대한 많이, 정확하게 반환해야 합니다. \n \
-            2. 우선 이미지에 포함된 시각적 구성요소들을 구분하고, 각 구성요소들이 담고 있는 텍스트들을 추출된 텍스트에서 참고하여 해당 구성요소가 의미하는 바를 최대한 유추하여 JSON 형식으로 표현하세요. \n\
-            3. 표, 그래프, 다이어그램 등의 시각적 요소를 설명하기 위해서는 반드시 우선 해당 요소를 설명하고, 그 다음에 구성 요소들을 키-값 쌍으로 표현하세요. \n\
-            예를 들어, 원형 그래프의 여러 요소들을 크기의 차이로 표현하는 그래프가 있다면 다음과 같이 표현합니다.\n \
-                "원형 그래프의 이름 또는 역할" : {
-                    "설명" : "이 그래프는 ~을 나타내며, 각 요소는 다음과 같습니다.",
-                    "요소1 이름": "요소1 값(숫자가 주어져 있지 않다면 상대적인 크기 표현)",
-                    "요소2 이름": "요소2 값",
-                    ...
-                } \
-            4. 각 페이지의 중심 아이디어를 반드시 포함하세요. \n\
-    """ + \
-    """
-    JSON 스키마:
-    {
-        "구성요소" : "구성 내용"
-    }
-    예를 들어서 다음과 같을 수 있습니다.
-    {
-        "중심 아이디어": "이 슬라이드는 ABC 주식회사의 개요를 설명합니다.", 
-        "회사명": "ABC 주식회사",
-        "설립연도": "1995년",
-        "주요 제품": "스마트폰, 태블릿",
-        "시장 점유율": "25%",
-        "CEO 이름": "홍길동",
-        "주요 경쟁사 사용시간" : {
-            "경쟁사 A": "40%",
-            "경쟁사 B": "35%",
-            "자사": "25%"
-        }
-    }
-    """ + \
-    "이때, 반드시 JSON 형식으로만 응답해 주세요. 추가적인 설명이나 다른 텍스트는 포함하지 마세요.\n 또한, 대답에는 반드시 모든 추출한 텍스트를 포함하며, 추출한 텍스트 이외의 글자를 읽거나 유추하지 마세요."
-    extractPrompt = "다음은 이미지에서 추출한 텍스트입니다:\n" + ocr_text + "\n이 텍스트를 바탕으로 아래의 JSON 스키마에 맞추어 정보를 추출해 주세요.\n"
-
-    request = ChatRequest(
+    # 2. LCEL 체인 구성: 멀티모달 입력 준비 | 프롬프트 | 모델 | 파서
+    
+    # 2-1. 멀티모달 메시지 생성 함수
+    def create_multimodal_message(inputs: dict) -> list:
+        """OCR 텍스트와 이미지를 멀티모달 메시지로 변환"""
+        ocr_text = inputs.get("ocr_text", "")
+        image = inputs.get("image")
+        
+        # 프롬프트 템플릿에서 메시지 추출
+        messages = EXTRACTION_PROMPT.format_messages(ocr_text=ocr_text)
+        
+        # 멀티모달 처리: user 메시지에 이미지 추가
+        import base64
+        buffered = io.BytesIO()
+        image.save(buffered, format="PNG")
+        img_base64 = base64.b64encode(buffered.getvalue()).decode()
+        
+        if model_provider == "openai":
+            # OpenAI: base64 URL 형식
+            for msg in messages:
+                if msg.type == "human":
+                    msg.content = [
+                        {"type": "text", "text": msg.content},
+                        {
+                            "type": "image_url",
+                            "image_url": {"url": f"data:image/png;base64,{img_base64}"}
+                        }
+                    ]
+        elif model_provider == "gemini":
+            # Gemini: base64 문자열 형식
+            for msg in messages:
+                if msg.type == "human":
+                    msg.content = [
+                        {"type": "text", "text": msg.content},
+                        {"type": "image_url", "image_url": f"data:image/png;base64,{img_base64}"}
+                    ]
+        
+        return messages
+    
+    # 2-2. Rate limiting이 적용된 모델 생성
+    model = ModelFactory.create_model_chain(
         provider=model_provider,
-        model=model_name,
-        messages=[
-            {
-                "role": "system",
-                "content": systemPrompt
-            },
-            {
-                "role": "user",
-                "content": extractPrompt
-            }
-        ],
-        input="with-image",
-        image=image,
-        output="json"
+        model_name=model_name,
+        output_format="json",
+        max_rps=dispatcher.max_rps
     )
-
-    response = await dispatcher.dispatch(request)
+    
+    # 2-3. LCEL 체인 구성
+    extraction_chain = (
+        RunnableLambda(create_multimodal_message)
+        | model
+        | JsonOutputParser()
+    )
+    
+    # 3. 체인 실행
+    response = await extraction_chain.ainvoke({
+        "ocr_text": ocr_text,
+        "image": image
+    })
     
     # LLM 호출 카운터 증가
     if company:
         company.llm_call_count += 1
     
-    # JSON 문자열을 dict로 변환
-    response = parse_json(response)
-
     assert isinstance(response, dict), "Response is not a valid JSON"
     
     # 소요 시간 및 결과 로깅 (debug 모드일 때만)
@@ -508,37 +632,3 @@ def CLOVA_ocr(image) -> list[str]:
     return results
 
 
-def Upstage_ocr(image, model="ocr") -> list[str]:
-    """
-    Upstage OCR API를 사용하여 이미지에서 텍스트 추출
-    """
-
-    dotenv.load_dotenv()
-    from dotenv import find_dotenv
-    env_path = find_dotenv()
-
-    api_key = dotenv.get_key(env_path, "UPSTAGE_api_key")
-     
-    url = "https://api.upstage.ai/v1/document-digitization"
-    headers = {"Authorization": f"Bearer {api_key}"}
-    files = {"document": image}
-    if model == "document-parse":
-        data = {"ocr": "force", "base64_encoding": "['table']", "model": "document-parse"} # NOTE: document parsing 모델
-    else:
-        data = {"model": "ocr"} # NOTE: OCR만
-    response = requests.post(url, headers=headers, files=files, data=data)
-
-    response_data = response.json()
-    
-    # 에러 체크
-    if "error" in response_data:
-        error_msg = response_data["error"].get("message", "Unknown error")
-        error_code = response_data["error"].get("code", "")
-        raise RuntimeError(f"Upstage OCR API Error ({error_code}): {error_msg}")
-    
-    texts = []
-    # pages[0].words에서 텍스트 추출
-    for w in response_data["pages"][0]["words"]:
-        texts.append(w["text"])
-    
-    return texts
