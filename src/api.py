@@ -66,8 +66,12 @@ class ModelFactory:
             base_model = ChatOpenAI(
                 model=model_name,
                 api_key=OPENAI_KEY,
-                temperature=0
+                temperature=0 if not model_name.startswith("o1") else 1  # o1 모델은 temperature 고정
             )
+            
+            # o1 모델은 response_format을 지원하지 않음
+            if model_name.startswith("o1"):
+                return base_model
             
             # JSON 모드가 필요하면 bind로 추가
             if output_format == "json":

@@ -417,6 +417,228 @@ class Company():
         
         return self.reports
 
+    async def search_b2g_evaluations(self, debug: bool = False):
+        """
+        3가지 B2G 평가 DB에서 기업에 적합한 항목을 검색하고 분석
+        
+        1. 기업 문서 분석 결과에서 검색 쿼리 추출
+        2. 각 DB에서 관련 항목 검색 (국정과제, 경영평가, 동반성장)
+        3. 검색된 항목과 기업 정보를 LLM에 전달하여 분석 (top10, insight, risk, consider)
+        4. 결과를 section4에 저장
+        
+        Args:
+            debug: 디버그 모드 여부
+        """
+        from src.db import B2GVectorStore, InclusiveGrowthVectorStore
+        from src.prompts import COMPANY_FEATURE_EXTRACTION_PROMPT, B2G_EVALUATION_ANALYSIS_PROMPT
+        
+        logger.info("B2G 평가 검색 및 분석 시작 (국정과제, 경영평가, 동반성장)")
+        start_time = time.time()
+        
+        # 문서 데이터 준비
+        document_data = json.dumps(
+            [doc.analysis for doc in self.documents.values()],
+            ensure_ascii=False
+        )
+
+        # 1. 기업 특징 추출 (검색 쿼리 생성)
+        logger.info("Step 1: 기업 특징 추출 중...")
+        
+        feature_model = ModelFactory.create_model_chain(
+            provider="openai",
+            model_name="gpt-4o-mini",
+            output_format="json",
+            max_rps=self.dispatcher.max_rps
+        )
+        
+        feature_chain = (
+            COMPANY_FEATURE_EXTRACTION_PROMPT
+            | feature_model
+            | JsonOutputParser()
+        )
+        
+        company_features = await feature_chain.ainvoke({
+            "company_name": self.name,
+            "document_data": document_data
+        })
+        
+        self.llm_call_count += 1
+        
+        if debug:
+            logger.info(f"추출된 기업 특징: {json.dumps(company_features, ensure_ascii=False, indent=2)}")
+        
+        # DB 연결 설정
+        connection_string = "postgresql://youngseocho:@localhost:5432/b2g_data"
+        
+        # 평가 유형별 설정
+        eval_configs = {
+            "presidential_agenda": {
+                "name": "국정과제",
+                "collection": "b2g_projects",
+                "store_class": B2GVectorStore,
+                "search_method": "search_unique_projects",
+                "name_field": "과제명",
+                "id_field": "과제번호",
+            },
+            "management_eval": {
+                "name": "공공기관 경영평가",
+                "collection": "management_eval_indicators",
+                "store_class": InclusiveGrowthVectorStore,
+                "search_method": "search_unique_indicators",
+                "name_field": "지표명",
+                "id_field": "지표명",
+            },
+            "inclusive_growth": {
+                "name": "동반성장 평가지표",
+                "collection": "inclusive_growth_indicators",
+                "store_class": InclusiveGrowthVectorStore,
+                "search_method": "search_unique_indicators",
+                "name_field": "지표명",
+                "id_field": "지표명",
+            }
+        }
+        
+        search_queries = company_features.get("search_queries", [])
+        core_technologies = company_features.get("core_technologies", [])
+        
+        # 2. 각 평가 유형별로 검색 및 분석
+        for eval_type, config in eval_configs.items():
+            logger.info(f"\nStep 2-{eval_type}: {config['name']} 검색 중...")
+            
+            # 벡터 스토어 생성
+            vector_store = config["store_class"](
+                connection_string=connection_string,
+                collection_name=config["collection"]
+            )
+            
+            # 검색 메서드 가져오기
+            search_func = getattr(vector_store, config["search_method"])
+            
+            # 검색 쿼리로 항목 검색
+            all_items = {}
+            
+            for query in search_queries:
+                try:
+                    results = search_func(query, k=5)
+                    for item in results:
+                        item_id = item.get(config["id_field"], "") or item.get("full_data", {}).get(config["id_field"], "")
+                        if item_id and item_id not in all_items:
+                            all_items[item_id] = item
+                except Exception as e:
+                    logger.warning(f"검색 오류 ({config['name']}): {e}")
+                    continue
+            
+            # 부족하면 추가 검색
+            if len(all_items) < 10:
+                for tech in core_technologies:
+                    if len(all_items) >= 10:
+                        break
+                    try:
+                        results = search_func(tech, k=3)
+                        for item in results:
+                            item_id = item.get(config["id_field"], "") or item.get("full_data", {}).get(config["id_field"], "")
+                            if item_id and item_id not in all_items:
+                                all_items[item_id] = item
+                    except Exception as e:
+                        continue
+            
+            items_list = list(all_items.values())[:10]
+            
+            if debug:
+                logger.info(f"검색된 {config['name']} 수: {len(items_list)}")
+                for item in items_list[:3]:
+                    name = item.get(config["name_field"], "") or item.get("full_data", {}).get(config["name_field"], "")
+                    logger.info(f"  - {name[:40]}...")
+            
+            if not items_list:
+                logger.warning(f"{config['name']} 검색 결과 없음")
+                continue
+            
+            # 3. 항목 리스트를 텍스트로 변환
+            items_text = ""
+            for i, item in enumerate(items_list, 1):
+                name = item.get(config["name_field"], "") or item.get("full_data", {}).get(config["name_field"], "")
+                matched_text = item.get("matched_text", "")[:200]
+                
+                if eval_type == "presidential_agenda":
+                    # 국정과제용 형식
+                    goals = item.get("과제 목표", [])[:2]
+                    contents = item.get("주요내용", [])[:2]
+                    items_text += f"""
+{i}. [{item.get(config["id_field"], "")}] {name}
+   - 과제 목표: {', '.join(goals) if goals else '정보 없음'}
+   - 주요내용: {', '.join(contents) if contents else matched_text}
+"""
+                else:
+                    # 경영평가/동반성장 지표용 형식
+                    full_data = item.get("full_data", {})
+                    eval_criteria = full_data.get("평가기준", [])[:2]
+                    eval_method = full_data.get("평가방법", [])[:1]
+                    items_text += f"""
+{i}. {name}
+   - 평가기준: {', '.join(eval_criteria) if eval_criteria else matched_text}
+   - 평가방법: {', '.join(eval_method) if eval_method else ''}
+"""
+            
+            # 4. LLM으로 분석 (insight, risk, consider 생성)
+            logger.info(f"Step 3-{eval_type}: {config['name']} 분석 중...")
+            
+            analysis_model = ModelFactory.create_model_chain(
+                provider="openai",
+                model_name="gpt-4o",
+                output_format="json",
+                max_rps=self.dispatcher.max_rps
+            )
+            
+            analysis_chain = (
+                B2G_EVALUATION_ANALYSIS_PROMPT
+                | analysis_model
+                | JsonOutputParser()
+            )
+            
+            try:
+                analysis_result = await analysis_chain.ainvoke({
+                    "company_name": self.name,
+                    "company_summary": company_features.get("company_summary", ""),
+                    "core_technologies": ", ".join(company_features.get("core_technologies", [])),
+                    "target_sectors": ", ".join(company_features.get("target_sectors", [])),
+                    "eval_type_name": config["name"],
+                    "items_list": items_text
+                })
+                
+                self.llm_call_count += 1
+                
+                # 5. 결과를 section4에 저장
+                self.result_json["section4"][eval_type] = {
+                    "top10": analysis_result.get("top10", []),
+                    "analysis": analysis_result.get("analysis", {
+                        "insight": {"title": "", "details": []},
+                        "risk": {"title": "", "details": []},
+                        "consider": []
+                    })
+                }
+                
+                if debug:
+                    logger.info(f"{config['name']} 분석 완료:")
+                    logger.info(f"  - Top10 항목 수: {len(analysis_result.get('top10', []))}")
+                    logger.info(f"  - Insight: {analysis_result.get('analysis', {}).get('insight', {}).get('title', '')[:50]}...")
+                    
+            except Exception as e:
+                logger.error(f"{config['name']} 분석 오류: {e}")
+                self.result_json["section4"][eval_type] = {
+                    "top10": [],
+                    "analysis": {
+                        "insight": {"title": "", "details": []},
+                        "risk": {"title": "", "details": []},
+                        "consider": []
+                    }
+                }
+        
+        elapsed = time.time() - start_time
+        logger.info(f"\nB2G 평가 검색 및 분석 완료 - 소요 시간: {elapsed:.2f}초")
+        
+        return self.result_json["section4"]
+
 async def main_async(
     company_name: str,
     documents: list[tuple[str, str]],  # [(name1, path1), (name2, path2), ...]
@@ -540,6 +762,17 @@ async def main_async(
         web=web_search,
         debug=debug
     )
+    
+    # B2G 평가 검색 및 분석 (section4: 국정과제, 경영평가, 동반성장)
+    await com.search_b2g_evaluations(debug=debug)
+    
+    # 최종 result_json 저장
+    doc_names = "_".join(com.documents.keys())
+    result_json_filename = f"{com.name}_{doc_names}_result.json"
+    result_json_path = os.path.join(result_dir, result_json_filename)
+    with open(result_json_path, 'w', encoding='utf-8') as f:
+        json.dump(com.result_json, f, ensure_ascii=False, indent=2)
+    logger.info(f"최종 결과 JSON 저장 완료: {result_json_path}")
     
     # 디버그 모드일 때 API 통계 기록 및 파일 핸들러 제거
     if debug and file_handler:

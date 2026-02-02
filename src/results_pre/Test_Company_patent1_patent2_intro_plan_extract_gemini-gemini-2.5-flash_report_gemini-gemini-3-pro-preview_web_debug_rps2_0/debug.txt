@@ -1,0 +1,97 @@
+[10:57:36] INFO - 디버그 로그 저장 경로: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/debug.txt
+[10:57:36] INFO - 기존 분석 결과 로드: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/patent1.json
+[10:57:36] INFO - 기존 분석 결과 로드: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/patent2.json
+[10:57:36] INFO - 기존 분석 결과 로드: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/intro.json
+[10:57:36] INFO - 기존 분석 결과 로드: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/plan.json
+[10:57:36] INFO - 보고서 생성 시작 - 총 4개 유형 (Report Model: gemini/gemini-3-pro-preview, Web: True)
+[10:57:36] WARNING - Unexpected argument 'tools' provided to ChatGoogleGenerativeAI.
+[10:57:36] INFO - AFC is enabled with max remote calls: 10.
+[10:57:37] INFO - AFC is enabled with max remote calls: 10.
+[10:57:37] INFO - AFC is enabled with max remote calls: 10.
+[10:57:38] INFO - AFC is enabled with max remote calls: 10.
+[10:58:36] INFO - 'overall_competency' 보고서 생성 완료 (보고서 생성 시작 후 59.56초)
+[10:58:36] INFO - 'competencies' 보고서 생성 완료 (보고서 생성 시작 후 59.57초)
+[10:58:36] INFO - 'b2g_strategy' 보고서 생성 완료 (보고서 생성 시작 후 59.57초)
+[10:58:36] INFO - 'market' 보고서 생성 완료 (보고서 생성 시작 후 59.57초)
+[10:58:36] INFO - 모든 보고서 저장 완료: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/Test_Company_patent1_patent2_intro_plan.json
+[10:58:36] INFO - 통합 결과 JSON 저장 완료: src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/Test_Company_patent1_patent2_intro_plan_result.json
+[10:58:36] INFO - 국정과제 검색 및 랭킹 시작
+[10:58:36] INFO - Step 1: 기업 특징 추출 중...
+[10:58:41] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[10:58:41] INFO - 추출된 기업 특징: {
+  "company_summary": "대한안전보건교육원은 산업안전보건교육을 전문으로 하는 기관으로, 기업 맞춤형 교육 솔루션과 AI 기반 학습 관리 시스템을 통해 교육 혁신을 이루고 있습니다.",
+  "core_technologies": [
+    "AI 기반 학습 관리 시스템",
+    "비대면 화상 교육",
+    "교육 자동화 시스템",
+    "데이터 기반 맞춤형 교육"
+  ],
+  "target_sectors": [
+    "산업안전보건",
+    "교육 서비스",
+    "공공기관",
+    "중소기업"
+  ],
+  "social_values": [
+    "근로자 안전",
+    "산업 재해 예방",
+    "사회적 책임",
+    "ESG 경영"
+  ],
+  "search_queries": [
+    "산업안전보건교육 혁신",
+    "AI 기반 교육 시스템",
+    "공공기관 맞춤형 교육 솔루션",
+    "중소기업 안전 교육 지원",
+    "ESG 경영과 안전 교육"
+  ]
+}
+[10:58:41] INFO - Step 2: 국정과제 검색 중...
+[10:58:41] INFO - B2GVectorStore 초기화 완료: b2g_projects
+[10:58:42] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[10:58:42] INFO - 검색 완료: 5개 서로 다른 과제 반환
+[10:58:43] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[10:58:43] INFO - 검색 완료: 5개 서로 다른 과제 반환
+[10:58:43] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[10:58:43] INFO - 검색 완료: 5개 서로 다른 과제 반환
+[10:58:43] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[10:58:43] INFO - 검색 완료: 5개 서로 다른 과제 반환
+[10:58:44] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[10:58:44] INFO - 검색 완료: 5개 서로 다른 과제 반환
+[10:58:44] INFO - 검색된 국정과제 수: 10
+[10:58:44] INFO -   - [75] 일하는 모든 사람이 건강하고 안전한 나라 (노동부)...
+[10:58:44] INFO -   - [102] 학교자치와 교육 거버넌스 혁신 (교육부)...
+[10:58:44] INFO -   - [72] 국민안전 보장을 위한 재난안전관리체계 확립 (행안부)...
+[10:58:44] INFO -   - [19] 민생·안전과 공정·상생을 위한 규제 합리화 (국조실)...
+[10:58:44] INFO -   - [37] 통상으로 지키는 국익, 흔들림 없는 경제안보 (산업부)...
+[10:58:44] INFO -   - [99] AI 디지털시대 미래인재 양성 (교육부)...
+[10:58:44] INFO -   - [92] 인구 변동, 디지털 변화, 기후위기에 대응하는 노동대전환 (노동부)...
+[10:58:44] INFO -   - [77] 기본적 삶을 위한 안전망 강화 (복지부)...
+[10:58:44] INFO -   - [109] 국방 환경 변화에 대비한 정예 군사력 건설 (국방부)...
+[10:58:44] INFO -   - [20] AI 3대 강국 도약을 위한 AI고속도로 구축 (과기정통부)...
+[10:58:44] INFO - Step 3: 국정과제 랭킹 중 (OpenAI o1 모델 사용)...
+[10:59:42] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[10:59:42] INFO - Step 4: 결과 저장 중...
+[10:59:42] INFO - 국정과제 검색 및 랭킹 완료 - 소요 시간: 65.73초
+[10:59:42] INFO - 최종 랭킹 결과:
+[10:59:42] INFO -   1. [75] 일하는 모든 사람이 건강하고 안전한 나라 (노동부)...
+[10:59:42] INFO -   2. [72] 국민안전 보장을 위한 재난안전관리체계 확립 (행안부)...
+[10:59:42] INFO -   3. [92] 인구 변동, 디지털 변화, 기후위기에 대응하는 노동대전환 (노동...
+[10:59:42] INFO -   4. [99] AI 디지털시대 미래인재 양성 (교육부)...
+[10:59:42] INFO -   5. [77] 기본적 삶을 위한 안전망 강화 (복지부)...
+[10:59:42] INFO -   6. [19] 민생·안전과 공정·상생을 위한 규제 합리화 (국조실)...
+[10:59:42] INFO -   7. [20] AI 3대 강국 도약을 위한 AI고속도로 구축 (과기정통부)...
+[10:59:42] INFO -   8. [102] 학교자치와 교육 거버넌스 혁신 (교육부)...
+[10:59:42] INFO -   9. [37] 통상으로 지키는 국익, 흔들림 없는 경제안보 (산업부)...
+[10:59:42] INFO -   10. [109] 국방 환경 변화에 대비한 정예 군사력 건설 (국방부)...
+[10:59:42] INFO - 최종 결과 JSON 저장 완료 (국정과제 포함): src/results/Test_Company_patent1_patent2_intro_plan_extract_gemini-gemini-2.5-flash_report_gemini-gemini-3-pro-preview_web_debug_rps2_0/Test_Company_patent1_patent2_intro_plan_result.json
+[10:59:42] INFO - 
+API 호출 통계 - OCR: 0회, LLM: 7회
+
+============================================================
+API CALL STATISTICS
+============================================================
+OCR API 호출: 0회
+LLM API 호출: 7회
+총 API 호출: 7회
+============================================================

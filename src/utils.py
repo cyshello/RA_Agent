@@ -112,6 +112,67 @@ OUTPUT_JSON_SCHEMA = {
             ]
         }
     },
+    "section4" : {
+        "presidential_agenda" : {
+            "top10" : [
+            {
+                "rank" : 0,
+                "name" : "",
+                "description" : ""
+            }],
+            "analysis" : {
+                "insight" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "risk" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "consider" : []
+            }
+        },
+        "management_eval" : {
+            "top10" : [
+                {
+                    "rank" : 0,
+                    "name" : "",
+                    "description" : ""
+                }
+            ],
+           "analysis" : {
+                "insight" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "risk" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "consider" : []
+            }
+        },
+        "inclusive_growth" : {
+            "top10" : [
+                {
+                    "rank" : 0,
+                    "name" : "",
+                    "description" : ""
+                }
+            ],
+            "analysis" : {
+                "insight" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "risk" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "consider" : []
+            }
+        }
+    },
     "section5" : {
         "weakness_analysis" : {
             "keyword" : "",
@@ -630,5 +691,161 @@ def CLOVA_ocr(image) -> list[str]:
             results.append(text)
 
     return results
+
+
+def CLOVA_ocr_with_table(image) -> dict:
+    """
+    CLOVA OCR API를 사용하여 이미지에서 텍스트와 표(Table) 추출
+    
+    Args:
+        image: 이미지 바이트 데이터
+        
+    Returns:
+        dict: {
+            'text': str,  # 전체 텍스트 (줄바꿈으로 구분)
+            'fields': list[str],  # 일반 텍스트 필드 리스트
+            'tables': list[dict],  # 표 데이터 리스트
+            'raw_response': dict  # 원본 응답
+        }
+    """
+    import os
+    
+    # 먼저 환경변수에서 찾기
+    api_url = os.environ.get("CLOVA_api_url")
+    secret_key = os.environ.get("CLOVA_secret_key")
+    
+    # 없으면 .env 파일에서 찾기
+    if not api_url or not secret_key:
+        dotenv.load_dotenv()
+        from dotenv import find_dotenv
+        env_path = find_dotenv()
+        
+        if env_path:
+            api_url = dotenv.get_key(env_path, "CLOVA_api_url")
+            secret_key = dotenv.get_key(env_path, "CLOVA_secret_key")
+    
+    # 여전히 없으면 src/.env에서 직접 로드
+    if not api_url or not secret_key:
+        src_env_path = os.path.join(os.path.dirname(__file__), ".env")
+        if os.path.exists(src_env_path):
+            dotenv.load_dotenv(src_env_path)
+            api_url = dotenv.get_key(src_env_path, "CLOVA_api_url")
+            secret_key = dotenv.get_key(src_env_path, "CLOVA_secret_key")
+
+    request_json = {
+        'images': [
+            {
+                'format': 'png',
+                'name': 'demo'
+            }
+        ],
+        'requestId': str(uuid.uuid4()),
+        'version': 'V2',
+        'timestamp': int(round(time.time() * 1000)),
+        'enableTableDetection': True  # 표 인식 활성화
+    }
+
+    payload = {'message': json.dumps(request_json).encode('UTF-8')}
+    files = [
+        ('file', ('image.png', image, 'image/png'))
+    ]
+    headers = {
+        'X-OCR-SECRET': secret_key
+    }
+
+    response = requests.request("POST", api_url, headers=headers, data=payload, files=files)
+    response_json = response.json()
+    
+    result = {
+        'text': '',
+        'fields': [],
+        'tables': [],
+        'raw_response': response_json
+    }
+    
+    if response_json.get('images') is not None:
+        image_result = response_json['images'][0]
+        
+        # 일반 텍스트 필드 추출
+        if 'fields' in image_result:
+            for field in image_result['fields']:
+                text = field.get('inferText', '')
+                if text:
+                    result['fields'].append(text)
+        
+        # 표(Table) 데이터 추출
+        if 'tables' in image_result:
+            for table in image_result['tables']:
+                table_data = {
+                    'cells': [],
+                    'text': table.get('inferText', ''),
+                    'rows': {},  # row_index -> {col_index: cell_text}
+                    'markdown': ''  # 마크다운 형식 표
+                }
+                
+                if 'cells' in table:
+                    max_row = 0
+                    max_col = 0
+                    
+                    for cell in table['cells']:
+                        row_idx = cell.get('rowIndex', 0)
+                        col_idx = cell.get('columnIndex', 0)
+                        row_span = cell.get('rowSpan', 1)
+                        col_span = cell.get('columnSpan', 1)
+                        
+                        # 셀 텍스트 추출
+                        cell_text = ''
+                        if 'cellTextLines' in cell:
+                            cell_texts = []
+                            for line in cell['cellTextLines']:
+                                if 'cellWords' in line:
+                                    line_text = ' '.join([
+                                        word.get('inferText', '') 
+                                        for word in line['cellWords']
+                                    ])
+                                    cell_texts.append(line_text)
+                            cell_text = ' '.join(cell_texts)
+                        
+                        cell_info = {
+                            'row': row_idx,
+                            'col': col_idx,
+                            'row_span': row_span,
+                            'col_span': col_span,
+                            'text': cell_text
+                        }
+                        table_data['cells'].append(cell_info)
+                        
+                        # rows 딕셔너리에 저장
+                        if row_idx not in table_data['rows']:
+                            table_data['rows'][row_idx] = {}
+                        table_data['rows'][row_idx][col_idx] = cell_text
+                        
+                        max_row = max(max_row, row_idx)
+                        max_col = max(max_col, col_idx)
+                    
+                    # 마크다운 표 생성
+                    md_lines = []
+                    for r in range(max_row + 1):
+                        row_cells = []
+                        for c in range(max_col + 1):
+                            cell_val = table_data['rows'].get(r, {}).get(c, '')
+                            row_cells.append(cell_val)
+                        md_lines.append('| ' + ' | '.join(row_cells) + ' |')
+                        if r == 0:  # 헤더 구분선
+                            md_lines.append('|' + '---|' * (max_col + 1))
+                    
+                    table_data['markdown'] = '\n'.join(md_lines)
+                
+                result['tables'].append(table_data)
+        
+        # 전체 텍스트 조합 (필드 + 표)
+        all_text_parts = result['fields'].copy()
+        for table in result['tables']:
+            if table['markdown']:
+                all_text_parts.append(f"\n[표]\n{table['markdown']}\n")
+        
+        result['text'] = '\n'.join(all_text_parts)
+    
+    return result
 
 
