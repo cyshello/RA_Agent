@@ -65,6 +65,7 @@ CREATE DATABASE b2g_data CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
 ### 2.3 기준 데이터 로드
+기존에 생성한 기준 데이터 분석 JSON이 있을 경우, 바로 DB 구성이 가능합니다.
 
 ```bash
 cd DB_data
@@ -81,7 +82,70 @@ python load_json_to_db.py --type inclusive    # 동반성장
 python load_json_to_db.py --reset
 ```
 
-### 2.4 DB 연결 정보
+### 2.4 DB 재생성
+만약 새로운 문서로 DB를 다시 구축하고 싶다면 다음과 같이 합니다.
+
+```bash
+# 사용법
+./db_scripts/build_db.sh <pdf_path> <data_type> <index_pages> <detail_pages> [options]
+
+# 필수 인자
+#   pdf_path       PDF 파일 경로
+#   data_type      데이터 종류 (project | management_eval | inclusive_growth)
+#   index_pages    목록 페이지 범위 (예: 13-17)
+#   detail_pages   세부내용 페이지 범위 (예: 21-195)
+
+# 선택 옵션
+#   --reuse-ocr <dir>    기존 OCR 결과 재사용 (OCR 단계 스킵)
+#   --output-dir <dir>   중간 결과 JSON 저장 디렉토리
+#   --db-host <host>     MySQL 호스트 (기본값: localhost)
+#   --db-port <port>     MySQL 포트 (기본값: 3306)
+#   --db-name <name>     DB 이름 (기본값: b2g_data)
+#   --db-user <user>     MySQL 사용자 (기본값: root)
+#   --db-password <pw>   MySQL 비밀번호
+```
+
+이때, 높은 정확도를 위해 국정과제, 세부지표 등이 있는 부분만 입력으로 받아 분석을 진행하며, 페이지 범위는 다음과 같이 설정합니다.
+
+- 목록 페이지 범위 : 국정과제, 세부지표 등이 있는 전체 목록 페이지
+- 세부내용 페이지 범위 : 위의 목록에 대한 설명이 있는 페이지
+
+**예시:**
+
+```bash
+# 국정과제 PDF → DB 구축
+./db_scripts/build_db.sh ./data/criteria/presidential_agenda.pdf project 13-17 21-195
+
+# 경영평가 PDF → DB 구축 (중간 결과 저장)
+./db_scripts/build_db.sh ./data/criteria/management_eval.pdf management_eval 20-25 27-46 --output-dir ./output/management
+
+# 동반성장 PDF → DB 구축 (기존 OCR 재사용)
+./db_scripts/build_db.sh ./data/criteria/inclusive_growth.pdf inclusive_growth 2-5 6-50 --reuse-ocr ./ocr_cache/inclusive
+```
+
+**파이프라인 실행 순서:**
+1. PDF 로드 및 이미지 변환
+2. OCR 수행 (또는 기존 OCR 재사용)
+3. LLM으로 항목 추출 → JSON 저장
+4. OpenAI 임베딩 생성
+5. MySQL DB 저장
+
+**DB 확인 및 검색 테스트:**
+
+```bash
+# DB 내용 확인
+python db_scripts/check_db.py                    # 전체 통계
+python db_scripts/check_db.py project            # 국정과제 조회
+python db_scripts/check_db.py management_eval    # 경영평가 조회
+python db_scripts/check_db.py inclusive_growth   # 동반성장 조회
+
+# 검색 테스트
+python db_scripts/search_test.py "인공지능 AI"
+python db_scripts/search_test.py "상생 협력" --type inclusive_growth
+```
+
+
+### 2.5 DB 연결 정보
 
 기본 연결 정보:
 - Host: `localhost`
@@ -156,37 +220,186 @@ POST /analysis
 
 ```json
 {
-  "section1": {
-    "기업명": "...",
-    "기업 한줄 요약": "...",
-    "기업분류": "...",
-    "핵심 역량": ["..."],
-    "주요 제품/서비스": ["..."],
-    "투자유치 및 재무지표": "...",
-    "수상 및 인증 실적": ["..."],
-    "지식재산권": "..."
-  },
-  "section2": {
-    "핵심 기술 키워드": ["..."],
-    "기술 역량 요약": "...",
-    "기술적 차별점 및 경쟁 우위": "...",
-    "적용 가능 산업 분야": ["..."],
-    "기술 성숙도(TRL)": "..."
-  },
-  "section3": {
-    "시장분석 요약": "...",
-    "목표시장 및 성장성": "...",
-    "경쟁 현황 및 포지셔닝": "..."
-  },
-  "section4": {
-    "국정과제 관련 지표": [...],
-    "경영평가 관련 지표": [...],
-    "동반성장 관련 지표": [...]
-  },
-  "section5": {
-    "B2G 전략 방향": "...",
-    "공공시장 진입 전략": "..."
-  }
+    "section1" : {
+        "scores": {
+            "management_eval": {
+                "score": 0,
+                "reason": "",
+                "needs_more_data": []
+            },
+            "national_agenda": {
+                "score": 0,
+                "reason": "",
+                "needs_more_data": []
+            },
+            "co_growth": {
+                "score": 0,
+                "reason": "",
+                "needs_more_data": []
+            }
+        },
+        "radar": [
+            { "axis": "정책정합성", "score": 0 },
+            { "axis": "공공기관적합도", "score": 0 },
+            { "axis": "시장성장성", "score": 0 },
+            { "axis": "동반성장·협력", "score": 0 },
+            { "axis": "신뢰도·레퍼런스", "score": 0 }
+        ],
+        "overall": {
+            "overall_score": 0,
+            "grade": "",
+            "grade_rule": "",
+            "reason_summary": "",
+            "needs_more_data_global": [],
+            "keywords": []
+        }
+    },
+    "section2" : {
+        "finance" : {
+            "revenue" : {
+                "year" : 0,
+                "amount" : ""
+            },
+            "profit" : {
+                "year" : 0,
+                "amount" : ""
+            },
+            "invest" : {
+                "year" : 0,
+                "amount" : ""
+            }
+        },
+        "performance" : {
+            "contents" : []
+        },
+        "BM" : {
+            "contents" : []
+        },
+        "competencies" : {
+            "b2g_keywords" : [],
+            "evidences" : []
+        }
+    },
+    "section3" : {
+        "market_growth" : 0.0, # 이 부분은 아래 data로부터 계산됨.
+        "market_size" : {
+            "unit" : "",
+            "market_name" : "",
+            "reference" : "",
+            "data" : {
+            }
+        },
+        "competition" : {
+            "competitors" : [],
+            "details" : [],
+            "differentiation" : []
+        },
+        "tech_policy_trends" : {
+            "keywords" : [],
+            "evidences" : [
+                {
+                    "content" : "",
+                    "source" : ""
+                },
+                {
+                    "content" : "",
+                    "source" : ""
+                }
+            ]
+        }
+    },
+    "section4" : {
+        "presidential_agenda" : {
+            "top10" : [
+            {
+                "rank" : "",
+                "name" : "",
+                "description" : ""
+            }],
+            "analysis" : {
+                "rank" : "",
+                "insight" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "risk" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "consider" : []
+            }
+        },
+        "management_eval" : {
+            "top10" : [
+                {
+                    "rank" : "",
+                    "name" : "",
+                    "description" : ""
+                }
+            ],
+           "analysis" : {
+                "rank" : "",
+                "insight" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "risk" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "consider" : []
+            }
+        },
+        "inclusive_growth" : {
+            "top10" : [
+                {
+                    "rank" : "",
+                    "name" : "",
+                    "description" : ""
+                }
+            ],
+            "analysis" : {
+                "rank" : "",
+                "insight" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "risk" : {
+                    "title" : "",
+                    "details" : []
+                },
+                "consider" : []
+            }
+        },
+        "overall" : {
+            "rank" : "",
+            "expect" : []
+        }
+    },
+    "section5" : {
+        "weakness_analysis" : {
+            "keyword" : "",
+            "evidences" : []
+        },
+        "strategy" : {
+            "keyword" : "",
+            "strategy" : "",
+            "details" : []
+        },
+        "to_do_list" : {
+            "keyword" : "",
+            "tasks" : [
+                {
+                    "content" : "",
+                    "details" : []
+                },
+                {
+                    "content" : "",
+                    "details" : []
+                }
+            ]
+        }
+    }
 }
 ```
 

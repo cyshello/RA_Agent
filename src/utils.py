@@ -739,6 +739,12 @@ def CLOVA_ocr_with_table(image) -> dict:
             api_url = dotenv.get_key(src_env_path, "CLOVA_api_url")
             secret_key = dotenv.get_key(src_env_path, "CLOVA_secret_key")
 
+    # API 설정 확인
+    if not api_url:
+        raise Exception("CLOVA OCR API URL이 설정되지 않았습니다. .env 파일에 CLOVA_api_url을 설정하세요.")
+    if not secret_key:
+        raise Exception("CLOVA OCR Secret Key가 설정되지 않았습니다. .env 파일에 CLOVA_secret_key를 설정하세요.")
+
     request_json = {
         'images': [
             {
@@ -761,7 +767,19 @@ def CLOVA_ocr_with_table(image) -> dict:
     }
 
     response = requests.request("POST", api_url, headers=headers, data=payload, files=files)
-    response_json = response.json()
+    
+    # API 응답 상태 확인
+    if response.status_code != 200:
+        raise Exception(f"CLOVA OCR API 오류: HTTP {response.status_code} - {response.text[:200]}")
+    
+    # 응답이 비어있는지 확인
+    if not response.text or response.text.strip() == '':
+        raise Exception(f"CLOVA OCR API 응답이 비어있습니다. API URL이나 Secret Key를 확인하세요. (api_url: {api_url[:30] if api_url else 'None'}...)")
+    
+    try:
+        response_json = response.json()
+    except Exception as e:
+        raise Exception(f"CLOVA OCR API 응답 JSON 파싱 실패: {e}. 응답 내용: {response.text[:200]}")
     
     result = {
         'text': '',

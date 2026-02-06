@@ -88,26 +88,47 @@ class Document():
         import re
 
         for i, (result, ocr_text) in enumerate(results):
+            # 재무현황 키가 없으면 건너뛰기
+            if "재무현황" not in result:
+                print(f"재무현황 디버깅: 페이지 {i}에 '재무현황' 키가 없음")
+                continue
+                
             for k in [("revenue","매출"), ("profit","영업이익"), ("invest","누적투자")]:  
-                if result["재무현황"][k[1]]["금액"] == "" or result["재무현황"][k[1]]["기준년도"] == "":
-                    # 둘 중 하나라도 값이 없으면 패스 -> 둘 다 있어야지만 저장됨.
+                # 해당 재무 항목이 없거나 빈 값인 경우 체크
+                if k[1] not in result["재무현황"]:
+                    print(f"재무현황 디버깅: 페이지 {i}에 '{k[1]}' 키가 없음")
                     continue
-                amount = result["재무현황"][k[1]]["금액"]
+                    
+                finance_item = result["재무현황"][k[1]]
+                
+                # 금액 또는 기준년도 키가 없거나 빈 값인 경우 체크
+                if not isinstance(finance_item, dict):
+                    print(f"재무현황 디버깅: 페이지 {i}의 '{k[1]}'가 dict가 아님: {finance_item}")
+                    continue
+                    
+                amount = finance_item.get("금액", "")
+                year_raw = finance_item.get("기준년도", "")
+                
+                if amount == "" or amount is None or year_raw == "" or year_raw is None:
+                    # 둘 중 하나라도 값이 없으면 패스 -> 둘 다 있어야지만 저장됨.
+                    print(f"재무현황 디버깅: 페이지 {i}의 '{k[1]}' - 금액({amount}) 또는 기준년도({year_raw})가 비어있음")
+                    continue
+                    
                 year = 0
                 
-                if result["재무현황"][k[1]]["기준년도"] == None:
+                if year_raw is None:
                     year = 0
-                elif type(result["재무현황"][k[1]]["기준년도"]) == int:
-                    year = result["재무현황"][k[1]]["기준년도"]
+                elif isinstance(year_raw, int):
+                    year = year_raw
                 else:
                     # 기준년도에서 숫자만 추출
-                    year_match = re.search(r'\d{4}', str(result["재무현황"][k[1]]["기준년도"]))
+                    year_match = re.search(r'\d{4}', str(year_raw))
                     if year_match:
                         year = int(year_match.group(0))
                     else:
                         year = 0
 
-                print("재무현황 디버깅",i, amount, year)
+                print(f"재무현황 디버깅: 페이지 {i}, {k[1]}, 금액={amount}, 기준년도={year}")
 
                 if company.result_json["section2"]["finance"][k[0]]["year"] == 0 and (company.result_json["section2"]["finance"][k[0]]["amount"] == "" or company.result_json["section2"]["finance"][k[0]]["amount"] is None):
                     company.result_json["section2"]["finance"][k[0]]["year"] = year #반드시 정수로 저장
@@ -116,7 +137,10 @@ class Document():
                     if company.result_json["section2"]["finance"][k[0]]["year"] < year:
                         company.result_json["section2"]["finance"][k[0]]["year"] = year
                         company.result_json["section2"]["finance"][k[0]]["amount"] = amount
-            result.pop("재무현황")  # 페이지별 결과에서 재무현황 제거
+            
+            # 재무현황 키가 있을 때만 제거
+            if "재무현황" in result:
+                result.pop("재무현황")  # 페이지별 결과에서 재무현황 제거
 
         # 결과를 페이지 번호와 함께 저장
         self.analysis = [{i: result[0]} for i, result in enumerate(results)]
@@ -306,26 +330,28 @@ class Company():
         else:
             logger.info(f"전체 분석 완료")
         
-        # 각 문서의 결과를 결과 폴더에 저장
-        for name, document in self.documents.items():
-            # 분석 결과 저장
-            output_path = os.path.join(self.result_dir, f"{name}.json")
-            with open(output_path, 'w', encoding='utf-8') as f:
-                json.dump(document.analysis, f, ensure_ascii=False, indent=2)
-            
-            # OCR 결과 저장 (페이지 번호 포함 형식)
-            ocr_path = os.path.join(self.result_dir, f"{name}_ocr.json")
-            # OCR 결과를 페이지별로 구조화
-            ocr_by_page = {}
-            for ocr_item in document.ocr_texts:
-                for page_num, text in ocr_item.items():
-                    ocr_by_page[f"page_{page_num}"] = text
-            
-            with open(ocr_path, 'w', encoding='utf-8') as f:
-                json.dump(ocr_by_page, f, ensure_ascii=False, indent=2)
-            
-            logger.info(f"분석 결과 저장: {output_path}")
-            logger.info(f"OCR 결과 저장: {ocr_path}")
+        # 각 문서의 결과를 결과 폴더에 저장 (debug 모드일 때만)
+        if debug:
+            for name, document in self.documents.items():
+                # 분석 결과 저장
+                output_path = os.path.join(self.result_dir, f"{name}.json")
+                
+                with open(output_path, 'w', encoding='utf-8') as f:
+                    json.dump(document.analysis, f, ensure_ascii=False, indent=2)
+                
+                # OCR 결과 저장 (페이지 번호 포함 형식)
+                ocr_path = os.path.join(self.result_dir, f"{name}_ocr.json")
+                # OCR 결과를 페이지별로 구조화
+                ocr_by_page = {}
+                for ocr_item in document.ocr_texts:
+                    for page_num, text in ocr_item.items():
+                        ocr_by_page[f"page_{page_num}"] = text
+                
+                with open(ocr_path, 'w', encoding='utf-8') as f:
+                    json.dump(ocr_by_page, f, ensure_ascii=False, indent=2)
+                
+                logger.info(f"분석 결과 저장: {output_path}")
+                logger.info(f"OCR 결과 저장: {ocr_path}")
         
         return [doc.analysis for doc in self.documents.values()]
 
@@ -499,22 +525,23 @@ class Company():
                 debug=debug
             )
         
-        # 보고서를 결과 폴더에 저장
-        doc_names = "_".join(self.documents.keys())
-        reports_filename = f"{self.name}_{doc_names}.json"
-        reports_path = os.path.join(self.result_dir, reports_filename)
-        with open(reports_path, 'w', encoding='utf-8') as f:
-            json.dump(self.reports, f, ensure_ascii=False, indent=2)
-        
-        logger.info(f"모든 보고서 저장 완료: {reports_path}")
-        
-        # result_json도 함께 저장
-        result_json_filename = f"{self.name}_{doc_names}_result.json"
-        result_json_path = os.path.join(self.result_dir, result_json_filename)
-        with open(result_json_path, 'w', encoding='utf-8') as f:
-            json.dump(self.result_json, f, ensure_ascii=False, indent=2)
-        
-        logger.info(f"통합 결과 JSON 저장 완료: {result_json_path}")
+        # 보고서를 결과 폴더에 저장 (debug 모드일 때만)
+        if debug:
+            doc_names = "_".join(self.documents.keys())
+            reports_filename = f"{self.name}_{doc_names}.json"
+            reports_path = os.path.join(self.result_dir, reports_filename)
+            with open(reports_path, 'w', encoding='utf-8') as f:
+                json.dump(self.reports, f, ensure_ascii=False, indent=2)
+            
+            logger.info(f"모든 보고서 저장 완료: {reports_path}")
+            
+            # result_json도 함께 저장
+            result_json_filename = f"{self.name}_{doc_names}_result.json"
+            result_json_path = os.path.join(self.result_dir, result_json_filename)
+            with open(result_json_path, 'w', encoding='utf-8') as f:
+                json.dump(self.result_json, f, ensure_ascii=False, indent=2)
+            
+            logger.info(f"통합 결과 JSON 저장 완료: {result_json_path}")
         
         return self.reports
 
@@ -704,9 +731,9 @@ class Company():
                     continue
             
             # 항목이 부족하면 핵심 기술로 추가 검색
-            if len(all_items) < 10:
+            if len(all_items) < 20:
                 for tech in core_technologies:
-                    if len(all_items) >= 10:
+                    if len(all_items) >= 20:
                         break
                     try:
                         results = search_func(tech, k=3)
@@ -1268,13 +1295,14 @@ async def main_async(
         debug=debug
     )
     
-    # 최종 result_json 저장
-    doc_names = "_".join(com.documents.keys())
-    result_json_filename = f"{com.name}_{doc_names}_result.json"
-    result_json_path = os.path.join(result_dir, result_json_filename)
-    with open(result_json_path, 'w', encoding='utf-8') as f:
-        json.dump(com.result_json, f, ensure_ascii=False, indent=2)
-    logger.info(f"최종 결과 JSON 저장 완료: {result_json_path}")
+    # 최종 result_json 저장 (debug 모드일 때만)
+    if debug:
+        doc_names = "_".join(com.documents.keys())
+        result_json_filename = f"{com.name}_{doc_names}_result.json"
+        result_json_path = os.path.join(result_dir, result_json_filename)
+        with open(result_json_path, 'w', encoding='utf-8') as f:
+            json.dump(com.result_json, f, ensure_ascii=False, indent=2)
+        logger.info(f"최종 결과 JSON 저장 완료: {result_json_path}")
     
     # 디버그 모드일 때 API 통계 기록 및 파일 핸들러 제거
     if debug and file_handler:
