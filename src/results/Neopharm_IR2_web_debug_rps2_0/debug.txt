@@ -1,0 +1,120 @@
+[17:31:59] INFO - 디버그 로그 저장 경로: src/results/Neopharm_IR2_web_debug_rps2_0/debug.txt
+[17:31:59] INFO - 기존 분석 결과 로드: src/results/Neopharm_IR2_web_debug_rps2_0/IR2.json
+[17:31:59] INFO - 보고서 생성 시작 - 총 3개 유형
+[17:31:59] INFO -   Section 1, 2: openai/gpt-4o | Section 3: gemini/gemini-3-pro-preview | Web: True
+[17:31:59] WARNING - Unexpected argument 'tools' provided to ChatGoogleGenerativeAI.
+[17:32:00] INFO - AFC is enabled with max remote calls: 10.
+[17:32:07] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[17:32:12] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[17:33:08] INFO - 'overall_competency' 보고서 생성 완료 (보고서 생성 시작 후 68.79초)
+[17:33:08] INFO - 'competencies' 보고서 생성 완료 (보고서 생성 시작 후 68.79초)
+[17:33:08] INFO - 'market' 보고서 생성 완료 (보고서 생성 시작 후 68.79초)
+[17:33:08] INFO - 모든 보고서 저장 완료: src/results/Neopharm_IR2_web_debug_rps2_0/Neopharm_IR2.json
+[17:33:08] INFO - 통합 결과 JSON 저장 완료: src/results/Neopharm_IR2_web_debug_rps2_0/Neopharm_IR2_result.json
+[17:33:08] INFO - B2G 평가 검색 및 분석 시작 (국정과제, 경영평가, 동반성장) - MySQL 임베딩 검색
+[17:33:08] INFO - Step 1: 기업 특징 추출 중...
+[17:33:12] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+[17:33:12] INFO - 추출된 기업 특징: {
+  "company_summary": "네오팜은 피부 과학 분야의 글로벌 리더로, 기술 혁신을 통해 다양한 피부 문제를 해결하는 제품을 개발하고 있습니다.",
+  "core_technologies": [
+    "피부 과학",
+    "기술 혁신",
+    "피부 치료",
+    "화장품 개발"
+  ],
+  "target_sectors": [
+    "화장품 산업",
+    "의료 피부과",
+    "헬스케어",
+    "글로벌 수출"
+  ],
+  "social_values": [
+    "피부 건강 증진",
+    "소비자 안전",
+    "환경 친화적 제품 개발",
+    "사회적 책임"
+  ],
+  "search_queries": [
+    "피부 과학 기술 혁신 국정과제",
+    "화장품 산업 발전 정책",
+    "소비자 안전을 위한 피부 치료 연구",
+    "글로벌 헬스케어 수출 지원 방안"
+  ]
+}
+[17:33:12] INFO - MySQLStore 초기화 완료: b2g_data
+[17:33:12] WARNING - Unexpected argument 'tools' provided to ChatGoogleGenerativeAI.
+[17:33:12] INFO - 
+==================================================
+[17:33:12] INFO - [국정과제] 처리 시작
+[17:33:12] INFO - ==================================================
+[17:33:12] INFO - Step 2-presidential_agenda: 국정과제 임베딩 검색 중...
+[17:33:13] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:33:13] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:33:13] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:33:14] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:33:14] INFO - 검색된 국정과제 수: 18
+[17:33:14] INFO - Step 3A-presidential_agenda: 국정과제 랭킹 생성 중...
+[17:33:14] INFO - AFC is enabled with max remote calls: 10.
+[17:34:10] INFO -   - 랭킹 완료: 10개 항목
+[17:34:10] INFO - Step 3B-presidential_agenda: 국정과제 분석 생성 중...
+[17:34:10] INFO - AFC is enabled with max remote calls: 10.
+[17:34:38] INFO -   - 분석 완료: rank=C (top10 평균에서 계산됨)
+[17:34:38] INFO - 
+==================================================
+[17:34:38] INFO - [공공기관 경영평가] 처리 시작
+[17:34:38] INFO - ==================================================
+[17:34:38] INFO - Step 2-management_eval: 공공기관 경영평가 임베딩 검색 중...
+[17:34:38] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:34:39] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:34:39] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:34:39] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:34:39] INFO - 검색된 공공기관 경영평가 수: 14
+[17:34:39] INFO - Step 3A-management_eval: 공공기관 경영평가 랭킹 생성 중...
+[17:34:39] INFO - AFC is enabled with max remote calls: 10.
+[17:35:43] INFO -   - 랭킹 완료: 10개 항목
+[17:35:43] INFO - Step 3B-management_eval: 공공기관 경영평가 분석 생성 중...
+[17:35:43] INFO - AFC is enabled with max remote calls: 10.
+[17:36:09] INFO -   - 분석 완료: rank=B (top10 평균에서 계산됨)
+[17:36:09] INFO - 
+==================================================
+[17:36:09] INFO - [동반성장 평가지표] 처리 시작
+[17:36:09] INFO - ==================================================
+[17:36:09] INFO - Step 2-inclusive_growth: 동반성장 평가지표 임베딩 검색 중...
+[17:36:10] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:36:11] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:36:11] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:36:12] INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+[17:36:12] INFO - 검색된 동반성장 평가지표 수: 15
+[17:36:12] INFO - Step 3A-inclusive_growth: 동반성장 평가지표 랭킹 생성 중...
+[17:36:12] INFO - AFC is enabled with max remote calls: 10.
+[17:36:55] INFO -   - 랭킹 완료: 10개 항목
+[17:36:55] INFO - Step 3B-inclusive_growth: 동반성장 평가지표 분석 생성 중...
+[17:36:55] INFO - AFC is enabled with max remote calls: 10.
+[17:37:23] INFO -   - 분석 완료: rank=C (top10 평균에서 계산됨)
+[17:37:23] INFO - 
+==================================================
+[17:37:23] INFO - Step 4: B2G 평가 종합 요약 생성 중...
+[17:37:23] INFO - ==================================================
+[17:37:23] INFO - AFC is enabled with max remote calls: 10.
+[17:37:47] INFO -   - 종합 등급: C (3개 평가 rank 평균에서 계산됨)
+[17:37:47] INFO -   - 기대효과: 4개
+[17:37:47] INFO - 
+B2G 평가 검색 및 분석 완료 - 소요 시간: 278.81초
+[17:37:47] INFO - B2G 전략 방향 수립 시작 (Section 5) - Model: gemini/gemini-3-pro-preview
+[17:37:47] WARNING - Unexpected argument 'tools' provided to ChatGoogleGenerativeAI.
+[17:37:47] INFO - AFC is enabled with max remote calls: 10.
+[17:38:49] INFO - B2G 전략 생성 완료:
+[17:38:49] INFO -   - 약점 분석: 공공 레퍼런스 부재 및 민간 시장 편중...
+[17:38:49] INFO -   - 전략 방향: 지역 보건소 '아토피·천식 예방관리 사업' 진입을 통한 공공 레퍼런스 확보...
+[17:38:49] INFO - B2G 전략 방향 수립 완료 - 소요 시간: 61.79초
+[17:38:49] INFO - 최종 결과 JSON 저장 완료: src/results/Neopharm_IR2_web_debug_rps2_0/Neopharm_IR2_result.json
+[17:38:49] INFO - 
+API 호출 통계 - OCR: 0회, LLM: 12회
+
+============================================================
+API CALL STATISTICS
+============================================================
+OCR API 호출: 0회
+LLM API 호출: 12회
+총 API 호출: 12회
+============================================================

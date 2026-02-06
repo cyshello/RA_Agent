@@ -52,3 +52,8 @@ chardet>=5.2.0
 tenacity>=9.1.0
 tiktoken>=0.12.0
 
+# FastAPI Server
+fastapi>=0.115.0
+uvicorn>=0.34.0
+boto3>=1.35.0
+

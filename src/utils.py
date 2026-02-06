@@ -116,11 +116,12 @@ OUTPUT_JSON_SCHEMA = {
         "presidential_agenda" : {
             "top10" : [
             {
-                "rank" : 0,
+                "rank" : "",
                 "name" : "",
                 "description" : ""
             }],
             "analysis" : {
+                "rank" : "",
                 "insight" : {
                     "title" : "",
                     "details" : []
@@ -135,12 +136,13 @@ OUTPUT_JSON_SCHEMA = {
         "management_eval" : {
             "top10" : [
                 {
-                    "rank" : 0,
+                    "rank" : "",
                     "name" : "",
                     "description" : ""
                 }
             ],
            "analysis" : {
+                "rank" : "",
                 "insight" : {
                     "title" : "",
                     "details" : []
@@ -155,12 +157,13 @@ OUTPUT_JSON_SCHEMA = {
         "inclusive_growth" : {
             "top10" : [
                 {
-                    "rank" : 0,
+                    "rank" : "",
                     "name" : "",
                     "description" : ""
                 }
             ],
             "analysis" : {
+                "rank" : "",
                 "insight" : {
                     "title" : "",
                     "details" : []
@@ -171,6 +174,10 @@ OUTPUT_JSON_SCHEMA = {
                 },
                 "consider" : []
             }
+        },
+        "overall" : {
+            "rank" : "",
+            "expect" : []
         }
     },
     "section5" : {

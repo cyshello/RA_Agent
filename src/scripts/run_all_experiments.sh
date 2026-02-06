@@ -15,10 +15,9 @@ eval "$(conda shell.bash hook)"
 conda activate AX
 
 # 공통 설정
-EXTRACT_MODEL="gemini"
-EXTRACT_MODEL_NAME="gemini-2.5-flash"
-REPORT_MODEL="openai"
-REPORT_MODEL_NAME="gpt-4o"
+# 모델 설정은 하드코딩됨:
+#   - 문서 추출 및 Section 1, 2: OpenAI GPT-4o
+#   - Section 3, 4, 5: Google Gemini 2.0 Pro
 MAX_RPS="2.0"
 DEBUG_FLAG="--debug"
 
@@ -55,15 +54,12 @@ run_experiment() {
     log_separator
     log_info "실험 시작: $company_name"
     log_info "문서: $documents"
+    log_info "모델: 문서 추출/Section1,2=GPT-4o | Section3,4,5=Gemini-2.0-Pro"
     log_separator
     
     python3 main.py \
         --company "$company_name" \
         --documents $documents \
-        --extract-model "$EXTRACT_MODEL" \
-        --extract-model-name "$EXTRACT_MODEL_NAME" \
-        --report-model "$REPORT_MODEL" \
-        --report-model-name "$REPORT_MODEL_NAME" \
         --max-rps "$MAX_RPS" \
         $web_flag \
         $DEBUG_FLAG
@@ -88,7 +84,7 @@ run_nudge() {
 
 # Test Company 실험 (여러 문서)
 run_test() {
-    run_experiment "Test_Company" "patent1:data/test/patent1.pdf patent2:data/test/patent2.pdf intro:data/test/intro.pdf plan:data/test/business_plan.pdf" "--web"
+    run_experiment "Test_Company" "intro:data/test/intro.pdf plan:data/test/business_plan.pdf" "--web"
 }
 
 # ISens 실험

@@ -1,0 +1,11 @@
+[17:38:51] INFO - 디버그 로그 저장 경로: src/results/Nudge_Healthcare_IR1_debug_rps2_0/debug.txt
+[17:38:55] INFO - 문서 'IR1' (data/IR1.pdf) - 총 31페이지
+[17:38:55] INFO - 분석 시작 (debug 모드, RPS: 2.0, Extract Model: openai/gpt-4o)
+_1_2_MODEL="openai/gpt-4o"
+SECTION_3_4_5_MODEL="gemini/gemini-3-pro-preview"
+OCR_PROVIDER="CLOVA"
+WEB_SEARCH=
+MAX_RPS="2.0"
+DEBUG=--debug
+============================================================
+

@@ -1,5 +1,0 @@
-[16:39:40] INFO - 디버그 로그 저장 경로: src/results/Nudge_Healthcare_IR1_extract_gemini-gemini-2.5-flash_report_openai-gpt-4o_debug_rps2_0/debug.txt
-[16:39:40] INFO - 기존 분석 결과 로드: src/results/Nudge_Healthcare_IR1_extract_gemini-gemini-2.5-flash_report_openai-gpt-4o_debug_rps2_0/IR1.json
-[16:39:40] INFO - 보고서 생성 시작 - 총 4개 유형 (Report Model: openai/gpt-4o, Web: False)
-[16:39:46] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
-[16:39:48] INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"

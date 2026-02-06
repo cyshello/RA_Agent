@@ -138,7 +138,7 @@ class Company():
         self.documents = {}
         self.dispatcher = Dispatcher(max_rps=max_rps)
         self.reports = {}
-        self.report_types = ["overall_competency", "competencies", "b2g_strategy", "market"]
+        self.report_types = ["overall_competency", "competencies", "market"]  # b2g_strategy는 section4 이후 별도 생성
         self.result_dir = None  # 결과 저장 폴더 경로
         self.result_json = OUTPUT_JSON_SCHEMA.copy() if OUTPUT_JSON_SCHEMA else {} # OUTPUT_JSON_SCHEMA를 초기값으로 사용
         # API 호출 카운터
@@ -149,22 +149,20 @@ class Company():
         """문서를 이름과 함께 추가"""
         self.documents[name] = document
     
-    def setup_result_directory(self, extract_model_provider: str = "openai", extract_model_name: str = "gpt-4o", report_model_provider: str = "openai", report_model_name: str = "gpt-4o", web_search: bool = False, max_rps: float = 2.0, debug: bool = False):
+    def setup_result_directory(self, web_search: bool = False, max_rps: float = 2.0, debug: bool = False):
         """
-        결과 저장 폴더 생성: 회사명_문서명1_문서명2_..._extract모델_report모델_web_debug_rps
+        결과 저장 폴더 생성: 회사명_문서명1_문서명2_..._web_debug_rps
+        
+        모델 설정 (하드코딩):
+            - 문서 추출 및 Section 1, 2: OpenAI GPT-4o
+            - Section 3, 4, 5: Google Gemini 2.0 Pro
         """
         doc_names = "_".join(self.documents.keys())
-        
-        # 모델명에서 특수문자 제거 (파일명으로 사용 불가한 문자)
-        extract_model_safe = f"{extract_model_provider}-{extract_model_name.replace('/', '-').replace(':', '-')}"
-        report_model_safe = f"{report_model_provider}-{report_model_name.replace('/', '-').replace(':', '-')}"
         
         # 폴더명 구성 요소
         parts = [
             self.name.replace(" ", "_"),  # 공백 제거
             doc_names,
-            f"extract_{extract_model_safe}",
-            f"report_{report_model_safe}",
         ]
         
         # 선택적 파라미터 추가
@@ -182,25 +180,102 @@ class Company():
         os.makedirs(self.result_dir, exist_ok=True)
         return self.result_dir
 
-    async def process_documents(self, debug: bool = False, max_rps: float = 2.0, ocr_provider: str = "CLOVA", extract_model_provider: str = "openai", extract_model_name: str = "gpt-4o", web_search: bool = False):
+    def _load_b2g_criteria_data(self) -> dict:
+        """
+        B2G 기준 데이터 로드 (Section 1 overall_competency용)
+        
+        로드하는 파일:
+            - script/output/extracted_projects.json (국정과제)
+            - script/output_inclusive_growth/indicators_final.json (동반성장 평가지표)
+            - script/output_management_eval/indicators_final.json (경영평가 지표)
+        
+        Returns:
+            dict: 각 평가 유형별 요약 데이터
+        """
+        result = {
+            "national_agenda": "",
+            "management_eval": "",
+            "inclusive_growth": ""
+        }
+        
+        # 국정과제 데이터 로드
+        national_agenda_path = "script/output/extracted_projects.json"
+        if os.path.exists(national_agenda_path):
+            try:
+                with open(national_agenda_path, 'r', encoding='utf-8') as f:
+                    projects = json.load(f)
+                # 주요 과제명과 목표만 추출하여 요약
+                summaries = []
+                for proj in projects[:30]:  # 상위 30개만
+                    summary = f"[{proj.get('과제번호', '')}] {proj.get('과제명', '')}"
+                    goals = proj.get('과제 목표', [])
+                    if goals:
+                        summary += f" - 목표: {'; '.join(goals[:2])}"
+                    summaries.append(summary)
+                result["national_agenda"] = "\n".join(summaries)
+                logger.info(f"국정과제 데이터 로드 완료: {len(projects)}개 과제")
+            except Exception as e:
+                logger.warning(f"국정과제 데이터 로드 실패: {e}")
+        
+        # 경영평가 지표 데이터 로드
+        management_eval_path = "script/output_management_eval/indicators_final.json"
+        if os.path.exists(management_eval_path):
+            try:
+                with open(management_eval_path, 'r', encoding='utf-8') as f:
+                    indicators = json.load(f)
+                # 지표명과 평가기준 요약
+                summaries = []
+                for ind in indicators:
+                    name = ind.get('지표명', '')
+                    criteria = ind.get('평가기준', [])
+                    if name:
+                        summary = f"- {name}"
+                        if criteria:
+                            summary += f": {'; '.join(criteria[:2])}"
+                        summaries.append(summary)
+                result["management_eval"] = "\n".join(summaries)
+                logger.info(f"경영평가 지표 데이터 로드 완료: {len(indicators)}개 지표")
+            except Exception as e:
+                logger.warning(f"경영평가 지표 데이터 로드 실패: {e}")
+        
+        # 동반성장 평가지표 데이터 로드
+        inclusive_growth_path = "script/output_inclusive_growth/indicators_final.json"
+        if os.path.exists(inclusive_growth_path):
+            try:
+                with open(inclusive_growth_path, 'r', encoding='utf-8') as f:
+                    indicators = json.load(f)
+                # 지표명과 평가기준 요약
+                summaries = []
+                for ind in indicators:
+                    name = ind.get('지표명', '')
+                    criteria = ind.get('평가기준', [])
+                    if name:
+                        summary = f"- {name}"
+                        if criteria:
+                            summary += f": {'; '.join(criteria[:2])}"
+                        summaries.append(summary)
+                result["inclusive_growth"] = "\n".join(summaries)
+                logger.info(f"동반성장 평가지표 데이터 로드 완료: {len(indicators)}개 지표")
+            except Exception as e:
+                logger.warning(f"동반성장 평가지표 데이터 로드 실패: {e}")
+        
+        return result
+
+    async def process_documents(self, debug: bool = False, max_rps: float = 2.0, ocr_provider: str = "CLOVA", web_search: bool = False):
         """
         모든 문서를 병렬로 처리하고 결과를 저장
+        
+        모델: OpenAI GPT-4o (하드코딩)
         
         Args:
             debug: True일 경우 각 페이지별 시간과 전체 소요 시간을 로깅
             max_rps: 초당 최대 요청 수 (기본값: 1 RPS)
             ocr_provider: OCR API 종류 ("CLOVA" 또는 "Upstage")
-            extract_model_provider: 문서 분석에 사용할 AI 모델 제공자 ("openai" 또는 "gemini")
-            extract_model_name: 문서 분석에 사용할 AI 모델명
             web_search: 웹 검색 활성화 여부
         """
         # 결과 저장 폴더 설정
         if self.result_dir is None:
             self.setup_result_directory(
-                extract_model_provider=extract_model_provider,
-                extract_model_name=extract_model_name,
-                report_model_provider="openai",  # 기본값 - 보고서는 아직 생성 전
-                report_model_name="gpt-4o",      # 기본값
                 web_search=web_search,
                 max_rps=max_rps,
                 debug=debug
@@ -215,12 +290,12 @@ class Company():
             logger.info(f"문서 '{name}' ({document.file_path}) - 총 {len(document.pages)}페이지")
         
         if debug:
-            logger.info(f"분석 시작 (debug 모드, RPS: {max_rps}, Extract Model: {extract_model_provider}/{extract_model_name})")
+            logger.info(f"분석 시작 (debug 모드, RPS: {max_rps}, Extract Model: openai/gpt-4o)")
         else:
             logger.info(f"분석 시작 (RPS: {max_rps})")
         
-        # 모든 문서를 병렬로 분석
-        tasks = [asyncio.create_task(document.analyze_doc(self.dispatcher, start_time, debug, max_rps, extract_model_provider, extract_model_name, self))
+        # 모든 문서를 병렬로 분석 (OpenAI GPT-4o 사용)
+        tasks = [asyncio.create_task(document.analyze_doc(self.dispatcher, start_time, debug, max_rps, "openai", "gpt-4o", self))
                  for document in self.documents.values()]
         await asyncio.gather(*tasks)
         
@@ -297,18 +372,21 @@ class Company():
         
         return response    
     
-    async def generate_all_reports(self, report_model_provider: str = "openai", report_model_name: str = "gpt-4o", web: bool = False, debug: bool = False):
+    async def generate_all_reports(self, web: bool = False, debug: bool = False):
         """
         RunnableParallel을 사용하여 모든 보고서를 병렬로 생성
         
+        모델 설정 (하드코딩):
+            - Section 1, 2 (overall_competency, competencies): OpenAI GPT-4o
+            - Section 3 (market): Google Gemini 2.0 Pro
+        
         Args:
-            report_model_provider: 보고서 생성에 사용할 AI 모델 제공자 ("openai" 또는 "gemini")
-            report_model_name: 보고서 생성에 사용할 구체적인 모델명
             web: 웹 검색 활성화 여부
             debug: 디버그 모드
         """
         report_start_time = time.time()
-        logger.info(f"보고서 생성 시작 - 총 {len(self.report_types)}개 유형 (Report Model: {report_model_provider}/{report_model_name}, Web: {web})")
+        logger.info(f"보고서 생성 시작 - 총 {len(self.report_types)}개 유형")
+        logger.info(f"  Section 1, 2: openai/gpt-4o | Section 3: gemini/gemini-3-pro-preview | Web: {web}")
         
         # 문서 데이터 준비
         document_data = json.dumps(
@@ -316,26 +394,53 @@ class Company():
             ensure_ascii=False
         )
         
-        # Rate limiting이 적용된 모델 생성
-        rate_limited_model = ModelFactory.create_model_chain(
-            provider=report_model_provider,
-            model_name=report_model_name,
+        # B2G 기준 데이터 로드 (Section 1용)
+        b2g_criteria_data = self._load_b2g_criteria_data()
+        
+        # Section 1, 2용 모델 (OpenAI GPT-4o)
+        gpt4o_model = ModelFactory.create_model_chain(
+            provider="openai",
+            model_name="gpt-4o",
             output_format="json",
-            web_search=web,
+            web_search=False,
             max_rps=self.dispatcher.max_rps
         )
         
-        # 각 보고서 타입별로 LCEL 체인 구성
-        report_chains = {
-            report_type: PROMPTS[report_type] | rate_limited_model | JsonOutputParser()
-            for report_type in self.report_types
-        }
+        # Section 3용 모델 (Gemini 2.0 Pro)
+        gemini_model = ModelFactory.create_model_chain(
+            provider="gemini",
+            model_name="gemini-3-pro-preview",
+            output_format="json",
+            web_search=web,  # market 보고서에만 web_search 적용
+            max_rps=self.dispatcher.max_rps
+        )
+        
+        # 각 보고서 타입별로 LCEL 체인 구성 (섹션에 따라 다른 모델 사용)
+        report_chains = {}
+        for report_type in self.report_types:
+            if report_type == "overall_competency":
+                # Section 1: GPT-4o + B2G 기준 데이터
+                report_chains[report_type] = PROMPTS[report_type] | gpt4o_model | JsonOutputParser()
+            elif report_type == "competencies":
+                # Section 2: GPT-4o
+                report_chains[report_type] = PROMPTS[report_type] | gpt4o_model | JsonOutputParser()
+            else:
+                # Section 3 (market): Gemini 2.0 Pro
+                report_chains[report_type] = PROMPTS[report_type] | gemini_model | JsonOutputParser()
         
         # RunnableParallel로 병렬 실행
         parallel_chain = RunnableParallel(report_chains)
         
+        # 입력 데이터 준비 (Section 1용 B2G 기준 데이터 포함)
+        input_data = {
+            "document_data": document_data,
+            "national_agenda_data": b2g_criteria_data.get("national_agenda", "데이터 없음"),
+            "management_eval_data": b2g_criteria_data.get("management_eval", "데이터 없음"),
+            "inclusive_growth_data": b2g_criteria_data.get("inclusive_growth", "데이터 없음"),
+        }
+        
         # 모든 보고서를 동시에 생성
-        all_reports = await parallel_chain.ainvoke({"document_data": document_data})
+        all_reports = await parallel_chain.ainvoke(input_data)
         
         # LLM 호출 카운터 증가 (보고서 타입별로 1회씩)
         self.llm_call_count += len(self.report_types)
@@ -389,10 +494,6 @@ class Company():
         # 결과 저장 폴더 설정 (아직 설정되지 않았다면)
         if self.result_dir is None:
             self.setup_result_directory(
-                extract_model_provider="openai",  # 기본값
-                extract_model_name="gpt-4o",  # 기본값
-                report_model_provider=report_model_provider,
-                report_model_name=report_model_name,
                 web_search=web,
                 max_rps=2.0,  # 기본값
                 debug=debug
@@ -417,22 +518,86 @@ class Company():
         
         return self.reports
 
+    def _calculate_rank_from_scores(self, ranks: list) -> str:
+        """
+        S/A/B/C/D 등급 리스트에서 평균을 계산하여 최종 등급 반환
+        
+        점수 매핑: S=100, A=80, B=60, C=40, D=20
+        평균을 구한 후 10의 자리로 올림하여 등급 산정
+        
+        Args:
+            ranks: S/A/B/C/D 등급 문자열 리스트
+            
+        Returns:
+            계산된 최종 등급 (S/A/B/C/D)
+        """
+        import math
+        
+        rank_to_score = {'S': 100, 'A': 80, 'B': 60, 'C': 40, 'D': 20}
+        score_to_rank = {100: 'S', 80: 'A', 60: 'B', 40: 'C', 20: 'D'}
+        
+        if not ranks:
+            return 'D'
+        
+        # 등급을 점수로 변환하여 평균 계산
+        scores = []
+        for rank in ranks:
+            # rank가 문자열인 경우 첫 글자만 추출 (예: "S/A" -> "S")
+            if isinstance(rank, str):
+                rank_char = rank.strip().upper()[0] if rank.strip() else 'D'
+                if rank_char in rank_to_score:
+                    scores.append(rank_to_score[rank_char])
+                else:
+                    scores.append(20)  # 알 수 없는 등급은 D로 처리
+        
+        if not scores:
+            return 'D'
+        
+        # 평균 계산
+        avg_score = sum(scores) / len(scores)
+        
+        # 10의 자리로 올림
+        rounded_score = math.ceil(avg_score / 10) * 10
+        
+        # 범위 제한 (20~100)
+        rounded_score = max(20, min(100, rounded_score))
+        
+        # 가장 가까운 등급 찾기
+        if rounded_score >= 100:
+            return 'S'
+        elif rounded_score >= 80:
+            return 'A'
+        elif rounded_score >= 60:
+            return 'B'
+        elif rounded_score >= 40:
+            return 'C'
+        else:
+            return 'D'
+
     async def search_b2g_evaluations(self, debug: bool = False):
         """
-        3가지 B2G 평가 DB에서 기업에 적합한 항목을 검색하고 분석
+        3가지 B2G 평가 DB에서 기업에 적합한 항목을 검색하고 3단계 분석 수행
         
+        파이프라인 (모두 Gemini 2.0 Pro 사용):
         1. 기업 문서 분석 결과에서 검색 쿼리 추출
         2. 각 DB에서 관련 항목 검색 (국정과제, 경영평가, 동반성장)
-        3. 검색된 항목과 기업 정보를 LLM에 전달하여 분석 (top10, insight, risk, consider)
-        4. 결과를 section4에 저장
+        3. Step A: B2G_EVALUATION_RANK_PROMPT로 top10 랭킹 생성
+        4. Step B: B2G_EVALUATION_ANALYSIS_PROMPT로 analysis (insight, risk, consider) 생성 + rank 계산
+        5. Step C: B2G_EVALUATION_SUMMARY_PROMPT로 overall (expect) 생성 + rank 계산
+        6. 결과를 section4에 저장
         
         Args:
             debug: 디버그 모드 여부
         """
-        from src.db import B2GVectorStore, InclusiveGrowthVectorStore
-        from src.prompts import COMPANY_FEATURE_EXTRACTION_PROMPT, B2G_EVALUATION_ANALYSIS_PROMPT
+        from src.db_main import MySQLStore
+        from src.prompts import (
+            COMPANY_FEATURE_EXTRACTION_PROMPT, 
+            B2G_EVALUATION_RANK_PROMPT,
+            B2G_EVALUATION_ANALYSIS_PROMPT,
+            B2G_EVALUATION_SUMMARY_PROMPT
+        )
         
-        logger.info("B2G 평가 검색 및 분석 시작 (국정과제, 경영평가, 동반성장)")
+        logger.info("B2G 평가 검색 및 분석 시작 (국정과제, 경영평가, 동반성장) - MySQL 임베딩 검색")
         start_time = time.time()
         
         # 문서 데이터 준비
@@ -441,7 +606,7 @@ class Company():
             ensure_ascii=False
         )
 
-        # 1. 기업 특징 추출 (검색 쿼리 생성)
+        # 1. 기업 특징 추출 (검색 쿼리 생성) - GPT-4o-mini 사용
         logger.info("Step 1: 기업 특징 추출 중...")
         
         feature_model = ModelFactory.create_model_chain(
@@ -467,32 +632,32 @@ class Company():
         if debug:
             logger.info(f"추출된 기업 특징: {json.dumps(company_features, ensure_ascii=False, indent=2)}")
         
-        # DB 연결 설정
-        connection_string = "postgresql://youngseocho:@localhost:5432/b2g_data"
+        # MySQL DB 연결
+        mysql_store = MySQLStore(
+            host="localhost",
+            port=3306,
+            database="b2g_data",
+            user="root",
+            password=""
+        )
         
-        # 평가 유형별 설정
+        # 평가 유형별 설정 (MySQL 임베딩 검색 사용)
         eval_configs = {
             "presidential_agenda": {
                 "name": "국정과제",
-                "collection": "b2g_projects",
-                "store_class": B2GVectorStore,
-                "search_method": "search_unique_projects",
+                "search_method": "search_projects_by_embedding",
                 "name_field": "과제명",
                 "id_field": "과제번호",
             },
             "management_eval": {
                 "name": "공공기관 경영평가",
-                "collection": "management_eval_indicators",
-                "store_class": InclusiveGrowthVectorStore,
-                "search_method": "search_unique_indicators",
+                "search_method": "search_management_evals_by_embedding",
                 "name_field": "지표명",
                 "id_field": "지표명",
             },
             "inclusive_growth": {
                 "name": "동반성장 평가지표",
-                "collection": "inclusive_growth_indicators",
-                "store_class": InclusiveGrowthVectorStore,
-                "search_method": "search_unique_indicators",
+                "search_method": "search_inclusive_growth_by_embedding",
                 "name_field": "지표명",
                 "id_field": "지표명",
             }
@@ -501,34 +666,44 @@ class Company():
         search_queries = company_features.get("search_queries", [])
         core_technologies = company_features.get("core_technologies", [])
         
-        # 2. 각 평가 유형별로 검색 및 분석
+        # Gemini 2.0 Pro 모델 생성 (Section 4 전체에서 사용)
+        gemini_model = ModelFactory.create_model_chain(
+            provider="gemini",
+            model_name="gemini-3-pro-preview",
+            output_format="json",
+            web_search=True,  # 웹서칭 활성화
+            max_rps=self.dispatcher.max_rps
+        )
+        
+        # 각 평가 유형별 랭킹 결과 저장 (Summary용)
+        all_rank_results = {}
+        all_analysis_results = {}
+        
+        # 2. 각 평가 유형별로 검색 및 3단계 분석
         for eval_type, config in eval_configs.items():
-            logger.info(f"\nStep 2-{eval_type}: {config['name']} 검색 중...")
+            logger.info(f"\n{'='*50}")
+            logger.info(f"[{config['name']}] 처리 시작")
+            logger.info(f"{'='*50}")
             
-            # 벡터 스토어 생성
-            vector_store = config["store_class"](
-                connection_string=connection_string,
-                collection_name=config["collection"]
-            )
+            # 2-1. DB 검색 (MySQL 임베딩 기반)
+            logger.info(f"Step 2-{eval_type}: {config['name']} 임베딩 검색 중...")
             
-            # 검색 메서드 가져오기
-            search_func = getattr(vector_store, config["search_method"])
-            
-            # 검색 쿼리로 항목 검색
+            search_func = getattr(mysql_store, config["search_method"])
             all_items = {}
             
+            # 각 검색 쿼리로 임베딩 검색
             for query in search_queries:
                 try:
                     results = search_func(query, k=5)
                     for item in results:
-                        item_id = item.get(config["id_field"], "") or item.get("full_data", {}).get(config["id_field"], "")
+                        item_id = item.get(config["id_field"], "") or item.get(config["name_field"], "")
                         if item_id and item_id not in all_items:
                             all_items[item_id] = item
                 except Exception as e:
                     logger.warning(f"검색 오류 ({config['name']}): {e}")
                     continue
             
-            # 부족하면 추가 검색
+            # 항목이 부족하면 핵심 기술로 추가 검색
             if len(all_items) < 10:
                 for tech in core_technologies:
                     if len(all_items) >= 10:
@@ -536,116 +711,416 @@ class Company():
                     try:
                         results = search_func(tech, k=3)
                         for item in results:
-                            item_id = item.get(config["id_field"], "") or item.get("full_data", {}).get(config["id_field"], "")
+                            item_id = item.get(config["id_field"], "") or item.get(config["name_field"], "")
                             if item_id and item_id not in all_items:
                                 all_items[item_id] = item
                     except Exception as e:
                         continue
             
-            items_list = list(all_items.values())[:10]
+            items_list = list(all_items.values())[:20]  # 20개 후보 항목 선정
             
             if debug:
                 logger.info(f"검색된 {config['name']} 수: {len(items_list)}")
-                for item in items_list[:3]:
-                    name = item.get(config["name_field"], "") or item.get("full_data", {}).get(config["name_field"], "")
-                    logger.info(f"  - {name[:40]}...")
             
             if not items_list:
-                logger.warning(f"{config['name']} 검색 결과 없음")
-                continue
-            
-            # 3. 항목 리스트를 텍스트로 변환
-            items_text = ""
-            for i, item in enumerate(items_list, 1):
-                name = item.get(config["name_field"], "") or item.get("full_data", {}).get(config["name_field"], "")
-                matched_text = item.get("matched_text", "")[:200]
-                
-                if eval_type == "presidential_agenda":
-                    # 국정과제용 형식
-                    goals = item.get("과제 목표", [])[:2]
-                    contents = item.get("주요내용", [])[:2]
-                    items_text += f"""
-{i}. [{item.get(config["id_field"], "")}] {name}
-   - 과제 목표: {', '.join(goals) if goals else '정보 없음'}
-   - 주요내용: {', '.join(contents) if contents else matched_text}
-"""
-                else:
-                    # 경영평가/동반성장 지표용 형식
-                    full_data = item.get("full_data", {})
-                    eval_criteria = full_data.get("평가기준", [])[:2]
-                    eval_method = full_data.get("평가방법", [])[:1]
-                    items_text += f"""
-{i}. {name}
-   - 평가기준: {', '.join(eval_criteria) if eval_criteria else matched_text}
-   - 평가방법: {', '.join(eval_method) if eval_method else ''}
-"""
-            
-            # 4. LLM으로 분석 (insight, risk, consider 생성)
-            logger.info(f"Step 3-{eval_type}: {config['name']} 분석 중...")
-            
-            analysis_model = ModelFactory.create_model_chain(
-                provider="openai",
-                model_name="gpt-4o",
-                output_format="json",
-                max_rps=self.dispatcher.max_rps
-            )
-            
-            analysis_chain = (
-                B2G_EVALUATION_ANALYSIS_PROMPT
-                | analysis_model
-                | JsonOutputParser()
-            )
-            
-            try:
-                analysis_result = await analysis_chain.ainvoke({
-                    "company_name": self.name,
-                    "company_summary": company_features.get("company_summary", ""),
-                    "core_technologies": ", ".join(company_features.get("core_technologies", [])),
-                    "target_sectors": ", ".join(company_features.get("target_sectors", [])),
-                    "eval_type_name": config["name"],
-                    "items_list": items_text
-                })
-                
-                self.llm_call_count += 1
-                
-                # 5. 결과를 section4에 저장
-                self.result_json["section4"][eval_type] = {
-                    "top10": analysis_result.get("top10", []),
-                    "analysis": analysis_result.get("analysis", {
-                        "insight": {"title": "", "details": []},
-                        "risk": {"title": "", "details": []},
-                        "consider": []
-                    })
-                }
-                
-                if debug:
-                    logger.info(f"{config['name']} 분석 완료:")
-                    logger.info(f"  - Top10 항목 수: {len(analysis_result.get('top10', []))}")
-                    logger.info(f"  - Insight: {analysis_result.get('analysis', {}).get('insight', {}).get('title', '')[:50]}...")
-                    
-            except Exception as e:
-                logger.error(f"{config['name']} 분석 오류: {e}")
+                logger.warning(f"{config['name']} 검색 결과 없음 - 기본값 설정")
                 self.result_json["section4"][eval_type] = {
                     "top10": [],
                     "analysis": {
+                        "rank": "",
                         "insight": {"title": "", "details": []},
                         "risk": {"title": "", "details": []},
                         "consider": []
                     }
                 }
+                continue
+            
+            # 2-2. 항목 리스트를 텍스트로 변환 (MySQL 스키마에 맞게)
+            items_text = ""
+            for i, item in enumerate(items_list, 1):
+                name = item.get(config["name_field"], "")
+                score = item.get("score", 0)
+                
+                if eval_type == "presidential_agenda":
+                    goals = item.get("과제 목표", [])
+                    if isinstance(goals, list):
+                        goals = goals[:2]
+                    else:
+                        goals = []
+                    contents = item.get("주요내용", [])
+                    if isinstance(contents, list):
+                        contents = contents[:2]
+                    else:
+                        contents = []
+                    items_text += f"""
+{i}. [{item.get(config["id_field"], "")}] {name} (유사도: {score:.3f})
+   - 과제 목표: {', '.join(goals) if goals else '정보 없음'}
+   - 주요내용: {', '.join(contents) if contents else '정보 없음'}
+"""
+                else:
+                    # 경영평가, 동반성장
+                    eval_criteria = item.get("평가기준", [])
+                    if isinstance(eval_criteria, list):
+                        eval_criteria = eval_criteria[:2]
+                    else:
+                        eval_criteria = []
+                    eval_method = item.get("평가방법", [])
+                    if isinstance(eval_method, list):
+                        eval_method = eval_method[:1]
+                    else:
+                        eval_method = []
+                    items_text += f"""
+{i}. {name} (유사도: {score:.3f})
+   - 평가기준: {', '.join(eval_criteria) if eval_criteria else '정보 없음'}
+   - 평가방법: {', '.join(eval_method) if eval_method else ''}
+"""
+            
+            # ============================================================
+            # Step A: 랭킹 생성 (B2G_EVALUATION_RANK_PROMPT)
+            # ============================================================
+            logger.info(f"Step 3A-{eval_type}: {config['name']} 랭킹 생성 중...")
+            
+            rank_chain = (
+                B2G_EVALUATION_RANK_PROMPT
+                | gemini_model
+                | JsonOutputParser()
+            )
+            
+            try:
+                rank_result = await rank_chain.ainvoke({
+                    "company_name": self.name,
+                    "company_summary": company_features.get("company_summary", ""),
+                    "core_technologies": ", ".join(company_features.get("core_technologies", [])),
+                    "target_sectors": ", ".join(company_features.get("target_sectors", [])),
+                    "eval_type_name": config["name"],
+                    "items_list": items_text,
+                    "document_data": document_data
+                })
+                
+                self.llm_call_count += 1
+                
+                # top10 결과 추출 (LLM이 10개 이상 반환할 수 있으므로 슬라이싱)
+                top10_result = rank_result.get("top10", [])[:10]
+                all_rank_results[eval_type] = top10_result
+                
+                if debug:
+                    logger.info(f"  - 랭킹 완료: {len(top10_result)}개 항목")
+                    
+            except Exception as e:
+                logger.error(f"{config['name']} 랭킹 오류: {e}")
+                top10_result = []
+                all_rank_results[eval_type] = []
+            
+            # ============================================================
+            # Step B: 분석 생성 (B2G_EVALUATION_ANALYSIS_PROMPT)
+            # ============================================================
+            logger.info(f"Step 3B-{eval_type}: {config['name']} 분석 생성 중...")
+            
+            analysis_chain = (
+                B2G_EVALUATION_ANALYSIS_PROMPT
+                | gemini_model
+                | JsonOutputParser()
+            )
+            
+            # 랭킹 결과를 텍스트로 변환
+            rank_result_text = json.dumps({"top10": top10_result}, ensure_ascii=False, indent=2)
+            
+            try:
+                analysis_result = await analysis_chain.ainvoke({
+                    "eval_type_name": config["name"],
+                    "b2g_evaluation_rank_result": rank_result_text,
+                    "document_data": document_data
+                })
+                
+                self.llm_call_count += 1
+                
+                # analysis 결과 추출
+                analysis_data = analysis_result.get("analysis", {})
+                
+                # Step B: top10의 rank 평균으로 analysis rank 계산
+                top10_ranks = [item.get("rank", "D") for item in top10_result if item.get("rank")]
+                calculated_rank = self._calculate_rank_from_scores(top10_ranks)
+                
+                # 계산된 rank를 analysis_data에 추가
+                analysis_data["rank"] = calculated_rank
+                all_analysis_results[eval_type] = analysis_data
+                
+                if debug:
+                    logger.info(f"  - 분석 완료: rank={calculated_rank} (top10 평균에서 계산됨)")
+                
+                # section4에 저장 (top10 + analysis)
+                self.result_json["section4"][eval_type] = {
+                    "top10": top10_result,
+                    "analysis": {
+                        "rank": calculated_rank,
+                        "insight": analysis_data.get("insight", {"title": "", "details": []}),
+                        "risk": analysis_data.get("risk", {"title": "", "details": []}),
+                        "consider": analysis_data.get("consider", [])
+                    }
+                }
+                    
+            except Exception as e:
+                logger.error(f"{config['name']} 분석 오류: {e}")
+                # 오류 발생 시에도 top10에서 rank 계산 시도
+                top10_ranks = [item.get("rank", "D") for item in top10_result if item.get("rank")]
+                calculated_rank = self._calculate_rank_from_scores(top10_ranks) if top10_ranks else ""
+                
+                self.result_json["section4"][eval_type] = {
+                    "top10": top10_result,
+                    "analysis": {
+                        "rank": calculated_rank,
+                        "insight": {"title": "", "details": []},
+                        "risk": {"title": "", "details": []},
+                        "consider": []
+                    }
+                }
+                all_analysis_results[eval_type] = {"rank": calculated_rank}
+        
+        # ============================================================
+        # Step C: 종합 요약 생성 (B2G_EVALUATION_SUMMARY_PROMPT)
+        # ============================================================
+        logger.info(f"\n{'='*50}")
+        logger.info("Step 4: B2G 평가 종합 요약 생성 중...")
+        logger.info(f"{'='*50}")
+        
+        summary_chain = (
+            B2G_EVALUATION_SUMMARY_PROMPT
+            | gemini_model
+            | JsonOutputParser()
+        )
+        
+        # 랭킹 결과 텍스트 생성
+        rank_results_text = ""
+        for eval_type, config in eval_configs.items():
+            rank_results_text += f"\n### {config['name']} Top10 랭킹:\n"
+            rank_results_text += json.dumps(all_rank_results.get(eval_type, []), ensure_ascii=False, indent=2)
+        
+        # 분석 결과 텍스트 생성
+        analysis_results_text = ""
+        for eval_type, config in eval_configs.items():
+            analysis_results_text += f"\n### {config['name']} 분석 결과:\n"
+            analysis_results_text += json.dumps(all_analysis_results.get(eval_type, {}), ensure_ascii=False, indent=2)
+        
+        try:
+            summary_result = await summary_chain.ainvoke({
+                "b2g_evaluation_rank_result": rank_results_text,
+                "b2g_analysis": analysis_results_text,
+                "document_data": document_data
+            })
+            
+            self.llm_call_count += 1
+            
+            # Step C: 3개 평가 유형의 analysis rank 평균으로 overall rank 계산
+            analysis_ranks = [
+                all_analysis_results.get("presidential_agenda", {}).get("rank", ""),
+                all_analysis_results.get("management_eval", {}).get("rank", ""),
+                all_analysis_results.get("inclusive_growth", {}).get("rank", "")
+            ]
+            # 빈 문자열 제거
+            analysis_ranks = [r for r in analysis_ranks if r]
+            overall_rank = self._calculate_rank_from_scores(analysis_ranks)
+            
+            # overall 결과 저장
+            self.result_json["section4"]["overall"] = {
+                "rank": overall_rank,
+                "expect": summary_result.get("expect", [])
+            }
+            
+            if debug:
+                logger.info(f"  - 종합 등급: {overall_rank} (3개 평가 rank 평균에서 계산됨)")
+                logger.info(f"  - 기대효과: {len(summary_result.get('expect', []))}개")
+                
+        except Exception as e:
+            logger.error(f"종합 요약 생성 오류: {e}")
+            # 오류 발생 시에도 analysis ranks에서 overall rank 계산 시도
+            analysis_ranks = [
+                all_analysis_results.get("presidential_agenda", {}).get("rank", ""),
+                all_analysis_results.get("management_eval", {}).get("rank", ""),
+                all_analysis_results.get("inclusive_growth", {}).get("rank", "")
+            ]
+            analysis_ranks = [r for r in analysis_ranks if r]
+            overall_rank = self._calculate_rank_from_scores(analysis_ranks) if analysis_ranks else ""
+            
+            self.result_json["section4"]["overall"] = {
+                "rank": overall_rank,
+                "expect": []
+            }
         
         elapsed = time.time() - start_time
         logger.info(f"\nB2G 평가 검색 및 분석 완료 - 소요 시간: {elapsed:.2f}초")
         
         return self.result_json["section4"]
 
+    async def generate_b2g_strategy(
+        self,
+        web: bool = False,
+        debug: bool = False
+    ):
+        """
+        B2G 전략 방향 수립 (Section 5)
+        
+        모델: Google Gemini 2.0 Pro (하드코딩)
+        
+        Section 4의 분석 결과 (레이더 차트 점수, 국정과제/경영평가/동반성장 분석)를
+        input으로 받아 전략을 수립합니다.
+        
+        Args:
+            web: 웹 검색 활성화 여부
+            debug: 디버그 모드
+        """
+        from src.prompts import B2G_STRATEGY_PROMPT
+        
+        logger.info("B2G 전략 방향 수립 시작 (Section 5) - Model: gemini/gemini-3-pro-preview")
+        start_time = time.time()
+        
+        # 문서 데이터 준비
+        document_data = json.dumps(
+            [doc.analysis for doc in self.documents.values()],
+            ensure_ascii=False
+        )
+        
+        # Section 1의 레이더 차트 및 점수 데이터
+        section1_data = self.result_json.get("section1", {})
+        radar_data = section1_data.get("radar", [])
+        scores_data = section1_data.get("scores", {})
+        overall_data = section1_data.get("overall", {})
+        
+        # Section 4의 B2G 평가 분석 결과
+        section4_data = self.result_json.get("section4", {})
+        
+        # B2G 평가 분석 요약 생성
+        b2g_analysis_summary = self._format_b2g_analysis_for_strategy(section4_data)
+        
+        # Gemini 2.0 Pro 모델 생성
+        rate_limited_model = ModelFactory.create_model_chain(
+            provider="gemini",
+            model_name="gemini-3-pro-preview",
+            output_format="json",
+            web_search=web,
+            max_rps=self.dispatcher.max_rps
+        )
+        
+        # B2G 전략 체인 구성
+        strategy_chain = (
+            B2G_STRATEGY_PROMPT
+            | rate_limited_model
+            | JsonOutputParser()
+        )
+        
+        # 전략 생성
+        try:
+            result = await strategy_chain.ainvoke({
+                "document_data": document_data,
+                "radar_scores": json.dumps(radar_data, ensure_ascii=False),
+                "evaluation_scores": json.dumps(scores_data, ensure_ascii=False),
+                "overall_assessment": json.dumps(overall_data, ensure_ascii=False),
+                "b2g_analysis": b2g_analysis_summary
+            })
+            
+            self.llm_call_count += 1
+            
+            # result가 리스트인 경우 첫 번째 요소 사용
+            if isinstance(result, list):
+                result = result[0] if result else {}
+            
+            # Section 5에 저장
+            self.result_json["section5"]["weakness_analysis"] = result.get("weakness_analysis", {})
+            self.result_json["section5"]["strategy"] = result.get("strategy", {})
+            self.result_json["section5"]["to_do_list"] = result.get("to_do_list", {})
+            
+            self.reports["b2g_strategy"] = result
+            
+            if debug:
+                logger.info("B2G 전략 생성 완료:")
+                weakness = result.get('weakness_analysis', {})
+                strategy = result.get('strategy', {})
+                weakness_keyword = weakness.get('keyword', '') if isinstance(weakness, dict) else ''
+                strategy_keyword = strategy.get('keyword', '') if isinstance(strategy, dict) else ''
+                logger.info(f"  - 약점 분석: {weakness_keyword[:50]}...")
+                logger.info(f"  - 전략 방향: {strategy_keyword[:50]}...")
+                
+        except Exception as e:
+            logger.error(f"B2G 전략 생성 오류: {e}")
+            self.result_json["section5"] = {
+                "weakness_analysis": {"keyword": "", "evidences": []},
+                "strategy": {"keyword": "", "strategy": "", "details": []},
+                "to_do_list": {"keyword": "", "tasks": []}
+            }
+        
+        elapsed = time.time() - start_time
+        logger.info(f"B2G 전략 방향 수립 완료 - 소요 시간: {elapsed:.2f}초")
+        
+        return self.result_json["section5"]
+    
+    def _format_b2g_analysis_for_strategy(self, section4_data: dict) -> str:
+        """
+        Section 4의 B2G 평가 분석 결과를 전략 수립용 텍스트로 포맷팅
+        """
+        parts = []
+        
+        # Overall 종합 정보 추가
+        overall = section4_data.get("overall", {})
+        if overall:
+            overall_part = "\n### B2G 종합 평가\n"
+            overall_part += f"종합 등급: {overall.get('rank', 'N/A')}\n"
+            expect = overall.get("expect", [])
+            if expect:
+                overall_part += "기대 효과:\n"
+                for e in expect[:3]:
+                    overall_part += f"  - {e}\n"
+            parts.append(overall_part)
+        
+        eval_names = {
+            "presidential_agenda": "국정과제",
+            "management_eval": "공공기관 경영평가",
+            "inclusive_growth": "동반성장 평가"
+        }
+        
+        for eval_type, eval_name in eval_names.items():
+            data = section4_data.get(eval_type, {})
+            if not data:
+                continue
+            
+            part = f"\n### {eval_name} 분석 결과\n"
+            
+            # 분석 등급
+            analysis = data.get("analysis", {})
+            rank = analysis.get("rank", "")
+            if rank:
+                part += f"등급: {rank}\n"
+            
+            # Top 3 항목
+            top10 = data.get("top10", [])[:3]
+            if top10:
+                part += "주요 관련 항목:\n"
+                for item in top10:
+                    part += f"  - [{item.get('rank', '')}] {item.get('name', '')}: {item.get('description', '')}\n"
+            
+            insight = analysis.get("insight", {})
+            if insight.get("title"):
+                part += f"\n핵심 인사이트: {insight.get('title')}\n"
+                for detail in insight.get("details", [])[:2]:
+                    part += f"  - {detail}\n"
+            
+            risk = analysis.get("risk", {})
+            if risk.get("title"):
+                part += f"\n주요 위험: {risk.get('title')}\n"
+                for detail in risk.get("details", [])[:2]:
+                    part += f"  - {detail}\n"
+            
+            consider = analysis.get("consider", [])[:2]
+            if consider:
+                part += f"\n검토 필요 사항:\n"
+                for q in consider:
+                    part += f"  - {q}\n"
+            
+            parts.append(part)
+        
+        return "\n".join(parts) if parts else "B2G 평가 분석 결과 없음"
+
 async def main_async(
     company_name: str,
     documents: list[tuple[str, str]],  # [(name1, path1), (name2, path2), ...]
-    extract_model_provider: str = "openai",
-    extract_model_name: str = "gpt-4o",
-    report_model_provider: str = "openai",
-    report_model_name: str = "gpt-4o",
     web_search: bool = False,
     max_rps: float = 2.0,
     debug: bool = False
@@ -653,13 +1128,13 @@ async def main_async(
     """
     회사 단위로 여러 문서를 병렬 처리 및 보고서 생성
     
+    모델 설정 (하드코딩):
+        - 문서 추출 및 Section 1, 2: OpenAI GPT-4o
+        - Section 3, 4, 5: Google Gemini 2.0 Pro
+    
     Args:
         company_name: 회사 이름
         documents: 문서 이름과 경로 리스트 [(name1, path1), (name2, path2), ...]
-        extract_model_provider: 문서 추출용 AI 모델 제공자 ("openai" 또는 "gemini")
-        extract_model_name: 문서 추출용 구체적인 모델명
-        report_model_provider: 보고서 생성용 AI 모델 제공자 ("openai" 또는 "gemini")
-        report_model_name: 보고서 생성용 구체적인 모델명
         web_search: 웹 검색 활성화 여부
         max_rps: 초당 최대 요청 수
         debug: True일 경우 각 페이지별 시간과 전체 소요 시간을 로깅
@@ -672,10 +1147,6 @@ async def main_async(
     
     # 결과 저장 폴더 설정
     result_dir = com.setup_result_directory(
-        extract_model_provider=extract_model_provider,
-        extract_model_name=extract_model_name,
-        report_model_provider=report_model_provider,
-        report_model_name=report_model_name,
         web_search=web_search,
         max_rps=max_rps,
         debug=debug
@@ -707,10 +1178,10 @@ async def main_async(
                 doc_strings.append(f'"{name}:{path}"')
             f.write(f'DOCUMENTS={" ".join(doc_strings)}\n')
             
-            f.write(f'EXTRACT_MODEL="{extract_model_provider}"\n')
-            f.write(f'EXTRACT_MODEL_NAME="{extract_model_name}"\n')
-            f.write(f'REPORT_MODEL="{report_model_provider}"\n')
-            f.write(f'REPORT_MODEL_NAME="{report_model_name}"\n')
+            f.write(f'EXTRACT_MODEL="openai"\n')
+            f.write(f'EXTRACT_MODEL_NAME="gpt-4o"\n')
+            f.write(f'SECTION_1_2_MODEL="openai/gpt-4o"\n')
+            f.write(f'SECTION_3_4_5_MODEL="gemini/gemini-3-pro-preview"\n')
             f.write(f'OCR_PROVIDER="CLOVA"\n')
             f.write(f'WEB_SEARCH={"--web" if web_search else ""}\n')
             f.write(f'MAX_RPS="{max_rps}"\n')
@@ -737,6 +1208,35 @@ async def main_async(
                 com.documents[name].ocr_texts = [
                     {int(k.replace("page_", "")): v} for k, v in ocr_by_page.items()
                 ]
+            
+            # 캐시된 분석 결과에서 재무현황 추출
+            import re
+            for page_data in com.documents[name].analysis:
+                for page_num, result in page_data.items():
+                    if "재무현황" in result:
+                        for k in [("revenue","매출"), ("profit","영업이익"), ("invest","누적투자")]:
+                            if result["재무현황"].get(k[1], {}).get("금액", "") == "" or result["재무현황"].get(k[1], {}).get("기준년도", "") == "":
+                                continue
+                            amount = result["재무현황"][k[1]]["금액"]
+                            year = 0
+                            year_raw = result["재무현황"][k[1]].get("기준년도")
+                            if year_raw is None:
+                                year = 0
+                            elif type(year_raw) == int:
+                                year = year_raw
+                            else:
+                                year_match = re.search(r'\d{4}', str(year_raw))
+                                if year_match:
+                                    year = int(year_match.group(0))
+                            
+                            current_year = com.result_json["section2"]["finance"][k[0]]["year"]
+                            current_amount = com.result_json["section2"]["finance"][k[0]]["amount"]
+                            if current_year == 0 and (current_amount == "" or current_amount is None):
+                                com.result_json["section2"]["finance"][k[0]]["year"] = year
+                                com.result_json["section2"]["finance"][k[0]]["amount"] = amount
+                            elif current_year != 0 and current_year < year:
+                                com.result_json["section2"]["finance"][k[0]]["year"] = year
+                                com.result_json["section2"]["finance"][k[0]]["amount"] = amount
         else:
             all_cached = False
             break
@@ -746,8 +1246,6 @@ async def main_async(
         await com.process_documents(
             debug=debug,
             max_rps=max_rps,
-            extract_model_provider=extract_model_provider,
-            extract_model_name=extract_model_name,
             web_search=web_search
         )
     
@@ -755,16 +1253,20 @@ async def main_async(
     # 정말 필요할지 의문. hallucination 문제가 발생할 위험이 있다.
     # TODO : 외부 지식 tool 활용 기능
 
-    # 모든 보고서 생성
+    # Section 1~3 보고서 생성 (overall_competency, competencies, market)
     await com.generate_all_reports(
-        report_model_provider=report_model_provider,
-        report_model_name=report_model_name,
         web=web_search,
         debug=debug
     )
     
-    # B2G 평가 검색 및 분석 (section4: 국정과제, 경영평가, 동반성장)
+    # Section 4: B2G 평가 검색 및 분석 (국정과제, 경영평가, 동반성장)
     await com.search_b2g_evaluations(debug=debug)
+    
+    # Section 5: B2G 전략 방향 수립 (section4 결과를 input으로 사용)
+    await com.generate_b2g_strategy(
+        web=web_search,
+        debug=debug
+    )
     
     # 최종 result_json 저장
     doc_names = "_".join(com.documents.keys())
@@ -802,8 +1304,12 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 예시:
-  python main.py -c "Example Corp" -d instruction1:data/instruction1.pdf -em openai -emn gpt-4o -rm openai -rmn gpt-4o --web --max-rps 2.0 --debug
-  python main.py -c "Example Corp" -d doc1:data/doc1.pdf doc2:data/doc2.pdf -em gemini -emn gemini-2.0-flash-exp -rm openai -rmn gpt-4o
+  python main.py -c "Example Corp" -d instruction1:data/instruction1.pdf --web --max-rps 2.0 --debug
+  python main.py -c "Example Corp" -d doc1:data/doc1.pdf doc2:data/doc2.pdf
+
+모델 설정 (하드코딩):
+  - 문서 추출 및 Section 1, 2: OpenAI GPT-4o
+  - Section 3, 4, 5: Google Gemini 2.0 Pro
         """
     )
     
@@ -821,38 +1327,6 @@ def main():
         nargs='+',
         required=True,
         help='문서 이름:경로 형식 (예: "doc1:data/doc1.pdf doc2:data/doc2.pdf")'
-    )
-    
-    # 선택 인자 - 추출용 모델
-    parser.add_argument(
-        '-em', '--extract-model',
-        type=str,
-        choices=['openai', 'gemini'],
-        default='openai',
-        help='문서 추출용 AI 모델 제공자 (기본값: openai)'
-    )
-    
-    parser.add_argument(
-        '-emn', '--extract-model-name',
-        type=str,
-        default=None,
-        help='문서 추출용 구체적인 모델명 (기본값: openai=gpt-4o, gemini=gemini-2.0-flash-exp)'
-    )
-    
-    # 선택 인자 - 보고서용 모델
-    parser.add_argument(
-        '-rm', '--report-model',
-        type=str,
-        choices=['openai', 'gemini'],
-        default='openai',
-        help='보고서 생성용 AI 모델 제공자 (기본값: openai)'
-    )
-    
-    parser.add_argument(
-        '-rmn', '--report-model-name',
-        type=str,
-        default=None,
-        help='보고서 생성용 구체적인 모델명 (기본값: openai=gpt-4o, gemini=gemini-2.0-flash-exp)'
     )
     
     parser.add_argument(
@@ -888,15 +1362,6 @@ def main():
             sys.exit(1)
         documents.append((name, path))
     
-    # 모델명 기본값 설정
-    extract_model_name = args.extract_model_name
-    if extract_model_name is None:
-        extract_model_name = "gpt-4o" if args.extract_model == "openai" else "gemini-2.0-flash-exp"
-    
-    report_model_name = args.report_model_name
-    if report_model_name is None:
-        report_model_name = "gpt-4o" if args.report_model == "openai" else "gemini-2.0-flash-exp"
-    
     # 설정 정보 출력
     logger.info("=" * 60)
     logger.info("문서 분석 파이프라인 시작")
@@ -905,8 +1370,8 @@ def main():
     logger.info(f"문서 개수: {len(documents)}")
     for name, path in documents:
         logger.info(f"  - {name}: {path}")
-    logger.info(f"추출 모델: {args.extract_model}/{extract_model_name}")
-    logger.info(f"보고서 모델: {args.report_model}/{report_model_name}")
+    logger.info(f"문서 추출 및 Section 1, 2: OpenAI/gpt-4o")
+    logger.info(f"Section 3, 4, 5: Google/gemini-3-pro-preview")
     logger.info(f"웹 검색: {args.web}")
     logger.info(f"Max RPS: {args.max_rps}")
     logger.info(f"디버그 모드: {args.debug}")
@@ -916,10 +1381,6 @@ def main():
     asyncio.run(main_async(
         company_name=args.company,
         documents=documents,
-        extract_model_provider=args.extract_model,
-        extract_model_name=extract_model_name,
-        report_model_provider=args.report_model,
-        report_model_name=report_model_name,
         web_search=args.web,
         max_rps=args.max_rps,
         debug=args.debug
