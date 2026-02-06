@@ -1,351 +1,199 @@
-# RA_Agent: LangChain 기반 기업 분석 및 보고서 생성 파이프라인
+# RA_Agent - 기업 분석 및 보고서 생성 시스템
 
-## 📋 프로젝트 개요
-
-RA_Agent는 기업 IR 문서(PDF)를 자동으로 분석하고 전문가 수준의 분석 보고서를 생성하는 LangChain 기반 AI 파이프라인입니다.
-
-### 주요 기능
-
-- **PDF 문서 처리**: PDF를 페이지 단위 이미지로 변환 및 분석
-- **OCR 통합**: CLOVA OCR 및 Upstage OCR 지원
-- **멀티모달 분석**: 이미지와 텍스트를 동시에 분석하여 구조화된 JSON 추출
-- **보고서 생성**: 3가지 유형의 전문 분석 보고서 자동 생성
-  - 회사 현황 및 핵심역량 분석
-  - 사업시장 현황 분석
-  - B2G 전략 방향 수립
-- **다중 LLM 지원**: OpenAI (GPT-4o 등), Google Gemini 모델 선택 가능
-- **웹 검색 통합**: Gemini의 grounding 기능을 통한 실시간 정보 검색
-- **Rate Limiting**: API 호출 제어로 비용 최적화
-- **캐싱**: 분석 결과 저장 및 재사용
+PDF 문서를 분석하여 기업 보고서를 자동 생성하는 AI 파이프라인입니다.
 
 ---
 
-## 🏗️ 아키텍처
+## 1. 환경설정 방법
 
-### LangChain 기반 구조
-
-```
-┌─────────────────────────────────────────────────────┐
-│                   Main Pipeline                      │
-│              (main.py - Company 클래스)              │
-└─────────────────┬───────────────────────────────────┘
-                  │
-                  ├─► Document Processing
-                  │   ├─ PDF → Images (pdf2image)
-                  │   ├─ OCR Chain (CLOVA/Upstage)
-                  │   └─ Page Extraction Chain
-                  │      ├─ LangChain Prompt Template
-                  │      ├─ ChatModel (OpenAI/Gemini)
-                  │      └─ JSON Output Parser
-                  │
-                  └─► Report Generation Chains
-                      ├─ Competencies Report Chain
-                      ├─ Market Analysis Chain
-                      └─ B2G Strategy Chain
-```
-
-### 디렉토리 구조
-
-```
-RA_Agent/
-├── main.py                 # 메인 파이프라인
-├── requirements.txt        # Python 의존성
-├── README.md              # 이 문서
-├── data/                  # 입력 PDF 문서
-├── src/
-│   ├── api.py            # LangChain 모델 래퍼 & Dispatcher
-│   ├── prompts.py        # ChatPromptTemplate 정의
-│   ├── utils.py          # OCR, JSON 파싱, 추출 Chain
-│   ├── scripts/          # 실행 스크립트
-│   └── results/          # 분석 결과 저장
-└── .env                  # API 키 설정
-```
-
----
-
-## 🚀 시작하기
-
-### 1. 환경 설정
+### 1.1 Python 환경 설정
 
 ```bash
-# 가상환경 생성 (권장)
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
+# 가상환경 생성 및 활성화
+python -m venv .venv
+source .venv/bin/activate  # macOS/Linux
+# .venv\Scripts\activate  # Windows
 
 # 의존성 설치
 pip install -r requirements.txt
 ```
 
-### 2. API 키 설정
+### 1.2 환경변수 설정
 
-`.env` 파일을 `src/` 디렉토리에 생성:
+`src/.env` 파일을 생성하고 아래 API 키들을 설정합니다:
 
 ```env
-# OpenAI API
-OPENAI_KEY=your_openai_api_key
+# OpenAI API (필수)
+OPENAI_KEY=sk-your-openai-api-key
 
-# Google Gemini API
-GEMINI_KEY=your_gemini_api_key
+# Google Gemini API (필수)
+GEMINI_KEY=your-gemini-api-key
 
-# CLOVA OCR API
-CLOVA_api_url=your_clova_api_url
-CLOVA_secret_key=your_clova_secret_key
+# Naver CLOVA OCR (필수)
+CLOVA_api_url=https://your-clova-endpoint.apigw.ntruss.com/custom/v1/...
+CLOVA_secret_key=your-clova-secret-key
 
-# Upstage OCR API (선택)
-UPSTAGE_api_key=your_upstage_api_key
+# AWS S3 (FastAPI 서버 사용 시)
+AWS_ACCESS_KEY_ID=your-aws-access-key
+AWS_SECRET_ACCESS_KEY=your-aws-secret-key
 ```
 
-### 3. 기본 사용법
+---
+
+## 2. MariaDB 구축 방법
+
+### 2.1 MariaDB 설치
 
 ```bash
-python main.py \
-  -c "Example Corp" \
-  -d IR_deck:data/ir_deck.pdf \
-  -em openai -emn gpt-4o \
-  -rm openai -rmn gpt-4o \
-  --ocr CLOVA \
-  --max-rps 2.0
+# macOS (Homebrew)
+brew install mariadb
+brew services start mariadb
+
+# Ubuntu/Debian
+sudo apt install mariadb-server
+sudo systemctl start mariadb
 ```
 
----
+### 2.2 데이터베이스 생성
 
-## 📖 명령줄 인터페이스 (CLI)
+```sql
+-- MariaDB 접속
+mysql -u root -p
 
-### 필수 인자
+-- 데이터베이스 생성
+CREATE DATABASE b2g_data CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
 
-| 인자 | 설명 | 예시 |
-|------|------|------|
-| `-c, --company` | 회사 이름 | `"Tech Startup"` |
-| `-d, --documents` | 문서명:경로 쌍 (공백 구분) | `IR1:data/ir1.pdf IR2:data/ir2.pdf` |
+### 2.3 기준 데이터 로드
 
-### 선택 인자
-
-#### 추출 모델 (문서 분석용)
-| 인자 | 설명 | 기본값 |
-|------|------|--------|
-| `-em, --extract-model` | AI 제공자 (`openai` 또는 `gemini`) | `openai` |
-| `-emn, --extract-model-name` | 모델명 | `gpt-4o` (OpenAI)<br>`gemini-2.0-flash-exp` (Gemini) |
-
-#### 보고서 모델 (보고서 생성용)
-| 인자 | 설명 | 기본값 |
-|------|------|--------|
-| `-rm, --report-model` | AI 제공자 (`openai` 또는 `gemini`) | `openai` |
-| `-rmn, --report-model-name` | 모델명 | `gpt-4o` (OpenAI)<br>`gemini-2.0-flash-exp` (Gemini) |
-
-#### 기타 옵션
-| 인자 | 설명 | 기본값 |
-|------|------|--------|
-| `--ocr` | OCR API (`CLOVA` 또는 `Upstage`) | `CLOVA` |
-| `--web` | 웹 검색 활성화 (Gemini만 지원) | `False` |
-| `--max-rps` | 초당 최대 LLM API 요청 수 | `2.0` |
-| `--debug` | 디버그 모드 (상세 로깅) | `False` |
-
----
-
-## 💡 사용 예시
-
-### 예시 1: OpenAI 기본 사용
 ```bash
-python main.py \
-  -c "Tech Startup" \
-  -d pitch_deck:data/pitch.pdf \
-  -em openai -emn gpt-4o \
-  -rm openai -rmn gpt-4o \
-  --ocr CLOVA \
-  --max-rps 2.0
+cd DB_data
+
+# 전체 데이터 로드 (국정과제, 경영평가, 동반성장)
+python load_json_to_db.py
+
+# 특정 타입만 로드
+python load_json_to_db.py --type project      # 국정과제
+python load_json_to_db.py --type management   # 경영평가
+python load_json_to_db.py --type inclusive    # 동반성장
+
+# DB 초기화 후 로드
+python load_json_to_db.py --reset
 ```
 
-### 예시 2: Gemini 추출 + OpenAI 보고서
+### 2.4 DB 연결 정보
+
+기본 연결 정보:
+- Host: `localhost`
+- Port: `3306`
+- Database: `b2g_data`
+- User: `root`
+
+---
+
+## 3. FastAPI 실행 방법
+
+### 3.1 서버 실행
+
 ```bash
-python main.py \
-  -c "HealthTech Inc" \
-  -d IR:data/ir.pdf \
-  -em gemini -emn gemini-2.0-flash-exp \
-  -rm openai -rmn gpt-4o \
-  --ocr CLOVA \
-  --max-rps 3.0
+# 프로젝트 루트 디렉토리에서 실행
+cd RA_Agent
+
+# 서버 실행 (기본 포트: 8000)
+python server.py
+
+# 또는 uvicorn으로 직접 실행
+uvicorn server:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-### 예시 3: 웹 검색 + 디버그
-```bash
-python main.py \
-  -c "AI Company" \
-  -d intro:data/intro.pdf \
-  -em gemini -emn gemini-2.5-pro \
-  -rm gemini -rmn gemini-2.5-pro \
-  --ocr CLOVA \
-  --web \
-  --max-rps 2.0 \
-  --debug
-```
+### 3.2 API 문서 확인
 
-### 예시 4: 여러 문서 동시 분석
-```bash
-python main.py \
-  -c "Enterprise Corp" \
-  -d IR1:data/ir1.pdf IR2:data/ir2.pdf IR3:data/ir3.pdf \
-  -em openai -emn gpt-4o \
-  -rm openai -rmn gpt-4o \
-  --ocr Upstage \
-  --max-rps 2.0
-```
+서버 실행 후 아래 URL에서 API 문서를 확인할 수 있습니다:
+- Swagger UI: http://localhost:8000/docs
+- ReDoc: http://localhost:8000/redoc
 
 ---
 
-## 📊 출력 구조
+## 4. /analysis API 설명
 
-`src/results/` 폴더에 다음 형식으로 저장:
+### 4.1 개요
+
+S3에서 PDF 파일을 다운로드하여 기업 분석을 실행하고 결과를 JSON으로 반환합니다.
+
+### 4.2 엔드포인트
 
 ```
-results/
-└── 회사명_문서명_extract_모델_report_모델_OCR_옵션_rps값/
-    ├── 문서명.json               # 페이지별 추출 결과
-    ├── 문서명_ocr.json          # OCR 텍스트
-    ├── 회사명_문서명.json        # 최종 보고서 (3종)
-    └── debug.txt                # 디버그 로그 (--debug 시)
+POST /analysis
 ```
 
-### 보고서 유형
+### 4.3 요청 파라미터
 
-1. **회사 현황 및 핵심역량** (`competencies`)
-   - 재무현황 (매출, 영업이익, 누적투자)
-   - 주요성과
-   - 비즈니스 모델
-   - 핵심역량 (B2G 키워드 포함)
+| 필드 | 타입 | 필수 | 설명 |
+|------|------|------|------|
+| `region` | string | ✅ | AWS 리전 (예: `ap-northeast-2`) |
+| `bucket` | string | ✅ | S3 버킷 이름 |
+| `object_key` | list[string] | ✅ | S3 오브젝트 키 리스트 |
+| `company_name` | string | ❌ | 회사 이름 (기본값: `분석대상기업`) |
+| `web_search` | boolean | ❌ | 웹 검색 활성화 여부 (기본값: `false`) |
+| `max_rps` | float | ❌ | 초당 최대 API 요청 수 (기본값: `2.0`) |
+| `debug` | boolean | ❌ | 디버그 모드 (기본값: `false`) |
 
-2. **사업시장 현황** (`market`)
-   - 시장분석 (성장률, 규모)
-   - 연도별 시장규모
-   - 경쟁구도 및 포지셔닝
-   - 기술/정책 트렌드
+### 4.4 요청 예시
 
-3. **B2G 전략 방향** (`b2g_strategy`)
-   - 약점분석
-   - 추천전략
-   - To-do 리스트
-
----
-
-## 🛠️ LangChain 구성
-
-### API 래퍼 (`src/api.py`)
-
-- **ModelFactory**: OpenAI/Gemini ChatModel 생성
-- **Dispatcher**: Rate limiting + 멀티모달 지원
-- **ChatRequest**: 통일된 요청 인터페이스
-
-### 프롬프트 템플릿 (`src/prompts.py`)
-
-- **ChatPromptTemplate**: 시스템/유저 메시지 구조화
-- 4가지 프롬프트: extraction, competencies, market, b2g_strategy
-
-### 추출 Chain (`src/utils.py`)
-
-- **extractJSON()**: 이미지 → OCR → LLM → JSON
-- 비동기 처리, 자동 JSON 파싱
-
----
-
-## 🔧 고급 기능
-
-### Rate Limiting
-```bash
---max-rps 1.0   # 느림, 저비용
---max-rps 2.0   # 균형 (권장)
---max-rps 5.0   # 빠름, 고비용
+```json
+{
+  "region": "ap-northeast-2",
+  "bucket": "my-bucket",
+  "object_key": ["reports/company_ir.pdf", "reports/business_plan.pdf"],
+  "company_name": "테스트기업",
+  "web_search": true,
+  "max_rps": 2.0,
+  "debug": false
+}
 ```
 
-### 캐싱
-- 한 번 분석된 문서는 자동 저장
-- 동일 설정 재실행 시 캐시 재사용
+### 4.5 응답 구조
 
-### 디버그 모드
-```bash
---debug  # 상세 로깅 + debug.txt 생성
+```json
+{
+  "section1": {
+    "기업명": "...",
+    "기업 한줄 요약": "...",
+    "기업분류": "...",
+    "핵심 역량": ["..."],
+    "주요 제품/서비스": ["..."],
+    "투자유치 및 재무지표": "...",
+    "수상 및 인증 실적": ["..."],
+    "지식재산권": "..."
+  },
+  "section2": {
+    "핵심 기술 키워드": ["..."],
+    "기술 역량 요약": "...",
+    "기술적 차별점 및 경쟁 우위": "...",
+    "적용 가능 산업 분야": ["..."],
+    "기술 성숙도(TRL)": "..."
+  },
+  "section3": {
+    "시장분석 요약": "...",
+    "목표시장 및 성장성": "...",
+    "경쟁 현황 및 포지셔닝": "..."
+  },
+  "section4": {
+    "국정과제 관련 지표": [...],
+    "경영평가 관련 지표": [...],
+    "동반성장 관련 지표": [...]
+  },
+  "section5": {
+    "B2G 전략 방향": "...",
+    "공공시장 진입 전략": "..."
+  }
+}
 ```
 
----
+### 4.6 기타 엔드포인트
 
-## 📝 문제 해결
-
-### API 키 오류
-```
-ValueError: API key not found
-```
-→ `.env` 파일의 API 키 확인
-
-### Rate Limit 초과
-```
-openai.RateLimitError
-```
-→ `--max-rps` 값 낮추기 (예: `1.0`)
-
-### JSON 파싱 오류
-→ 모델 변경 또는 `--debug`로 원시 응답 확인
-
----
-
-## 📚 참고 자료
-
-- [LangChain 문서](https://python.langchain.com/)
-- [OpenAI API](https://platform.openai.com/docs)
-- [Google Gemini API](https://ai.google.dev/)
-- [CLOVA OCR](https://www.ncloud.com/product/aiService/ocr)
-- [Upstage API](https://www.upstage.ai/)
-
----
-
-## 📄 라이선스
-
-별도 명시 없음.
-
----
-
-## 👥 문의
-
-이슈를 통해 문의해주세요.
-```bash
-python main.py \
-    -c "Multi Doc Company" \
-    -d "doc1:data/doc1.pdf" "doc2:data/doc2.pdf" \
-    -m gemini \
-    -mn gemini-2.0-flash-exp \
-    --ocr Upstage \
-    --max-rps 3.0
-```
-
-## 출력 파일
-
-분석 결과는 `src/results/{회사명}_{문서명1}_{문서명2}_...` 폴더에 저장됩니다:
-
-### 폴더 구조 예시
-```
-src/results/
-└── Example_instruction1/
-    ├── Example_instruction1.json          # 최종 보고서 (모든 report_type 포함)
-    ├── instruction1.json                  # 페이지별 분석 결과
-    ├── instruction1_ocr.json              # OCR 추출 텍스트 (페이지별)
-    └── debug.txt                          # 디버그 로그 (--debug 옵션 사용시)
-```
-
-### 파일 설명
-- **`{회사명}_{문서명들}.json`**: 최종 보고서
-  - 모든 보고서 유형(competencies, b2g_strategy, market)의 결과 포함
-- **`{문서명}.json`**: 각 문서의 페이지별 상세 분석 결과
-- **`{문서명}_ocr.json`**: 각 문서의 OCR 추출 텍스트
-  - 형식: `{"page_0": "텍스트...", "page_1": "텍스트...", ...}`
-- **`debug.txt`**: 디버그 로그 (--debug 옵션 사용시에만 생성)
-  - 각 페이지 분석 시작/완료 시간, 전체 소요 시간 등 기록
-
-### 여러 문서 처리 시
-```
-src/results/
-└── Multi_Doc_Company_doc1_doc2/
-    ├── Multi_Doc_Company_doc1_doc2.json   # 최종 통합 보고서
-    ├── doc1.json                          # doc1 페이지별 분석
-    ├── doc1_ocr.json                      # doc1 OCR 결과
-    ├── doc2.json                          # doc2 페이지별 분석
-    ├── doc2_ocr.json                      # doc2 OCR 결과
-    └── debug.txt                          # 디버그 로그
-```
-
+| 엔드포인트 | 메서드 | 설명 |
+|------------|--------|------|
+| `/schema` | GET | 출력 JSON 스키마 조회 |
+| `/docs` | GET | Swagger API 문서 |
+| `/redoc` | GET | ReDoc API 문서 |
