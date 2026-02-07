@@ -4,16 +4,16 @@
 DB 내용을 확인하는 스크립트
 
 사용법:
-    python scripts/check_db.py [table] [options]
+    python db_scripts/check_db.py [table] [options]
 
 예시:
-    python scripts/check_db.py                    # 전체 통계
-    python scripts/check_db.py project            # 국정과제 테이블 조회
-    python scripts/check_db.py management_eval    # 경영평가 테이블 조회
-    python scripts/check_db.py inclusive_growth   # 동반성장 테이블 조회
-    python scripts/check_db.py project --limit 5  # 상위 5개만 조회
-    python scripts/check_db.py --delete project   # 국정과제 테이블 삭제
-    python scripts/check_db.py --delete-all       # 전체 삭제
+    python db_scripts/check_db.py                    # 전체 통계
+    python db_scripts/check_db.py project            # 국정과제 테이블 조회
+    python db_scripts/check_db.py management_eval    # 경영평가 테이블 조회
+    python db_scripts/check_db.py inclusive_growth   # 동반성장 테이블 조회
+    python db_scripts/check_db.py project --limit 5  # 상위 5개만 조회
+    python db_scripts/check_db.py --delete project   # 국정과제 테이블 삭제
+    python db_scripts/check_db.py --delete-all       # 전체 삭제
 """
 
 import argparse
@@ -68,22 +68,18 @@ def print_management_eval(item: dict, idx: int):
 
 
 def print_inclusive_growth(item: dict, idx: int):
-    """동반성장 출력 (DB 스키마: 지표명, 평가기준, 평가방법)"""
-    print(f"\n[{idx}] {item.get('지표명', '')}")
-    if item.get('평가기준'):
-        criteria = item['평가기준']
-        if isinstance(criteria, list):
-            for content in criteria[:3]:
+    """동반성장 출력 (DB 스키마: 세부추진과제명, 세부내용)"""
+    print(f"\n[{idx}] {item.get('세부추진과제명', '')}")
+    if item.get('세부내용'):
+        details = item['세부내용']
+        if isinstance(details, list):
+            for content in details[:3]:
                 text = str(content)
                 print(f"    - {text[:60]}{'...' if len(text) > 60 else ''}")
-            if len(criteria) > 3:
-                print(f"    ... 외 {len(criteria) - 3}개")
+            if len(details) > 3:
+                print(f"    ... 외 {len(details) - 3}개")
         else:
-            print(f"    - {str(criteria)[:60]}...")
-    if item.get('평가방법'):
-        method = item['평가방법']
-        if isinstance(method, list) and len(method) > 0:
-            print(f"    평가방법: {str(method[0])[:50]}...")
+            print(f"    - {str(details)[:60]}...")
     print(f"    출처: {item.get('source_document', '')} (p.{item.get('page_range', '')})")
 
 
@@ -98,11 +94,11 @@ def main():
   inclusive_growth 동반성장 (inclusive_growth)
 
 예시:
-  python scripts/check_db.py                    # 전체 통계만 보기
-  python scripts/check_db.py project            # 국정과제 전체 조회
-  python scripts/check_db.py project --limit 5  # 국정과제 5개만 조회
-  python scripts/check_db.py --delete project   # 국정과제 테이블 삭제
-  python scripts/check_db.py --delete-all       # 전체 삭제
+  python db_scripts/check_db.py                    # 전체 통계만 보기
+  python db_scripts/check_db.py project            # 국정과제 전체 조회
+  python db_scripts/check_db.py project --limit 5  # 국정과제 5개만 조회
+  python db_scripts/check_db.py --delete project   # 국정과제 테이블 삭제
+  python db_scripts/check_db.py --delete-all       # 전체 삭제
         """
     )
     
@@ -158,14 +154,32 @@ def main():
     
     # 통계 출력
     stats = store.get_stats()
+    
+    # 메인 테이블 개수
+    main_tables = ['national_projects', 'management_evals', 'inclusive_growth']
+    main_count = sum(stats.get(t, 0) for t in main_tables)
+    
+    # 임베딩 청크 테이블별 개수
+    chunks_project = stats.get('embedding_chunks_project', 0)
+    chunks_management = stats.get('embedding_chunks_management', 0)
+    chunks_inclusive = stats.get('embedding_chunks_inclusive', 0)
+    total_chunks = chunks_project + chunks_management + chunks_inclusive
+    
     print("=" * 60)
     print("DB 현황")
     print("=" * 60)
-    print(f"  국정과제 (national_projects):    {stats['national_projects']:>5}개")
-    print(f"  경영평가 (management_evals):     {stats['management_evals']:>5}개")
-    print(f"  동반성장 (inclusive_growth):     {stats['inclusive_growth']:>5}개")
+    print(f"  국정과제 (national_projects):    {stats.get('national_projects', 0):>5}개")
+    print(f"  경영평가 (management_evals):     {stats.get('management_evals', 0):>5}개")
+    print(f"  동반성장 (inclusive_growth):     {stats.get('inclusive_growth', 0):>5}개")
     print(f"  {'─' * 40}")
-    print(f"  총계:                            {sum(stats.values()):>5}개")
+    print(f"  지표/과제 총계:                  {main_count:>5}개")
+    print()
+    print(f"  [임베딩 청크 테이블]")
+    print(f"    embedding_chunks_project:      {chunks_project:>5}개")
+    print(f"    embedding_chunks_management:   {chunks_management:>5}개")
+    print(f"    embedding_chunks_inclusive:    {chunks_inclusive:>5}개")
+    print(f"    ────────────────────────────────────")
+    print(f"    임베딩 총계:                   {total_chunks:>5}개")
     print("=" * 60)
     
     # 테이블 조회
@@ -175,32 +189,57 @@ def main():
             'management_eval': '경영평가',
             'inclusive_growth': '동반성장'
         }
+        table_map = {
+            'project': 'national_projects',
+            'management_eval': 'management_evals',
+            'inclusive_growth': 'inclusive_growth'
+        }
         print(f"\n{type_names[args.table]} 목록 (최대 {args.limit}개)")
         print("-" * 60)
         
-        # 빈 쿼리로 전체 검색 (LIKE 검색 fallback 이용)
-        if args.table == 'project':
-            results = store.search_projects('과제', k=args.limit)
-            if args.json:
-                print(json.dumps(results, ensure_ascii=False, indent=2))
-            else:
-                for i, item in enumerate(results, 1):
+        # 직접 SQL로 데이터 조회 (pymysql 사용)
+        import pymysql
+        from pymysql.cursors import DictCursor
+        conn = pymysql.connect(
+            host=args.db_host,
+            port=args.db_port,
+            database=args.db_name,
+            user=args.db_user,
+            password=args.db_password,
+            charset='utf8mb4',
+            cursorclass=DictCursor
+        )
+        table_name = table_map[args.table]
+        with conn.cursor() as cursor:
+            cursor.execute(f"SELECT * FROM {table_name} ORDER BY id LIMIT %s", (args.limit,))
+            results = cursor.fetchall()
+        conn.close()
+        
+        if args.json:
+            # JSON 필드 파싱
+            for r in results:
+                for key, val in r.items():
+                    if isinstance(val, str) and val.startswith('['):
+                        try:
+                            r[key] = json.loads(val)
+                        except:
+                            pass
+            print(json.dumps(results, ensure_ascii=False, indent=2, default=str))
+        else:
+            for i, item in enumerate(results, 1):
+                # JSON 필드 파싱
+                for key, val in item.items():
+                    if isinstance(val, str) and val.startswith('['):
+                        try:
+                            item[key] = json.loads(val)
+                        except:
+                            pass
+                
+                if args.table == 'project':
                     print_project(item, i)
-        
-        elif args.table == 'management_eval':
-            results = store.search_management_evals('평가', k=args.limit)
-            if args.json:
-                print(json.dumps(results, ensure_ascii=False, indent=2))
-            else:
-                for i, item in enumerate(results, 1):
+                elif args.table == 'management_eval':
                     print_management_eval(item, i)
-        
-        else:  # inclusive_growth
-            results = store.search_inclusive_growth('추진', k=args.limit)
-            if args.json:
-                print(json.dumps(results, ensure_ascii=False, indent=2))
-            else:
-                for i, item in enumerate(results, 1):
+                else:
                     print_inclusive_growth(item, i)
         
         if not results:

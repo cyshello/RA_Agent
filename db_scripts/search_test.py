@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
-검색 테스트 스크립트
+검색 테스트 스크립트 (임베딩 기반 벡터 검색)
 
 사용법:
-    python scripts/search_test.py <query> [options]
+    python db_scripts/search_test.py <query> [options]
 
 예시:
-    python scripts/search_test.py "인공지능 AI"
-    python scripts/search_test.py "리더십 전략" --type management_eval
-    python scripts/search_test.py "상생 협력" --type inclusive_growth
-    python scripts/search_test.py "디지털 전환" --all
+    python db_scripts/search_test.py "인공지능 AI"
+    python db_scripts/search_test.py "리더십 전략" --type management_eval
+    python db_scripts/search_test.py "상생 협력" --type inclusive_growth
+    python db_scripts/search_test.py "디지털 전환" --all
 """
 
 import argparse
@@ -67,10 +67,10 @@ def main():
   (기본: project)
 
 예시:
-  python scripts/search_test.py "인공지능 AI"
-  python scripts/search_test.py "리더십 전략" --type management_eval
-  python scripts/search_test.py "디지털 전환" --all --limit 5
-  python scripts/search_test.py "탄소중립" --json
+  python db_scripts/search_test.py "인공지능 AI"
+  python db_scripts/search_test.py "리더십 전략" --type management_eval
+  python db_scripts/search_test.py "디지털 전환" --all --limit 5
+  python db_scripts/search_test.py "탄소중립" --json
         """
     )
     
@@ -80,7 +80,6 @@ def main():
     parser.add_argument('--all', '-a', action='store_true', help='모든 타입에서 검색')
     parser.add_argument('--limit', '-k', type=int, default=20, help='검색 결과 개수 (기본: 20)')
     parser.add_argument('--json', action='store_true', help='JSON 형식으로 출력')
-    parser.add_argument('--embedding', '-e', action='store_true', help='임베딩 기반 검색 사용 (기본: FULLTEXT 검색)')
     parser.add_argument('--db-host', default='localhost', help='MySQL 호스트')
     parser.add_argument('--db-port', type=int, default=3306, help='MySQL 포트')
     parser.add_argument('--db-name', default='b2g_data', help='데이터베이스 이름')
@@ -101,15 +100,12 @@ def main():
     print("=" * 60)
     print(f"검색어: \"{args.query}\"")
     print(f"검색 개수: {args.limit}개")
-    print(f"검색 방식: {'임베딩 기반' if args.embedding else 'FULLTEXT'}")
+    print(f"검색 방식: 임베딩 기반 벡터 검색")
     print("=" * 60)
     
     if args.all:
-        # 전체 검색
-        if args.embedding:
-            all_results = pipeline.store.search_all_by_embedding(args.query, k=args.limit)
-        else:
-            all_results = pipeline.search_all(args.query, k=args.limit)
+        # 전체 검색 (임베딩 기반)
+        all_results = pipeline.store.search_all_by_embedding(args.query, k=args.limit)
         
         if args.json:
             print(json.dumps(all_results, ensure_ascii=False, indent=2))
@@ -150,20 +146,11 @@ def main():
         }
         
         if args.type == 'project':
-            if args.embedding:
-                results = pipeline.store.search_projects_by_embedding(args.query, k=args.limit)
-            else:
-                results = pipeline.search_projects(args.query, k=args.limit)
+            results = pipeline.store.search_projects_by_embedding(args.query, k=args.limit)
         elif args.type == 'management_eval':
-            if args.embedding:
-                results = pipeline.store.search_management_evals_by_embedding(args.query, k=args.limit)
-            else:
-                results = pipeline.search_management_evals(args.query, k=args.limit)
+            results = pipeline.store.search_management_evals_by_embedding(args.query, k=args.limit)
         else:
-            if args.embedding:
-                results = pipeline.store.search_inclusive_growth_by_embedding(args.query, k=args.limit)
-            else:
-                results = pipeline.search_inclusive_growth(args.query, k=args.limit)
+            results = pipeline.store.search_inclusive_growth_by_embedding(args.query, k=args.limit)
         
         print(f"\n▶ {type_names[args.type]} 검색 결과 ({len(results)}개)")
         print("-" * 50)

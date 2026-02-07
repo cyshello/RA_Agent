@@ -23,13 +23,8 @@
 #   --db-password <pw>   MySQL 비밀번호 (기본값: 빈 문자열)
 #
 # 예시:
-#   # 국정과제 PDF 처리
 #   ./db_scripts/build_db.sh ./data/criteria/presidential_agenda.pdf project 13-17 21-195
-#
-#   # 경영평가 PDF 처리 (중간 결과 저장)
 #   ./db_scripts/build_db.sh ./data/criteria/management_eval.pdf management_eval 20-25 27-46 --output-dir ./output/management
-#
-#   # 동반성장 PDF 처리 (기존 OCR 재사용)
 #   ./db_scripts/build_db.sh ./data/criteria/inclusive_growth.pdf inclusive_growth 2-5 6-50 --reuse-ocr ./ocr_cache/inclusive
 #
 
@@ -72,6 +67,7 @@ print_usage() {
     echo "  detail_pages   세부내용 페이지 범위 (예: 21-195)"
     echo ""
     echo -e "${YELLOW}선택 옵션:${NC}"
+    echo "  --use-table          Table 인식 OCR 사용 (기본값: text만)"
     echo "  --reuse-ocr <dir>    기존 OCR 결과 재사용"
     echo "  --output-dir <dir>   중간 결과 저장 디렉토리"
     echo "  --db-host <host>     MySQL 호스트 (기본값: localhost)"
@@ -80,15 +76,19 @@ print_usage() {
     echo "  --db-user <user>     MySQL 사용자 (기본값: root)"
     echo "  --db-password <pw>   MySQL 비밀번호"
     echo ""
+    echo -e "${YELLOW}OCR 모드:${NC}"
+    echo "  기본값 (--use-table 없음): CLOVA_ocr 사용 → text 필드만 추출"
+    echo "  --use-table 지정 시:       CLOVA_ocr_with_table 사용 → table 필드 포함"
+    echo ""
     echo -e "${YELLOW}예시:${NC}"
-    echo "  # 국정과제 PDF 처리"
+    echo "  # 국정과제 PDF 처리 (text OCR)"
     echo "  $0 ./data/criteria/presidential_agenda.pdf project 13-17 21-195"
     echo ""
-    echo "  # 경영평가 PDF 처리 (중간 결과 저장)"
-    echo "  $0 ./data/criteria/management_eval.pdf management_eval 20-25 27-46 --output-dir ./output/management"
+    echo "  # 경영평가 PDF 처리 (table 인식 포함)"
+    echo "  $0 ./data/criteria/management_eval.pdf management_eval 20-25 27-46 --use-table"
     echo ""
-    echo "  # 동반성장 PDF 처리 (기존 OCR 재사용)"
-    echo "  $0 ./data/criteria/inclusive_growth.pdf inclusive_growth 2-5 6-50 --reuse-ocr ./ocr_cache/inclusive"
+    echo "  # 동반성장 PDF 처리 (table 인식 + 기존 OCR 재사용)"
+    echo "  $0 ./data/criteria/inclusive_growth.pdf inclusive_growth 2-5 6-50 --use-table --reuse-ocr ./ocr_cache/inclusive"
     echo ""
 }
 
@@ -138,6 +138,7 @@ DB_PORT="3306"
 DB_NAME="b2g_data"
 DB_USER="root"
 DB_PASSWORD=""
+USE_TABLE="false"
 
 # 선택 옵션 파싱
 while [[ $# -gt 0 ]]; do
@@ -149,6 +150,10 @@ while [[ $# -gt 0 ]]; do
         --output-dir)
             OUTPUT_DIR="$2"
             shift 2
+            ;;
+        --use-table)
+            USE_TABLE="true"
+            shift 1
             ;;
         --db-host)
             DB_HOST="$2"
@@ -185,7 +190,7 @@ done
 print_header
 
 # data_type 유효성 검사
-case $DATA_TYPE in
+case "$DATA_TYPE" in
     project|management_eval|inclusive_growth)
         ;;
     *)
@@ -211,19 +216,24 @@ fi
 # 설정 출력
 # ============================================================================
 
-# 데이터 타입 한글명
-case $DATA_TYPE in
+case "$DATA_TYPE" in
     project)
         TYPE_NAME="국정과제"
         TYPE_FIELDS="과제명, 과제_목표, 주요내용, 기대효과"
+        JSON_FILE="project.json"
+        JSON_TYPE_OPT="project"
         ;;
     management_eval)
         TYPE_NAME="경영평가 지표"
         TYPE_FIELDS="지표명, 평가기준, 평가방법, 참고사항, 증빙자료"
+        JSON_FILE="management.json"
+        JSON_TYPE_OPT="management_eval"
         ;;
     inclusive_growth)
         TYPE_NAME="동반성장 평가지표"
         TYPE_FIELDS="지표명, 평가기준, 평가방법"
+        JSON_FILE="inclusive.json"
+        JSON_TYPE_OPT="inclusive_growth"
         ;;
 esac
 
@@ -242,6 +252,12 @@ if [ -n "$OUTPUT_DIR" ]; then
     print_info "중간결과 저장: $OUTPUT_DIR"
 fi
 
+if [ "$USE_TABLE" = "true" ]; then
+    print_info "OCR 모드: Table 인식 포함 (CLOVA_ocr_with_table)"
+else
+    print_info "OCR 모드: Text만 (CLOVA_ocr)"
+fi
+
 print_info "DB: $DB_USER@$DB_HOST:$DB_PORT/$DB_NAME"
 
 # ============================================================================
@@ -252,7 +268,6 @@ print_step "가상환경 활성화"
 
 cd "$PROJECT_DIR"
 
-# 가상환경 경로 확인 (여러 가능한 위치)
 if [ -f "../.venv/bin/activate" ]; then
     source ../.venv/bin/activate
     print_success "가상환경 활성화: ../.venv"
@@ -275,38 +290,71 @@ fi
 # DB 파이프라인 실행
 # ============================================================================
 
-print_step "DB 구축 파이프라인 실행"
+print_step "PDF → JSON 추출"
 
-# 명령어 구성
-CMD="python db_scripts/load_pdf_to_db.py"
-CMD="$CMD \"$PDF_PATH\""
-CMD="$CMD $DATA_TYPE"
-CMD="$CMD --index-pages $INDEX_PAGES"
-CMD="$CMD --detail-pages $DETAIL_PAGES"
-CMD="$CMD --db-host $DB_HOST"
-CMD="$CMD --db-port $DB_PORT"
-CMD="$CMD --db-name $DB_NAME"
-CMD="$CMD --db-user $DB_USER"
+DB_DATA_DIR="$PROJECT_DIR/DB_data"
+mkdir -p "$DB_DATA_DIR"
+JSON_PATH="$DB_DATA_DIR/$JSON_FILE"
 
-if [ -n "$DB_PASSWORD" ]; then
-    CMD="$CMD --db-password \"$DB_PASSWORD\""
-fi
+CMD=(python db_scripts/load_pdf_to_db.py
+    "$PDF_PATH"
+    "$DATA_TYPE"
+    --index-pages "$INDEX_PAGES"
+    --detail-pages "$DETAIL_PAGES"
+    --json-only
+    --json-output "$JSON_PATH"
+)
 
 if [ -n "$REUSE_OCR" ]; then
-    CMD="$CMD --reuse-ocr \"$REUSE_OCR\""
+    CMD+=(--reuse-ocr "$REUSE_OCR")
 fi
 
 if [ -n "$OUTPUT_DIR" ]; then
-    CMD="$CMD --output-dir \"$OUTPUT_DIR\""
+    CMD+=(--output-dir "$OUTPUT_DIR")
+fi
+
+if [ "$USE_TABLE" = "true" ]; then
+    CMD+=(--use-table)
 fi
 
 echo ""
-echo -e "${YELLOW}실행 명령어:${NC}"
-echo "  $CMD"
+echo -e "${YELLOW}1단계: PDF → JSON 추출${NC}"
+echo "  명령어: ${CMD[*]}"
 echo ""
 
-# 실행
-eval $CMD
+"${CMD[@]}"
+
+if [ ! -f "$JSON_PATH" ]; then
+    print_error "JSON 파일 생성 실패: $JSON_PATH"
+    exit 1
+fi
+
+print_success "JSON 파일 생성: $JSON_PATH"
+
+# ============================================================================
+# JSON → DB 로드
+# ============================================================================
+
+print_step "JSON → DB 로드"
+
+CMD2=(python load_json_to_db.py
+    --type "$JSON_TYPE_OPT"
+    --db-host "$DB_HOST"
+    --db-port "$DB_PORT"
+    --db-name "$DB_NAME"
+    --db-user "$DB_USER"
+)
+
+if [ -n "$DB_PASSWORD" ]; then
+    CMD2+=(--db-password "$DB_PASSWORD")
+fi
+
+echo ""
+echo -e "${YELLOW}2단계: JSON → DB 로드${NC}"
+echo "  명령어: ${CMD2[*]}"
+echo ""
+
+"${CMD2[@]}"
 
 # ============================================================================
 # 완료

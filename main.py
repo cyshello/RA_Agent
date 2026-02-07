@@ -9,6 +9,7 @@ LangChain을 활용하여 OCR, 문서 분석, 보고서 생성을 Chain 구조�
 from src.api import ChatRequest, Dispatcher, ModelFactory
 from src.prompts import PROMPTS
 from src.utils import extractJSON, parse_json, OUTPUT_JSON_SCHEMA
+from src.db_main import SCHEMA_REGISTRY
 from langchain_core.runnables import RunnableParallel
 from langchain_core.output_parsers import JsonOutputParser
 import os
@@ -668,27 +669,31 @@ class Company():
             password=""
         )
         
-        # 평가 유형별 설정 (MySQL 임베딩 검색 사용)
-        eval_configs = {
-            "presidential_agenda": {
-                "name": "국정과제",
-                "search_method": "search_projects_by_embedding",
-                "name_field": "과제명",
-                "id_field": "과제번호",
-            },
-            "management_eval": {
-                "name": "공공기관 경영평가",
-                "search_method": "search_management_evals_by_embedding",
-                "name_field": "지표명",
-                "id_field": "지표명",
-            },
-            "inclusive_growth": {
-                "name": "동반성장 평가지표",
-                "search_method": "search_inclusive_growth_by_embedding",
-                "name_field": "지표명",
-                "id_field": "지표명",
-            }
+        # DB 통계 가져오기 (전체 개수 확인용)
+        try:
+            db_stats = mysql_store.get_stats()
+        except Exception as e:
+            logger.warning(f"DB 통계 조회 실패: {e}")
+            db_stats = {}
+        
+        # 평가 유형별 설정 (SCHEMA_REGISTRY 기반 동적 생성)
+        eval_configs = {}
+        # result_json 키 매핑 (기존 호환성 유지)
+        type_mapping = {
+            "project": "presidential_agenda",
+            "management_eval": "management_eval",
+            "inclusive_growth": "inclusive_growth"
         }
+        
+        for data_type, schema in SCHEMA_REGISTRY.items():
+            eval_type = type_mapping.get(data_type, data_type)
+            eval_configs[eval_type] = {
+                "name": schema["type_display"],
+                "data_type": data_type,
+                "name_field": schema["name_field"],
+                "id_field": schema["number_field"] if data_type == "project" else schema["name_field"],
+                "schema": schema
+            }
         
         search_queries = company_features.get("search_queries", [])
         core_technologies = company_features.get("core_technologies", [])
@@ -715,35 +720,67 @@ class Company():
             # 2-1. DB 검색 (MySQL 임베딩 기반)
             logger.info(f"Step 2-{eval_type}: {config['name']} 임베딩 검색 중...")
             
-            search_func = getattr(mysql_store, config["search_method"])
+            data_type = config["data_type"]
+            table_name = config["schema"]["table"]
+            total_count = db_stats.get(table_name, 0)
             all_items = {}
             
-            # 각 검색 쿼리로 임베딩 검색
-            for query in search_queries:
+            # 1. DB 전체 개수가 20개 이하인 경우 전체 로드
+            if total_count > 0 and total_count <= 20:
+                logger.info(f"  - 전체 데이터 개수({total_count}개)가 20개 이하이므로 전체 로드")
                 try:
-                    results = search_func(query, k=5)
+                    results = mysql_store.get_records(data_type, limit=50)
                     for item in results:
+                        item_id = item.get(config["id_field"], "") or item.get(config["name_field"], "")
+                        if item_id:
+                            all_items[item_id] = item
+                except Exception as e:
+                    logger.warning(f"전체 데이터 로드 실패: {e}")
+            else:
+                # 2. 20개 이상이면 k를 늘리면서 검색 (최소 20개 확보 시도)
+                k_steps = [5, 10, 15, 20]
+                
+                # 검색 쿼리 + 핵심 기술 모두 활용
+                search_targets = search_queries + core_technologies
+                
+                for k in k_steps:
+                    if len(all_items) >= 20:
+                        break
+                        
+                    if debug:
+                        logger.info(f"  - 검색 시도 (k={k})... 현재 확보된 항목: {len(all_items)}개")
+                    
+                    for query in search_targets:
+                        if len(all_items) >= 20:
+                            break
+                            
+                        try:
+                            results = mysql_store.search_by_embedding(data_type, query, k=k)
+                            for item in results:
+                                item_id = item.get(config["id_field"], "") or item.get(config["name_field"], "")
+                                if item_id and item_id not in all_items:
+                                    all_items[item_id] = item
+                        except Exception as e:
+                            logger.warning(f"검색 오류: {e}")
+                            continue
+
+            # 3. 여전히 20개 미만이면 Fallback (전체 DB에서 추가 로드)
+            if len(all_items) < 20:
+                try:
+                    logger.info(f"  - 검색 결과 부족({len(all_items)}개) -> Fallback 데이터 로드")
+                    additional_items = mysql_store.get_records(data_type, limit=50)
+                    for item in additional_items:
+                        if len(all_items) >= 20:
+                            break
+                        
                         item_id = item.get(config["id_field"], "") or item.get(config["name_field"], "")
                         if item_id and item_id not in all_items:
                             all_items[item_id] = item
+                            if debug:
+                                logger.info(f"  - Fallback 추가: {item.get(config['name_field'], '')}")
                 except Exception as e:
-                    logger.warning(f"검색 오류 ({config['name']}): {e}")
-                    continue
-            
-            # 항목이 부족하면 핵심 기술로 추가 검색
-            if len(all_items) < 20:
-                for tech in core_technologies:
-                    if len(all_items) >= 20:
-                        break
-                    try:
-                        results = search_func(tech, k=3)
-                        for item in results:
-                            item_id = item.get(config["id_field"], "") or item.get(config["name_field"], "")
-                            if item_id and item_id not in all_items:
-                                all_items[item_id] = item
-                    except Exception as e:
-                        continue
-            
+                    logger.warning(f"Fallback 데이터 로드 실패 ({config['name']}): {e}")
+
             items_list = list(all_items.values())[:20]  # 20개 후보 항목 선정
             
             if debug:
@@ -762,45 +799,25 @@ class Company():
                 }
                 continue
             
-            # 2-2. 항목 리스트를 텍스트로 변환 (MySQL 스키마에 맞게)
+            # 2-2. 항목 리스트를 텍스트로 변환 (MySQL 스키마에 맞게 동적 생성)
             items_text = ""
+            schema = config["schema"]
             for i, item in enumerate(items_list, 1):
                 name = item.get(config["name_field"], "")
                 score = item.get("score", 0)
+                item_id = item.get(config["id_field"], "")
                 
-                if eval_type == "presidential_agenda":
-                    goals = item.get("과제 목표", [])
-                    if isinstance(goals, list):
-                        goals = goals[:2]
-                    else:
-                        goals = []
-                    contents = item.get("주요내용", [])
-                    if isinstance(contents, list):
-                        contents = contents[:2]
-                    else:
-                        contents = []
-                    items_text += f"""
-{i}. [{item.get(config["id_field"], "")}] {name} (유사도: {score:.3f})
-   - 과제 목표: {', '.join(goals) if goals else '정보 없음'}
-   - 주요내용: {', '.join(contents) if contents else '정보 없음'}
-"""
-                else:
-                    # 경영평가, 동반성장
-                    eval_criteria = item.get("평가기준", [])
-                    if isinstance(eval_criteria, list):
-                        eval_criteria = eval_criteria[:2]
-                    else:
-                        eval_criteria = []
-                    eval_method = item.get("평가방법", [])
-                    if isinstance(eval_method, list):
-                        eval_method = eval_method[:1]
-                    else:
-                        eval_method = []
-                    items_text += f"""
-{i}. {name} (유사도: {score:.3f})
-   - 평가기준: {', '.join(eval_criteria) if eval_criteria else '정보 없음'}
-   - 평가방법: {', '.join(eval_method) if eval_method else ''}
-"""
+                details_text = ""
+                for field_name, field_spec in schema["fields"].items():
+                    if field_spec.get("extract_detail", False):
+                        val = item.get(field_name, [])
+                        if isinstance(val, list):
+                            val_str = ', '.join([str(v) for v in val[:2]]) if val else '정보 없음'
+                        else:
+                            val_str = str(val) if val else '정보 없음'
+                        details_text += f"   - {field_name}: {val_str}\n"
+                
+                items_text += f"\n{i}. [{item_id}] {name} (유사도: {score:.3f})\n{details_text}"
             
             # ============================================================
             # Step A: 랭킹 생성 (B2G_EVALUATION_RANK_PROMPT)
@@ -1259,7 +1276,7 @@ async def main_async(
                             current_year = com.result_json["section2"]["finance"][k[0]]["year"]
                             current_amount = com.result_json["section2"]["finance"][k[0]]["amount"]
                             if current_year == 0 and (current_amount == "" or current_amount is None):
-                                com.result_json["section2"]["finance"][k[0]]["year"] = year
+                                com.result_json["section2"]["finance"][k[0]]["year"] = year #반드시 정수로 저장
                                 com.result_json["section2"]["finance"][k[0]]["amount"] = amount
                             elif current_year != 0 and current_year < year:
                                 com.result_json["section2"]["finance"][k[0]]["year"] = year

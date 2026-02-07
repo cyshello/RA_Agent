@@ -48,6 +48,16 @@ DB_USER="root"
 DB_PASSWORD=""
 
 # ============================================================================
+# 스키마 정보 로드 (동적)
+# ============================================================================
+SCHEMA_KEYS=$(python3 "$PROJECT_DIR/db_scripts/get_schema_keys.py")
+if [ $? -ne 0 ]; then
+    echo -e "${RED}스키마 정보를 불러오는데 실패했습니다.${NC}"
+    exit 1
+fi
+SUPPORTED_TYPES="all $SCHEMA_KEYS"
+
+# ============================================================================
 # 인자 파싱
 # ============================================================================
 DATA_TYPE="all"
@@ -58,28 +68,37 @@ for arg in "$@"; do
         --reset|-r)
             RESET_FLAG="--reset"
             ;;
-        project|management|inclusive|all)
-            DATA_TYPE="$arg"
-            ;;
         --help|-h)
             echo "사용법: $0 [옵션] [데이터타입]"
             echo ""
             echo "데이터 타입:"
-            echo "  project      국정과제만 로드"
-            echo "  management   경영평가만 로드"
-            echo "  inclusive    동반성장만 로드"
+            for key in $SCHEMA_KEYS; do
+                echo "  $key"
+            done
             echo "  all          전체 로드 (기본값)"
             echo ""
             echo "옵션:"
             echo "  --reset, -r  기존 데이터 삭제 후 로드"
             echo "  --help, -h   도움말 표시"
             echo ""
-            echo "예시:"
-            echo "  $0                   # 전체 로드 (추가)"
-            echo "  $0 --reset           # 전체 초기화 후 로드"
-            echo "  $0 project           # 국정과제만 추가"
-            echo "  $0 --reset inclusive # 동반성장만 초기화 후 로드"
             exit 0
+            ;;
+        *)
+            # 동적으로 타입 확인
+            FOUND=0
+            for key in $SUPPORTED_TYPES; do
+                if [ "$arg" == "$key" ]; then
+                    DATA_TYPE="$arg"
+                    FOUND=1
+                    break
+                fi
+            done
+            
+            if [ $FOUND -eq 0 ]; then
+                echo -e "${RED}알 수 없는 인자 또는 데이터 타입: $arg${NC}"
+                echo "사용 가능한 타입: $SUPPORTED_TYPES"
+                exit 1
+            fi
             ;;
     esac
 done
@@ -95,26 +114,23 @@ echo ""
 # ============================================================================
 echo -e "${YELLOW}JSON 파일 확인:${NC}"
 
-if [ -f "$SCRIPT_DIR/project.json" ]; then
-    PROJECT_COUNT=$(python3 -c "import json; print(len(json.load(open('$SCRIPT_DIR/project.json'))))")
-    echo -e "  ✅ project.json: ${GREEN}${PROJECT_COUNT}개 항목${NC}"
+CHECK_TYPES=""
+if [ "$DATA_TYPE" == "all" ]; then
+    CHECK_TYPES="$SCHEMA_KEYS"
 else
-    echo -e "  ⚠️  project.json: ${RED}파일 없음${NC}"
+    CHECK_TYPES="$DATA_TYPE"
 fi
 
-if [ -f "$SCRIPT_DIR/management.json" ]; then
-    MANAGEMENT_COUNT=$(python3 -c "import json; print(len(json.load(open('$SCRIPT_DIR/management.json'))))")
-    echo -e "  ✅ management.json: ${GREEN}${MANAGEMENT_COUNT}개 항목${NC}"
-else
-    echo -e "  ⚠️  management.json: ${RED}파일 없음${NC}"
-fi
-
-if [ -f "$SCRIPT_DIR/inclusive.json" ]; then
-    INCLUSIVE_COUNT=$(python3 -c "import json; print(len(json.load(open('$SCRIPT_DIR/inclusive.json'))))")
-    echo -e "  ✅ inclusive.json: ${GREEN}${INCLUSIVE_COUNT}개 항목${NC}"
-else
-    echo -e "  ⚠️  inclusive.json: ${RED}파일 없음${NC}"
-fi
+for type in $CHECK_TYPES; do
+    JSON_PATH=$(python3 "$PROJECT_DIR/db_scripts/get_json_path.py" "$type")
+    
+    if [ -f "$JSON_PATH" ]; then
+        COUNT=$(python3 -c "import json; print(len(json.load(open('$JSON_PATH'))))")
+        echo -e "  ✅ $type: ${GREEN}${COUNT}개 항목${NC} ($JSON_PATH)"
+    else
+        echo -e "  ⚠️  $type: ${RED}파일 없음${NC} ($JSON_PATH)"
+    fi
+done
 
 echo ""
 
@@ -160,7 +176,7 @@ echo -e "${BLUE}  데이터 로드 시작${NC}"
 echo -e "${BLUE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
 echo ""
 
-python "$SCRIPT_DIR/load_json_to_db.py" \
+python "$PROJECT_DIR/load_json_to_db.py" \
     --type "$DATA_TYPE" \
     --db-host "$DB_HOST" \
     --db-port "$DB_PORT" \

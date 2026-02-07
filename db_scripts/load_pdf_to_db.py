@@ -65,6 +65,9 @@ async def main():
     parser.add_argument('--detail-pages', required=True, help='세부내용 페이지 범위 (예: 6-100)')
     parser.add_argument('--output-dir', default=None, help='중간 결과 저장 디렉토리 (OCR, item_list, item_details 등)')
     parser.add_argument('--reuse-ocr', default=None, help='기존 OCR 결과 디렉토리 (재사용하여 OCR 단계 스킵)')
+    parser.add_argument('--use-table', action='store_true', help='Table 인식 OCR 사용 (CLOVA_ocr_with_table). 미지정시 text OCR 사용')
+    parser.add_argument('--json-only', action='store_true', help='JSON 추출만 수행 (DB 저장 생략)')
+    parser.add_argument('--json-output', default=None, help='JSON 저장 경로 (--json-only와 함께 사용)')
     parser.add_argument('--db-host', default='localhost', help='MySQL 호스트')
     parser.add_argument('--db-port', type=int, default=3306, help='MySQL 포트')
     parser.add_argument('--db-name', default='b2g_data', help='데이터베이스 이름')
@@ -111,16 +114,72 @@ async def main():
         print(f"  OCR 재사용: {args.reuse_ocr}")
     if args.output_dir:
         print(f"  중간결과 저장: {args.output_dir}")
+    print(f"  OCR 모드: {'Table 인식 포함' if args.use_table else 'Text만'}")
     print(f"  DB: {args.db_user}@{args.db_host}:{args.db_port}/{args.db_name}")
+    if args.json_only:
+        print(f"  모드: JSON 추출만 (DB 저장 생략)")
+        if args.json_output:
+            print(f"  JSON 저장 경로: {args.json_output}")
     print("=" * 60)
     
+    # JSON만 추출 모드
+    if args.json_only:
+        import json
+        
+        # 파이프라인 생성 (DB 연결 없이 추출만)
+        pipeline = create_pipeline(
+            db_host=args.db_host,
+            db_port=args.db_port,
+            db_name=args.db_name,
+            db_user=args.db_user,
+            db_password=args.db_password,
+            use_table=args.use_table
+        )
+        
+        # PDF에서 데이터 추출 (DB 저장 없이)
+        save_intermediate = args.output_dir is not None
+        
+        results = await pipeline.extract_from_pdf(
+            pdf_path=args.pdf_path,
+            data_type=args.data_type,
+            index_pages=index_pages,
+            detail_pages=detail_pages,
+            save_intermediate=save_intermediate,
+            output_dir=args.output_dir,
+            reuse_ocr_dir=args.reuse_ocr
+        )
+        
+        # JSON 저장
+        if args.json_output:
+            os.makedirs(os.path.dirname(args.json_output), exist_ok=True)
+            
+            json_data = [item.to_dict() if hasattr(item, 'to_dict') else item for item in results]
+            with open(args.json_output, 'w', encoding='utf-8') as f:
+                json.dump(json_data, f, ensure_ascii=False, indent=2)
+            
+            print()
+            print("=" * 60)
+            print(f"JSON 추출 완료: {len(results)}개 항목")
+            print(f"  저장 위치: {args.json_output}")
+            print("=" * 60)
+        else:
+            print()
+            print("=" * 60)
+            print(f"JSON 추출 완료: {len(results)}개 항목")
+            print("  (--json-output 옵션 없음, 저장 생략)")
+            print("=" * 60)
+        
+        return
+    
+    # 기존 로직: PDF → DB 직접 저장
     # 파이프라인 생성
     pipeline = create_pipeline(
         db_host=args.db_host,
         db_port=args.db_port,
         db_name=args.db_name,
         db_user=args.db_user,
-        db_password=args.db_password
+        db_password=args.db_password,
+        use_table=args.use_table
     )
     
     # PDF 처리
