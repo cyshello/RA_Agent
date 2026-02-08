@@ -25,9 +25,18 @@ brew services start mariadb
 sudo apt install mariadb-server
 sudo systemctl start mariadb
 ```
+
 ```bash
-# 전체 데이터 로드 (국정과제, 경영평가, 동반성장)
-python load_json_to_db.py --reset
+# DB 및 유저 생성 (root 접속 권한 문제 해결)
+sudo mysql -u root -e "
+CREATE DATABASE IF NOT EXISTS b2g_data CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER IF NOT EXISTS 'b2g_user'@'localhost' IDENTIFIED BY 'b2g_password';
+GRANT ALL PRIVILEGES ON b2g_data.* TO 'b2g_user'@'localhost';
+FLUSH PRIVILEGES;
+"
+
+# 전체 데이터 로드 (전용 유저 사용)
+python db_scripts/setup_db.py --reset --db-user b2g_user --db-password b2g_password
 ```
 
 ### 3. FastAPI 실행
@@ -42,7 +51,7 @@ python server.py
 uvicorn server:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-### 4. 루트에 `.env` 파일 추가
+### 4. src 아래에 `.env` 파일 추가
 
 ```env
 # OpenAI API (필수)
@@ -128,33 +137,26 @@ sudo apt install mariadb-server
 sudo systemctl start mariadb
 ```
 
-### 2.2 데이터베이스 생성
-
-```sql
--- MariaDB 접속
-mysql -u root -p
-
--- 데이터베이스 생성
-CREATE DATABASE b2g_data CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-```
-
-### 2.3 기준 데이터 로드
-기존에 생성한 기준 데이터 분석 JSON이 있을 경우, `load_to_db.sh` 스크립트를 사용하여 DB 구성이 가능합니다. 이 스크립트는 `src/db_main.py`의 설정을 동적으로 읽어 동작합니다.
+### 2.2 DB 및 유저 생성 (필수)
+`root` 접속 에러 방지 및 한글 깨짐 방지를 위해 전용 데이터베이스와 유저를 생성합니다.
 
 ```bash
-# 실행 권한 부여
-chmod +x DB_data/load_to_db.sh
+# 터미널에서 아래 명령어를 한 번에 복사해서 실행하세요.
+# (비밀번호를 물어보면 입력하세요)
+sudo mysql -u root -e "
+CREATE DATABASE IF NOT EXISTS b2g_data CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE USER IF NOT EXISTS 'b2g_user'@'localhost' IDENTIFIED BY 'b2g_password';
+GRANT ALL PRIVILEGES ON b2g_data.* TO 'b2g_user'@'localhost';
+FLUSH PRIVILEGES;
+"
+```
 
-# 전체 데이터 로드 (국정과제, 경영평가, 동반성장)
-./DB_data/load_to_db.sh
+### 2.3 데이터 로드
+위에서 생성한 계정으로 초기 데이터를 적재합니다. (OS 상관없이 Python 스크립트 사용)
 
-# 특정 타입만 로드 (스키마에 정의된 키 사용)
-./DB_data/load_to_db.sh project            # 국정과제
-./DB_data/load_to_db.sh management_eval    # 경영평가
-./DB_data/load_to_db.sh inclusive_growth   # 동반성장
-
-# DB 초기화 후 로드
-./DB_data/load_to_db.sh --reset
+```bash
+# 전체 데이터 로드 (유저/비번 지정)
+python db_scripts/setup_db.py --reset --db-user b2g_user --db-password b2g_password
 ```
 
 ### 2.4 DB 재생성

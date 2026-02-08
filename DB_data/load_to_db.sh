@@ -63,10 +63,19 @@ SUPPORTED_TYPES="all $SCHEMA_KEYS"
 DATA_TYPE="all"
 RESET_FLAG=""
 
-for arg in "$@"; do
-    case $arg in
+while [[ $# -gt 0 ]]; do
+    case $1 in
         --reset|-r)
             RESET_FLAG="--reset"
+            shift
+            ;;
+        --db-user)
+            DB_USER="$2"
+            shift 2
+            ;;
+        --db-password)
+            DB_PASSWORD="$2"
+            shift 2
             ;;
         --help|-h)
             echo "사용법: $0 [옵션] [데이터타입]"
@@ -78,8 +87,10 @@ for arg in "$@"; do
             echo "  all          전체 로드 (기본값)"
             echo ""
             echo "옵션:"
-            echo "  --reset, -r  기존 데이터 삭제 후 로드"
-            echo "  --help, -h   도움말 표시"
+            echo "  --reset, -r     기존 데이터 삭제 후 로드"
+            echo "  --db-user       DB 사용자 (기본: root)"
+            echo "  --db-password   DB 비밀번호"
+            echo "  --help, -h      도움말 표시"
             echo ""
             exit 0
             ;;
@@ -87,18 +98,19 @@ for arg in "$@"; do
             # 동적으로 타입 확인
             FOUND=0
             for key in $SUPPORTED_TYPES; do
-                if [ "$arg" == "$key" ]; then
-                    DATA_TYPE="$arg"
+                if [ "$1" == "$key" ]; then
+                    DATA_TYPE="$1"
                     FOUND=1
                     break
                 fi
             done
             
             if [ $FOUND -eq 0 ]; then
-                echo -e "${RED}알 수 없는 인자 또는 데이터 타입: $arg${NC}"
+                echo -e "${RED}알 수 없는 인자 또는 데이터 타입: $1${NC}"
                 echo "사용 가능한 타입: $SUPPORTED_TYPES"
                 exit 1
             fi
+            shift
             ;;
     esac
 done
@@ -182,6 +194,7 @@ python "$PROJECT_DIR/load_json_to_db.py" \
     --db-port "$DB_PORT" \
     --db-name "$DB_NAME" \
     --db-user "$DB_USER" \
+    --db-password "$DB_PASSWORD" \
     $RESET_FLAG
 
 echo ""
